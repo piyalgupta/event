@@ -5,7 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Life Events — Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300,0;9..144,500,0;9..144,500,1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -144,7 +145,7 @@
     <input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importJSON(event)">
     <button class="btn" onclick="buildPrintReport();window.print()">Print / Save PDF</button>
   </div>
-  <div class="gh-connect" style="margin-top:14px;max-width:560px">
+  <div class="gh-connect" id="ghConnect" style="margin-top:14px;max-width:560px">
     <label>GitHub Token — auto-sync to repo</label>
     <div class="map-row">
       <input type="password" id="ghTokenInput" placeholder="Paste a GitHub token (repo scope) to enable auto-save" oninput="ghConnected=false" autocomplete="off" spellcheck="false">
