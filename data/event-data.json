@@ -15,7 +15,7 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "ক",
+      "name": "কচুরি ",
       "category": "Veg Starter",
       "qty": "85",
       "price": "100"
@@ -347,5 +347,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1781979023081
+  "updatedAt": 1781979028918
 }
