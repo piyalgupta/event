@@ -9,7 +9,7 @@
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "",
+  "catererName": "Surendra",
   "catererPhone": "",
   "syncPlates": true,
   "rsvpNotes": "",
@@ -29,5 +29,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975475259
+  "updatedAt": 1781975477851
 }
