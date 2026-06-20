@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "25",
+      "qty": "26",
       "price": "100"
     }
   ],
@@ -93,7 +93,13 @@
       "name": "Seema - Biren Sen",
       "invited": false,
       "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Mandira Lagiri",
+      "invited": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1781978222517
+  "updatedAt": 1781978231061
 }
