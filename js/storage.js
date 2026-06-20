@@ -102,7 +102,7 @@ async function connectGitHub(){
   try{
     const res=await fetch(`https://api.github.com/repos/${GH_REPO}`,{headers:ghHeaders(token)});
     if(res.ok){
-      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);updateGhUI();
+      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);updateGhUI();startGhPoll();
       setStatus('Connected ✓ — syncing with the repo…');
       await syncWithGitHub();
       return true;
@@ -171,3 +171,36 @@ async function saveAll(){
   if((($('ghTokenInput')?.value)||'').trim()){if(await connectGitHub())return;}
   exportJSON();setStatus('Saved in this browser + downloaded JSON (connect a GitHub token above to auto-sync).');
 }
+// ── Cross-device / cross-tab live sync ────────────────────────────────────
+// (1) Poll GitHub every 30 s while connected to catch changes from other devices.
+// (2) Pull on tab-focus (visibilitychange) so returning from mobile → desktop
+//     always shows the freshest data without a manual refresh.
+// (3) Listen for localStorage 'storage' events so two tabs in the same browser
+//     stay in sync without a GitHub round-trip.
+
+const GH_POLL_MS = 30_000; // poll interval when connected
+let ghPollTimer;
+
+function startGhPoll() {
+  clearInterval(ghPollTimer);
+  ghPollTimer = setInterval(async () => {
+    if (!ghConnected) { clearInterval(ghPollTimer); return; }
+    await syncWithGitHub();
+  }, GH_POLL_MS);
+}
+
+// Pull on visibility restore (user switches back to this tab / app)
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && ghConnected) {
+    syncWithGitHub();
+  }
+});
+
+// Same-browser cross-tab sync via the native storage event
+window.addEventListener('storage', e => {
+  if (e.key !== STORAGE_KEY) return;
+  try {
+    const fresh = JSON.parse(e.newValue);
+    if (fresh) applyData(fresh);
+  } catch (_) {}
+});
