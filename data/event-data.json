@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "58",
+      "qty": "60",
       "price": "100"
     }
   ],
@@ -230,8 +230,8 @@
       "honorific": "Mr.",
       "name": "Tua & Family ",
       "invited": false,
-      "party": "2"
+      "party": "4"
     }
   ],
-  "updatedAt": 1781978593922
+  "updatedAt": 1781978597097
 }
