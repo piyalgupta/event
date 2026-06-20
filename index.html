@@ -348,6 +348,7 @@ function setEvent(btn,label){
   btn.classList.add('active');
   currentEvent=label;
   document.getElementById('eventLabel').textContent=label;
+  saveLocal();
 }
 
 // ── Map ──
@@ -412,7 +413,7 @@ function addFood(){
     <div style="display:flex;justify-content:flex-end">
       <button class="remove-btn" onclick="removeItem('food${id}')">Remove</button>
     </div>`;
-  const [,qtyEl,priceEl]=div.querySelectorAll('input[type=number]');
+  const [qtyEl,priceEl]=div.querySelectorAll('input[type=number]');
   function calcItem(){
     const t=(parseFloat(qtyEl.value)||0)*(parseFloat(priceEl.value)||0);
     document.getElementById('ftotal'+id).value=t||'';
@@ -772,6 +773,17 @@ const saved=loadLocal();
 if(saved){applyData(saved);}
 else{addFood();addFood();addGuest();addGuest();addGuest();recalc();}
 document.querySelectorAll('#p0 .reveal').forEach(el=>el.classList.add('in'));
+
+// ── Global autosave safety net ──
+// Several fields (event date, contact/phone, full address, map URL, caterer
+// name/phone, RSVP notes) were never wired to recalc(), so per-field handlers
+// silently dropped their values from autosave. One delegated listener on the
+// scroll container guarantees every input/select/textarea change — present or
+// dynamically added — is persisted, fulfilling the README's "every change is
+// saved" promise. saveLocal() is debounced, so this adds no extra writes.
+const pagesEl=document.getElementById('pages');
+pagesEl.addEventListener('input',()=>saveLocal());
+pagesEl.addEventListener('change',()=>saveLocal());
 </script>
 </body>
 </html>
