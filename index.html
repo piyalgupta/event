@@ -148,22 +148,34 @@ select{cursor:pointer}
 .action-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
 
 /* ── Responsive ── */
+/* Cap content width on large desktops / landscape so lines stay readable */
+@media(min-width:1500px){
+  .page>.row,.page>.hr,.page>.page-head,.page>.food-total,.page>.guest-summary,
+  #foodList,#guestList,.page>.add-btn,.page>div:not(.hero-inner):not(.scroll-cue){max-width:1180px}
+}
 @media(max-width:680px){
-  .page-nav{right:auto;left:50%;top:auto;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);flex-direction:row}
+  .page-nav{right:auto;left:50%;top:auto;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);flex-direction:row;gap:12px;padding:7px 12px;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(6px);border-radius:20px}
   .row-2,.row-3{grid-template-columns:1fr}
   .gs-stat{padding-right:20px;margin-right:20px}
   .brand{font-size:.62rem}
   .counter{font-size:.62rem}
   input,select,textarea{font-size:16px}
+  .page{padding-bottom:calc(var(--gutter-y) + 44px + env(safe-area-inset-bottom))}
+  .action-row{gap:10px}
+  .action-row .btn{flex:1 1 calc(50% - 5px);padding:13px 14px}
+  .guest-name-wrap{flex-basis:100%}
 }
 @media(max-width:400px){
+  :root{--gutter-x:16px}
   .brand{display:none}
-  .honorific{width:70px}
+  .honorific{width:66px}
+  .action-row .btn{flex-basis:100%}
 }
 @media(min-width:681px) and (max-width:980px){
   .row-3{grid-template-columns:1fr 1fr}
 }
-@media(orientation:landscape) and (max-height:520px){
+/* Short / landscape phones & small tablets: top-align so tall pages don't clip */
+@media(orientation:landscape) and (max-height:600px){
   .page{justify-content:flex-start;gap:18px;padding-top:calc(64px + env(safe-area-inset-top))}
   .hero-title{font-size:clamp(1.6rem,5vw,2.6rem)}
 }
@@ -325,7 +337,14 @@ select{cursor:pointer}
     <input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importJSON(event)">
     <button class="btn" onclick="buildPrintReport();window.print()">Print / Save PDF</button>
   </div>
-  <div style="font-size:.7rem;color:var(--muted);margin-top:4px" id="saveStatus">Autosaving in this browser. Click Save to also write data/event-data.json into the GitHub repo.</div>
+  <div class="gh-connect" style="margin-top:14px;max-width:560px">
+    <label>GitHub Token — auto-sync to repo</label>
+    <div class="map-row">
+      <input type="password" id="ghTokenInput" placeholder="Paste a GitHub token (repo scope) to enable auto-save" oninput="ghConnected=false" autocomplete="off" spellcheck="false">
+      <button class="btn" id="ghConnectBtn" onclick="connectGitHub()">Connect</button>
+    </div>
+  </div>
+  <div style="font-size:.7rem;color:var(--muted);margin-top:8px" id="saveStatus">Autosaving in this browser. Add a GitHub token above to also auto-save into the repo.</div>
 </section>
 
 </div>
@@ -588,7 +607,7 @@ function applyData(d){
 let saveTimer;
 function saveLocal(immediate){
   clearTimeout(saveTimer);
-  const run=()=>{try{localStorage.setItem('lifeEventsData',JSON.stringify(collectData()));}catch(e){}};
+  const run=()=>{try{localStorage.setItem('lifeEventsData',JSON.stringify(collectData()));}catch(e){}scheduleGitHubPush();};
   if(immediate)run();else saveTimer=setTimeout(run,300);
 }
 function loadLocal(){
@@ -616,38 +635,61 @@ function importJSON(e){
   e.target.value='';
 }
 
-// ── Single Save button: instant local save + write data/event-data.json into the GitHub repo ──
+// ── GitHub sync: connect once, then every change auto-saves to data/event-data.json ──
 const GH_REPO='piyalgupta/event',GH_PATH='data/event-data.json';
-function getPAT(){
-  let t=localStorage.getItem('ghPAT');
-  if(!t){
-    t=prompt('One-time setup: paste a GitHub Personal Access Token (repo scope) for '+GH_REPO+'.\nStored only in this browser, sent only to api.github.com.\nLeave blank to just download the JSON instead.');
-    if(t)localStorage.setItem('ghPAT',t.trim());
-  }
-  return t?t.trim():null;
+let ghConnected=false,ghBusy=false,ghDirty=false,ghPushTimer;
+function ghHeaders(t){return{Authorization:`token ${t}`,Accept:'application/vnd.github+json'}}
+function setStatus(m){const s=document.getElementById('saveStatus');if(s)s.textContent=m;}
+async function connectGitHub(skipPush){
+  const inp=document.getElementById('ghTokenInput');
+  const token=(inp&&inp.value||'').trim();
+  if(!token){setStatus('Enter a GitHub token (repo scope) above to enable auto-save.');return false;}
+  setStatus('Connecting to GitHub…');
+  try{
+    const res=await fetch(`https://api.github.com/repos/${GH_REPO}`,{headers:ghHeaders(token)});
+    if(res.ok){
+      ghConnected=true;localStorage.setItem('ghPAT',token);
+      setStatus('Connected ✓ — every change now auto-saves to the repo.');
+      if(!skipPush)pushToGitHub();
+      return true;
+    }
+    if(res.status===401)localStorage.removeItem('ghPAT');
+    setStatus('Connection failed ('+res.status+'). Check the token has repo scope.');
+  }catch(e){setStatus('GitHub unreachable. Check your network and try Connect again.');}
+  ghConnected=false;return false;
+}
+function scheduleGitHubPush(){
+  if(!ghConnected)return;
+  clearTimeout(ghPushTimer);ghPushTimer=setTimeout(pushToGitHub,1500);
+}
+async function pushToGitHub(){
+  if(!ghConnected)return;
+  const token=localStorage.getItem('ghPAT');if(!token){ghConnected=false;return;}
+  if(ghBusy){ghDirty=true;return;}
+  ghBusy=true;ghDirty=false;
+  const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
+  try{
+    let sha;
+    const getRes=await fetch(api,{headers:ghHeaders(token)});
+    if(getRes.ok)sha=(await getRes.json()).sha;
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify(collectData(),null,2))));
+    const putRes=await fetch(api,{method:'PUT',headers:{...ghHeaders(token),'Content-Type':'application/json'},
+      body:JSON.stringify({message:'Update event data',content,sha})});
+    if(putRes.ok){setStatus('Auto-saved to GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));}
+    else{
+      const e=await putRes.json().catch(()=>({}));
+      if(putRes.status===401){ghConnected=false;localStorage.removeItem('ghPAT');}
+      setStatus('GitHub save failed ('+(e.message||putRes.status)+'). Saved locally.');
+    }
+  }catch(err){setStatus('GitHub unreachable. Saved locally — will retry on next change.');}
+  ghBusy=false;
+  if(ghDirty)scheduleGitHubPush();
 }
 async function saveAll(){
   saveLocal(true);
-  const status=document.getElementById('saveStatus');
-  const token=getPAT();
-  if(!token){exportJSON();if(status)status.textContent='Saved in this browser + downloaded JSON (no GitHub token set).';return;}
-  if(status)status.textContent='Saving to GitHub…';
-  const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
-  const headers={Authorization:`token ${token}`,Accept:'application/vnd.github+json'};
-  try{
-    let sha;
-    const getRes=await fetch(api,{headers});
-    if(getRes.ok)sha=(await getRes.json()).sha;
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify(collectData(),null,2))));
-    const putRes=await fetch(api,{method:'PUT',headers:{...headers,'Content-Type':'application/json'},
-      body:JSON.stringify({message:'Update event data',content,sha})});
-    if(putRes.ok){if(status)status.textContent='Saved to GitHub ✓ '+new Date().toLocaleTimeString('en-IN');}
-    else{
-      const e=await putRes.json().catch(()=>({}));
-      if(putRes.status===401)localStorage.removeItem('ghPAT');
-      if(status)status.textContent='GitHub save failed ('+(e.message||putRes.status)+'). Saved locally.';
-    }
-  }catch(err){if(status)status.textContent='GitHub unreachable. Saved locally — try Save again.';}
+  if(ghConnected){pushToGitHub();return;}
+  if((document.getElementById('ghTokenInput')?.value||'').trim()){if(await connectGitHub())return;}
+  exportJSON();setStatus('Saved in this browser + downloaded JSON (connect a GitHub token above to auto-sync).');
 }
 
 // ── Comprehensive Print / PDF report ──
@@ -773,6 +815,10 @@ const saved=loadLocal();
 if(saved){applyData(saved);}
 else{addFood();addFood();addGuest();addGuest();addGuest();recalc();}
 document.querySelectorAll('#p0 .reveal').forEach(el=>el.classList.add('in'));
+
+// Restore a previously saved token and re-establish auto-sync (without an immediate push)
+const savedToken=localStorage.getItem('ghPAT');
+if(savedToken){const inp=document.getElementById('ghTokenInput');if(inp)inp.value=savedToken;connectGitHub(true);}
 
 // ── Global autosave safety net ──
 // Several fields (event date, contact/phone, full address, map URL, caterer
