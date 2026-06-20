@@ -15,7 +15,7 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "Veg Thali",
+      "name": "ক",
       "category": "Veg Starter",
       "qty": "85",
       "price": "100"
@@ -347,5 +347,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1781979018542
+  "updatedAt": 1781979023081
 }
