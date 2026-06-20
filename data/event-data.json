@@ -15,10 +15,16 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "কচুরি, আলুর দম, পোলাও, পনির, ২টো শুকনো ম",
+      "name": "কচুরি, আলুর দম, পোলাও, পনির, ২টো শুকনো মিষ্টি",
       "category": "Veg Starter",
       "qty": "85",
       "price": "100"
+    },
+    {
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "85",
+      "price": ""
     }
   ],
   "guests": [
@@ -347,5 +353,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1781979083888
+  "updatedAt": 1781979095662
 }
