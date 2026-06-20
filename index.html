@@ -350,8 +350,63 @@ select{cursor:pointer}
 </div>
 
 <script>
+// ── Config ───────────────────────────────────────────────────────────────
+// Every storage key, id prefix and timing lives here instead of being
+// sprinkled through the file as magic literals.
+const STORAGE_KEY='lifeEventsData';   // localStorage key for the event payload
+const TOKEN_KEY='ghPAT';              // localStorage key for the GitHub token
+const FOOD_ID_PREFIX='food';          // food rows use id="food<n>" + "ftotal<n>"
+const PARTY_MIN=1, PARTY_MAX=10;      // clamp for the per-guest party spinner
+const SAVE_DEBOUNCE_MS=300;           // debounce before writing to localStorage
+const GH_PUSH_DEBOUNCE_MS=1500;       // debounce before pushing to GitHub
+const GH_SUPPRESS_MS=2500;            // ignore pushes briefly after a remote pull
+
 // ── State ──
 let foodId=0,guestId=0,currentEvent='Birthday',syncPlates=false;
+
+// ── DOM / formatting helpers (defined once, reused everywhere) ─────────────
+const $=id=>document.getElementById(id);
+const $$=sel=>document.querySelectorAll(sel);
+const val=id=>$(id)?.value||'';
+const num=id=>parseFloat($(id)?.value)||0;
+const setVal=(id,v)=>{const el=$(id);if(el&&v!==undefined)el.value=v;};
+const setText=(id,v)=>{const el=$(id);if(el)el.textContent=v;};
+const fmt=n=>n.toLocaleString('en-IN',{maximumFractionDigits:0});
+const inr=n=>'₹ '+fmt(n);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const mapsEmbed=(q,z=15)=>`https://maps.google.com/maps?q=${q}&output=embed&z=${z}`;
+
+// ── Row readers ────────────────────────────────────────────────────────────
+// Turn one food/guest DOM node into a plain record. recalc(), collectData()
+// and buildPrintReport() all read through these, so the brittle "where is this
+// field in the markup" knowledge lives in exactly one place.
+function readFoodItem(fi){
+  const nums=fi.querySelectorAll('input[type=number]');
+  const qty=parseFloat(nums[0].value)||0, price=parseFloat(nums[1].value)||0;
+  return{
+    el:fi,
+    name:fi.querySelector('input[type=text]')?.value||'',
+    category:fi.querySelector('select')?.value||'',
+    qtyEl:nums[0], priceEl:nums[1],
+    qtyRaw:nums[0].value, priceRaw:nums[1].value,
+    qty, price, total:qty*price,
+    totalEl:$('ftotal'+fi.id.replace(FOOD_ID_PREFIX,''))
+  };
+}
+function readGuest(gi){
+  const sv=gi.querySelector('.spin-val');
+  return{
+    el:gi,
+    honorific:gi.querySelector('.honorific')?.value||'',
+    name:gi.querySelector('.guest-name-wrap input')?.value||'',
+    invited:!!gi.querySelector('.invite-toggle.on'),
+    party:(sv?.textContent)||'1',
+    heads:sv?(parseInt(sv.textContent)||1):1,
+    hasSpin:!!sv
+  };
+}
+const foodEntries=()=>[...$$('.food-item')].map(readFoodItem);
+const guestEntries=()=>[...$$('.guest-item')].map(readGuest);
 
 // ── Event Type ──
 function toggleSyncPlates(checked){
@@ -372,34 +427,31 @@ function setEvent(btn,label){
 
 // ── Map ──
 function previewMap(){
-  const url=document.getElementById('mapUrl').value.trim();
-  const frame=document.getElementById('mapFrame');
-  const preview=document.getElementById('mapPreview');
+  const url=val('mapUrl').trim();
+  const frame=$('mapFrame'),preview=$('mapPreview');
   if(!url){preview.classList.remove('show');return}
-  let src='';
+  let src;
   if(url.includes('google.com/maps')){
     if(url.includes('/embed')){src=url}
     else{
       const q=url.includes('@')?url.split('@')[1].split(',').slice(0,2).join(','):encodeURIComponent(url);
-      src=`https://maps.google.com/maps?q=${q}&output=embed&z=15`;
+      src=mapsEmbed(q);
     }
   } else {
-    src=`https://maps.google.com/maps?q=${encodeURIComponent(url)}&output=embed&z=15`;
+    src=mapsEmbed(encodeURIComponent(url));
   }
   frame.src=src;
   preview.classList.add('show');
 }
 function updateMap(){
-  const addr=document.getElementById('venueAddr').value.trim();
-  if(addr&&!document.getElementById('mapUrl').value){
-    const frame=document.getElementById('mapFrame');
-    const preview=document.getElementById('mapPreview');
-    frame.src=`https://maps.google.com/maps?q=${encodeURIComponent(addr)}&output=embed&z=14`;
-    preview.classList.add('show');
+  const addr=val('venueAddr').trim();
+  if(addr&&!val('mapUrl')){
+    $('mapFrame').src=mapsEmbed(encodeURIComponent(addr),14);
+    $('mapPreview').classList.add('show');
   }
 }
 function openMap(){
-  const url=document.getElementById('mapUrl').value.trim()||document.getElementById('venueAddr').value.trim();
+  const url=val('mapUrl').trim()||val('venueAddr').trim();
   if(url)window.open(url.startsWith('http')?url:`https://maps.google.com/maps?q=${encodeURIComponent(url)}`,'_blank');
 }
 
@@ -480,9 +532,9 @@ function toggleInvite(id){
   recalc();
 }
 function spin(id,d){
-  const el=document.getElementById(id);
+  const el=$(id);
   let v=parseInt(el.textContent)+d;
-  if(v<1)v=1;if(v>10)v=10;
+  if(v<PARTY_MIN)v=PARTY_MIN;if(v>PARTY_MAX)v=PARTY_MAX;
   el.textContent=v;
   el.style.transform='scale(1.35)';el.style.color='var(--accent)';
   setTimeout(()=>{el.style.transform='';el.style.color='';},200);
@@ -508,63 +560,50 @@ function removeItem(id){
 
 // ── Recalculate ──
 function recalc(){
-  const forVal=document.getElementById('organizedFor').value.trim();
-  document.getElementById('forLabel').textContent=forVal||'—';
-  const vCost=parseFloat(document.getElementById('venueCost').value)||0;
-  const vAdv=parseFloat(document.getElementById('venueAdv').value)||0;
-  document.getElementById('venueBal').value=Math.max(0,vCost-vAdv)||'';
-  document.getElementById('venueCostBadge').textContent='₹ '+fmt(vCost);
+  setText('forLabel', val('organizedFor').trim()||'—');
 
+  const vCost=num('venueCost'), vAdv=num('venueAdv');
+  setVal('venueBal', Math.max(0,vCost-vAdv)||'');
+  setText('venueCostBadge', inr(vCost));
+
+  // Guests — families, total heads and invited heads in a single pass.
   let families=0,people=0,invited=0;
-  document.querySelectorAll('.guest-item').forEach(gi=>{
-    const sv=gi.querySelector('.spin-val');
-    const heads=sv?(parseInt(sv.textContent)||1):1;
-    if(sv){people+=heads;families++;}
-    if(gi.querySelector('.invite-toggle.on'))invited+=heads;
+  guestEntries().forEach(g=>{
+    if(g.hasSpin){people+=g.heads;families++;}
+    if(g.invited)invited+=g.heads;
   });
-  document.getElementById('gTotalFamilies').textContent=families;
-  document.getElementById('gTotalPeople').textContent=people;
-  document.getElementById('gInvited').textContent=invited;
-  document.getElementById('gTotalPlates').textContent=people;
-  document.getElementById('guestBadge').textContent=people+' people';
+  setText('gTotalFamilies',families);
+  setText('gTotalPeople',people);
+  setText('gInvited',invited);
+  setText('gTotalPlates',people);
+  setText('guestBadge',people+' people');
 
+  // Food — when "sync plates" is on each row tracks the guest head-count;
+  // the per-row line total is written back so the live cost stays in sync.
   let fTotal=0,plates=0,items=0;
-  document.querySelectorAll('.food-item').forEach(fi=>{
-    const nums=fi.querySelectorAll('input[type=number]');
-    if(syncPlates)nums[0].value=people||'';
-    const q=parseFloat(nums[0].value)||0;
-    const p=parseFloat(nums[1].value)||0;
-    if(document.getElementById('ftotal'+fi.id.replace('food','')))document.getElementById('ftotal'+fi.id.replace('food','')).value=(q*p)||'';
-    fTotal+=q*p;plates+=q;if(nums[0].value||nums[1].value)items++;
+  foodEntries().forEach(f=>{
+    if(syncPlates)f.qtyEl.value=people||'';
+    const qty=parseFloat(f.qtyEl.value)||0, total=qty*f.price;
+    if(f.totalEl)f.totalEl.value=total||'';
+    fTotal+=total;plates+=qty;
+    if(f.qtyEl.value||f.priceRaw)items++;
   });
-  document.getElementById('foodTotal').textContent='₹ '+fmt(fTotal);
-  document.getElementById('foodCostBadge').textContent='₹ '+fmt(fTotal);
-  document.getElementById('foodBreakdown').textContent=`${items} items · ${plates} plates`;
+  setText('foodTotal',inr(fTotal));
+  setText('foodCostBadge',inr(fTotal));
+  setText('foodBreakdown',`${items} items · ${plates} plates`);
 
   const grand=vCost+fTotal;
-  document.getElementById('sumVenue').textContent='₹ '+fmt(vCost);
-  document.getElementById('sumFood').textContent='₹ '+fmt(fTotal);
-  document.getElementById('sumGuests').textContent=people+' people ('+families+' families)';
-  document.getElementById('grandTotal').textContent='₹ '+fmt(grand);
+  setText('sumVenue',inr(vCost));
+  setText('sumFood',inr(fTotal));
+  setText('sumGuests',people+' people ('+families+' families)');
+  setText('grandTotal',inr(grand));
   saveLocal();
 }
-function fmt(n){return n.toLocaleString('en-IN',{maximumFractionDigits:0})}
-function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
 // ── JSON data: collect / apply / autosave / export / import ──
-function val(id){return document.getElementById(id)?.value||''}
-function set(id,v){const el=document.getElementById(id);if(el&&v!==undefined)el.value=v;}
 function collectData(){
-  const food=[...document.querySelectorAll('.food-item')].map(fi=>{
-    const nums=fi.querySelectorAll('input[type=number]');
-    return{name:fi.querySelector('input[type=text]')?.value||'',category:fi.querySelector('select')?.value||'',qty:nums[0].value,price:nums[1].value};
-  });
-  const guests=[...document.querySelectorAll('.guest-item')].map(gi=>({
-    honorific:gi.querySelector('.honorific')?.value||'',
-    name:gi.querySelector('.guest-name-wrap input')?.value||'',
-    invited:!!gi.querySelector('.invite-toggle.on'),
-    party:gi.querySelector('.spin-val')?.textContent||'1'
-  }));
+  const food=foodEntries().map(f=>({name:f.name,category:f.category,qty:f.qtyRaw,price:f.priceRaw}));
+  const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,invited:g.invited,party:g.party}));
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
@@ -573,7 +612,7 @@ function collectData(){
 }
 function applyData(d){
   if(!d)return;
-  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone'].forEach(k=>set(k,d[k]));
+  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone'].forEach(k=>setVal(k,d[k]));
   if(document.querySelector('#p3 textarea'))document.querySelector('#p3 textarea').value=d.rsvpNotes||'';
   if(d.eventType){
     const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
@@ -607,11 +646,11 @@ function applyData(d){
 let saveTimer;
 function saveLocal(immediate){
   clearTimeout(saveTimer);
-  const run=()=>{try{localStorage.setItem('lifeEventsData',JSON.stringify(collectData()));}catch(e){}scheduleGitHubPush();};
-  if(immediate)run();else saveTimer=setTimeout(run,300);
+  const run=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(collectData()));}catch(e){}scheduleGitHubPush();};
+  if(immediate)run();else saveTimer=setTimeout(run,SAVE_DEBOUNCE_MS);
 }
 function loadLocal(){
-  try{const raw=localStorage.getItem('lifeEventsData');if(raw)return JSON.parse(raw);}catch(e){}
+  try{const raw=localStorage.getItem(STORAGE_KEY);if(raw)return JSON.parse(raw);}catch(e){}
   return null;
 }
 function exportJSON(){
@@ -639,7 +678,7 @@ function importJSON(e){
 const GH_REPO='piyalgupta/event',GH_PATH='data/event-data.json';
 let ghConnected=false,ghBusy=false,ghDirty=false,ghPushTimer,ghSuppressPush=false;
 function ghHeaders(t){return{Authorization:`token ${t}`,Accept:'application/vnd.github+json'}}
-function setStatus(m){const s=document.getElementById('saveStatus');if(s)s.textContent=m;}
+function setStatus(m){setText('saveStatus',m);}
 // True only when the data holds real user content (not the blank starter form),
 // so a fresh device's defaults never overwrite real data saved elsewhere.
 function isMeaningful(d){
@@ -650,19 +689,19 @@ function isMeaningful(d){
   return false;
 }
 async function connectGitHub(){
-  const inp=document.getElementById('ghTokenInput');
+  const inp=$('ghTokenInput');
   const token=(inp&&inp.value||'').trim();
   if(!token){setStatus('Enter a GitHub token (repo scope) above to enable auto-save.');return false;}
   setStatus('Connecting to GitHub…');
   try{
     const res=await fetch(`https://api.github.com/repos/${GH_REPO}`,{headers:ghHeaders(token)});
     if(res.ok){
-      ghConnected=true;localStorage.setItem('ghPAT',token);
+      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);
       setStatus('Connected ✓ — syncing with the repo…');
       await syncWithGitHub();
       return true;
     }
-    if(res.status===401)localStorage.removeItem('ghPAT');
+    if(res.status===401)localStorage.removeItem(TOKEN_KEY);
     setStatus('Connection failed ('+res.status+'). Check the token has repo scope.');
   }catch(e){setStatus('GitHub unreachable. Check your network and try Connect again.');}
   ghConnected=false;return false;
@@ -670,7 +709,7 @@ async function connectGitHub(){
 // On connect/load: pull the repo copy. If it's newer than (or local is empty),
 // load it so every device shows the same data; otherwise push the local copy up.
 async function syncWithGitHub(){
-  const token=localStorage.getItem('ghPAT');
+  const token=localStorage.getItem(TOKEN_KEY);
   if(!ghConnected||!token)return;
   const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
   try{
@@ -684,9 +723,9 @@ async function syncWithGitHub(){
     if(remote&&(!isMeaningful(local)||(isMeaningful(remote)&&rt>=lt))){
       ghSuppressPush=true;
       applyData(remote);
-      try{localStorage.setItem('lifeEventsData',JSON.stringify(remote));}catch(e){}
+      try{localStorage.setItem(STORAGE_KEY,JSON.stringify(remote));}catch(e){}
       setStatus('Loaded latest from GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));
-      setTimeout(()=>{ghSuppressPush=false;},2500);
+      setTimeout(()=>{ghSuppressPush=false;},GH_SUPPRESS_MS);
     }else{
       setStatus('Connected ✓ — this device is newer, saving up…');
       pushToGitHub();
@@ -695,11 +734,11 @@ async function syncWithGitHub(){
 }
 function scheduleGitHubPush(){
   if(!ghConnected||ghSuppressPush)return;
-  clearTimeout(ghPushTimer);ghPushTimer=setTimeout(pushToGitHub,1500);
+  clearTimeout(ghPushTimer);ghPushTimer=setTimeout(pushToGitHub,GH_PUSH_DEBOUNCE_MS);
 }
 async function pushToGitHub(){
   if(!ghConnected)return;
-  const token=localStorage.getItem('ghPAT');if(!token){ghConnected=false;return;}
+  const token=localStorage.getItem(TOKEN_KEY);if(!token){ghConnected=false;return;}
   if(ghBusy){ghDirty=true;return;}
   ghBusy=true;ghDirty=false;
   const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
@@ -713,7 +752,7 @@ async function pushToGitHub(){
     if(putRes.ok){setStatus('Auto-saved to GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));}
     else{
       const e=await putRes.json().catch(()=>({}));
-      if(putRes.status===401){ghConnected=false;localStorage.removeItem('ghPAT');}
+      if(putRes.status===401){ghConnected=false;localStorage.removeItem(TOKEN_KEY);}
       setStatus('GitHub save failed ('+(e.message||putRes.status)+'). Saved locally.');
     }
   }catch(err){setStatus('GitHub unreachable. Saved locally — will retry on next change.');}
@@ -723,47 +762,38 @@ async function pushToGitHub(){
 async function saveAll(){
   saveLocal(true);
   if(ghConnected){pushToGitHub();return;}
-  if((document.getElementById('ghTokenInput')?.value||'').trim()){if(await connectGitHub())return;}
+  if((($('ghTokenInput')?.value)||'').trim()){if(await connectGitHub())return;}
   exportJSON();setStatus('Saved in this browser + downloaded JSON (connect a GitHub token above to auto-sync).');
 }
 
 // ── Comprehensive Print / PDF report ──
 function buildPrintReport(){
-  const forVal=document.getElementById('organizedFor').value.trim()||'—';
-  const eventType=document.getElementById('eventLabel').textContent;
-  const dtRaw=document.getElementById('eventDate').value;
+  const forVal=val('organizedFor').trim()||'—';
+  const eventType=$('eventLabel').textContent;
+  const dtRaw=val('eventDate');
   const dtStr=dtRaw?new Date(dtRaw).toLocaleString('en-IN',{dateStyle:'full',timeStyle:'short'}):'Date not set';
 
-  const vName=document.getElementById('venueName').value||'—';
-  const vAddr=document.getElementById('venueAddr').value||'—';
-  const vContact=document.getElementById('venueContact').value;
-  const vPhone=document.getElementById('venuePhone').value;
-  const vCost=parseFloat(document.getElementById('venueCost').value)||0;
-  const vAdv=parseFloat(document.getElementById('venueAdv').value)||0;
+  const vName=val('venueName')||'—';
+  const vAddr=val('venueAddr')||'—';
+  const vContact=val('venueContact');
+  const vPhone=val('venuePhone');
+  const vCost=num('venueCost'), vAdv=num('venueAdv');
   const vBal=Math.max(0,vCost-vAdv);
 
   let foodRows='',fTotal=0;
-  document.querySelectorAll('.food-item').forEach(fi=>{
-    const t=fi.querySelectorAll('input[type=text]')[0]?.value;
-    const cat=fi.querySelector('select')?.value||'—';
-    const nums=fi.querySelectorAll('input[type=number]');
-    const q=parseFloat(nums[0].value)||0,p=parseFloat(nums[1].value)||0,tot=q*p;
-    fTotal+=tot;
-    if(t||q||p)foodRows+=`<tr><td>${esc(t||'—')}</td><td>${esc(cat)}</td><td>${q}</td><td>₹ ${fmt(p)}</td><td>₹ ${fmt(tot)}</td></tr>`;
+  foodEntries().forEach(f=>{
+    fTotal+=f.total;
+    if(f.name||f.qty||f.price)
+      foodRows+=`<tr><td>${esc(f.name||'—')}</td><td>${esc(f.category||'—')}</td><td>${f.qty}</td><td>₹ ${fmt(f.price)}</td><td>₹ ${fmt(f.total)}</td></tr>`;
   });
-  const caterer=document.getElementById('catererName').value;
-  const catererPhone=document.getElementById('catererPhone').value;
+  const caterer=val('catererName');
+  const catererPhone=val('catererPhone');
 
   let guestRows='',people=0,families=0,invitedHeads=0;
-  document.querySelectorAll('.guest-item').forEach(gi=>{
-    const hon=gi.querySelector('.honorific')?.value||'';
-    const name=gi.querySelector('.guest-name-wrap input')?.value||'—';
-    const sv=gi.querySelector('.spin-val');
-    const heads=sv?(parseInt(sv.textContent)||1):1;
-    const isInv=!!gi.querySelector('.invite-toggle.on');
-    people+=heads;families++;
-    if(isInv)invitedHeads+=heads;
-    guestRows+=`<tr><td>${esc(hon?hon+' ':'')}${esc(name)}</td><td>${heads}</td><td>${isInv?'Yes':'No'}</td></tr>`;
+  guestEntries().forEach(g=>{
+    people+=g.heads;families++;
+    if(g.invited)invitedHeads+=g.heads;
+    guestRows+=`<tr><td>${esc(g.honorific?g.honorific+' ':'')}${esc(g.name||'—')}</td><td>${g.heads}</td><td>${g.invited?'Yes':'No'}</td></tr>`;
   });
   const rsvp=document.querySelector('#p3 textarea')?.value||'';
   const grand=vCost+fTotal;
@@ -814,10 +844,10 @@ function clearAll(){
   document.querySelectorAll('input,textarea,select').forEach(el=>{
     if(!el.readOnly&&el.type!=='button')el.value='';
   });
-  document.getElementById('foodList').innerHTML='';
-  document.getElementById('guestList').innerHTML='';
-  document.getElementById('mapPreview').classList.remove('show');
-  localStorage.removeItem('lifeEventsData');
+  $('foodList').innerHTML='';
+  $('guestList').innerHTML='';
+  $('mapPreview').classList.remove('show');
+  localStorage.removeItem(STORAGE_KEY);
   foodId=0;guestId=0;recalc();
 }
 
@@ -825,6 +855,7 @@ function clearAll(){
 const pages=[...document.querySelectorAll('.page')];
 const dots=[...document.querySelectorAll('.page-nav button')];
 const counter=document.getElementById('pageCounter');
+const pageCountLabel=String(pages.length).padStart(2,'0');
 dots.forEach(d=>d.addEventListener('click',()=>{
   pages[+d.dataset.i].scrollIntoView({behavior:'smooth'});
 }));
@@ -833,7 +864,7 @@ const io=new IntersectionObserver((entries)=>{
     if(en.isIntersecting){
       const i=pages.indexOf(en.target);
       dots.forEach(d=>d.classList.toggle('active',+d.dataset.i===i));
-      counter.textContent=String(i+1).padStart(2,'0')+' — 05';
+      counter.textContent=String(i+1).padStart(2,'0')+' — '+pageCountLabel;
       en.target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
     }
   });
@@ -853,8 +884,8 @@ document.querySelectorAll('#p0 .reveal').forEach(el=>el.classList.add('in'));
 
 // Restore a previously saved token, reconnect, and pull the latest data from
 // the repo so this device (e.g. mobile) shows what was saved elsewhere.
-const savedToken=localStorage.getItem('ghPAT');
-if(savedToken){const inp=document.getElementById('ghTokenInput');if(inp)inp.value=savedToken;connectGitHub();}
+const savedToken=localStorage.getItem(TOKEN_KEY);
+if(savedToken){const inp=$('ghTokenInput');if(inp)inp.value=savedToken;connectGitHub();}
 
 // ── Global autosave safety net ──
 // Several fields (event date, contact/phone, full address, map URL, caterer
