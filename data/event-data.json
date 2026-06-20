@@ -3,7 +3,7 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "",
+  "venueAddr": "7",
   "venueContact": "",
   "venuePhone": "",
   "venueCost": "",
@@ -22,5 +22,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975384194
+  "updatedAt": 1781975391058
 }
