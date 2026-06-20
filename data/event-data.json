@@ -14,6 +14,13 @@
   "syncPlates": true,
   "rsvpNotes": "",
   "food": [],
-  "guests": [],
-  "updatedAt": 1781974372159
+  "guests": [
+    {
+      "honorific": "Mr.",
+      "name": "",
+      "invited": false,
+      "party": "1"
+    }
+  ],
+  "updatedAt": 1781974381629
 }
