@@ -4,7 +4,7 @@
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
-  "venueContact": "",
+  "venueContact": "Reception",
   "venuePhone": "",
   "venueCost": "",
   "venueAdv": "",
@@ -22,5 +22,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975402132
+  "updatedAt": 1781975409487
 }
