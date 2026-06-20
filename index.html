@@ -14,13 +14,11 @@
 <div id="printReport"></div>
 
 <div class="brand">Life Events</div>
-<div class="counter" id="pageCounter">01 — 05</div>
+<div class="counter" id="pageCounter">01 — 03</div>
 <nav class="page-nav" id="pageNav" aria-label="Page navigation">
   <button data-i="0" class="active" aria-label="Cover"></button>
-  <button data-i="1" aria-label="Venue"></button>
-  <button data-i="2" aria-label="Food"></button>
-  <button data-i="3" aria-label="Guests"></button>
-  <button data-i="4" aria-label="Summary"></button>
+  <button data-i="1" aria-label="Planner"></button>
+  <button data-i="2" aria-label="Summary"></button>
 </nav>
 
 <div id="pages">
@@ -50,8 +48,16 @@
   <div class="scroll-cue"><span></span>Scroll</div>
 </section>
 
-<!-- ── PAGE 1 : VENUE ── -->
-<section class="page" id="p1">
+<!-- ── PLANNER : Venue / Food / Guests as three interconnected tab views ── -->
+<section class="page planner" id="planner">
+  <div class="tabs reveal" role="tablist" aria-label="Planner sections">
+    <button class="tab active" id="tab-venue-btn" role="tab" aria-controls="tab-venue" aria-selected="true" onclick="showTab('venue')">Venue</button>
+    <button class="tab" id="tab-food-btn" role="tab" aria-controls="tab-food" aria-selected="false" onclick="showTab('food')">Food</button>
+    <button class="tab" id="tab-guests-btn" role="tab" aria-controls="tab-guests" aria-selected="false" onclick="showTab('guests')">Guests</button>
+  </div>
+
+  <!-- Venue view -->
+  <div class="tab-panel active" id="tab-venue" role="tabpanel" aria-labelledby="tab-venue-btn">
   <div class="page-head reveal">
     <div class="page-num">01</div>
     <div><div class="page-title">Venue &amp; Booking</div><div class="page-sub">Location, address, contact and cost</div></div>
@@ -80,10 +86,10 @@
     <div><label>Advance Paid (₹)</label><input type="number" id="venueAdv" placeholder="0" min="0" oninput="recalc()"></div>
     <div><label>Balance Due (₹)</label><input type="number" id="venueBal" placeholder="Auto-calculated" readonly style="opacity:.55"></div>
   </div>
-</section>
+  </div>
 
-<!-- ── PAGE 2 : FOOD ── -->
-<section class="page" id="p2">
+  <!-- Food view -->
+  <div class="tab-panel" id="tab-food" role="tabpanel" aria-labelledby="tab-food-btn" hidden>
   <div class="page-head reveal">
     <div class="page-num">02</div>
     <div><div class="page-title">Food &amp; Catering</div><div class="page-sub">Items, quantity and per-plate cost</div></div>
@@ -104,10 +110,10 @@
     <div><label>Caterer Name</label><input type="text" id="catererName" placeholder="e.g. Sharma Caterers"></div>
     <div><label>Caterer Phone</label><input type="tel" id="catererPhone" placeholder="+91 xxxxx xxxxx"></div>
   </div>
-</section>
+  </div>
 
-<!-- ── PAGE 3 : GUESTS ── -->
-<section class="page" id="p3">
+  <!-- Guests view -->
+  <div class="tab-panel" id="tab-guests" role="tabpanel" aria-labelledby="tab-guests-btn" hidden>
   <div class="page-head reveal">
     <div class="page-num">03</div>
     <div><div class="page-title">Guest List</div><div class="page-sub">Names, honorifics and party size</div></div>
@@ -122,7 +128,8 @@
   </div>
   <div id="guestList"></div>
   <button class="add-btn" onclick="addGuest()">＋ Add Guest</button>
-  <div><label>RSVP Notes</label><textarea placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
+  <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
+  </div>
 </section>
 
 <!-- ── PAGE 4 : SUMMARY ── -->
