@@ -17,28 +17,10 @@
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "Soumyader Bari",
-      "invited": false,
-      "party": "5"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bapi Da",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Sarathi Ganguly",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Shanu ",
+      "name": "",
       "invited": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1781977799476
+  "updatedAt": 1781977869366
 }
