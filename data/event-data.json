@@ -6,7 +6,7 @@
   "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
   "venuePhone": "",
-  "venueCost": "",
+  "venueCost": "11000",
   "venueAdv": "",
   "mapUrl": "",
   "catererName": "",
@@ -22,5 +22,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975411125
+  "updatedAt": 1781975419829
 }
