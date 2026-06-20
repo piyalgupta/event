@@ -1,0 +1,21 @@
+{
+  "organizedFor": "Aarav's First Birthday",
+  "eventType": "Birthday",
+  "eventDate": "2026-08-15T17:00",
+  "venueName": "Grand Mahal Banquet",
+  "venueAddr": "12 Park Street, Kolkata, WB",
+  "venueContact": "Rohan Das",
+  "venuePhone": "+91 98765 43210",
+  "venueCost": "150000",
+  "venueAdv": "50000",
+  "mapUrl": "",
+  "catererName": "Sharma Caterers",
+  "catererPhone": "+91 90000 00000",
+  "rsvpNotes": "Two guests need Jain food.",
+  "food": [
+    { "name": "Paneer Butter Masala", "category": "Veg Main", "qty": "100", "price": "180" }
+  ],
+  "guests": [
+    { "honorific": "Mr.", "name": "Sample Guest", "invited": true, "party": "2" }
+  ]
+}
