@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "33",
+      "qty": "35",
       "price": "100"
     }
   ],
@@ -140,8 +140,14 @@
       "honorific": "Mr.",
       "name": "Anju Banerjee",
       "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "",
+      "invited": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1781978394451
+  "updatedAt": 1781978398442
 }
