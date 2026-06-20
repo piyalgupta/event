@@ -17,9 +17,15 @@
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "Soumya ",
+      "name": "Soumyader Bari",
       "invited": false,
-      "party": "1"
+      "party": "5"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Bapi Da",
+      "invited": false,
+      "party": "2"
     },
     {
       "honorific": "Mr.",
@@ -28,5 +34,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781977714245
+  "updatedAt": 1781977777979
 }
