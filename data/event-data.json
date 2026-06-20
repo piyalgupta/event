@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "52",
+      "qty": "53",
       "price": "100"
     }
   ],
@@ -213,7 +213,13 @@
       "name": "Bhattacharya Saheb",
       "invited": false,
       "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Ti",
+      "invited": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1781978528594
+  "updatedAt": 1781978541595
 }
