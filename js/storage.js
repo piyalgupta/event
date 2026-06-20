@@ -82,6 +82,9 @@ const GH_REPO='piyalgupta/event',GH_PATH='data/event-data.json';
 let ghConnected=false,ghBusy=false,ghDirty=false,ghPushTimer,ghSuppressPush=false;
 function ghHeaders(t){return{Authorization:`token ${t}`,Accept:'application/vnd.github+json'}}
 function setStatus(m){setText('saveStatus',m);}
+// Once connected, hide the token field (auto-sync is disabled from view); it
+// only reappears if the connection breaks (bad/expired token, disconnect).
+function updateGhUI(){const b=$('ghConnect');if(b)b.style.display=ghConnected?'none':'';}
 // True only when the data holds real user content (not the blank starter form),
 // so a fresh device's defaults never overwrite real data saved elsewhere.
 function isMeaningful(d){
@@ -99,7 +102,7 @@ async function connectGitHub(){
   try{
     const res=await fetch(`https://api.github.com/repos/${GH_REPO}`,{headers:ghHeaders(token)});
     if(res.ok){
-      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);
+      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);updateGhUI();
       setStatus('Connected ✓ — syncing with the repo…');
       await syncWithGitHub();
       return true;
@@ -107,7 +110,7 @@ async function connectGitHub(){
     if(res.status===401)localStorage.removeItem(TOKEN_KEY);
     setStatus('Connection failed ('+res.status+'). Check the token has repo scope.');
   }catch(e){setStatus('GitHub unreachable. Check your network and try Connect again.');}
-  ghConnected=false;return false;
+  ghConnected=false;updateGhUI();return false;
 }
 // On connect/load: pull the repo copy. If it's newer than (or local is empty),
 // load it so every device shows the same data; otherwise push the local copy up.
@@ -141,7 +144,7 @@ function scheduleGitHubPush(){
 }
 async function pushToGitHub(){
   if(!ghConnected)return;
-  const token=localStorage.getItem(TOKEN_KEY);if(!token){ghConnected=false;return;}
+  const token=localStorage.getItem(TOKEN_KEY);if(!token){ghConnected=false;updateGhUI();return;}
   if(ghBusy){ghDirty=true;return;}
   ghBusy=true;ghDirty=false;
   const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
@@ -155,7 +158,7 @@ async function pushToGitHub(){
     if(putRes.ok){setStatus('Auto-saved to GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));}
     else{
       const e=await putRes.json().catch(()=>({}));
-      if(putRes.status===401){ghConnected=false;localStorage.removeItem(TOKEN_KEY);}
+      if(putRes.status===401){ghConnected=false;localStorage.removeItem(TOKEN_KEY);updateGhUI();}
       setStatus('GitHub save failed ('+(e.message||putRes.status)+'). Saved locally.');
     }
   }catch(err){setStatus('GitHub unreachable. Saved locally — will retry on next change.');}
