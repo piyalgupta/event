@@ -7,7 +7,7 @@
   "venueContact": "Reception",
   "venuePhone": "",
   "venueCost": "11000",
-  "venueAdv": "",
+  "venueAdv": "3000",
   "mapUrl": "",
   "catererName": "",
   "catererPhone": "",
@@ -22,5 +22,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975419829
+  "updatedAt": 1781975423208
 }
