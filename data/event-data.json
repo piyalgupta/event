@@ -29,10 +29,16 @@
     },
     {
       "honorific": "Mr.",
-      "name": "Partha Sarathi ",
+      "name": "Partha Sarathi Ganguly",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "",
       "invited": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1781977787482
+  "updatedAt": 1781977793608
 }
