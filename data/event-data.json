@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "81",
+      "qty": "82",
       "price": "100"
     }
   ],
@@ -333,7 +333,13 @@
       "name": "Krishna Sahoo LIC",
       "invited": false,
       "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Man",
+      "invited": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1781978917301
+  "updatedAt": 1781978920479
 }
