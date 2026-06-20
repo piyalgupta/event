@@ -15,7 +15,7 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "কচুরি, আলুর দম, ",
+      "name": "কচুরি, আলুর দম, পোলাও ",
       "category": "Veg Starter",
       "qty": "85",
       "price": "100"
@@ -347,5 +347,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1781979039668
+  "updatedAt": 1781979045193
 }
