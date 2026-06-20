@@ -17,65 +17,17 @@
     {
       "name": "Radhaballavi, Aloor Dum, Pulao, Paneer Mishti",
       "category": "Veg Main",
-      "qty": "61",
+      "qty": "39",
       "price": "200"
     },
     {
       "name": "Water Bottle ",
       "category": "Drinks",
-      "qty": "61",
+      "qty": "39",
       "price": "10"
     }
   ],
   "guests": [
-    {
-      "honorific": "Mr.",
-      "name": "Soumyadeep Bandopadhyay",
-      "invited": false,
-      "party": "5"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bapi Maity",
-      "invited": false,
-      "party": "3"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Sarathi Ganguly",
-      "invited": false,
-      "party": "4"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bul Pishi",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Rima and Friends",
-      "invited": false,
-      "party": "3"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Dasgupta",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Minati Auntie",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bithi Auntie",
-      "invited": false,
-      "party": "1"
-    },
     {
       "honorific": "Mr.",
       "name": "Abhaya Maashi",
@@ -191,5 +143,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781972169751
+  "updatedAt": 1781972179558
 }
