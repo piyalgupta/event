@@ -9,7 +9,7 @@
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "Surendra",
+  "catererName": "Surendra Sweets",
   "catererPhone": "",
   "syncPlates": true,
   "rsvpNotes": "",
@@ -18,16 +18,16 @@
       "name": "Veg",
       "category": "Veg Starter",
       "qty": "1",
-      "price": ""
+      "price": "200"
     }
   ],
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "",
+      "name": "Soumyadeep Bandopadhyay",
       "invited": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1781975477851
+  "updatedAt": 1781975543655
 }
