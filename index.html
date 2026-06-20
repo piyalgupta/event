@@ -569,7 +569,7 @@ function collectData(){
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
     catererName:val('catererName'),catererPhone:val('catererPhone'),syncPlates,
-    rsvpNotes:document.querySelector('#p3 textarea')?.value||'',food,guests};
+    rsvpNotes:document.querySelector('#p3 textarea')?.value||'',food,guests,updatedAt:Date.now()};
 }
 function applyData(d){
   if(!d)return;
@@ -637,10 +637,19 @@ function importJSON(e){
 
 // ── GitHub sync: connect once, then every change auto-saves to data/event-data.json ──
 const GH_REPO='piyalgupta/event',GH_PATH='data/event-data.json';
-let ghConnected=false,ghBusy=false,ghDirty=false,ghPushTimer;
+let ghConnected=false,ghBusy=false,ghDirty=false,ghPushTimer,ghSuppressPush=false;
 function ghHeaders(t){return{Authorization:`token ${t}`,Accept:'application/vnd.github+json'}}
 function setStatus(m){const s=document.getElementById('saveStatus');if(s)s.textContent=m;}
-async function connectGitHub(skipPush){
+// True only when the data holds real user content (not the blank starter form),
+// so a fresh device's defaults never overwrite real data saved elsewhere.
+function isMeaningful(d){
+  if(!d)return false;
+  if((d.organizedFor||'').trim()||(d.venueName||'').trim()||(d.venueAddr||'').trim()||String(d.venueCost||'').trim())return true;
+  if((d.food||[]).some(f=>(f.name||'').trim()||String(f.price||'').trim()))return true;
+  if((d.guests||[]).some(g=>(g.name||'').trim()))return true;
+  return false;
+}
+async function connectGitHub(){
   const inp=document.getElementById('ghTokenInput');
   const token=(inp&&inp.value||'').trim();
   if(!token){setStatus('Enter a GitHub token (repo scope) above to enable auto-save.');return false;}
@@ -649,8 +658,8 @@ async function connectGitHub(skipPush){
     const res=await fetch(`https://api.github.com/repos/${GH_REPO}`,{headers:ghHeaders(token)});
     if(res.ok){
       ghConnected=true;localStorage.setItem('ghPAT',token);
-      setStatus('Connected ✓ — every change now auto-saves to the repo.');
-      if(!skipPush)pushToGitHub();
+      setStatus('Connected ✓ — syncing with the repo…');
+      await syncWithGitHub();
       return true;
     }
     if(res.status===401)localStorage.removeItem('ghPAT');
@@ -658,8 +667,34 @@ async function connectGitHub(skipPush){
   }catch(e){setStatus('GitHub unreachable. Check your network and try Connect again.');}
   ghConnected=false;return false;
 }
+// On connect/load: pull the repo copy. If it's newer than (or local is empty),
+// load it so every device shows the same data; otherwise push the local copy up.
+async function syncWithGitHub(){
+  const token=localStorage.getItem('ghPAT');
+  if(!ghConnected||!token)return;
+  const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
+  try{
+    const res=await fetch(api+'?ts='+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
+    if(res.status===404){setStatus('Connected ✓ — saving this device’s data to the repo…');pushToGitHub();return;}
+    if(!res.ok){setStatus('Connected ✓ (couldn’t read remote: '+res.status+').');return;}
+    const j=await res.json();
+    let remote=null;try{remote=JSON.parse(decodeURIComponent(escape(atob(j.content))));}catch(e){}
+    const local=loadLocal();
+    const lt=(local&&+local.updatedAt)||0,rt=(remote&&+remote.updatedAt)||0;
+    if(remote&&(!isMeaningful(local)||(isMeaningful(remote)&&rt>=lt))){
+      ghSuppressPush=true;
+      applyData(remote);
+      try{localStorage.setItem('lifeEventsData',JSON.stringify(remote));}catch(e){}
+      setStatus('Loaded latest from GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));
+      setTimeout(()=>{ghSuppressPush=false;},2500);
+    }else{
+      setStatus('Connected ✓ — this device is newer, saving up…');
+      pushToGitHub();
+    }
+  }catch(e){setStatus('Connected ✓ — couldn’t reach GitHub to sync.');}
+}
 function scheduleGitHubPush(){
-  if(!ghConnected)return;
+  if(!ghConnected||ghSuppressPush)return;
   clearTimeout(ghPushTimer);ghPushTimer=setTimeout(pushToGitHub,1500);
 }
 async function pushToGitHub(){
@@ -816,9 +851,10 @@ if(saved){applyData(saved);}
 else{addFood();addFood();addGuest();addGuest();addGuest();recalc();}
 document.querySelectorAll('#p0 .reveal').forEach(el=>el.classList.add('in'));
 
-// Restore a previously saved token and re-establish auto-sync (without an immediate push)
+// Restore a previously saved token, reconnect, and pull the latest data from
+// the repo so this device (e.g. mobile) shows what was saved elsewhere.
 const savedToken=localStorage.getItem('ghPAT');
-if(savedToken){const inp=document.getElementById('ghTokenInput');if(inp)inp.value=savedToken;connectGitHub(true);}
+if(savedToken){const inp=document.getElementById('ghTokenInput');if(inp)inp.value=savedToken;connectGitHub();}
 
 // ── Global autosave safety net ──
 // Several fields (event date, contact/phone, full address, map URL, caterer
