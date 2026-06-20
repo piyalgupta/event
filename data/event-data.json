@@ -3,7 +3,7 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "70B Rashbehari Avenue Kolkata ",
+  "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
   "venuePhone": "",
   "venueCost": "11000",
@@ -17,13 +17,13 @@
     {
       "name": "কচুরি, আলুর দম, পোলাও, পনির, ২টো শুকনো মিষ্টি",
       "category": "Veg Starter",
-      "qty": "88",
+      "qty": "85",
       "price": "150"
     },
     {
       "name": "Watter Bottle",
       "category": "Drinks",
-      "qty": "88",
+      "qty": "85",
       "price": "10"
     }
   ],
@@ -84,7 +84,7 @@
     },
     {
       "honorific": "Mr.",
-      "name": "Ila r Dada/Boudi",
+      "name": "Ila r Dada Boudi",
       "invited": false,
       "party": "2"
     },
@@ -351,19 +351,7 @@
       "name": "Jayanta Kaku Chanditala",
       "invited": false,
       "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Atanu Pal",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Aatish Banka",
-      "invited": false,
-      "party": "2"
     }
   ],
-  "updatedAt": 1781981741909
+  "updatedAt": 1781981768150
 }
