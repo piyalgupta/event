@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Life Events — Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,ital@9..144,300,0;9..144,500,0;9..144,500,1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF9F5;
+  --ink:#1C1C19;
+  --muted:#8B887E;
+  --line:#DEDAD0;
+  --accent:#54634A;
+  --accent-soft:#EAEDE4;
+  --danger:#9C4A3D;
+  --gutter-x:clamp(20px,6vw,80px);
+  --gutter-y:clamp(26px,6vh,60px);
+}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+.serif{font-family:'Fraunces',serif}
+#printReport{display:none}
+
+/* ── Scroll container : each section behaves as its own page ── */
+#pages{height:100vh;height:100svh;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch}
+.page{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vh,32px);padding:calc(var(--gutter-y) + env(safe-area-inset-top)) var(--gutter-x) calc(var(--gutter-y) + env(safe-area-inset-bottom));border-bottom:1px solid var(--line);position:relative}
+.page:last-child{border-bottom:none}
+
+/* ── Fixed chrome ── */
+.brand{position:fixed;top:22px;left:var(--gutter-x);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);z-index:60;pointer-events:none}
+.counter{position:fixed;top:22px;right:var(--gutter-x);font-size:.7rem;letter-spacing:.1em;color:var(--muted);z-index:60;pointer-events:none;font-variant-numeric:tabular-nums}
+.page-nav{position:fixed;right:28px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:15px;z-index:60}
+.page-nav button{width:7px;height:7px;border-radius:50%;border:1px solid var(--muted);background:transparent;padding:0;cursor:pointer;transition:background .3s,border-color .3s,transform .3s}
+.page-nav button.active{background:var(--ink);border-color:var(--ink);transform:scale(1.4)}
+
+/* ── Reveal-on-view ── */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+
+/* ── Page head (numeral + title) ── */
+.page-head{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
+.page-num{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(2.2rem,5.5vw,3.6rem);color:var(--line);line-height:1;user-select:none}
+.page-title{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.3rem,3vw,1.9rem);letter-spacing:-.01em}
+.page-sub{font-size:.8rem;color:var(--muted);margin-top:4px}
+.page-badge{margin-left:auto;font-size:.78rem;letter-spacing:.05em;color:var(--accent);font-weight:500;white-space:nowrap}
+.hr{height:1px;background:var(--line)}
+
+/* ── Hero ── */
+.hero{gap:clamp(28px,4vh,44px)}
+.hero-inner{max-width:760px}
+.eyebrow{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.hero-title{font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:clamp(2.1rem,6.4vw,4.2rem);line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
+.hero-sub{margin-top:20px;font-size:clamp(.92rem,1.4vw,1.05rem);color:var(--muted);max-width:46ch;line-height:1.6}
+.for-field{margin-top:32px;max-width:480px}
+.for-field label{font-size:.66rem;color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:8px}
+.for-field input{font-family:'Fraunces',serif;font-size:1.15rem;font-style:italic;padding:8px 1px 10px}
+.scroll-cue{position:absolute;left:var(--gutter-x);bottom:calc(28px + env(safe-area-inset-bottom));font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.scroll-cue span{display:block;width:1px;height:26px;background:var(--ink);margin:0 0 8px;animation:bounce 2.4s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(7px);opacity:1}}
+
+/* ── Event type chips ── */
+.event-strip{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px;max-width:640px}
+.event-btn{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 17px;font-size:.72rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:all .25s;white-space:nowrap;font-family:'Inter',sans-serif}
+.event-btn:hover{border-color:var(--ink);color:var(--ink)}
+.event-btn.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+
+/* ── Form elements ── */
+.row{display:grid;gap:22px}
+.row-2{grid-template-columns:1fr 1fr}
+.row-3{grid-template-columns:1fr 1fr 1fr}
+label{font-size:.66rem;color:var(--muted);font-weight:500;letter-spacing:.08em;text-transform:uppercase;display:block;margin-bottom:7px}
+input,select,textarea{
+  width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);
+  color:var(--ink);padding:9px 1px;font-size:.92rem;font-family:'Inter',sans-serif;
+  outline:none;border-radius:0;transition:border-color .25s;
+}
+input:focus,select:focus,textarea:focus{border-bottom-color:var(--accent)}
+input::placeholder,textarea::placeholder{color:#B7B3A8}
+textarea{resize:vertical;min-height:56px;line-height:1.5}
+select{cursor:pointer}
+
+/* ── Buttons (shared minimal vocabulary) ── */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:12px 24px;font-size:.74rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s;font-family:'Inter',sans-serif}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn-fill{background:var(--ink);color:var(--bg)}
+.btn-fill:hover{background:var(--accent);border-color:var(--accent)}
+.add-btn{width:100%;border:none;border-top:1px dashed var(--line);background:none;color:var(--muted);padding:16px 0;font-size:.78rem;letter-spacing:.05em;cursor:pointer;transition:color .25s,border-color .25s;font-family:'Inter',sans-serif}
+.add-btn:hover{color:var(--accent);border-color:var(--accent)}
+.remove-btn{background:none;border:none;color:var(--muted);font-size:.72rem;letter-spacing:.04em;cursor:pointer;padding:4px 0;text-decoration:underline;text-underline-offset:3px;text-decoration-color:transparent;transition:color .2s,text-decoration-color .2s;font-family:'Inter',sans-serif;white-space:nowrap}
+.remove-btn:hover{color:var(--danger);text-decoration-color:var(--danger)}
+
+/* ── Map ── */
+.map-row{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.map-row input{flex:1;min-width:180px}
+.map-preview{width:100%;border:1px solid var(--line);height:200px;display:none;background:#F1EFE8;margin-top:6px;overflow:hidden}
+.map-preview iframe{width:100%;height:100%;border:none}
+.map-preview.show{display:block;animation:fadeIn .4s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── Food items ── */
+#foodList,#guestList{display:flex;flex-direction:column}
+.food-item{border-bottom:1px solid var(--line);padding:20px 0;display:grid;gap:18px;animation:slideIn .3s ease}
+.food-item:first-child{padding-top:0}
+@keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.food-total{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--ink);padding-top:16px;margin-top:4px}
+.ft-label{font-size:.78rem;color:var(--muted)}
+.ft-val{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--ink);font-weight:500}
+
+/* ── Guests ── */
+.guest-summary{display:flex;flex-wrap:wrap;gap:0;margin-bottom:4px}
+.gs-stat{text-align:left;padding-right:30px;margin-right:30px;margin-bottom:14px;border-right:1px solid var(--line)}
+.gs-stat:last-child{border-right:none;margin-right:0;padding-right:0}
+.gs-num{font-family:'Fraunces',serif;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--ink);font-weight:500;line-height:1}
+.gs-lab{font-size:.66rem;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.06em}
+.guest-item{border-bottom:1px solid var(--line);padding:16px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:slideIn .3s ease}
+.guest-item:first-child{padding-top:0}
+.guest-num{font-family:'Fraunces',serif;font-size:.85rem;color:var(--muted);flex-shrink:0;width:22px}
+.guest-name-wrap{flex:1;min-width:140px}
+.guest-name-wrap input.invited{color:var(--accent);font-weight:500}
+.honorific{border-bottom:1px solid var(--line);width:84px;flex-shrink:0;font-size:.85rem;padding:9px 1px}
+.invite-toggle{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;user-select:none;background:none;border:none;padding:0;font-family:'Inter',sans-serif}
+.invite-toggle .track{width:28px;height:15px;border:1px solid var(--line);position:relative;transition:border-color .25s,background .25s}
+.invite-toggle .track::after{content:'';position:absolute;top:1px;left:1px;width:11px;height:11px;background:var(--muted);transition:transform .25s,background .25s}
+.invite-toggle.on .track{border-color:var(--accent);background:var(--accent-soft)}
+.invite-toggle.on .track::after{transform:translateX(13px);background:var(--accent)}
+.invite-toggle .it-label{font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .25s;white-space:nowrap}
+.invite-toggle.on .it-label{color:var(--accent)}
+.spinner-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.spin-label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.spinner{display:flex;align-items:center;border:1px solid var(--line)}
+.spin-btn{background:none;border:none;color:var(--ink);width:28px;height:32px;font-size:1rem;cursor:pointer;display:grid;place-items:center;transition:background .15s}
+.spin-btn:hover{background:var(--accent-soft)}
+.spin-val{width:24px;text-align:center;font-size:.85rem;font-weight:500;transition:color .2s,transform .2s}
+
+/* ── Summary page ── */
+.summary-list{display:flex;flex-direction:column;max-width:560px}
+.tb-row{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
+.tb-label{font-size:.84rem;color:var(--muted)}
+.tb-val{font-size:.92rem;color:var(--ink);font-weight:500}
+.tb-total-wrap{display:flex;justify-content:space-between;align-items:baseline;padding-top:22px}
+.tb-total-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.tb-total{font-family:'Fraunces',serif;font-size:clamp(2rem,5.5vw,3.2rem);color:var(--ink);font-weight:500}
+.action-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
+
+/* ── Responsive ── */
+@media(max-width:680px){
+  .page-nav{right:auto;left:50%;top:auto;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);flex-direction:row}
+  .row-2,.row-3{grid-template-columns:1fr}
+  .gs-stat{padding-right:20px;margin-right:20px}
+  .brand{font-size:.62rem}
+  .counter{font-size:.62rem}
+}
+@media(max-width:400px){
+  .brand{display:none}
+  .honorific{width:70px}
+}
+@media(min-width:681px) and (max-width:980px){
+  .row-3{grid-template-columns:1fr 1fr}
+}
+@media(orientation:landscape) and (max-height:520px){
+  .page{justify-content:flex-start;gap:18px;padding-top:calc(64px + env(safe-area-inset-top))}
+  .hero-title{font-size:clamp(1.6rem,5vw,2.6rem)}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1!important;transform:none!important}
+  html{scroll-behavior:auto}
+}
+@media print{
+  .page-nav,.brand,.counter,.scroll-cue,.add-btn,#pages{display:none!important}
+  #printReport{display:block!important;color:#161613;background:#fff;max-width:760px;margin:0 auto;font-family:'Inter',sans-serif}
+  .pr-section{margin-bottom:24px;page-break-inside:avoid}
+  .pr-title{font-family:'Fraunces',serif;font-size:1.9rem;font-weight:500}
+  .pr-sub{font-size:.82rem;color:#666;margin-top:5px;letter-spacing:.02em}
+  .pr-h{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500;border-bottom:1px solid #ccc;padding-bottom:7px;margin-bottom:10px}
+  .pr-row{display:flex;justify-content:space-between;gap:16px;font-size:.84rem;padding:5px 0;border-bottom:1px dotted #ddd}
+  .pr-row span{color:#777}
+  table.pr-table{width:100%;border-collapse:collapse;font-size:.8rem}
+  table.pr-table th,table.pr-table td{text-align:left;padding:6px 8px;border-bottom:1px solid #e6e6e6}
+  table.pr-table th{font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;color:#888;font-weight:500}
+  .pr-total{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:500;text-align:right;margin-top:12px}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<div id="printReport"></div>
+
+<div class="brand">Life Events</div>
+<div class="counter" id="pageCounter">01 — 05</div>
+<nav class="page-nav" id="pageNav" aria-label="Page navigation">
+  <button data-i="0" class="active" aria-label="Cover"></button>
+  <button data-i="1" aria-label="Venue"></button>
+  <button data-i="2" aria-label="Food"></button>
+  <button data-i="3" aria-label="Guests"></button>
+  <button data-i="4" aria-label="Summary"></button>
+</nav>
+
+<div id="pages">
+
+<!-- ── PAGE 0 : COVER ── -->
+<section class="page hero" id="p0">
+  <div class="hero-inner">
+    <p class="eyebrow reveal">Life Events Planner</p>
+    <h1 class="hero-title reveal">Plan every milestone<br>with quiet precision.</h1>
+    <p class="hero-sub reveal">From first breath to final farewell — venue, food and guests, organised in one calm place.</p>
+    <div class="for-field reveal">
+      <label>This event is being organised for</label>
+      <input type="text" id="organizedFor" placeholder="e.g. Aarav's First Birthday, or Riya &amp; Karan's Wedding" oninput="recalc()">
+    </div>
+    <div class="event-strip reveal" id="eventStrip">
+      <button class="event-btn active" onclick="setEvent(this,'Birthday')">Birthday</button>
+      <button class="event-btn" onclick="setEvent(this,'Marriage')">Marriage</button>
+      <button class="event-btn" onclick="setEvent(this,'Anniversary')">Anniversary</button>
+      <button class="event-btn" onclick="setEvent(this,'Shraddha')">Shraddha</button>
+      <button class="event-btn" onclick="setEvent(this,'Naming Ceremony')">Naming</button>
+      <button class="event-btn" onclick="setEvent(this,'Graduation')">Graduation</button>
+      <button class="event-btn" onclick="setEvent(this,'Puja / Ritual')">Puja</button>
+      <button class="event-btn" onclick="setEvent(this,'Memorial')">Memorial</button>
+      <button class="event-btn" onclick="setEvent(this,'Custom Event')">Custom</button>
+    </div>
+  </div>
+  <div class="scroll-cue"><span></span>Scroll</div>
+</section>
+
+<!-- ── PAGE 1 : VENUE ── -->
+<section class="page" id="p1">
+  <div class="page-head reveal">
+    <div class="page-num">01</div>
+    <div><div class="page-title">Venue &amp; Booking</div><div class="page-sub">Location, address, contact and cost</div></div>
+    <div class="page-badge" id="venueCostBadge">₹ 0</div>
+  </div>
+  <div class="hr"></div>
+  <div class="row row-2">
+    <div><label>Venue Name</label><input type="text" id="venueName" placeholder="e.g. Grand Mahal Banquet" oninput="recalc()"></div>
+    <div><label>Event Date &amp; Time</label><input type="datetime-local" id="eventDate"></div>
+  </div>
+  <div><label>Full Address</label><textarea id="venueAddr" placeholder="Street, Area, City, PIN" rows="2" oninput="updateMap()"></textarea></div>
+  <div class="row row-3">
+    <div><label>Contact Person</label><input type="text" id="venueContact" placeholder="Manager name"></div>
+    <div><label>Phone Number</label><input type="tel" id="venuePhone" placeholder="+91 98765 43210"></div>
+    <div><label>Booking Cost (₹)</label><input type="number" id="venueCost" placeholder="0" min="0" oninput="recalc()"></div>
+  </div>
+  <div>
+    <label>Map Link (Google Maps URL)</label>
+    <div class="map-row">
+      <input type="url" id="mapUrl" placeholder="Paste Google Maps link or address" oninput="previewMap()">
+      <button class="btn" onclick="openMap()">Open Map</button>
+    </div>
+    <div class="map-preview" id="mapPreview"><iframe id="mapFrame" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+  </div>
+  <div class="row row-2">
+    <div><label>Advance Paid (₹)</label><input type="number" id="venueAdv" placeholder="0" min="0" oninput="recalc()"></div>
+    <div><label>Balance Due (₹)</label><input type="number" id="venueBal" placeholder="Auto-calculated" readonly style="opacity:.55"></div>
+  </div>
+</section>
+
+<!-- ── PAGE 2 : FOOD ── -->
+<section class="page" id="p2">
+  <div class="page-head reveal">
+    <div class="page-num">02</div>
+    <div><div class="page-title">Food &amp; Catering</div><div class="page-sub">Items, quantity and per-plate cost</div></div>
+    <div class="page-badge" id="foodCostBadge">₹ 0</div>
+  </div>
+  <div class="hr"></div>
+  <div id="foodList"></div>
+  <button class="add-btn" onclick="addFood()">＋ Add Food Item</button>
+  <div class="food-total">
+    <div><div class="ft-label">Estimated Food Cost</div><div style="font-size:.7rem;color:var(--muted);margin-top:3px" id="foodBreakdown">0 items · 0 plates</div></div>
+    <div class="ft-val" id="foodTotal">₹ 0</div>
+  </div>
+  <div class="row row-2" style="margin-top:6px">
+    <div><label>Caterer Name</label><input type="text" id="catererName" placeholder="e.g. Sharma Caterers"></div>
+    <div><label>Caterer Phone</label><input type="tel" id="catererPhone" placeholder="+91 xxxxx xxxxx"></div>
+  </div>
+</section>
+
+<!-- ── PAGE 3 : GUESTS ── -->
+<section class="page" id="p3">
+  <div class="page-head reveal">
+    <div class="page-num">03</div>
+    <div><div class="page-title">Guest List</div><div class="page-sub">Names, honorifics and party size</div></div>
+    <div class="page-badge" id="guestBadge">0 people</div>
+  </div>
+  <div class="hr"></div>
+  <div class="guest-summary">
+    <div class="gs-stat"><div class="gs-num" id="gTotalFamilies">0</div><div class="gs-lab">Families</div></div>
+    <div class="gs-stat"><div class="gs-num" id="gTotalPeople">0</div><div class="gs-lab">Total People</div></div>
+    <div class="gs-stat"><div class="gs-num" id="gInvited">0</div><div class="gs-lab">Invitation Sent For</div></div>
+    <div class="gs-stat"><div class="gs-num" id="gTotalPlates">0</div><div class="gs-lab">Est. Plates</div></div>
+  </div>
+  <div id="guestList"></div>
+  <button class="add-btn" onclick="addGuest()">＋ Add Guest</button>
+  <div><label>RSVP Notes</label><textarea placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
+</section>
+
+<!-- ── PAGE 4 : SUMMARY ── -->
+<section class="page" id="p4">
+  <div class="page-head reveal">
+    <div class="page-num">04</div>
+    <div><div class="page-title">Event Summary</div><div class="page-sub"><span id="forLabel">—</span> <span style="opacity:.45">·</span> <span id="eventLabel">Birthday</span></div></div>
+  </div>
+  <div class="hr"></div>
+  <div class="summary-list">
+    <div class="tb-row"><div class="tb-label">Venue Cost</div><div class="tb-val" id="sumVenue">₹ 0</div></div>
+    <div class="tb-row"><div class="tb-label">Food Cost</div><div class="tb-val" id="sumFood">₹ 0</div></div>
+    <div class="tb-row"><div class="tb-label">Total Guests</div><div class="tb-val" id="sumGuests">0 people</div></div>
+    <div class="tb-total-wrap"><div class="tb-total-label">Grand Total</div><div class="tb-total" id="grandTotal">₹ 0</div></div>
+  </div>
+  <div class="action-row">
+    <button class="btn" onclick="clearAll()">Clear All</button>
+    <button class="btn btn-fill" onclick="buildPrintReport();window.print()">Print / Save PDF</button>
+  </div>
+</section>
+
+</div>
+
+<script>
+// ── State ──
+let foodId=0,guestId=0,currentEvent='Birthday';
+
+// ── Event Type ──
+function setEvent(btn,label){
+  document.querySelectorAll('.event-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentEvent=label;
+  document.getElementById('eventLabel').textContent=label;
+}
+
+// ── Map ──
+function previewMap(){
+  const url=document.getElementById('mapUrl').value.trim();
+  const frame=document.getElementById('mapFrame');
+  const preview=document.getElementById('mapPreview');
+  if(!url){preview.classList.remove('show');return}
+  let src='';
+  if(url.includes('google.com/maps')){
+    if(url.includes('/embed')){src=url}
+    else{
+      const q=url.includes('@')?url.split('@')[1].split(',').slice(0,2).join(','):encodeURIComponent(url);
+      src=`https://maps.google.com/maps?q=${q}&output=embed&z=15`;
+    }
+  } else {
+    src=`https://maps.google.com/maps?q=${encodeURIComponent(url)}&output=embed&z=15`;
+  }
+  frame.src=src;
+  preview.classList.add('show');
+}
+function updateMap(){
+  const addr=document.getElementById('venueAddr').value.trim();
+  if(addr&&!document.getElementById('mapUrl').value){
+    const frame=document.getElementById('mapFrame');
+    const preview=document.getElementById('mapPreview');
+    frame.src=`https://maps.google.com/maps?q=${encodeURIComponent(addr)}&output=embed&z=14`;
+    preview.classList.add('show');
+  }
+}
+function openMap(){
+  const url=document.getElementById('mapUrl').value.trim()||document.getElementById('venueAddr').value.trim();
+  if(url)window.open(url.startsWith('http')?url:`https://maps.google.com/maps?q=${encodeURIComponent(url)}`,'_blank');
+}
+
+// ── Food ──
+function addFood(){
+  const id=++foodId;
+  const div=document.createElement('div');
+  div.className='food-item';
+  div.id='food'+id;
+  div.innerHTML=`
+    <div class="row row-3" style="align-items:end">
+      <div style="grid-column:1/3">
+        <label>Food Item</label>
+        <input type="text" placeholder="e.g. Paneer Butter Masala" oninput="recalc()">
+      </div>
+      <div>
+        <label>Category</label>
+        <select onchange="recalc()">
+          <option>Veg Starter</option><option>Non-Veg Starter</option>
+          <option>Veg Main</option><option>Non-Veg Main</option>
+          <option>Dessert</option><option>Drinks</option><option>Snacks</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row row-3">
+      <div><label>Plates / Units</label><input type="number" placeholder="0" min="0" oninput="recalc()"></div>
+      <div><label>Cost per Plate (₹)</label><input type="number" placeholder="0" min="0" oninput="recalc()"></div>
+      <div><label>Item Total (₹)</label><input type="number" placeholder="0" readonly style="opacity:.55" id="ftotal${id}"></div>
+    </div>
+    <div style="display:flex;justify-content:flex-end">
+      <button class="remove-btn" onclick="removeItem('food${id}')">Remove</button>
+    </div>`;
+  const [,qtyEl,priceEl]=div.querySelectorAll('input[type=number]');
+  function calcItem(){
+    const t=(parseFloat(qtyEl.value)||0)*(parseFloat(priceEl.value)||0);
+    document.getElementById('ftotal'+id).value=t||'';
+    recalc();
+  }
+  qtyEl.oninput=calcItem;priceEl.oninput=calcItem;
+  document.getElementById('foodList').appendChild(div);
+  recalc();
+}
+
+// ── Guests ──
+const HONORIFICS=['Mr.','Mrs.','Ms.','Dr.','Prof.','Shri','Smt.','Master','Miss','Rev.'];
+function addGuest(){
+  const id=++guestId;
+  const num=document.getElementById('guestList').children.length+1;
+  const div=document.createElement('div');
+  div.className='guest-item';
+  div.id='guest'+id;
+  const opts=HONORIFICS.map(h=>`<option>${h}</option>`).join('');
+  div.innerHTML=`
+    <div class="guest-num">${String(num).padStart(2,'0')}</div>
+    <select class="honorific" onchange="recalc()">${opts}</select>
+    <div class="guest-name-wrap"><input type="text" id="gname${id}" placeholder="Full name" oninput="recalc()"></div>
+    <button type="button" class="invite-toggle" id="inv${id}" onclick="toggleInvite(${id})">
+      <span class="track"></span><span class="it-label">Invited</span>
+    </button>
+    <div class="spinner-wrap">
+      <span class="spin-label">Party</span>
+      <div class="spinner">
+        <button class="spin-btn" onclick="spin('sv${id}',-1)" aria-label="Decrease party size">−</button>
+        <div class="spin-val" id="sv${id}">1</div>
+        <button class="spin-btn" onclick="spin('sv${id}',1)" aria-label="Increase party size">+</button>
+      </div>
+    </div>
+    <button class="remove-btn" onclick="removeGuest('guest${id}')" aria-label="Remove guest">Remove</button>`;
+  document.getElementById('guestList').appendChild(div);
+  recalc();
+}
+function toggleInvite(id){
+  const btn=document.getElementById('inv'+id);
+  const name=document.getElementById('gname'+id);
+  const on=btn.classList.toggle('on');
+  if(name)name.classList.toggle('invited',on);
+  recalc();
+}
+function spin(id,d){
+  const el=document.getElementById(id);
+  let v=parseInt(el.textContent)+d;
+  if(v<1)v=1;if(v>10)v=10;
+  el.textContent=v;
+  el.style.transform='scale(1.35)';el.style.color='var(--accent)';
+  setTimeout(()=>{el.style.transform='';el.style.color='';},200);
+  recalc();
+}
+function removeGuest(id){
+  document.getElementById(id).style.animation='fadeOut .2s ease forwards';
+  setTimeout(()=>{
+    const el=document.getElementById(id);if(el)el.remove();
+    renumberGuests();recalc();
+  },200);
+}
+function renumberGuests(){
+  document.querySelectorAll('.guest-item .guest-num').forEach((el,i)=>{
+    el.textContent=String(i+1).padStart(2,'0');
+  });
+}
+function removeItem(id){
+  const el=document.getElementById(id);
+  if(el){el.style.opacity='0';el.style.transform='scale(.97)';el.style.transition='all .2s';
+    setTimeout(()=>{el.remove();recalc();},200);}
+}
+
+// ── Recalculate ──
+function recalc(){
+  const forVal=document.getElementById('organizedFor').value.trim();
+  document.getElementById('forLabel').textContent=forVal||'—';
+  const vCost=parseFloat(document.getElementById('venueCost').value)||0;
+  const vAdv=parseFloat(document.getElementById('venueAdv').value)||0;
+  document.getElementById('venueBal').value=Math.max(0,vCost-vAdv)||'';
+  document.getElementById('venueCostBadge').textContent='₹ '+fmt(vCost);
+
+  let fTotal=0,plates=0,items=0;
+  document.querySelectorAll('.food-item').forEach(fi=>{
+    const nums=fi.querySelectorAll('input[type=number]');
+    const q=parseFloat(nums[0].value)||0;
+    const p=parseFloat(nums[1].value)||0;
+    fTotal+=q*p;plates+=q;if(nums[0].value||nums[1].value)items++;
+  });
+  document.getElementById('foodTotal').textContent='₹ '+fmt(fTotal);
+  document.getElementById('foodCostBadge').textContent='₹ '+fmt(fTotal);
+  document.getElementById('foodBreakdown').textContent=`${items} items · ${plates} plates`;
+
+  let families=0,people=0,invited=0;
+  document.querySelectorAll('.guest-item').forEach(gi=>{
+    const sv=gi.querySelector('.spin-val');
+    const heads=sv?(parseInt(sv.textContent)||1):1;
+    if(sv){people+=heads;families++;}
+    if(gi.querySelector('.invite-toggle.on'))invited+=heads;
+  });
+  document.getElementById('gTotalFamilies').textContent=families;
+  document.getElementById('gTotalPeople').textContent=people;
+  document.getElementById('gInvited').textContent=invited;
+  document.getElementById('gTotalPlates').textContent=people;
+  document.getElementById('guestBadge').textContent=people+' people';
+
+  const grand=vCost+fTotal;
+  document.getElementById('sumVenue').textContent='₹ '+fmt(vCost);
+  document.getElementById('sumFood').textContent='₹ '+fmt(fTotal);
+  document.getElementById('sumGuests').textContent=people+' people ('+families+' families)';
+  document.getElementById('grandTotal').textContent='₹ '+fmt(grand);
+}
+function fmt(n){return n.toLocaleString('en-IN',{maximumFractionDigits:0})}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+
+// ── Comprehensive Print / PDF report ──
+function buildPrintReport(){
+  const forVal=document.getElementById('organizedFor').value.trim()||'—';
+  const eventType=document.getElementById('eventLabel').textContent;
+  const dtRaw=document.getElementById('eventDate').value;
+  const dtStr=dtRaw?new Date(dtRaw).toLocaleString('en-IN',{dateStyle:'full',timeStyle:'short'}):'Date not set';
+
+  const vName=document.getElementById('venueName').value||'—';
+  const vAddr=document.getElementById('venueAddr').value||'—';
+  const vContact=document.getElementById('venueContact').value;
+  const vPhone=document.getElementById('venuePhone').value;
+  const vCost=parseFloat(document.getElementById('venueCost').value)||0;
+  const vAdv=parseFloat(document.getElementById('venueAdv').value)||0;
+  const vBal=Math.max(0,vCost-vAdv);
+
+  let foodRows='',fTotal=0;
+  document.querySelectorAll('.food-item').forEach(fi=>{
+    const t=fi.querySelectorAll('input[type=text]')[0]?.value;
+    const cat=fi.querySelector('select')?.value||'—';
+    const nums=fi.querySelectorAll('input[type=number]');
+    const q=parseFloat(nums[0].value)||0,p=parseFloat(nums[1].value)||0,tot=q*p;
+    fTotal+=tot;
+    if(t||q||p)foodRows+=`<tr><td>${esc(t||'—')}</td><td>${esc(cat)}</td><td>${q}</td><td>₹ ${fmt(p)}</td><td>₹ ${fmt(tot)}</td></tr>`;
+  });
+  const caterer=document.getElementById('catererName').value;
+  const catererPhone=document.getElementById('catererPhone').value;
+
+  let guestRows='',people=0,families=0,invitedHeads=0;
+  document.querySelectorAll('.guest-item').forEach(gi=>{
+    const hon=gi.querySelector('.honorific')?.value||'';
+    const name=gi.querySelector('.guest-name-wrap input')?.value||'—';
+    const sv=gi.querySelector('.spin-val');
+    const heads=sv?(parseInt(sv.textContent)||1):1;
+    const isInv=!!gi.querySelector('.invite-toggle.on');
+    people+=heads;families++;
+    if(isInv)invitedHeads+=heads;
+    guestRows+=`<tr><td>${esc(hon?hon+' ':'')}${esc(name)}</td><td>${heads}</td><td>${isInv?'Yes':'No'}</td></tr>`;
+  });
+  const rsvp=document.querySelector('#p3 textarea')?.value||'';
+  const grand=vCost+fTotal;
+
+  document.getElementById('printReport').innerHTML=`
+    <div class="pr-section">
+      <div class="pr-title">${esc(forVal)}</div>
+      <div class="pr-sub">${esc(eventType)} · ${dtStr} · Prepared ${new Date().toLocaleDateString('en-IN',{dateStyle:'medium'})}</div>
+    </div>
+    <div class="pr-section">
+      <div class="pr-h">Venue &amp; Booking</div>
+      <div class="pr-row"><span>Venue</span><strong>${esc(vName)}</strong></div>
+      <div class="pr-row"><span>Address</span><strong>${esc(vAddr)}</strong></div>
+      <div class="pr-row"><span>Contact</span><strong>${esc(vContact||'—')}${vPhone?' · '+esc(vPhone):''}</strong></div>
+      <div class="pr-row"><span>Booking Cost</span><strong>₹ ${fmt(vCost)}</strong></div>
+      <div class="pr-row"><span>Advance Paid</span><strong>₹ ${fmt(vAdv)}</strong></div>
+      <div class="pr-row"><span>Balance Due</span><strong>₹ ${fmt(vBal)}</strong></div>
+    </div>
+    <div class="pr-section">
+      <div class="pr-h">Food &amp; Catering</div>
+      <table class="pr-table"><thead><tr><th>Item</th><th>Category</th><th>Plates</th><th>Per Plate</th><th>Total</th></tr></thead>
+      <tbody>${foodRows||'<tr><td colspan="5">No items added</td></tr>'}</tbody></table>
+      ${caterer?`<div class="pr-row" style="margin-top:8px"><span>Caterer</span><strong>${esc(caterer)}${catererPhone?' · '+esc(catererPhone):''}</strong></div>`:''}
+      <div class="pr-row"><span>Food Total</span><strong>₹ ${fmt(fTotal)}</strong></div>
+    </div>
+    <div class="pr-section">
+      <div class="pr-h">Guest List</div>
+      <table class="pr-table"><thead><tr><th>Name</th><th>Party Size</th><th>Invited</th></tr></thead>
+      <tbody>${guestRows||'<tr><td colspan="3">No guests added</td></tr>'}</tbody></table>
+      ${rsvp?`<div class="pr-row" style="margin-top:8px"><span>RSVP Notes</span><strong>${esc(rsvp)}</strong></div>`:''}
+    </div>
+    <div class="pr-section">
+      <div class="pr-h">Summary</div>
+      <div class="pr-row"><span>Families</span><strong>${families}</strong></div>
+      <div class="pr-row"><span>Total People</span><strong>${people}</strong></div>
+      <div class="pr-row"><span>Invitation Sent For</span><strong>${invitedHeads} heads</strong></div>
+      <div class="pr-row"><span>Est. Plates</span><strong>${people}</strong></div>
+      <div class="pr-row"><span>Venue Cost</span><strong>₹ ${fmt(vCost)}</strong></div>
+      <div class="pr-row"><span>Food Cost</span><strong>₹ ${fmt(fTotal)}</strong></div>
+      <div class="pr-total">Grand Total — ₹ ${fmt(grand)}</div>
+    </div>`;
+}
+window.addEventListener('beforeprint',buildPrintReport);
+
+// ── Clear All ──
+function clearAll(){
+  if(!confirm('Clear all event data?'))return;
+  document.querySelectorAll('input,textarea,select').forEach(el=>{
+    if(!el.readOnly&&el.type!=='button')el.value='';
+  });
+  document.getElementById('foodList').innerHTML='';
+  document.getElementById('guestList').innerHTML='';
+  document.getElementById('mapPreview').classList.remove('show');
+  foodId=0;guestId=0;recalc();
+}
+
+// ── Page navigation : nav dots + counter + reveal-on-view ──
+const pages=[...document.querySelectorAll('.page')];
+const dots=[...document.querySelectorAll('.page-nav button')];
+const counter=document.getElementById('pageCounter');
+dots.forEach(d=>d.addEventListener('click',()=>{
+  pages[+d.dataset.i].scrollIntoView({behavior:'smooth'});
+}));
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(en.isIntersecting){
+      const i=pages.indexOf(en.target);
+      dots.forEach(d=>d.classList.toggle('active',+d.dataset.i===i));
+      counter.textContent=String(i+1).padStart(2,'0')+' — 05';
+      en.target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+    }
+  });
+},{threshold:.5});
+pages.forEach(p=>io.observe(p));
+
+// fadeOut keyframe (guest removal)
+const s=document.createElement('style');
+s.textContent='@keyframes fadeOut{to{opacity:0;transform:translateY(-6px)}}';
+document.head.appendChild(s);
+
+// ── Init ──
+addFood();addFood();addGuest();addGuest();addGuest();
+recalc();
+document.querySelectorAll('#p0 .reveal').forEach(el=>el.classList.add('in'));
+</script>
+</body>
+</html>
