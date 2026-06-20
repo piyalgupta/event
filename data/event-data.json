@@ -3,79 +3,355 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "70B Rashbehari Avenue Kolkata ",
+  "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
   "venuePhone": "",
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "Surendra Sweets",
+  "catererName": "",
   "catererPhone": "",
   "syncPlates": true,
   "rsvpNotes": "",
   "food": [
     {
-      "name": "Veg",
+      "name": "কচুরি, আলুর দম, পোলাও, পনির, ২টো শুকনো মিষ্টি",
       "category": "Veg Starter",
-      "qty": "9",
-      "price": "200"
+      "qty": "85",
+      "price": "150"
+    },
+    {
+      "name": "Watter Bottle",
+      "category": "Drinks",
+      "qty": "85",
+      "price": "10"
     }
   ],
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "Soumyadeep Bandopadhyay",
+      "name": "Soumyadip Bari",
       "invited": false,
-      "party": "1"
+      "party": "5"
     },
     {
       "honorific": "Mr.",
-      "name": "Bapi Maity",
+      "name": "Bapi Da",
       "invited": false,
-      "party": "1"
+      "party": "2"
     },
     {
       "honorific": "Mr.",
       "name": "Partha Sarathi Ganguly",
       "invited": false,
-      "party": "1"
+      "party": "2"
     },
     {
       "honorific": "Mr.",
-      "name": "Shanu Kaku",
+      "name": "শানুকাকু",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "গৌতম কাকু",
       "invited": false,
       "party": "1"
     },
     {
       "honorific": "Mr.",
-      "name": "Gautam Kaku",
+      "name": "বুলপিসি",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mrs.",
+      "name": "Bithi Ghosh",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Kushal Majumdar",
+      "invited": false,
+      "party": "3"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Mithu Di",
       "invited": false,
       "party": "1"
     },
     {
       "honorific": "Mr.",
-      "name": "Bul Pishi",
+      "name": "Ila r Dada Boudi",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mrs.",
+      "name": "Ila Maashi",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Seema - Biren Sen",
       "invited": false,
       "party": "1"
     },
     {
       "honorific": "Mr.",
-      "name": "Tumpa",
+      "name": "Mandira Lahiri ",
       "invited": false,
       "party": "1"
     },
     {
       "honorific": "Mr.",
-      "name": "Tua",
+      "name": "Mrinal Kaku",
       "invited": false,
       "party": "1"
     },
     {
       "honorific": "Mr.",
-      "name": "",
+      "name": "Uttam De Roy",
       "invited": false,
       "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Sambhu Paan",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Hashu Kaku",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Amar Kaku",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Romu Da",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Anju Banerjee",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Tultul",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Deb Babu",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Swagata",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Dola",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Rina House Maid",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Minati Auntie",
+      "invited": false,
+      "party": "3"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Abhaya Ghosh",
+      "invited": false,
+      "party": "5"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Swapan Mishra",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Bablu Kaku",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Ankur Kaku",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Deban Kaku",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Bhattacharya Saheb",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Tumpa and Family ",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Dimpi & Family ",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Tua & Family ",
+      "invited": false,
+      "party": "4"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Kakima Shyambazar",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Gora Da",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mrs.",
+      "name": "Mithu Bapi",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Chhobi",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Ratna",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Ruby",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Mani",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Manu",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Ms.",
+      "name": "Rima",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Ms.",
+      "name": "Debu",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Ms.",
+      "name": "Barnali",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Abhirup (Tojo)",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Partha ",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Sanchita",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Dipti",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Leena",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Krishna Sahoo LIC",
+      "invited": false,
+      "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Manju",
+      "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Jayanta Kaku Chanditala",
+      "invited": false,
+      "party": "2"
     }
   ],
-  "updatedAt": 1781979623879
+  "updatedAt": 1781979640629
 }
