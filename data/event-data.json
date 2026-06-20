@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "31",
+      "qty": "32",
       "price": "100"
     }
   ],
@@ -129,7 +129,13 @@
       "name": "Amar Kaku",
       "invited": false,
       "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "Rom",
+      "invited": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1781978337207
+  "updatedAt": 1781978343658
 }
