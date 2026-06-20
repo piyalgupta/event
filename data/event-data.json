@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "15",
+      "qty": "16",
       "price": "100"
     }
   ],
@@ -60,10 +60,10 @@
     },
     {
       "honorific": "Mrs.",
-      "name": "",
+      "name": "Bithi Ghosh",
       "invited": false,
-      "party": "1"
+      "party": "2"
     }
   ],
-  "updatedAt": 1781978118175
+  "updatedAt": 1781978124212
 }
