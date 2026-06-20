@@ -3,73 +3,18 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "70B Rashbehari Avenue Kolkata ",
+  "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
   "venuePhone": "",
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "Surendra Sweets",
+  "catererName": "",
   "catererPhone": "",
   "syncPlates": true,
   "rsvpNotes": "",
-  "food": [
-    {
-      "name": "Veg",
-      "category": "Veg Starter",
-      "qty": "9",
-      "price": "200"
-    }
-  ],
+  "food": [],
   "guests": [
-    {
-      "honorific": "Mr.",
-      "name": "Soumyadeep Bandopadhyay",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bapi Maity",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Sarathi Ganguly",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Shanu Kaku",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Gautam Kaku",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bul Pishi",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Tumpa",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Tua",
-      "invited": false,
-      "party": "1"
-    },
     {
       "honorific": "Mr.",
       "name": "",
@@ -77,5 +22,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975619902
+  "updatedAt": 1781977187241
 }
