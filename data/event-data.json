@@ -1,105 +1,19 @@
 {
-  "organizedFor": "Baba's Shraddha",
+  "organizedFor": "",
   "eventType": "Shraddha",
-  "eventDate": "2026-06-28T10:00",
-  "venueName": "Chaitanya Research Institute ",
-  "venueAddr": "70 B Rashbehari Avenue ",
-  "venueContact": "Reception",
-  "venuePhone": "+91 89811 17728",
-  "venueCost": "11000",
-  "venueAdv": "3000",
-  "mapUrl": "70 B Rashbehari Avenue",
-  "catererName": "Surendra Sweets",
-  "catererPhone": "+91 90000 00000",
+  "eventDate": "",
+  "venueName": "",
+  "venueAddr": "",
+  "venueContact": "",
+  "venuePhone": "",
+  "venueCost": "",
+  "venueAdv": "",
+  "mapUrl": "",
+  "catererName": "",
+  "catererPhone": "",
   "syncPlates": true,
-  "rsvpNotes": "Two guests need Jain food.",
-  "food": [
-    {
-      "name": "Radhaballavi, Aloor Dum, Pulao, Paneer Mishti",
-      "category": "Veg Main",
-      "qty": "29",
-      "price": "200"
-    },
-    {
-      "name": "Water Bottle ",
-      "category": "Drinks",
-      "qty": "29",
-      "price": "10"
-    }
-  ],
-  "guests": [
-    {
-      "honorific": "Mr.",
-      "name": "Soumyadeep Bandopadhyay",
-      "invited": false,
-      "party": "5"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bapi Maity",
-      "invited": false,
-      "party": "3"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Sarathi Ganguly",
-      "invited": false,
-      "party": "4"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bul Pishi",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Rima and Friends",
-      "invited": false,
-      "party": "3"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Dasgupta",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Minati Auntie",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bithi Auntie",
-      "invited": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Abhaya Maashi",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Tumpa Mamoni",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Tua ",
-      "invited": false,
-      "party": "2"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Hashu Kaku",
-      "invited": false,
-      "party": "1"
-    }
-  ],
-  "updatedAt": 1781972204523
+  "rsvpNotes": "",
+  "food": [],
+  "guests": [],
+  "updatedAt": 1781972219593
 }
