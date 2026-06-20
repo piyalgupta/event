@@ -15,7 +15,7 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "কচুরি, আ",
+      "name": "কচুরি, আলুর দম, ",
       "category": "Veg Starter",
       "qty": "85",
       "price": "100"
@@ -347,5 +347,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1781979034050
+  "updatedAt": 1781979039668
 }
