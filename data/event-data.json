@@ -15,7 +15,7 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "",
+      "name": "Veg",
       "category": "Veg Starter",
       "qty": "1",
       "price": ""
@@ -29,5 +29,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975462730
+  "updatedAt": 1781975469310
 }
