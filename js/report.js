@@ -31,7 +31,7 @@ function buildPrintReport(){
     if(g.invited)invitedHeads+=g.heads;
     guestRows+=`<tr><td>${esc(g.honorific?g.honorific+' ':'')}${esc(g.name||'—')}</td><td>${g.heads}</td><td>${g.invited?'Yes':'No'}</td></tr>`;
   });
-  const rsvp=document.querySelector('#p3 textarea')?.value||'';
+  const rsvp=val('rsvpNotes');
   const grand=vCost+fTotal;
 
   document.getElementById('printReport').innerHTML=`

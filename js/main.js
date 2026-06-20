@@ -22,6 +22,20 @@ const io=new IntersectionObserver((entries)=>{
 },{threshold:.5});
 pages.forEach(p=>io.observe(p));
 
+// ── Planner tabs : Venue / Food / Guests as three interconnected views ──
+// The views share one data model (IDs + recalc), so switching tabs never loses
+// state; recalc() runs on every switch to keep each view's badges/totals live.
+const TAB_NAMES=['venue','food','guests'];
+function showTab(name){
+  TAB_NAMES.forEach(t=>{
+    const btn=document.getElementById('tab-'+t+'-btn'), panel=document.getElementById('tab-'+t);
+    const on=(t===name);
+    if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-selected',on?'true':'false');}
+    if(panel){panel.classList.toggle('active',on);panel.hidden=!on;}
+  });
+  if(typeof recalc==='function')recalc();
+}
+
 // fadeOut keyframe (guest removal)
 const s=document.createElement('style');
 s.textContent='@keyframes fadeOut{to{opacity:0;transform:translateY(-6px)}}';

@@ -11,12 +11,12 @@ function collectData(){
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
     catererName:val('catererName'),catererPhone:val('catererPhone'),syncPlates,
-    rsvpNotes:document.querySelector('#p3 textarea')?.value||'',food,guests,updatedAt:Date.now()};
+    rsvpNotes:val('rsvpNotes'),food,guests,updatedAt:Date.now()};
 }
 function applyData(d){
   if(!d)return;
   ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone'].forEach(k=>setVal(k,d[k]));
-  if(document.querySelector('#p3 textarea'))document.querySelector('#p3 textarea').value=d.rsvpNotes||'';
+  setVal('rsvpNotes',d.rsvpNotes||'');
   if(d.eventType){
     const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
     if(btn)setEvent(btn,d.eventType);
