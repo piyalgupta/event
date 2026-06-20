@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "21",
+      "qty": "23",
       "price": "100"
     }
   ],
@@ -80,8 +80,14 @@
       "honorific": "Mr.",
       "name": "Ila r Dada Boudi",
       "invited": false,
+      "party": "2"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "",
+      "invited": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1781978190160
+  "updatedAt": 1781978195997
 }
