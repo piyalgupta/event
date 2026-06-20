@@ -3,7 +3,7 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "70B Rashbehari Ave",
+  "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "",
   "venuePhone": "",
   "venueCost": "",
@@ -22,5 +22,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1781975399224
+  "updatedAt": 1781975402132
 }
