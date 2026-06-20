@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "48",
+      "qty": "49",
       "price": "100"
     }
   ],
@@ -189,7 +189,13 @@
       "name": "Swapan Mishra",
       "invited": false,
       "party": "1"
+    },
+    {
+      "honorific": "Mr.",
+      "name": "B",
+      "invited": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1781978483944
+  "updatedAt": 1781978487017
 }
