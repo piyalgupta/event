@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "18",
+      "qty": "20",
       "price": "100"
     }
   ],
@@ -68,8 +68,8 @@
       "honorific": "Mr.",
       "name": "Kushal Majumdar",
       "invited": false,
-      "party": "2"
+      "party": "4"
     }
   ],
-  "updatedAt": 1781978141727
+  "updatedAt": 1781978147464
 }
