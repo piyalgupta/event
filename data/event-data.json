@@ -17,7 +17,7 @@
     {
       "name": "Veg Thali",
       "category": "Veg Starter",
-      "qty": "84",
+      "qty": "85",
       "price": "100"
     }
   ],
@@ -344,8 +344,8 @@
       "honorific": "Mr.",
       "name": "Jayanta Kaku Chanditala",
       "invited": false,
-      "party": "1"
+      "party": "2"
     }
   ],
-  "updatedAt": 1781978959490
+  "updatedAt": 1781978965122
 }
