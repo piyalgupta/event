@@ -368,7 +368,7 @@
     {
       "honorific": "Mr.",
       "name": "Gora Da",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038138587
+  "updatedAt": 1782038143951
 }
