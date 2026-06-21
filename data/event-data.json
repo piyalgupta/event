@@ -85,6 +85,14 @@
       "party": "1"
     },
     {
+      "name": "Avirup (Tojo)",
+      "relationship": "Friends",
+      "reference": "Rudraksha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
       "name": "Bablu Kaku",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -104,6 +112,14 @@
       "name": "Bapi Da",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Barnali",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
       "invited": true,
       "rsvp": false,
       "party": "2"
@@ -153,6 +169,30 @@
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Debu",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Dimpi and family",
+      "relationship": "Relatives",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Dimpi Office",
+      "relationship": "Colleagues",
+      "reference": "Sarmishtha Gupta",
+      "invited": false,
       "rsvp": false,
       "party": "1"
     },
@@ -245,6 +285,14 @@
       "party": "1"
     },
     {
+      "name": "Kushal Majumdar",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "3"
+    },
+    {
       "name": "Leena",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -309,6 +357,14 @@
       "party": "2"
     },
     {
+      "name": "Mithu Di",
+      "relationship": "Neighbours",
+      "reference": "Titas Bandopadhyay",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
       "name": "Mridula",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -325,6 +381,22 @@
       "party": "1"
     },
     {
+      "name": "Partha Dasgupta",
+      "relationship": "Colleagues",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Partha Sarathi Ganguly",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
       "name": "Partha Tour Friend",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -336,6 +408,14 @@
       "name": "Ratna",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Rima",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
       "invited": true,
       "rsvp": false,
       "party": "1"
@@ -373,6 +453,14 @@
       "party": "1"
     },
     {
+      "name": "Sambhu Da Paan",
+      "relationship": "Acquaintances",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
       "name": "Sanchita",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -393,6 +481,14 @@
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Sirsha/Sanchari Bhadra",
+      "relationship": "Friends",
+      "reference": "Rudraksha Gupta",
+      "invited": false,
       "rsvp": false,
       "party": "2"
     },
@@ -445,109 +541,13 @@
       "party": "1"
     },
     {
-      "name": "Barnali",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Debu",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Dimpi and family",
-      "relationship": "Relatives",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Kushal Majumdar",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "3"
-    },
-    {
-      "name": "Partha Dasgupta",
-      "relationship": "Colleagues",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Partha Sarathi Ganguly",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Rima",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Sambhu Da Paan",
-      "relationship": "Acquaintances",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
       "name": "Uttam De Roy",
       "relationship": "Neighbours",
       "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
-    },
-    {
-      "name": "Avirup (Tojo)",
-      "relationship": "Friends",
-      "reference": "Rudraksha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Sirsha/Sanchari Bhadra",
-      "relationship": "Friends",
-      "reference": "Rudraksha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Dimpi Office",
-      "relationship": "Colleagues",
-      "reference": "Sarmishtha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Mithu Di",
-      "relationship": "Neighbours",
-      "reference": "Titas Bandopadhyay",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
     }
   ],
-  "updatedAt": 1782066055087
+  "updatedAt": 1782066058733
 }
