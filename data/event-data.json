@@ -32,7 +32,7 @@
       "honorific": "Mr.",
       "name": "Soumyadip Bari",
       "relationship": "Family",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "5"
     },
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782028655273
+  "updatedAt": 1782028681627
 }
