@@ -9,7 +9,7 @@
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "Balaram Mallick & radarman Mullick",
+  "catererName": "Balaram Mallick & Radarman Mullick",
   "catererPhone": "",
   "syncPlates": true,
   "rsvpNotes": "",
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782028059601
+  "updatedAt": 1782028062997
 }
