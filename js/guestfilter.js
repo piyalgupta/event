@@ -13,32 +13,45 @@ function guestSortKey(g,by){
     default:return 0;
   }
 }
+// Per-column filter state. Sort is toggled by clicking column labels.
+let gSortBy='', gSortDir=1;
+function sortGuests(col){
+  if(gSortBy===col){gSortDir*=-1;}else{gSortBy=col;gSortDir=1;}
+  document.querySelectorAll('#guestHeader .gh-lab[data-sort]').forEach(h=>{
+    const on=h.dataset.sort===col;
+    h.classList.toggle('sorted',on);
+    h.classList.toggle('desc',on&&gSortDir<0);
+  });
+  applyGuestFilters();
+}
 function applyGuestFilters(){
   const list=$('guestList');if(!list)return;
-  const q=(val('gfSearch')).trim().toLowerCase();
-  const rel=val('gfRel'), status=val('gfStatus');
-  const by=val('gfSort'), dir=val('gfDir')==='desc'?-1:1;
+  const q=val('gfSearch').trim().toLowerCase();
+  const rel=val('gfRel'), ref=val('gfRef').trim().toLowerCase();
+  const inv=val('gfInvite'), rs=val('gfRsvp');
   const rows=guestEntries();
 
   // Filter — toggle visibility on each row's DOM node.
   let shown=0;
   rows.forEach(g=>{
     let ok=true;
-    if(q)ok=[g.name,g.reference].some(v=>(v||'').toLowerCase().includes(q));
+    // Search matches any string across all guest fields.
+    if(q)ok=[g.name,g.relationship,g.reference,g.party,
+      g.invited?'invited sent':'not invited',g.rsvp?'rsvp yes':'not rsvp']
+      .some(v=>String(v||'').toLowerCase().includes(q));
     if(ok&&rel&&rel!=='all')ok=g.relationship===rel;
-    if(ok&&status&&status!=='all'){
-      ok=status==='invited'?g.invited:status==='notinvited'?!g.invited
-        :status==='rsvp'?g.rsvp:status==='notrsvp'?!g.rsvp:true;
-    }
+    if(ok&&ref)ok=(g.reference||'').toLowerCase().includes(ref);
+    if(ok&&inv&&inv!=='all')ok=inv==='invited'?g.invited:!g.invited;
+    if(ok&&rs&&rs!=='all')ok=rs==='rsvp'?g.rsvp:!g.rsvp;
     g.el.style.display=ok?'':'none';
     if(ok)shown++;
   });
 
-  // Sort — reorder nodes when a sort column is chosen.
-  if(by&&by!=='none'){
+  // Sort — reorder nodes when a sort column is active.
+  if(gSortBy){
     rows.slice().sort((a,b)=>{
-      const ka=guestSortKey(a,by),kb=guestSortKey(b,by);
-      return (ka<kb?-1:ka>kb?1:0)*dir;
+      const ka=guestSortKey(a,gSortBy),kb=guestSortKey(b,gSortBy);
+      return (ka<kb?-1:ka>kb?1:0)*gSortDir;
     }).forEach(g=>list.appendChild(g.el));
     renumberGuests();
   }
@@ -48,6 +61,6 @@ function applyGuestFilters(){
 function buildGuestFilterBar(){
   const sel=$('gfRel');
   if(sel&&sel.children.length<=1)
-    sel.innerHTML='<option value="all">All relationships</option>'+
+    sel.innerHTML='<option value="all">Relationship</option>'+
       RELATIONSHIPS.map(r=>`<option value="${esc(r)}">${esc(r)}</option>`).join('');
 }

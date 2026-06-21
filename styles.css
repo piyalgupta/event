@@ -276,11 +276,26 @@ html.dark select option{background:#1c1834;color:#f0eeff}
 .rel-empty{font-size:.82rem;color:var(--muted)}
 .food-sync-lab{display:flex;align-items:center;gap:6px;margin:8px 0 0;text-transform:none;font-size:.72rem;font-weight:500;color:var(--muted);cursor:pointer}
 .food-sync-lab input{width:auto;margin:0}
-.guest-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px}
+.guest-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:10px}
 .guest-toolbar .gf-search{flex:1 1 220px;min-width:160px}
-.guest-toolbar select{flex:0 1 auto;width:auto;cursor:pointer}
 .gf-count{font-size:.74rem;color:var(--muted);font-family:var(--mono);margin-left:auto;white-space:nowrap}
-@media(max-width:680px){.guest-toolbar select{flex:1 1 calc(50% - 5px)}.gf-count{margin-left:0;flex-basis:100%}}
+/* Per-column filter header — mirrors the .guest-item column widths. */
+.guest-header{display:flex;align-items:center;gap:14px;padding:0 16px 8px;margin-bottom:6px;border-bottom:1px solid var(--glass-brd)}
+.guest-header .gh-col{display:flex;align-items:center}
+.guest-header select,.guest-header input{width:100%;font-size:.82rem;padding:8px 10px;cursor:pointer}
+.gh-num{width:30px;flex-shrink:0}
+.gh-name{flex:1;min-width:150px}
+.gh-rel{width:130px;flex-shrink:0}
+.gh-ref{width:140px;flex-shrink:0}
+.gh-inv,.gh-rsvp{width:96px;flex-shrink:0}
+.gh-party{flex-shrink:0}
+.gh-end{flex:0 0 30px}
+.gh-lab{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);cursor:pointer;user-select:none}
+.gh-lab:hover{color:var(--text)}
+.gh-lab.sorted{color:var(--accent)}
+.gh-lab.sorted::after{content:'▲';font-size:.6rem;margin-left:4px}
+.gh-lab.sorted.desc::after{content:'▼'}
+@media(max-width:880px){.guest-header{display:none}}
 .guest-item{background:var(--glass-2);border:1px solid var(--glass-brd);border-radius:var(--radius-sm);box-shadow:var(--sh-card);padding:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;animation:slideIn .3s ease}
 .guest-item.rsvp-locked{opacity:.74}
 .guest-item.rsvp-locked .rsvp-toggle{opacity:1}
