@@ -323,7 +323,7 @@
     {
       "honorific": "Mr.",
       "name": "Bhattacharya Saheb",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038120701
+  "updatedAt": 1782038124791
 }
