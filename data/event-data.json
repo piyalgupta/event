@@ -28,7 +28,7 @@
       "price": "20"
     },
     {
-      "name": "Mish",
+      "name": "Mishti",
       "category": "Veg Starter",
       "qty": "85",
       "price": ""
@@ -522,5 +522,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037644830
+  "updatedAt": 1782037646794
 }
