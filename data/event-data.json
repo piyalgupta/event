@@ -386,7 +386,7 @@
     {
       "honorific": "Mr.",
       "name": "Chhobi",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038146751
+  "updatedAt": 1782038150232
 }
