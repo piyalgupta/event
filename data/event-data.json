@@ -233,7 +233,7 @@
     {
       "honorific": "Mr.",
       "name": "Deb Babu",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038084669
+  "updatedAt": 1782038087147
 }
