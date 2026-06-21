@@ -13,7 +13,14 @@
   "catererPhone": "",
   "syncPlates": true,
   "rsvpNotes": "",
-  "food": [],
+  "food": [
+    {
+      "name": "Radhaballavi 2, Aloor Dum, ",
+      "category": "Veg Starter",
+      "qty": "4",
+      "price": ""
+    }
+  ],
   "guests": [
     {
       "honorific": "Mr.",
@@ -45,12 +52,12 @@
     {
       "honorific": "Mr.",
       "name": "Bapi Da",
-      "relationship": "Family",
+      "relationship": "Acquaintances",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782030113634
+  "updatedAt": 1782030193599
 }
