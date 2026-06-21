@@ -36,7 +36,7 @@
     },
     {
       "honorific": "Mr.",
-      "name": "Partha Sarathi ",
+      "name": "Partha Sarathi Ganguly",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -44,5 +44,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782032553756
+  "updatedAt": 1782032559587
 }
