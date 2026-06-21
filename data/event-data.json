@@ -179,7 +179,7 @@
     {
       "honorific": "Mr.",
       "name": "Sambhu Paan",
-      "relationship": "Relatives",
+      "relationship": "Acquaintances",
       "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038060716
+  "updatedAt": 1782038065100
 }
