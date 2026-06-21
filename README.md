@@ -14,6 +14,7 @@ Concerns are split across plain, framework-free files (no bundler — the browse
   - `calc.js` — `recalc()`, the single pass that refreshes every derived total.
   - `storage.js` — collect/apply, autosave, JSON import/export and GitHub sync.
   - `report.js` — the print/PDF report builder and "clear all" reset.
+  - `dashboard.js` — the read-only analytics dashboard (KPI tiles + dependency-free SVG/CSS charts).
   - `main.js` — bootstrap: page navigation, restoring saved data, and the autosave safety net.
 
 ## Data storage
@@ -31,6 +32,12 @@ The WhatsApp feature is a standalone module (`js/whatsapp.js`), kept separate fr
 - To send a **real image file to everyone for free**, use **Save contacts (.vcf)**: it exports every guest-with-phone as a phone-contacts file — import it into your phone, make a WhatsApp **Broadcast list** from those contacts, and send your image + message once (it reaches all of them as private chats, free; recipients must have your number saved).
 
 Fully automated server-side sending would instead need the paid WhatsApp Business / Meta Cloud API. The link/number builders are covered by a dependency-free test: `node test/whatsapp.test.js`.
+
+## Analytics dashboard
+The final page is a read-only **Analytics Dashboard** that re-derives everything from the same venue/food/guest model on each change (via `recalc()`), so it is always live. It shows KPI tiles (grand total, cost per head, cost per family, invited/RSVP heads, plates) plus charts that slice the data from several angles: a **cost split** donut (venue vs food), **food cost by category**, **payment progress** (paid vs due, broken down by venue/food), and guest classifications **by relationship**, **by reference**, **invitation & RSVP**, and **families by party size**. The charts are hand-built SVG/CSS with no libraries, so the page still runs straight from `file://`.
+
+## Motion & scrolling
+Entrance/background animations have been removed and scroll-snap dropped, so scrolling is fully user-controllable and stays smooth on long pages. The event type is chosen from a single dropdown instead of a chip strip.
 
 ## Responsive design
 Layout uses fluid `clamp()` sizing and breakpoints for phones (≤680px), tablets (681–980px) and short/landscape screens, plus `env(safe-area-inset-*)` so content clears notches in landscape. On desktop (≥981px) the gutters shrink and the panels span the full width edge-to-edge, with the Summary laid out as a two-column grid. Inputs use 16px font on mobile to prevent iOS auto-zoom.
