@@ -113,6 +113,10 @@
     <div class="ft-val" id="foodTotal">₹ 0</div>
   </div>
   <div class="row row-2" style="margin-top:6px">
+    <div><label>Advance Paid (₹)</label><input type="number" id="foodAdv" placeholder="0" min="0" oninput="recalc()"></div>
+    <div><label>Balance Due (₹)</label><input type="number" id="foodBal" placeholder="Auto-calculated" readonly style="opacity:.55"></div>
+  </div>
+  <div class="row row-2" style="margin-top:6px">
     <div><label>Caterer Name</label><input type="text" id="catererName" placeholder="e.g. Sharma Caterers"></div>
     <div><label>Caterer Phone</label><input type="tel" id="catererPhone" placeholder="+91 xxxxx xxxxx"></div>
   </div>
