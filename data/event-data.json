@@ -17,7 +17,7 @@
   "food": [
     {
       "name": "",
-      "category": "Veg Starter",
+      "category": "Veg Main",
       "qty": "85",
       "price": ""
     }
@@ -510,5 +510,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037583049
+  "updatedAt": 1782037585498
 }
