@@ -2,12 +2,13 @@
 :root{
   --bg:#FAF9F5;
   --ink:#1C1C19;
-  --muted:#8B887E;
+  --muted:#6E6B61;
   --line:#DEDAD0;
   --accent:#54634A;
   --accent-soft:#EAEDE4;
   --danger:#9C4A3D;
   --ok:#2E7D46;
+  --placeholder:#908C82;
   --gutter-x:clamp(20px,6vw,80px);
   --gutter-y:clamp(26px,6vh,60px);
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -27,9 +28,10 @@ html.dark{
   --accent-soft:#262A20;
   --danger:#D08A7C;
   --ok:#5FB37C;
+  --placeholder:#827E72;
+  --picker-filter:invert(1) brightness(1.4);
 }
 html.dark .map-preview{background:#23221B}
-html.dark input::placeholder,html.dark textarea::placeholder{color:#6B675C}
 body,input,select,textarea,.map-preview,.btn,.theme-toggle{transition:background-color .35s ease,color .35s ease,border-color .35s ease}
 
 /* ── Floating theme toggle ── */
@@ -69,7 +71,7 @@ html.dark .theme-toggle .icon-moon{display:block}
 
 /* ── Page head (numeral + title) ── */
 .page-head{display:flex;align-items:flex-end;gap:22px;flex-wrap:wrap}
-.page-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,5.5vw,3.6rem);color:var(--line);line-height:1;user-select:none}
+.page-num{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.2rem,5.5vw,3.6rem);color:color-mix(in srgb,var(--muted) 50%,transparent);line-height:1;user-select:none}
 .page-title{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(1.3rem,3vw,1.9rem);letter-spacing:-.01em}
 .page-sub{font-size:.8rem;color:var(--muted);margin-top:4px}
 .page-badge{margin-left:auto;font-size:.78rem;letter-spacing:.05em;color:var(--accent);font-weight:500;white-space:nowrap}
@@ -116,9 +118,13 @@ input,select,textarea{
 }
 input:focus,select:focus,textarea:focus{border-bottom-color:var(--accent)}
 input[type=checkbox]{width:auto;border:none;padding:0;accent-color:var(--accent);cursor:pointer}
-input::placeholder,textarea::placeholder{color:#B7B3A8}
+input::placeholder,textarea::placeholder{color:var(--placeholder)}
 textarea{resize:vertical;min-height:56px;line-height:1.5}
 select{cursor:pointer}
+/* Give the native dropdown popup a solid, theme-matched backing so options
+   stay legible in dark mode (transparent + light ink = invisible otherwise). */
+select option{background:var(--bg);color:var(--ink)}
+input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:var(--picker-filter,none)}
 
 /* ── Buttons (shared minimal vocabulary) ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:12px 24px;font-size:.74rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:background .25s,color .25s;font-family:'Cormorant Garamond',serif}
