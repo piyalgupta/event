@@ -29,6 +29,14 @@
   --radius-sm:14px;
   --gutter-x:clamp(20px,6vw,80px);
   --gutter-y:clamp(26px,6vh,60px);
+  /* Shared guest-table column widths — header filters/sort and the live
+     rows both consume these, so the two grids always stay aligned. */
+  --gcol-num:30px;
+  --gcol-rel:130px;
+  --gcol-ref:140px;
+  --gcol-act:128px;   /* invite & rsvp — equal width so toggles line up */
+  --gcol-party:144px;
+  --gcol-end:40px;
   --mono:'JetBrains Mono',ui-monospace,monospace;
   --serif:'Cormorant Garamond',serif;
   --sans:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
@@ -239,7 +247,7 @@ html.dark select option{background:#1c1834;color:#f0eeff}
 .btn-fill:hover{color:#fff;filter:brightness(1.06)}
 .add-btn{width:100%;border:1px dashed var(--glass-brd);background:var(--glass);color:var(--accent);padding:15px 0;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;border-radius:var(--radius-sm);transition:all .25s;font-family:var(--sans)}
 .add-btn:hover{background:var(--accent-soft);border-color:var(--accent)}
-.remove-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:none;color:var(--muted);font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:pointer;padding:6px 10px;border-radius:20px;transition:color .2s,background .2s;font-family:var(--sans);white-space:nowrap}
+.remove-btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;width:var(--gcol-end);flex-shrink:0;background:none;border:none;color:var(--muted);font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:pointer;padding:6px;border-radius:20px;transition:color .2s,background .2s;font-family:var(--sans);white-space:nowrap}
 .remove-btn:hover{color:var(--danger);background:color-mix(in srgb,var(--danger) 12%,transparent)}
 
 /* ── Map ── */
@@ -283,29 +291,31 @@ html.dark select option{background:#1c1834;color:#f0eeff}
 .guest-header{display:flex;align-items:center;gap:14px;padding:0 16px 8px;margin-bottom:6px;border-bottom:1px solid var(--glass-brd)}
 .guest-header .gh-col{display:flex;align-items:center}
 .guest-header select,.guest-header input{width:100%;font-size:.82rem;padding:8px 10px;cursor:pointer}
-.gh-num{width:30px;flex-shrink:0}
+.gh-num{width:var(--gcol-num);flex-shrink:0}
 .gh-name{flex:1;min-width:150px}
-.gh-rel{width:130px;flex-shrink:0}
-.gh-ref{width:140px;flex-shrink:0}
-.gh-inv,.gh-rsvp{width:96px;flex-shrink:0}
-.gh-party{flex-shrink:0}
-.gh-end{flex:0 0 30px}
+.gh-rel{width:var(--gcol-rel);flex-shrink:0}
+.gh-ref{width:var(--gcol-ref);flex-shrink:0}
+.gh-inv,.gh-rsvp{width:var(--gcol-act);flex-shrink:0}
+.gh-party{width:var(--gcol-party);flex-shrink:0;justify-content:center}
+.gh-end{flex:0 0 var(--gcol-end)}
 .gh-lab{font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);cursor:pointer;user-select:none}
 .gh-lab:hover{color:var(--text)}
 .gh-lab.sorted{color:var(--accent)}
 .gh-lab.sorted::after{content:'▲';font-size:.6rem;margin-left:4px}
 .gh-lab.sorted.desc::after{content:'▼'}
-@media(max-width:880px){.guest-header{display:none}}
+/* Header only makes sense while rows stay single-line (>980px); below that
+   rows reflow, so hide the column header to avoid a misaligned grid. */
+@media(max-width:980px){.guest-header{display:none}}
 .guest-item{background:var(--glass-2);border:1px solid var(--glass-brd);border-radius:var(--radius-sm);box-shadow:var(--sh-card);padding:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;animation:slideIn .3s ease}
 .guest-item.rsvp-locked{opacity:.74}
 .guest-item.rsvp-locked .rsvp-toggle{opacity:1}
-.guest-num{font-family:var(--mono);font-size:.8rem;font-weight:600;color:#fff;background:var(--accent-grad);flex-shrink:0;width:30px;height:30px;border-radius:10px;display:grid;place-items:center}
+.guest-num{font-family:var(--mono);font-size:.8rem;font-weight:600;color:#fff;background:var(--accent-grad);flex-shrink:0;width:var(--gcol-num);height:30px;border-radius:10px;display:grid;place-items:center}
 .guest-name-wrap{flex:1;min-width:150px}
 .guest-name-wrap input.invited{color:var(--ok);font-weight:600}
 .honorific{width:92px;flex-shrink:0;font-size:.86rem;padding:10px 10px}
-.relationship{width:130px;flex-shrink:0;font-size:.86rem;padding:10px 10px}
-.reference{width:140px;flex-shrink:0;font-size:.86rem;padding:10px 12px}
-.invite-toggle{display:flex;align-items:center;gap:7px;flex-shrink:0;cursor:pointer;user-select:none;background:var(--glass);border:1px solid var(--glass-brd);border-radius:24px;padding:7px 12px;box-shadow:var(--sh-raise);font-family:var(--sans);transition:box-shadow .25s}
+.relationship{width:var(--gcol-rel);flex-shrink:0;font-size:.86rem;padding:10px 10px}
+.reference{width:var(--gcol-ref);flex-shrink:0;font-size:.86rem;padding:10px 12px}
+.invite-toggle{display:flex;align-items:center;justify-content:center;gap:7px;width:var(--gcol-act);flex-shrink:0;cursor:pointer;user-select:none;background:var(--glass);border:1px solid var(--glass-brd);border-radius:24px;padding:7px 12px;box-shadow:var(--sh-raise);font-family:var(--sans);transition:box-shadow .25s}
 .invite-toggle .track{width:30px;height:16px;border-radius:10px;border:1px solid var(--line);background:var(--field);position:relative;transition:border-color .25s,background .25s}
 .invite-toggle .track::after{content:'';position:absolute;top:1px;left:1px;width:12px;height:12px;border-radius:50%;background:var(--muted);transition:transform .25s,background .25s}
 .invite-toggle .it-icon{font-size:1.05rem;color:var(--muted);transition:color .25s}
@@ -316,7 +326,7 @@ html.dark select option{background:#1c1834;color:#f0eeff}
 .rsvp-toggle.on .track{border-color:var(--danger);background:color-mix(in srgb,var(--danger) 22%,transparent)}
 .rsvp-toggle.on .track::after{background:var(--danger)}
 .rsvp-toggle.on .it-icon,.rsvp-toggle.on .it-label{color:var(--danger)}
-.spinner-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.spinner-wrap{display:flex;align-items:center;justify-content:center;gap:10px;width:var(--gcol-party);flex-shrink:0}
 .spin-label{font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:700}
 .spinner{display:flex;align-items:center;border:1px solid var(--glass-brd);border-radius:24px;background:var(--glass);box-shadow:var(--sh-raise);overflow:hidden}
 .spin-btn{background:none;border:none;color:var(--accent);width:32px;height:34px;font-size:1.1rem;font-weight:700;cursor:pointer;display:grid;place-items:center;transition:background .15s}
