@@ -94,6 +94,27 @@ function addFood(){
 // ── Guests ──
 const HONORIFICS=['Mr.','Mrs.','Ms.','Dr.','Prof.','Shri','Smt.','Master','Miss','Rev.'];
 const RELATIONSHIPS=['Family','Relatives','Friends','Colleagues','Neighbours','Acquaintances','Other'];
+// References start prefilled and grow as new names are typed into any guest's
+// Reference field (see rebuildReferenceList, called from recalc()).
+const DEFAULT_REFERENCES=['Piyal Gupta','Anulekha Gupta','Rudraksha Gupta','Titas Bandopadhyay'];
+function referenceNames(){
+  const set=new Set(DEFAULT_REFERENCES);
+  document.querySelectorAll('.guest-item .reference').forEach(i=>{const v=i.value.trim();if(v)set.add(v);});
+  return [...set];
+}
+function rebuildReferenceList(){
+  const dl=document.getElementById('referenceList');
+  if(dl)dl.innerHTML=referenceNames().map(r=>`<option value="${esc(r)}"></option>`).join('');
+}
+// Render a live count breakdown (chips of label → head-count) into a container.
+function renderBreakdown(id,counts,order){
+  const el=$(id);if(!el)return;
+  let keys=Object.keys(counts);
+  if(order)keys=order.filter(k=>counts[k]).concat(keys.filter(k=>!order.includes(k)));
+  el.innerHTML=keys.length
+    ?keys.map(k=>`<span class="rel-chip"><span class="rc-lab">${esc(k)}</span><span class="rc-num">${counts[k]}</span></span>`).join('')
+    :'<span class="rel-empty">No guests yet</span>';
+}
 function addGuest(){
   const id=++guestId;
   const num=document.getElementById('guestList').children.length+1;
@@ -107,11 +128,12 @@ function addGuest(){
     <select class="honorific" onchange="recalc()">${opts}</select>
     <div class="guest-name-wrap"><input type="text" id="gname${id}" placeholder="Full name" oninput="recalc()"></div>
     <select class="relationship" onchange="recalc()" aria-label="Relationship">${relOpts}</select>
+    <input class="reference" list="referenceList" placeholder="Reference" oninput="recalc()" aria-label="Reference">
     <button type="button" class="invite-toggle" id="inv${id}" onclick="toggleInvite(${id})" aria-label="Invitation sent">
-      <span class="track"></span><span class="msi it-icon">mail</span>
+      <span class="track"></span><span class="msi it-icon">mail</span><span class="it-label">Invite</span>
     </button>
     <button type="button" class="invite-toggle rsvp-toggle" id="rsvp${id}" onclick="toggleRsvp(${id})" aria-label="RSVP confirmed">
-      <span class="track"></span><span class="msi it-icon">event_available</span>
+      <span class="track"></span><span class="msi it-icon">event_available</span><span class="it-label">RSVP</span>
     </button>
     <div class="spinner-wrap">
       <span class="spin-label">Party</span>

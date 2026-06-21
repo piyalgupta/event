@@ -52,6 +52,7 @@ function readGuest(gi){
     honorific:gi.querySelector('.honorific')?.value||'',
     name:gi.querySelector('.guest-name-wrap input')?.value||'',
     relationship:gi.querySelector('.relationship')?.value||'',
+    reference:gi.querySelector('.reference')?.value||'',
     invited:!!gi.querySelector('.invite-toggle:not(.rsvp-toggle).on'),
     rsvp:!!gi.querySelector('.rsvp-toggle.on'),
     party:(sv?.textContent)||'1',
