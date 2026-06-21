@@ -652,10 +652,10 @@
       "phone": "",
       "relationship": "Family",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782064423989
+  "updatedAt": 1782064432749
 }
