@@ -152,7 +152,7 @@
     {
       "honorific": "Mrs.",
       "name": "Mandira Lahiri",
-      "relationship": "Relatives",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038047035
+  "updatedAt": 1782038054345
 }
