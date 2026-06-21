@@ -341,7 +341,7 @@
     {
       "honorific": "Mr.",
       "name": "Dimpi and family",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038127124
+  "updatedAt": 1782038130716
 }
