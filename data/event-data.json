@@ -48,7 +48,7 @@
       "category": "Other",
       "qty": "92",
       "price": "5",
-      "sync": true
+      "sync": false
     }
   ],
   "guests": [
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782065846411
+  "updatedAt": 1782065850325
 }
