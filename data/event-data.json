@@ -260,7 +260,7 @@
     {
       "honorific": "Mr.",
       "name": "Rina Housemaid ",
-      "relationship": "Family",
+      "relationship": "Acquaintances",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038094350
+  "updatedAt": 1782038096900
 }
