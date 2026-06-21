@@ -3,7 +3,7 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "Sri Chaitanya Research Institute, 70B, Rash Behari Ave, Sahanagar, Kalighat, Kolkata, West Bengal 700026",
+  "venueAddr": "70B, Rash Behari Ave, Saha Nagar, Kalighat, Kolkata, West Bengal 700026",
   "venueContact": "Reception",
   "venuePhone": "+918981117728",
   "venueCost": "11000",
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782028532113
+  "updatedAt": 1782028594491
 }
