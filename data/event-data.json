@@ -37,7 +37,7 @@
       "name": "Water Bottle",
       "category": "Drinks",
       "qty": "85",
-      "price": ""
+      "price": "10"
     }
   ],
   "guests": [
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037667432
+  "updatedAt": 1782037677814
 }
