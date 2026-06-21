@@ -292,9 +292,13 @@ html.dark select option{background:#1a1630;color:#eceaff}
 .wa-link:hover{transform:translateY(-2px);color:#1ebe57}
 .wa-link .msi{font-size:1rem;color:#25D366}
 
+/* ── Summary side column + load-list dropdown ── */
+.summary-side{display:flex;flex-direction:column;gap:14px}
+#loadListSelect{flex:1;min-width:180px}
+
 /* ── Responsive ── */
 @media(min-width:981px){
-  :root{--gutter-x:clamp(56px,8vw,140px);--gutter-y:clamp(44px,7vh,88px)}
+  :root{--gutter-x:clamp(40px,4vw,80px);--gutter-y:clamp(44px,7vh,88px)}
   body{font-size:1.05rem}
   .brand,.counter{font-size:.76rem}
   label,.for-field label{font-size:.7rem}
@@ -313,8 +317,8 @@ html.dark select option{background:#1a1630;color:#eceaff}
   .tb-label{font-size:.98rem}
   .tb-val{font-size:1.06rem}
   .honorific,.relationship,.guest-num{font-size:.95rem}
-  .tabs,.tab-panel,
-  #p4>.page-head,#p4>.hr,#p4>.action-row,#p4>#saveStatus,#p4>.summary-list,#p4>.gh-connect{max-width:1120px}
+  .summary-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,3vw,52px);align-items:start}
+  .summary-grid .summary-list{max-width:none}
   .guest-item{gap:18px}
 }
 @media(min-width:681px) and (max-width:980px){

@@ -107,7 +107,7 @@ async function connectGitHub(){
   try{
     const res=await fetch(`https://api.github.com/repos/${GH_REPO}`,{headers:ghHeaders(token)});
     if(res.ok){
-      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);updateGhUI();startGhPoll();
+      ghConnected=true;localStorage.setItem(TOKEN_KEY,token);updateGhUI();startGhPoll();refreshListDropdown();
       setStatus('Connected ✓ — syncing with the repo…');
       await syncWithGitHub();
       return true;
@@ -195,8 +195,9 @@ async function saveAll(){
 // Save the whole event under a name → data/lists/<name>.json, and load any of
 // them back by that name. Needs a connected GitHub token (same one as autosync).
 const GH_LISTS_DIR='data/lists';
+const GH_LIST_INDEX=GH_LISTS_DIR+'/_index.json';   // {slug:"friendly name"} so the dropdown shows real names
 const listSlug=s=>String(s).trim().replace(/[^a-z0-9]+/gi,'-').replace(/^-+|-+$/g,'').toLowerCase()||'list';
-const ghListApi=name=>`https://api.github.com/repos/${GH_REPO}/contents/${GH_LISTS_DIR}/${listSlug(name)}.json`;
+const ghContentApi=path=>`https://api.github.com/repos/${GH_REPO}/contents/${path}`;
 async function ensureToken(){
   let t=localStorage.getItem(TOKEN_KEY);
   if(ghConnected&&t)return t;
@@ -204,41 +205,64 @@ async function ensureToken(){
   if(t&&await connectGitHub())return localStorage.getItem(TOKEN_KEY);
   return null;
 }
+// Read / write a JSON file in the repo (sha-aware so updates don't 409).
+async function ghGetJson(path,token){
+  try{
+    const r=await fetch(ghContentApi(path)+'?ts='+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
+    if(r.ok)return JSON.parse(decodeURIComponent(escape(atob((await r.json()).content))));
+  }catch(e){}
+  return null;
+}
+async function ghPutJson(path,obj,message,token){
+  const api=ghContentApi(path);
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(obj,null,2))));
+  const sha=await ghCurrentSha(api,token);
+  return fetch(api,{method:'PUT',headers:{...ghHeaders(token),'Content-Type':'application/json'},
+    body:JSON.stringify({message,content,sha})});
+}
 async function saveNamedList(){
   const name=prompt('Name this saved list (e.g. "Wedding — final guests"):');
   if(!name||!name.trim())return;
   const token=await ensureToken();
   if(!token){alert('Add a GitHub token on the Summary page first to save lists into the repo.');return;}
-  const api=ghListApi(name);
-  const content=btoa(unescape(encodeURIComponent(JSON.stringify({...collectData(),listName:name.trim()},null,2))));
+  const slug=listSlug(name);
   try{
-    const sha=await ghCurrentSha(api,token);
-    const res=await fetch(api,{method:'PUT',headers:{...ghHeaders(token),'Content-Type':'application/json'},
-      body:JSON.stringify({message:'Save list: '+name.trim(),content,sha})});
-    if(res.ok)setStatus('Saved list “'+name.trim()+'” to the repo ✓ '+new Date().toLocaleTimeString('en-IN'));
-    else{const e=await res.json().catch(()=>({}));setStatus('Couldn’t save list ('+(e.message||res.status)+').');}
+    const res=await ghPutJson(`${GH_LISTS_DIR}/${slug}.json`,{...collectData(),listName:name.trim()},'Save list: '+name.trim(),token);
+    if(!res.ok){const e=await res.json().catch(()=>({}));setStatus('Couldn’t save list ('+(e.message||res.status)+').');return;}
+    const idx=(await ghGetJson(GH_LIST_INDEX,token))||{};
+    idx[slug]=name.trim();
+    await ghPutJson(GH_LIST_INDEX,idx,'Update saved-list index',token);
+    setStatus('Saved list “'+name.trim()+'” to the repo ✓ '+new Date().toLocaleTimeString('en-IN'));
+    refreshListDropdown();
   }catch(e){setStatus('GitHub unreachable — list not saved.');}
 }
+// Files are named by slug; the index maps slug → the name you typed. Falls back
+// to bare filenames if the index is missing (lists saved before it existed).
 async function listSavedLists(token){
   try{
-    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_LISTS_DIR}?ts=`+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
-    if(r.ok)return (await r.json()).filter(f=>/\.json$/.test(f.name)).map(f=>f.name.replace(/\.json$/,''));
+    const r=await fetch(ghContentApi(GH_LISTS_DIR)+'?ts='+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
+    if(r.ok)return (await r.json()).filter(f=>/\.json$/.test(f.name)&&f.name!=='_index.json').map(f=>f.name.replace(/\.json$/,''));
   }catch(e){}
   return [];
 }
-async function loadNamedList(){
+// Fill the Load dropdown with the saved lists' friendly names (value = slug).
+async function refreshListDropdown(){
+  const sel=$('loadListSelect');if(!sel)return;
+  const token=await ensureToken();if(!token)return;
+  let entries=Object.entries((await ghGetJson(GH_LIST_INDEX,token))||{});
+  if(!entries.length)entries=(await listSavedLists(token)).map(s=>[s,s]);
+  sel.innerHTML='<option value="">'+(entries.length?'Load a saved list…':'No saved lists yet')+'</option>'
+    +entries.map(([slug,nm])=>`<option value="${esc(slug)}">${esc(nm)}</option>`).join('');
+}
+async function loadSelectedList(slug){
+  if(!slug)return;
   const token=await ensureToken();
-  if(!token){alert('Add a GitHub token on the Summary page first to load lists from the repo.');return;}
-  const names=await listSavedLists(token);
-  const name=prompt(names.length?'Load which saved list?\n\nAvailable:\n• '+names.join('\n• ')+'\n\nType a name:':'No saved lists found yet. Save one first.');
-  if(!name||!name.trim())return;
-  try{
-    const r=await fetch(ghListApi(name)+'?ts='+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
-    if(!r.ok){alert('No saved list named “'+name.trim()+'”.');return;}
-    const data=JSON.parse(decodeURIComponent(escape(atob((await r.json()).content))));
-    applyData(data);saveLocal(true);
-    setStatus('Loaded list “'+(data.listName||name.trim())+'” ✓');
-  }catch(e){alert('Couldn’t load that list.');}
+  if(!token){alert('Add a GitHub token on the Summary page first to load lists.');return;}
+  const data=await ghGetJson(`${GH_LISTS_DIR}/${slug}.json`,token);
+  if(!data){alert('Couldn’t load that list.');return;}
+  applyData(data);saveLocal(true);
+  setStatus('Loaded list “'+(data.listName||slug)+'” ✓');
+  const sel=$('loadListSelect');if(sel)sel.value='';
 }
 // ── Cross-device / cross-tab live sync ────────────────────────────────────
 // (1) Poll GitHub every 30 s while connected to catch changes from other devices.
