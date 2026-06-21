@@ -215,7 +215,7 @@
     {
       "honorific": "Mr.",
       "name": "Anju  Banerjee",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038077387
+  "updatedAt": 1782038082485
 }
