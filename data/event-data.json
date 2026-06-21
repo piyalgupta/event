@@ -376,7 +376,7 @@
       "name": "Ruby",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": true,
       "party": "1"
     },
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782065961000
+  "updatedAt": 1782065966436
 }
