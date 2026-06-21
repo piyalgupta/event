@@ -242,7 +242,7 @@
     {
       "honorific": "Mr.",
       "name": "Swagata",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -251,7 +251,7 @@
     {
       "honorific": "Mr.",
       "name": "Dola",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038087147
+  "updatedAt": 1782038092660
 }
