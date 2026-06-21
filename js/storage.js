@@ -11,7 +11,7 @@ function collectData(){
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
     catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),syncPlates,
-    rsvpNotes:val('rsvpNotes'),waImage:val('waImage'),waCC:val('waCC'),waMsg:val('waMsg'),
+    rsvpNotes:val('rsvpNotes'),waSender:val('waSender'),waImage:val('waImage'),waCC:val('waCC'),waMsg:val('waMsg'),
     food,guests,updatedAt:Date.now()};
 }
 // True while applyData is rebuilding the form from a payload. saveLocal honours
@@ -25,7 +25,7 @@ function applyData(d){
   try{applyDataInner(d);}finally{applyingData=false;}
 }
 function applyDataInner(d){
-  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv','waImage','waCC','waMsg'].forEach(k=>setVal(k,d[k]));
+  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv','waSender','waImage','waCC','waMsg'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
   if(d.eventType){
     const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
