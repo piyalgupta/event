@@ -478,10 +478,13 @@ html.dark select option{background:#1c1834;color:#f0eeff}
   html{scroll-behavior:auto}
 }
 @media print{
-  @page{margin:14mm}
+  @page{size:A4;margin:16mm}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body::before,.app-header,.page-nav,.brand,.counter,.scroll-cue,.add-btn,#pages,.theme-toggle{display:none!important}
-  body{background:#fff}
+  /* Always print on clean white paper, even when the app is in dark mode —
+     otherwise html.dark's dark background frames the page in black. */
+  html,html.dark{background:#fff!important;color-scheme:light}
+  body{background:#fff!important;margin:0}
   #printReport{display:block!important;color:#23222e;background:#fff;margin:0 auto;font-family:var(--sans);font-size:11px;line-height:1.5}
 
   /* Accent tokens for the report */
