@@ -4,22 +4,22 @@
 :root{
   color-scheme:light;
   /* ── Glass palette — light · indigo → violet → rose, teal spot ── */
-  --ink:#1d1b2e;
-  --muted:#6a6688;
-  --line:rgba(104,96,158,.18);
-  --accent:#5b63f5;          /* indigo */
-  --accent2:#e8519b;         /* rose   */
-  --accent3:#0fb5c4;         /* teal   */
-  --accent-grad:linear-gradient(120deg,#6a5cff 0%,#c850e8 38%,#ff5d8f 70%,#ff9d3d 100%);
-  --accent-soft:rgba(91,99,245,.12);
-  --glow:rgba(99,90,245,.55);
-  --danger:#e5484d;
-  --ok:#16a34a;
+  --ink:#15142b;
+  --muted:#56527a;
+  --line:rgba(90,82,150,.22);
+  --accent:#5751e8;          /* indigo */
+  --accent2:#d83f9c;         /* rose   */
+  --accent3:#0a9aa8;         /* teal   */
+  --accent-grad:linear-gradient(120deg,#5b54f0 0%,#9b4dde 40%,#e0498f 72%,#f6913d 100%);
+  --accent-soft:rgba(87,81,232,.13);
+  --glow:rgba(87,81,232,.5);
+  --danger:#dc3b40;
+  --ok:#15924a;
   /* glass surfaces */
-  --glass:rgba(255,255,255,.46);
-  --glass-2:rgba(255,255,255,.64);
-  --glass-brd:rgba(255,255,255,.70);
-  --field:rgba(255,255,255,.56);
+  --glass:rgba(255,255,255,.58);
+  --glass-2:rgba(255,255,255,.74);
+  --glass-brd:rgba(255,255,255,.82);
+  --field:rgba(255,255,255,.78);
   /* neomorphic depth */
   --sh:34px 34px 68px rgba(66,62,156,.15),-22px -22px 56px rgba(255,255,255,.64);
   --sh-card:0 22px 50px -22px rgba(54,52,148,.40),inset 0 1px 0 rgba(255,255,255,.66);
@@ -58,21 +58,21 @@ body::before{
 /* ── Dark theme ── */
 html.dark{
   color-scheme:dark;
-  --ink:#eceaff;
-  --muted:#9b96bf;
-  --line:rgba(146,136,232,.15);
-  --accent:#8b87ff;          /* indigo */
-  --accent2:#ff7ec0;         /* rose   */
-  --accent3:#34d6df;         /* teal   */
-  --accent-grad:linear-gradient(120deg,#8b87ff 0%,#cf7bf2 38%,#ff7eb0 70%,#ffb469 100%);
-  --accent-soft:rgba(139,135,255,.16);
-  --glow:rgba(139,135,255,.55);
-  --danger:#ff7a7f;
-  --ok:#56d98a;
-  --glass:rgba(33,29,57,.52);
-  --glass-2:rgba(43,37,71,.64);
-  --glass-brd:rgba(146,132,252,.22);
-  --field:rgba(25,21,45,.56);
+  --ink:#f0eeff;
+  --muted:#aaa5d2;
+  --line:rgba(152,142,238,.20);
+  --accent:#9d90ff;          /* indigo */
+  --accent2:#ff8ac9;         /* rose   */
+  --accent3:#46dbe4;         /* teal   */
+  --accent-grad:linear-gradient(120deg,#9d90ff 0%,#cf86f2 40%,#ff8ab8 72%,#ffbf74 100%);
+  --accent-soft:rgba(157,144,255,.20);
+  --glow:rgba(157,144,255,.55);
+  --danger:#ff858a;
+  --ok:#5fe093;
+  --glass:rgba(30,27,52,.58);
+  --glass-2:rgba(44,39,72,.74);
+  --glass-brd:rgba(157,144,255,.26);
+  --field:rgba(34,29,58,.72);
   --sh:30px 30px 66px rgba(0,0,0,.46),-20px -20px 52px rgba(118,104,220,.08);
   --sh-card:0 26px 56px -22px rgba(0,0,0,.66),inset 0 1px 0 rgba(176,162,255,.16);
   --sh-raise:6px 6px 14px rgba(0,0,0,.42),-6px -6px 14px rgba(122,108,218,.10),inset 0 1px 0 rgba(176,162,255,.14);
@@ -87,7 +87,7 @@ html.dark body::before{
     radial-gradient(48% 50% at 12% 88%,rgba(120,210,230,.30),transparent 70%),
     linear-gradient(135deg,#15101f 0%,#1a1426 48%,#100f1e 100%);
 }
-html.dark input::placeholder,html.dark textarea::placeholder{color:#7a7390}
+html.dark input::placeholder,html.dark textarea::placeholder{color:#8c86a6}
 body,input,select,textarea,.btn,.theme-toggle,.tab-panel,.glass-card{transition:background-color .4s ease,color .4s ease,border-color .4s ease,box-shadow .4s ease}
 
 /* ── Floating theme toggle ── */
@@ -223,13 +223,13 @@ input[type=checkbox]{width:auto;border:none;padding:0;box-shadow:none;accent-col
    vertically off-centre and the field taller than siblings — normalise it. */
 input[type=datetime-local]{-webkit-appearance:none;appearance:none;text-align:left;min-height:46px;line-height:1.2}
 input[type=datetime-local]::-webkit-date-and-time-value{text-align:left;margin:0}
-input::placeholder,textarea::placeholder{color:#a59fb8}
+input::placeholder,textarea::placeholder{color:#8d87a6}
 textarea{resize:vertical;min-height:60px;line-height:1.55}
 select{cursor:pointer}
 /* Native dropdown popups can't be translucent — give options a solid,
    theme-matched backing so they stay legible (esp. in dark mode). */
-select option{background:#fff;color:#1d1b2e}
-html.dark select option{background:#1a1630;color:#eceaff}
+select option{background:#fff;color:#15142b}
+html.dark select option{background:#1c1834;color:#f0eeff}
 
 /* ── Buttons ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--glass-brd);background:var(--glass-2);color:var(--ink);padding:12px 22px;font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--sans);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--sh-raise);transition:transform .2s,box-shadow .2s,color .2s}
