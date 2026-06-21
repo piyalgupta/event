@@ -225,7 +225,7 @@
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782065958438
+  "updatedAt": 1782065961000
 }
