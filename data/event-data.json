@@ -45,7 +45,7 @@
     },
     {
       "honorific": "Mr.",
-      "name": "Sh",
+      "name": "Shanu",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -53,5 +53,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782032671488
+  "updatedAt": 1782032682015
 }
