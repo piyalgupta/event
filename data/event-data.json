@@ -81,7 +81,7 @@
     },
     {
       "honorific": "Mr.",
-      "name": "Kushal Majumds",
+      "name": "Kushal Majumdar",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -89,5 +89,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782032932290
+  "updatedAt": 1782032935706
 }
