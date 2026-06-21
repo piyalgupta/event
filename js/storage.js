@@ -6,16 +6,17 @@
 // ── JSON data: collect / apply / autosave / export / import ──
 function collectData(){
   const food=foodEntries().map(f=>({name:f.name,category:f.category,qty:f.qtyRaw,price:f.priceRaw}));
-  const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,relationship:g.relationship,reference:g.reference,invited:g.invited,rsvp:g.rsvp,party:g.party}));
+  const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,phone:g.phone,relationship:g.relationship,reference:g.reference,invited:g.invited,rsvp:g.rsvp,party:g.party}));
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
     catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),syncPlates,
-    rsvpNotes:val('rsvpNotes'),food,guests,updatedAt:Date.now()};
+    rsvpNotes:val('rsvpNotes'),waImage:val('waImage'),waCC:val('waCC'),waMsg:val('waMsg'),
+    food,guests,updatedAt:Date.now()};
 }
 function applyData(d){
   if(!d)return;
-  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv'].forEach(k=>setVal(k,d[k]));
+  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv','waImage','waCC','waMsg'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
   if(d.eventType){
     const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
@@ -39,6 +40,7 @@ function applyData(d){
     const gi=document.getElementById('guestList').lastElementChild;
     if(gi.querySelector('.honorific'))gi.querySelector('.honorific').value=g.honorific||'Mr.';
     gi.querySelector('.guest-name-wrap input').value=g.name||'';
+    if(gi.querySelector('.guest-phone'))gi.querySelector('.guest-phone').value=g.phone||'';
     if(gi.querySelector('.relationship')&&g.relationship)gi.querySelector('.relationship').value=g.relationship;
     if(gi.querySelector('.reference'))gi.querySelector('.reference').value=g.reference||'';
     if(g.invited)toggleInvite(gi.id.replace('guest',''));
@@ -187,6 +189,56 @@ async function saveAll(){
   if(ghConnected){pushToGitHub();return;}
   if((($('ghTokenInput')?.value)||'').trim()){if(await connectGitHub())return;}
   exportJSON();setStatus('Saved in this browser + downloaded JSON (connect a GitHub token above to auto-sync).');
+}
+
+// ── Named saved lists (versioned copies kept in the repo) ──────────────────
+// Save the whole event under a name → data/lists/<name>.json, and load any of
+// them back by that name. Needs a connected GitHub token (same one as autosync).
+const GH_LISTS_DIR='data/lists';
+const listSlug=s=>String(s).trim().replace(/[^a-z0-9]+/gi,'-').replace(/^-+|-+$/g,'').toLowerCase()||'list';
+const ghListApi=name=>`https://api.github.com/repos/${GH_REPO}/contents/${GH_LISTS_DIR}/${listSlug(name)}.json`;
+async function ensureToken(){
+  let t=localStorage.getItem(TOKEN_KEY);
+  if(ghConnected&&t)return t;
+  t=(($('ghTokenInput')?.value)||'').trim();
+  if(t&&await connectGitHub())return localStorage.getItem(TOKEN_KEY);
+  return null;
+}
+async function saveNamedList(){
+  const name=prompt('Name this saved list (e.g. "Wedding — final guests"):');
+  if(!name||!name.trim())return;
+  const token=await ensureToken();
+  if(!token){alert('Add a GitHub token on the Summary page first to save lists into the repo.');return;}
+  const api=ghListApi(name);
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify({...collectData(),listName:name.trim()},null,2))));
+  try{
+    const sha=await ghCurrentSha(api,token);
+    const res=await fetch(api,{method:'PUT',headers:{...ghHeaders(token),'Content-Type':'application/json'},
+      body:JSON.stringify({message:'Save list: '+name.trim(),content,sha})});
+    if(res.ok)setStatus('Saved list “'+name.trim()+'” to the repo ✓ '+new Date().toLocaleTimeString('en-IN'));
+    else{const e=await res.json().catch(()=>({}));setStatus('Couldn’t save list ('+(e.message||res.status)+').');}
+  }catch(e){setStatus('GitHub unreachable — list not saved.');}
+}
+async function listSavedLists(token){
+  try{
+    const r=await fetch(`https://api.github.com/repos/${GH_REPO}/contents/${GH_LISTS_DIR}?ts=`+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
+    if(r.ok)return (await r.json()).filter(f=>/\.json$/.test(f.name)).map(f=>f.name.replace(/\.json$/,''));
+  }catch(e){}
+  return [];
+}
+async function loadNamedList(){
+  const token=await ensureToken();
+  if(!token){alert('Add a GitHub token on the Summary page first to load lists from the repo.');return;}
+  const names=await listSavedLists(token);
+  const name=prompt(names.length?'Load which saved list?\n\nAvailable:\n• '+names.join('\n• ')+'\n\nType a name:':'No saved lists found yet. Save one first.');
+  if(!name||!name.trim())return;
+  try{
+    const r=await fetch(ghListApi(name)+'?ts='+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
+    if(!r.ok){alert('No saved list named “'+name.trim()+'”.');return;}
+    const data=JSON.parse(decodeURIComponent(escape(atob((await r.json()).content))));
+    applyData(data);saveLocal(true);
+    setStatus('Loaded list “'+(data.listName||name.trim())+'” ✓');
+  }catch(e){alert('Couldn’t load that list.');}
 }
 // ── Cross-device / cross-tab live sync ────────────────────────────────────
 // (1) Poll GitHub every 30 s while connected to catch changes from other devices.

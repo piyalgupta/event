@@ -8,7 +8,7 @@
   --accent:#5b63f5;          /* indigo */
   --accent2:#e8519b;         /* rose   */
   --accent3:#0fb5c4;         /* teal   */
-  --accent-grad:linear-gradient(120deg,#5b63f5 0%,#8b5cf6 48%,#ec4899 100%);
+  --accent-grad:linear-gradient(120deg,#6a5cff 0%,#c850e8 38%,#ff5d8f 70%,#ff9d3d 100%);
   --accent-soft:rgba(91,99,245,.12);
   --glow:rgba(99,90,245,.55);
   --danger:#e5484d;
@@ -44,11 +44,11 @@ body{
 body::before{
   content:'';position:fixed;inset:0;z-index:-2;
   background:
-    radial-gradient(42% 48% at 14% 18%,rgba(112,116,255,.50),transparent 70%),
-    radial-gradient(44% 46% at 86% 12%,rgba(240,126,192,.46),transparent 70%),
-    radial-gradient(48% 50% at 82% 84%,rgba(86,210,222,.46),transparent 70%),
-    radial-gradient(46% 52% at 16% 92%,rgba(176,150,255,.44),transparent 70%),
-    linear-gradient(135deg,#f1f2ff 0%,#fbeff7 48%,#ecfbff 100%);
+    radial-gradient(42% 48% at 14% 18%,rgba(124,108,255,.52),transparent 70%),
+    radial-gradient(44% 46% at 86% 12%,rgba(255,126,182,.50),transparent 70%),
+    radial-gradient(46% 48% at 88% 86%,rgba(255,196,92,.48),transparent 70%),
+    radial-gradient(48% 50% at 12% 88%,rgba(86,214,226,.46),transparent 70%),
+    linear-gradient(135deg,#fef3ff 0%,#f3f1ff 40%,#fff6ec 74%,#ecfdff 100%);
   animation:bgshift 26s ease-in-out infinite alternate;
 }
 @keyframes bgshift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-1%)}}
@@ -62,7 +62,7 @@ html.dark{
   --accent:#8b87ff;          /* indigo */
   --accent2:#ff7ec0;         /* rose   */
   --accent3:#34d6df;         /* teal   */
-  --accent-grad:linear-gradient(120deg,#8b87ff 0%,#b47cf6 48%,#ff7ec0 100%);
+  --accent-grad:linear-gradient(120deg,#8b87ff 0%,#cf7bf2 38%,#ff7eb0 70%,#ffb469 100%);
   --accent-soft:rgba(139,135,255,.16);
   --glow:rgba(139,135,255,.55);
   --danger:#ff7a7f;
@@ -79,11 +79,11 @@ html.dark{
 html.dark{background:#100e1c}
 html.dark body::before{
   background:
-    radial-gradient(42% 48% at 14% 18%,rgba(106,92,255,.40),transparent 70%),
-    radial-gradient(44% 46% at 86% 12%,rgba(224,76,156,.32),transparent 70%),
-    radial-gradient(48% 50% at 82% 84%,rgba(40,170,200,.34),transparent 70%),
-    radial-gradient(46% 52% at 16% 92%,rgba(150,92,236,.30),transparent 70%),
-    linear-gradient(135deg,#120f20 0%,#191426 48%,#0d1320 100%);
+    radial-gradient(42% 48% at 14% 18%,rgba(120,100,255,.42),transparent 70%),
+    radial-gradient(44% 46% at 86% 12%,rgba(255,96,170,.34),transparent 70%),
+    radial-gradient(46% 48% at 88% 86%,rgba(255,176,80,.30),transparent 70%),
+    radial-gradient(48% 50% at 12% 88%,rgba(120,210,230,.30),transparent 70%),
+    linear-gradient(135deg,#15101f 0%,#1a1426 48%,#100f1e 100%);
 }
 html.dark input::placeholder,html.dark textarea::placeholder{color:#7a7390}
 body,input,select,textarea,.btn,.theme-toggle,.tab-panel,.glass-card{transition:background-color .4s ease,color .4s ease,border-color .4s ease,box-shadow .4s ease}
@@ -124,7 +124,7 @@ html.dark .theme-toggle .icon-moon{display:block}
 .page{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vh,30px);padding:calc(var(--gutter-y) + env(safe-area-inset-top)) calc(var(--gutter-x) + env(safe-area-inset-right)) calc(var(--gutter-y) + env(safe-area-inset-bottom)) calc(var(--gutter-x) + env(safe-area-inset-left));position:relative}
 
 /* ── Glass card surface (shared) ── */
-.tab-panel.active,.glass-card,.summary-list,.gh-connect,.guest-summary,.food-total{
+.tab-panel.active,.glass-card,.summary-list,.gh-connect,.guest-summary,.food-total,.wa-panel{
   background:var(--glass);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
   border:1px solid var(--glass-brd);border-radius:var(--radius);box-shadow:var(--sh-card)}
 
@@ -278,6 +278,20 @@ html.dark select option{background:#1a1630;color:#eceaff}
 .gh-connect{padding:18px 22px;max-width:580px}
 .gh-connect label{margin-bottom:10px}
 
+/* ── Guest phone field ── */
+.guest-phone{width:150px;flex-shrink:0;font-size:.86rem;padding:10px 12px}
+
+/* ── WhatsApp invite panel ── */
+.wa-panel{display:flex;flex-direction:column;gap:14px;padding:clamp(18px,3vw,26px);margin-top:2px}
+.wa-head{font-family:var(--serif);font-size:1.25rem;font-weight:600;display:flex;align-items:center;gap:9px}
+.wa-head .msi{font-size:1.55rem;color:#25D366}
+.wa-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.wa-note{font-size:.72rem;color:var(--muted);flex:1;min-width:220px;line-height:1.5}
+.wa-list{display:flex;flex-wrap:wrap;gap:8px}
+.wa-link{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-brd);background:var(--glass-2);border-radius:24px;padding:7px 14px;font-size:.82rem;font-weight:600;color:var(--ink);text-decoration:none;box-shadow:var(--sh-raise);transition:transform .2s,color .2s}
+.wa-link:hover{transform:translateY(-2px);color:#1ebe57}
+.wa-link .msi{font-size:1rem;color:#25D366}
+
 /* ── Responsive ── */
 @media(min-width:981px){
   :root{--gutter-x:clamp(56px,8vw,140px);--gutter-y:clamp(44px,7vh,88px)}
@@ -328,7 +342,7 @@ html.dark select option{background:#1a1630;color:#eceaff}
   .map-preview{height:180px}
   .action-row{gap:10px}
   .action-row .btn{flex:1 1 calc(50% - 5px);padding:14px}
-  .guest-name-wrap{flex-basis:100%}
+  .guest-name-wrap,.guest-phone{flex-basis:100%}
   .guest-item{gap:12px}
 }
 @media(max-width:400px){

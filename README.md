@@ -20,6 +20,10 @@ This is a static site with no backend, so data can't auto-write into the GitHub 
 - **Autosave** — every change is saved to the browser's `localStorage`, so reloading or closing the tab doesn't lose data.
 - **Download JSON** (Summary page) — exports the full event as a `.json` file matching the schema in `data/sample-event.json`. Commit that file to this repo (e.g. under `data/`) to keep a permanent, version-controlled copy.
 - **Load JSON** (Summary page) — re-imports any previously downloaded `.json` file, fully restoring venue, food, guests and notes.
+- **Save / Load List by name** (Summary page · ☁️ icons) — with a GitHub token connected, saves the whole event under a name you type into `data/lists/<name>.json` in the repo, and loads any of them back by name. Use it to keep several named guest lists side by side.
+
+## Guests & WhatsApp invites
+Each guest now has a **phone number** field. The Guests page has an *Invite guests on WhatsApp* panel: type a message (use `{name}` to personalise) and an optional image link, then tap a guest — or “Open all” — to launch WhatsApp pre-filled via `wa.me` click-to-chat. The image shows as a link preview. Sending a real **file attachment to every number automatically** requires the WhatsApp Business (Meta Cloud) API — a token, phone-number ID and an approved template — which a static site can't do alone; ask the maintainer to wire that path if needed.
 
 ## Responsive design
 Layout uses fluid `clamp()` sizing and breakpoints for phones (≤680px), tablets (681–980px) and short/landscape screens, plus `env(safe-area-inset-*)` so content clears notches in landscape. Inputs use 16px font on mobile to prevent iOS auto-zoom.

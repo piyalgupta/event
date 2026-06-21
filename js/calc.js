@@ -29,6 +29,7 @@ function recalc(){
   renderBreakdown('relBreakdown',relCount,RELATIONSHIPS);
   renderBreakdown('refBreakdown',refCount);
   rebuildReferenceList();
+  if(typeof waBuildList==='function')waBuildList();
 
   // Food — when "sync plates" is on each row tracks the guest head-count;
   // the per-row line total is written back so the live cost stays in sync.
