@@ -106,6 +106,17 @@ function isMeaningful(d){
   if((d.guests||[]).some(g=>(g.name||'').trim()))return true;
   return false;
 }
+// True when two payloads carry the same event content — everything except the
+// volatile updatedAt timestamp. Lets the sync layer tell "genuinely newer remote
+// data" apart from "our own last save bouncing back", so it only tears down and
+// rebuilds the form when something actually changed.
+function sameEventContent(a,b){
+  if(!a||!b)return false;
+  try{
+    const strip=o=>{const c={...o};delete c.updatedAt;return JSON.stringify(c);};
+    return strip(a)===strip(b);
+  }catch(e){return false;}
+}
 async function connectGitHub(){
   const inp=$('ghTokenInput');
   const token=(inp&&inp.value||'').trim();
@@ -139,6 +150,17 @@ async function syncWithGitHub(){
     const local=loadLocal();
     const lt=(local&&+local.updatedAt)||0,rt=(remote&&+remote.updatedAt)||0;
     if(remote&&(!isMeaningful(local)||(isMeaningful(remote)&&rt>=lt))){
+      // The 30s poll (and tab-focus pull) re-fetches the repo copy, which after
+      // our own push has an updatedAt equal to local — so rt>=lt stays true and
+      // we'd re-apply our own data forever. Re-applying calls applyData(), which
+      // wipes #guestList / #foodList and rebuilds every row, stealing focus and
+      // resetting in-progress edits every 30 seconds. Skip the rebuild when the
+      // remote payload already matches what this device shows; only rebuild on a
+      // genuine change from another device.
+      if(sameEventContent(remote,collectData())){
+        setStatus('In sync with GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));
+        return;
+      }
       ghSuppressPush=true;
       applyData(remote);
       try{localStorage.setItem(STORAGE_KEY,JSON.stringify(remote));}catch(e){}
@@ -301,6 +323,9 @@ window.addEventListener('storage', e => {
   if (e.key !== STORAGE_KEY) return;
   try {
     const fresh = JSON.parse(e.newValue);
-    if (fresh) applyData(fresh);
+    // Only rebuild when the other tab actually changed something — a save that
+    // differs only by its timestamp would otherwise wipe and rebuild this tab's
+    // form, throwing away the user's current focus/edits for no reason.
+    if (fresh && !sameEventContent(fresh, collectData())) applyData(fresh);
   } catch (_) {}
 });
