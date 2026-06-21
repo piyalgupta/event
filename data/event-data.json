@@ -1,7 +1,7 @@
 {
   "organizedFor": "Pradip Kumar Gupta",
   "eventType": "Shraddha",
-  "eventDate": "2026-06-28T10:00",
+  "eventDate": "2026-06-28T10:30",
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
@@ -13,7 +13,7 @@
   "catererPhone": "+91 6292322041",
   "foodAdv": "",
   "rsvpNotes": "",
-  "locked": false,
+  "locked": true,
   "food": [
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782066659452
+  "updatedAt": 1782066671415
 }
