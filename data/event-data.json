@@ -170,7 +170,7 @@
     {
       "honorific": "Mr.",
       "name": "Uttam De Roy",
-      "relationship": "Relatives",
+      "relationship": "Neighbours",
       "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038056988
+  "updatedAt": 1782038060716
 }
