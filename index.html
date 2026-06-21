@@ -15,33 +15,33 @@
 
 <div id="printReport"></div>
 
-<div class="brand">Life Events</div>
-<div class="counter" id="pageCounter">01 — 03</div>
+<!-- ── App header : brand + section menu ── -->
+<header class="app-header">
+  <div class="ah-brand">Life Events</div>
+  <nav class="ah-menu" id="appMenu" aria-label="Sections">
+    <button class="ah-link active" data-view="venue" onclick="showView('venue')">Venue</button>
+    <button class="ah-link" data-view="food" onclick="showView('food')">Food &amp; Arrangement</button>
+    <button class="ah-link" data-view="guests" onclick="showView('guests')">Guests</button>
+    <button class="ah-link" data-view="dashboard" onclick="showView('dashboard')">Dashboard</button>
+    <button class="ah-link" data-view="summary" onclick="showView('summary')">Summary</button>
+  </nav>
+  <div class="ah-actions">
+    <button class="ah-icon" id="lockToggle" type="button" onclick="toggleLock()" aria-label="Lock Venue &amp; Food" title="Lock Venue &amp; Food sections"><span class="msi">lock_open</span></button>
+  </div>
+</header>
+
 <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle dark / light">
   <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.5M12 19.5V22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M2 12h2.5M19.5 12H22M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></svg>
   <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.3 6.3 0 0 0 10.5 10.5z"/></svg>
 </button>
-<nav class="page-nav" id="pageNav" aria-label="Page navigation">
-  <button data-i="0" class="active" aria-label="Cover"></button>
-  <button data-i="1" aria-label="Planner"></button>
-  <button data-i="2" aria-label="Summary"></button>
-  <button data-i="3" aria-label="Dashboard"></button>
-</nav>
 
-<div id="pages">
+<main id="pages">
 
-<!-- ── PAGE 0 : COVER ── -->
-<section class="page hero" id="p0">
-  <div class="hero-inner">
-    <p class="eyebrow reveal">Life Events Planner</p>
-    <h1 class="hero-title reveal">Plan every milestone<br>with quiet precision.</h1>
-    <p class="hero-sub reveal">From first breath to final farewell — venue, food and guests, organised in one calm place.</p>
-    <div class="for-field reveal">
-      <label>This event is being organised for</label>
-      <input type="text" id="organizedFor" placeholder="e.g. Aarav's First Birthday, or Riya &amp; Karan's Wedding" oninput="recalc()">
-    </div>
-    <div class="event-select-wrap reveal">
-      <label for="eventSelect">Type of event</label>
+<!-- ── VIEW : VENUE ── -->
+<section class="view active" id="view-venue">
+  <div class="event-meta">
+    <div class="em-for"><label>This event is being organised for</label><input type="text" id="organizedFor" placeholder="e.g. Aarav's First Birthday, or Riya &amp; Karan's Wedding" oninput="recalc()"></div>
+    <div><label for="eventSelect">Type of event</label>
       <select id="eventSelect" onchange="setEvent(this.value)" aria-label="Type of event">
         <option value="Birthday">Birthday</option>
         <option value="Marriage">Marriage</option>
@@ -55,25 +55,13 @@
       </select>
     </div>
   </div>
-  <div class="scroll-cue"><span></span>Scroll</div>
-</section>
-
-<!-- ── PLANNER : Venue / Food / Guests as three interconnected tab views ── -->
-<section class="page planner" id="planner">
-  <div class="tabs reveal" role="tablist" aria-label="Planner sections">
-    <button class="tab active" id="tab-venue-btn" role="tab" aria-controls="tab-venue" aria-selected="true" onclick="showTab('venue')">Venue</button>
-    <button class="tab" id="tab-food-btn" role="tab" aria-controls="tab-food" aria-selected="false" onclick="showTab('food')">Food</button>
-    <button class="tab" id="tab-guests-btn" role="tab" aria-controls="tab-guests" aria-selected="false" onclick="showTab('guests')">Guests</button>
-  </div>
-
-  <!-- Venue view -->
-  <div class="tab-panel active" id="tab-venue" role="tabpanel" aria-labelledby="tab-venue-btn">
-  <div class="page-head reveal">
+  <div class="page-head">
     <div class="page-num">01</div>
     <div><div class="page-title">Venue &amp; Booking</div><div class="page-sub">Location, address, contact and cost</div></div>
     <div class="page-badge" id="venueCostBadge">₹ 0</div>
   </div>
   <div class="hr"></div>
+  <div class="lock-fields">
   <div class="row row-2">
     <div><label>Venue Name</label><input type="text" id="venueName" placeholder="e.g. Grand Mahal Banquet" oninput="recalc()"></div>
     <div><label>Event Date &amp; Time</label><input type="datetime-local" id="eventDate"></div>
@@ -97,15 +85,17 @@
     <div><label>Balance Due (₹)</label><input type="number" id="venueBal" placeholder="Auto-calculated" readonly style="opacity:.55"></div>
   </div>
   </div>
+</section>
 
-  <!-- Food view -->
-  <div class="tab-panel" id="tab-food" role="tabpanel" aria-labelledby="tab-food-btn" hidden>
-  <div class="page-head reveal">
+<!-- ── VIEW : FOOD & ARRANGEMENT ── -->
+<section class="view" id="view-food">
+  <div class="page-head">
     <div class="page-num">02</div>
-    <div><div class="page-title">Food &amp; Catering</div><div class="page-sub">Items, quantity and per-plate cost</div></div>
+    <div><div class="page-title">Food &amp; Arrangement</div><div class="page-sub">Items, quantity and per-plate cost</div></div>
     <div class="page-badge" id="foodCostBadge">₹ 0</div>
   </div>
   <div class="hr"></div>
+  <div class="lock-fields">
   <div id="foodList"></div>
   <button class="add-btn" onclick="addFood()" aria-label="Add Food Item"><span class="msi">add</span></button>
   <div class="food-total">
@@ -121,12 +111,13 @@
     <div><label>Caterer Phone</label><input type="tel" id="catererPhone" placeholder="+91 xxxxx xxxxx"></div>
   </div>
   </div>
+</section>
 
-  <!-- Guests view -->
-  <div class="tab-panel" id="tab-guests" role="tabpanel" aria-labelledby="tab-guests-btn" hidden>
-  <div class="page-head reveal">
+<!-- ── VIEW : GUESTS ── -->
+<section class="view" id="view-guests">
+  <div class="page-head">
     <div class="page-num">03</div>
-    <div><div class="page-title">Guest List</div><div class="page-sub">Names, honorifics and party size</div></div>
+    <div><div class="page-title">Guest List</div><div class="page-sub">Names, party size and RSVP</div></div>
     <div class="page-badge" id="guestBadge">0 people</div>
   </div>
   <div class="hr"></div>
@@ -142,7 +133,7 @@
   </div>
   <datalist id="referenceList"></datalist>
   <div class="guest-toolbar">
-    <input type="search" id="gfSearch" class="gf-search" placeholder="Search name, phone or reference" oninput="applyGuestFilters()" aria-label="Search guests">
+    <input type="search" id="gfSearch" class="gf-search" placeholder="Search name or reference" oninput="applyGuestFilters()" aria-label="Search guests">
     <select id="gfRel" onchange="applyGuestFilters()" aria-label="Filter by relationship"><option value="all">All relationships</option></select>
     <select id="gfStatus" onchange="applyGuestFilters()" aria-label="Filter by status">
       <option value="all">All statuses</option>
@@ -163,47 +154,22 @@
   <div id="guestList"></div>
   <button class="add-btn" onclick="addGuest()" aria-label="Add Guest"><span class="msi">add</span></button>
   <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
-  <div class="wa-panel">
-    <div class="wa-head"><span class="msi">forum</span> Invite guests on WhatsApp</div>
-    <div class="row row-2">
-      <div><label>Your WhatsApp number <span style="text-transform:none;font-weight:500;color:var(--muted)">(sender)</span></label><input type="tel" id="waSender" value="+91 9874174100" placeholder="+91 98741 74100"></div>
-      <div><label>Default country code</label><input type="tel" id="waCC" value="91" placeholder="91" oninput="waBuildList()"></div>
-    </div>
-    <div><label>Image <span style="text-transform:none;font-weight:500;color:var(--muted)">(optional · public URL or attach from device)</span></label>
-      <div class="wa-img-input">
-        <input type="url" id="waImage" placeholder="https://…/invitation.jpg" oninput="waOnUrlInput()">
-        <button class="btn" type="button" onclick="$('waImageFile').click()" title="Attach an image from this device"><span class="msi">attach_file</span></button>
-      </div>
-      <input type="file" id="waImageFile" accept="image/*" style="display:none" onchange="waPickImage(event)">
-      <input type="hidden" id="waImageData">
-      <div class="wa-img-preview" id="waImgPreview" hidden>
-        <img id="waImgThumb" alt="Selected invitation image">
-        <span class="wa-img-meta" id="waImgMeta"></span>
-        <button class="remove-btn" type="button" onclick="waClearImage()"><span class="msi">close</span> Remove</button>
-      </div>
-    </div>
-    <div><label>Message <span style="text-transform:none;font-weight:500;color:var(--muted)">(use {name} for each guest)</span></label><textarea id="waMsg" rows="3" placeholder="Namaste {name}, you are warmly invited! Date, time & venue: …" oninput="waBuildList()"></textarea></div>
-    <div class="wa-actions">
-      <button class="btn btn-fill" type="button" onclick="waSendAll()"><span class="msi">send</span> Message whole list (<span id="waCount">0 with phone</span>)</button>
-      <button class="btn" type="button" onclick="exportContacts()"><span class="msi">contacts</span> Save contacts (.vcf)</button>
-      <button class="btn" type="button" onclick="waSendTest()" title="Open a test chat to your own number"><span class="msi">wifi_tethering</span> Send test message</button>
-    </div>
-    <div><label>Or message a single number</label>
-      <div class="map-row">
-        <input type="tel" id="waOne" placeholder="e.g. +91 98765 43210">
-        <button class="btn" type="button" onclick="waSendOne()"><span class="msi">send</span> Send</button>
-      </div>
-    </div>
-    <div class="wa-note"><b>Free way to send a real image to everyone:</b> ① tap <b>Save contacts</b> and open the file on your phone to import all guests. ② In WhatsApp, create a <b>Broadcast list</b> with them. ③ Send your image + message once — it reaches all of them as private chats, free. <i>(Recipients must have your number saved.)</i> &nbsp;Or tap a name below to chat with one guest; “Message whole list” pre-fills a chat per guest with the image as a link preview.</div>
-    <div class="wa-list" id="waList"></div>
-  </div>
-  </div>
 </section>
 
-<!-- ── PAGE 4 : SUMMARY ── -->
-<section class="page" id="p4">
-  <div class="page-head reveal">
+<!-- ── VIEW : DASHBOARD ── -->
+<section class="view dashboard" id="view-dashboard">
+  <div class="page-head">
     <div class="page-num">04</div>
+    <div><div class="page-title">Analytics Dashboard</div><div class="page-sub">Cost &amp; guest insights, sliced from every angle</div></div>
+  </div>
+  <div class="hr"></div>
+  <div id="dashGrid"></div>
+</section>
+
+<!-- ── VIEW : SUMMARY ── -->
+<section class="view" id="view-summary">
+  <div class="page-head">
+    <div class="page-num">05</div>
     <div><div class="page-title">Event Summary</div><div class="page-sub"><span id="forLabel">—</span> <span style="opacity:.45">·</span> <span id="eventLabel">Birthday</span></div></div>
   </div>
   <div class="hr"></div>
@@ -244,17 +210,7 @@
   </div>
 </section>
 
-<!-- ── PAGE 5 : DASHBOARD ── -->
-<section class="page dashboard" id="dashboard">
-  <div class="page-head reveal">
-    <div class="page-num">05</div>
-    <div><div class="page-title">Analytics Dashboard</div><div class="page-sub">Cost &amp; guest insights, sliced from every angle</div></div>
-  </div>
-  <div class="hr"></div>
-  <div id="dashGrid"></div>
-</section>
-
-</div>
+</main>
 
 <!-- App logic, split by concern and loaded in dependency order.
      Classic scripts (not modules) so inline on* handlers keep working and the
@@ -262,7 +218,6 @@
 <script src="js/core.js"></script>
 <script src="js/sections.js"></script>
 <script src="js/guestfilter.js"></script>
-<script src="js/whatsapp.js"></script>
 <script src="js/calc.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/report.js"></script>

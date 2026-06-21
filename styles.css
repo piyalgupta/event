@@ -105,6 +105,34 @@ html.dark .theme-toggle .icon-sun{display:none}
 html.dark .theme-toggle .icon-moon{display:block}
 @media(max-width:680px){.theme-toggle{bottom:calc(80px + env(safe-area-inset-bottom));width:46px;height:46px}}
 
+/* ── App header + section menu ── */
+.app-header{position:fixed;top:0;left:0;right:0;z-index:65;display:flex;align-items:center;gap:16px;
+  padding:10px calc(var(--gutter-x) + env(safe-area-inset-right)) 10px calc(var(--gutter-x) + env(safe-area-inset-left));
+  padding-top:calc(10px + env(safe-area-inset-top));
+  background:var(--glass-2);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
+  border-bottom:1px solid var(--glass-brd);box-shadow:var(--sh-card)}
+.ah-brand{font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;white-space:nowrap;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ah-menu{display:flex;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.ah-menu::-webkit-scrollbar{display:none}
+.ah-link{appearance:none;-webkit-appearance:none;background:none;border:none;color:var(--muted);font-family:var(--sans);font-size:.8rem;font-weight:700;letter-spacing:.03em;padding:9px 16px;border-radius:22px;cursor:pointer;white-space:nowrap;transition:color .25s,background .3s,box-shadow .3s}
+.ah-link:hover{color:var(--ink)}
+.ah-link.active{color:#fff;background:var(--accent-grad);box-shadow:0 10px 22px -10px var(--glow)}
+.ah-actions{display:flex;align-items:center;gap:10px}
+.ah-icon{appearance:none;-webkit-appearance:none;width:42px;height:42px;border-radius:50%;border:1px solid var(--glass-brd);background:var(--glass-2);color:var(--ink);cursor:pointer;display:grid;place-items:center;box-shadow:var(--sh-raise);transition:transform .2s,box-shadow .25s,color .3s,background .3s}
+.ah-icon:hover{transform:scale(1.06)}
+.ah-icon.on{color:#fff;background:var(--accent-grad);border-color:transparent}
+
+/* ── Header-driven single-page views ── */
+.view{display:none;flex-direction:column;gap:clamp(18px,2.6vh,28px);width:100%;max-width:1100px;
+  margin:clamp(16px,3vh,30px) auto;padding:clamp(20px,3vw,34px);
+  background:var(--glass);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
+  border:1px solid var(--glass-brd);border-radius:var(--radius);box-shadow:var(--sh-card)}
+.view.active{display:flex;animation:fadeIn .4s ease}
+.event-meta{display:grid;grid-template-columns:2fr 1fr;gap:18px}
+.lock-fields{display:flex;flex-direction:column;gap:clamp(16px,2.4vh,24px)}
+.view.locked .lock-fields{opacity:.65}
+@media(max-width:680px){.event-meta{grid-template-columns:1fr}.ah-brand{display:none}}
+
 /* Numbers in a monospaced face */
 .counter,.page-num,.page-badge,.guest-num,.gs-num,.spin-val,.ft-val,.tb-val,.tb-total,
 .pr-total,.pr-table td,input[type=number],input[type=tel],input[type=datetime-local]{font-family:var(--mono)}
@@ -116,7 +144,7 @@ html.dark .theme-toggle .icon-moon{display:block}
 #printReport{display:none}
 
 /* ── Scroll container ── */
-#pages{height:100vh;height:100svh;overflow-y:auto;scroll-behavior:smooth;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+#pages{height:100vh;height:100svh;overflow-y:auto;scroll-behavior:smooth;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--accent) transparent;padding-top:calc(64px + env(safe-area-inset-top))}
 /* While the on-screen keyboard is open: free the scroll (no snap fighting) and
    reserve room below so the focused field can sit above the keyboard. --kb is
    set from the VisualViewport in main.js. */
@@ -254,6 +282,8 @@ html.dark select option{background:#1a1630;color:#eceaff}
 .gf-count{font-size:.74rem;color:var(--muted);font-family:var(--mono);margin-left:auto;white-space:nowrap}
 @media(max-width:680px){.guest-toolbar select{flex:1 1 calc(50% - 5px)}.gf-count{margin-left:0;flex-basis:100%}}
 .guest-item{background:var(--glass-2);border:1px solid var(--glass-brd);border-radius:var(--radius-sm);box-shadow:var(--sh-card);padding:16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;animation:slideIn .3s ease}
+.guest-item.rsvp-locked{opacity:.74}
+.guest-item.rsvp-locked .rsvp-toggle{opacity:1}
 .guest-num{font-family:var(--mono);font-size:.8rem;font-weight:600;color:#fff;background:var(--accent-grad);flex-shrink:0;width:30px;height:30px;border-radius:10px;display:grid;place-items:center}
 .guest-name-wrap{flex:1;min-width:150px}
 .guest-name-wrap input.invited{color:var(--ok);font-weight:600}

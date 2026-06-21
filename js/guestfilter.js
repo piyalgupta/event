@@ -24,7 +24,7 @@ function applyGuestFilters(){
   let shown=0;
   rows.forEach(g=>{
     let ok=true;
-    if(q)ok=[g.name,g.phone,g.reference].some(v=>(v||'').toLowerCase().includes(q));
+    if(q)ok=[g.name,g.reference].some(v=>(v||'').toLowerCase().includes(q));
     if(ok&&rel&&rel!=='all')ok=g.relationship===rel;
     if(ok&&status&&status!=='all'){
       ok=status==='invited'?g.invited:status==='notinvited'?!g.invited
