@@ -630,7 +630,7 @@
       "honorific": "Mr.",
       "name": "Gopa Bhajua Pishi",
       "phone": "",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": true,
       "rsvp": false,
@@ -677,5 +677,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064616998
+  "updatedAt": 1782064620989
 }
