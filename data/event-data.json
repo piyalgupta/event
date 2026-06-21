@@ -5,7 +5,7 @@
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
-  "venuePhone": "08981117728",
+  "venuePhone": "+91 8981117728",
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "G88V+MW Kolkata, West Bengal",
@@ -546,5 +546,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782044154477
+  "updatedAt": 1782044160141
 }
