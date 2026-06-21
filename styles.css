@@ -189,10 +189,10 @@ input[type=checkbox]{width:auto;border:none;padding:0;box-shadow:none;accent-col
 input::placeholder,textarea::placeholder{color:#a59fb8}
 textarea{resize:vertical;min-height:60px;line-height:1.55}
 select{cursor:pointer}
-/* Give the native dropdown popup a solid, theme-matched backing so options
-   stay legible in dark mode (transparent + light ink = invisible otherwise). */
-select option{background:var(--bg);color:var(--ink)}
-input[type=datetime-local]::-webkit-calendar-picker-indicator{filter:var(--picker-filter,none)}
+/* Native dropdown popups can't be translucent — give options a solid,
+   theme-matched backing so they stay legible (esp. in dark mode). */
+select option{background:#fff;color:#1d1b2e}
+html.dark select option{background:#1a1630;color:#eceaff}
 
 /* ── Buttons ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--glass-brd);background:var(--glass-2);color:var(--ink);padding:12px 22px;font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--sans);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--sh-raise);transition:transform .2s,box-shadow .2s,color .2s}
