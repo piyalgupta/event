@@ -413,12 +413,12 @@
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": false,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
       "honorific": "Mr.",
-      "name": "Mithu Bapi",
+      "name": "Mithu Bapi ",
       "phone": "",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -607,5 +607,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782055127796
+  "updatedAt": 1782055170686
 }
