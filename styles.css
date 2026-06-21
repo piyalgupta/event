@@ -114,14 +114,18 @@ html.dark .theme-toggle .icon-moon{display:block}
 #printReport{display:none}
 
 /* ── Scroll container ── */
-#pages{height:100vh;height:100svh;overflow-y:auto;scroll-snap-type:y proximity;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+#pages{height:100vh;height:100svh;overflow-y:auto;scroll-snap-type:y proximity;scroll-behavior:smooth;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--accent) transparent}
+/* While the on-screen keyboard is open: free the scroll (no snap fighting) and
+   reserve room below so the focused field can sit above the keyboard. --kb is
+   set from the VisualViewport in main.js. */
+#pages.kb-open{scroll-snap-type:none;padding-bottom:var(--kb,0px);scroll-padding-bottom:calc(var(--kb,0px) + 24px)}
 #pages::-webkit-scrollbar{width:8px}
 #pages::-webkit-scrollbar-thumb{background:linear-gradient(var(--accent),var(--accent2));border-radius:8px}
 .page{min-height:100vh;min-height:100svh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;gap:clamp(20px,3vh,30px);padding:calc(var(--gutter-y) + env(safe-area-inset-top)) calc(var(--gutter-x) + env(safe-area-inset-right)) calc(var(--gutter-y) + env(safe-area-inset-bottom)) calc(var(--gutter-x) + env(safe-area-inset-left));position:relative}
 
 /* ── Glass card surface (shared) ── */
 .tab-panel.active,.glass-card,.summary-list,.gh-connect,.guest-summary,.food-total{
-  background:var(--glass);backdrop-filter:blur(22px) saturate(165%);-webkit-backdrop-filter:blur(22px) saturate(165%);
+  background:var(--glass);backdrop-filter:blur(16px) saturate(160%);-webkit-backdrop-filter:blur(16px) saturate(160%);
   border:1px solid var(--glass-brd);border-radius:var(--radius);box-shadow:var(--sh-card)}
 
 /* ── Fixed chrome ── */
