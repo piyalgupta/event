@@ -269,7 +269,7 @@
     {
       "honorific": "Mr.",
       "name": "Minati Aunty",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -278,7 +278,7 @@
     {
       "honorific": "Mr.",
       "name": "Abhaya Ghosh",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038096900
+  "updatedAt": 1782038102227
 }
