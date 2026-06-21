@@ -476,7 +476,7 @@
     {
       "honorific": "Mr.",
       "name": "Sanchita",
-      "relationship": "Relatives",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038185016
+  "updatedAt": 1782038187101
 }
