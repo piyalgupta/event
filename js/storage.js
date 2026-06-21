@@ -6,7 +6,7 @@
 // ── JSON data: collect / apply / autosave / export / import ──
 function collectData(){
   const food=foodEntries().map(f=>({name:f.name,category:f.category,qty:f.qtyRaw,price:f.priceRaw}));
-  const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,invited:g.invited,party:g.party}));
+  const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,relationship:g.relationship,invited:g.invited,rsvp:g.rsvp,party:g.party}));
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
@@ -39,7 +39,9 @@ function applyData(d){
     const gi=document.getElementById('guestList').lastElementChild;
     if(gi.querySelector('.honorific'))gi.querySelector('.honorific').value=g.honorific||'Mr.';
     gi.querySelector('.guest-name-wrap input').value=g.name||'';
+    if(gi.querySelector('.relationship')&&g.relationship)gi.querySelector('.relationship').value=g.relationship;
     if(g.invited)toggleInvite(gi.id.replace('guest',''));
+    if(g.rsvp)toggleRsvp(gi.id.replace('guest',''));
     const sv=gi.querySelector('.spin-val');
     if(sv&&g.party)sv.textContent=g.party;
   });

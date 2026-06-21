@@ -77,7 +77,7 @@ function addFood(){
       <div><label>Item Total (₹)</label><input type="number" placeholder="0" readonly style="opacity:.55" id="ftotal${id}"></div>
     </div>
     <div style="display:flex;justify-content:flex-end">
-      <button class="remove-btn" onclick="removeItem('food${id}')">Remove</button>
+      <button class="remove-btn" onclick="removeItem('food${id}')" aria-label="Remove item"><span class="msi">close</span></button>
     </div>`;
   const [qtyEl,priceEl]=div.querySelectorAll('input[type=number]');
   function calcItem(){
@@ -93,6 +93,7 @@ function addFood(){
 
 // ── Guests ──
 const HONORIFICS=['Mr.','Mrs.','Ms.','Dr.','Prof.','Shri','Smt.','Master','Miss','Rev.'];
+const RELATIONSHIPS=['Family','Relatives','Friends','Colleagues','Neighbours','Acquaintances','Other'];
 function addGuest(){
   const id=++guestId;
   const num=document.getElementById('guestList').children.length+1;
@@ -100,12 +101,17 @@ function addGuest(){
   div.className='guest-item';
   div.id='guest'+id;
   const opts=HONORIFICS.map(h=>`<option>${h}</option>`).join('');
+  const relOpts=RELATIONSHIPS.map(r=>`<option>${r}</option>`).join('');
   div.innerHTML=`
     <div class="guest-num">${String(num).padStart(2,'0')}</div>
     <select class="honorific" onchange="recalc()">${opts}</select>
     <div class="guest-name-wrap"><input type="text" id="gname${id}" placeholder="Full name" oninput="recalc()"></div>
-    <button type="button" class="invite-toggle" id="inv${id}" onclick="toggleInvite(${id})">
-      <span class="track"></span><span class="it-label">Invited</span>
+    <select class="relationship" onchange="recalc()" aria-label="Relationship">${relOpts}</select>
+    <button type="button" class="invite-toggle" id="inv${id}" onclick="toggleInvite(${id})" aria-label="Invitation sent">
+      <span class="track"></span><span class="msi it-icon">mail</span>
+    </button>
+    <button type="button" class="invite-toggle rsvp-toggle" id="rsvp${id}" onclick="toggleRsvp(${id})" aria-label="RSVP confirmed">
+      <span class="track"></span><span class="msi it-icon">event_available</span>
     </button>
     <div class="spinner-wrap">
       <span class="spin-label">Party</span>
@@ -115,7 +121,7 @@ function addGuest(){
         <button class="spin-btn" onclick="spin('sv${id}',1)" aria-label="Increase party size">+</button>
       </div>
     </div>
-    <button class="remove-btn" onclick="removeGuest('guest${id}')" aria-label="Remove guest">Remove</button>`;
+    <button class="remove-btn" onclick="removeGuest('guest${id}')" aria-label="Remove guest"><span class="msi">close</span></button>`;
   document.getElementById('guestList').appendChild(div);
   recalc();
 }
@@ -124,6 +130,10 @@ function toggleInvite(id){
   const name=document.getElementById('gname'+id);
   const on=btn.classList.toggle('on');
   if(name)name.classList.toggle('invited',on);
+  recalc();
+}
+function toggleRsvp(id){
+  document.getElementById('rsvp'+id).classList.toggle('on');
   recalc();
 }
 function spin(id,d){
