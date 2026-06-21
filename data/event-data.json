@@ -143,7 +143,7 @@
     {
       "honorific": "Mrs.",
       "name": "Seema - Biren Sen",
-      "relationship": "Relatives",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037998549
+  "updatedAt": 1782038037702
 }
