@@ -33,7 +33,7 @@
       "name": "Soumyadip Bari",
       "relationship": "Family",
       "invited": false,
-      "rsvp": false,
+      "rsvp": true,
       "party": "5"
     },
     {
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782027705696
+  "updatedAt": 1782027746135
 }
