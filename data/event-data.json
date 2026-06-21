@@ -1,6 +1,6 @@
 {
   "organizedFor": "Pradip Kumar Gupta",
-  "eventType": "Custom Event",
+  "eventType": "Birthday",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
@@ -22,5 +22,5 @@
     }
   ],
   "guests": [],
-  "updatedAt": 1782031355384
+  "updatedAt": 1782031363100
 }
