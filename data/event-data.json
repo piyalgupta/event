@@ -31,6 +31,12 @@
       "name": "Mishti",
       "category": "Veg Main",
       "qty": "85",
+      "price": "20"
+    },
+    {
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "85",
       "price": ""
     }
   ],
@@ -522,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037653370
+  "updatedAt": 1782037656583
 }
