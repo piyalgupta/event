@@ -23,25 +23,25 @@
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
-      "qty": "87",
+      "qty": "85",
       "price": "120"
     },
     {
       "name": "Radhaballavi",
       "category": "Veg Main",
-      "qty": "87",
+      "qty": "85",
       "price": "20"
     },
     {
       "name": "Mishti",
       "category": "Veg Main",
-      "qty": "87",
+      "qty": "85",
       "price": "20"
     },
     {
       "name": "Water Bottle",
       "category": "Drinks",
-      "qty": "87",
+      "qty": "85",
       "price": "10"
     }
   ],
@@ -304,7 +304,7 @@
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": true,
-      "party": "3"
+      "party": "1"
     },
     {
       "honorific": "Mr.",
@@ -607,5 +607,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782055106474
+  "updatedAt": 1782055109952
 }
