@@ -65,6 +65,7 @@ document.head.appendChild(s);
 })();
 
 // ── Init ──
+if(typeof buildGuestFilterBar==='function')buildGuestFilterBar();
 const saved=loadLocal();
 if(saved){applyData(saved);}
 else{addFood();addFood();addGuest();addGuest();addGuest();recalc();}

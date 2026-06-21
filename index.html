@@ -145,6 +145,25 @@
     <div class="bd-group"><div class="bd-title">By Reference</div><div class="bd-chips" id="refBreakdown"></div></div>
   </div>
   <datalist id="referenceList"></datalist>
+  <div class="guest-toolbar">
+    <input type="search" id="gfSearch" class="gf-search" placeholder="Search name, phone or reference" oninput="applyGuestFilters()" aria-label="Search guests">
+    <select id="gfRel" onchange="applyGuestFilters()" aria-label="Filter by relationship"><option value="all">All relationships</option></select>
+    <select id="gfStatus" onchange="applyGuestFilters()" aria-label="Filter by status">
+      <option value="all">All statuses</option>
+      <option value="invited">Invited</option><option value="notinvited">Not invited</option>
+      <option value="rsvp">RSVP'd</option><option value="notrsvp">Not RSVP'd</option>
+    </select>
+    <select id="gfSort" onchange="applyGuestFilters()" aria-label="Sort by">
+      <option value="none">Sort: default</option>
+      <option value="name">Name</option><option value="relationship">Relationship</option>
+      <option value="reference">Reference</option><option value="party">Party size</option>
+      <option value="invited">Invited</option><option value="rsvp">RSVP</option>
+    </select>
+    <select id="gfDir" onchange="applyGuestFilters()" aria-label="Sort direction">
+      <option value="asc">Asc</option><option value="desc">Desc</option>
+    </select>
+    <span class="gf-count" id="gfCount"></span>
+  </div>
   <div id="guestList"></div>
   <button class="add-btn" onclick="addGuest()" aria-label="Add Guest"><span class="msi">add</span></button>
   <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
@@ -246,6 +265,7 @@
      page still runs from file://. -->
 <script src="js/core.js"></script>
 <script src="js/sections.js"></script>
+<script src="js/guestfilter.js"></script>
 <script src="js/whatsapp.js"></script>
 <script src="js/calc.js"></script>
 <script src="js/storage.js"></script>
