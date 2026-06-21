@@ -131,6 +131,11 @@
     <div class="gs-stat"><div class="gs-num" id="gInvited">0</div><div class="gs-lab">Invitation Sent For</div></div>
     <div class="gs-stat"><div class="gs-num" id="gTotalPlates">0</div><div class="gs-lab">Est. Plates</div></div>
   </div>
+  <div class="breakdowns">
+    <div class="bd-group"><div class="bd-title">By Relationship</div><div class="bd-chips" id="relBreakdown"></div></div>
+    <div class="bd-group"><div class="bd-title">By Reference</div><div class="bd-chips" id="refBreakdown"></div></div>
+  </div>
+  <datalist id="referenceList"></datalist>
   <div id="guestList"></div>
   <button class="add-btn" onclick="addGuest()" aria-label="Add Guest"><span class="msi">add</span></button>
   <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>

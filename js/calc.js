@@ -9,17 +9,26 @@ function recalc(){
   setVal('venueBal', Math.max(0,vCost-vAdv)||'');
   setText('venueCostBadge', inr(vCost));
 
-  // Guests — families, total heads and invited heads in a single pass.
+  // Guests — families, total heads and invited heads in a single pass, plus
+  // live head-count breakdowns by relationship and by reference.
   let families=0,people=0,invited=0;
+  const relCount={},refCount={};
   guestEntries().forEach(g=>{
     if(g.hasSpin){people+=g.heads;families++;}
     if(g.invited)invited+=g.heads;
+    const rel=g.relationship||'Other';
+    relCount[rel]=(relCount[rel]||0)+g.heads;
+    const ref=(g.reference||'').trim()||'Unassigned';
+    refCount[ref]=(refCount[ref]||0)+g.heads;
   });
   setText('gTotalFamilies',families);
   setText('gTotalPeople',people);
   setText('gInvited',invited);
   setText('gTotalPlates',people);
   setText('guestBadge',people+' people');
+  renderBreakdown('relBreakdown',relCount,RELATIONSHIPS);
+  renderBreakdown('refBreakdown',refCount);
+  rebuildReferenceList();
 
   // Food — when "sync plates" is on each row tracks the guest head-count;
   // the per-row line total is written back so the live cost stays in sync.

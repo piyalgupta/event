@@ -7,6 +7,7 @@
   --accent:#54634A;
   --accent-soft:#EAEDE4;
   --danger:#9C4A3D;
+  --ok:#2E7D46;
   --gutter-x:clamp(20px,6vw,80px);
   --gutter-y:clamp(26px,6vh,60px);
   --mono:'JetBrains Mono',ui-monospace,monospace;
@@ -25,6 +26,7 @@ html.dark{
   --accent:#A7B89A;
   --accent-soft:#262A20;
   --danger:#D08A7C;
+  --ok:#5FB37C;
 }
 html.dark .map-preview{background:#23221B}
 html.dark input::placeholder,html.dark textarea::placeholder{color:#6B675C}
@@ -151,23 +153,37 @@ select{cursor:pointer}
 .gs-stat:last-child{border-right:none;margin-right:0;padding-right:0}
 .gs-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--ink);font-weight:500;line-height:1}
 .gs-lab{font-size:.66rem;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.06em}
+/* ── Live count breakdowns (by relationship / by reference) ── */
+.breakdowns{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:2px}
+.bd-group{flex:1 1 240px;min-width:220px}
+.bd-title{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px}
+.bd-chips{display:flex;flex-wrap:wrap;gap:8px}
+.rel-chip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:20px;padding:5px 13px;font-size:.84rem;transition:border-color .2s}
+.rel-chip:hover{border-color:var(--accent)}
+.rc-lab{color:var(--ink)}
+.rc-num{font-family:var(--mono);font-size:.76rem;font-weight:600;color:var(--accent)}
+.rel-empty{font-size:.82rem;color:var(--muted)}
 .guest-item{border-bottom:1px solid var(--line);padding:16px 0;display:flex;align-items:center;gap:16px;flex-wrap:wrap;animation:slideIn .3s ease}
 .guest-item:first-child{padding-top:0}
 .guest-num{font-family:'Cormorant Garamond',serif;font-size:.85rem;color:var(--muted);flex-shrink:0;width:22px}
 .guest-name-wrap{flex:1;min-width:140px}
-.guest-name-wrap input.invited{color:var(--accent);font-weight:500}
+.guest-name-wrap input.invited{color:var(--ok);font-weight:500}
 .honorific{border-bottom:1px solid var(--line);width:84px;flex-shrink:0;font-size:.85rem;padding:9px 1px}
 .relationship{border-bottom:1px solid var(--line);width:120px;flex-shrink:0;font-size:.85rem;padding:9px 1px}
-.invite-toggle{display:flex;align-items:center;gap:8px;flex-shrink:0;cursor:pointer;user-select:none;background:none;border:none;padding:0;font-family:'Cormorant Garamond',serif}
+.reference{border-bottom:1px solid var(--line);width:130px;flex-shrink:0;font-size:.85rem;padding:9px 1px}
+.invite-toggle{display:flex;align-items:center;gap:7px;flex-shrink:0;cursor:pointer;user-select:none;background:none;border:none;padding:0;font-family:'Cormorant Garamond',serif}
 .invite-toggle .track{width:28px;height:15px;border:1px solid var(--line);position:relative;transition:border-color .25s,background .25s}
 .invite-toggle .track::after{content:'';position:absolute;top:1px;left:1px;width:11px;height:11px;background:var(--muted);transition:transform .25s,background .25s}
-.invite-toggle.on .track{border-color:var(--accent);background:var(--accent-soft)}
-.invite-toggle.on .track::after{transform:translateX(13px);background:var(--accent)}
 .invite-toggle .it-icon{font-size:1.05rem;color:var(--muted);transition:color .25s}
-.invite-toggle.on .it-icon{color:var(--accent)}
+.invite-toggle .it-label{font-size:.64rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:color .25s}
+/* Invite ON → green */
+.invite-toggle.on .track{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}
+.invite-toggle.on .track::after{transform:translateX(13px);background:var(--ok)}
+.invite-toggle.on .it-icon,.invite-toggle.on .it-label{color:var(--ok)}
+/* RSVP ON → red (overrides the shared invite-toggle green above) */
 .rsvp-toggle.on .track{border-color:var(--danger);background:color-mix(in srgb,var(--danger) 14%,transparent)}
 .rsvp-toggle.on .track::after{background:var(--danger)}
-.rsvp-toggle.on .it-icon{color:var(--danger)}
+.rsvp-toggle.on .it-icon,.rsvp-toggle.on .it-label{color:var(--danger)}
 .spinner-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .spin-label{font-size:.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 .spinner{display:flex;align-items:center;border:1px solid var(--line)}
