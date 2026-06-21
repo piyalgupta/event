@@ -224,8 +224,8 @@
       "name": "Deb Babu",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": true,
+      "invited": true,
+      "rsvp": false,
       "party": "1"
     },
     {
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782065951630
+  "updatedAt": 1782065958438
 }
