@@ -117,14 +117,14 @@ function renderBreakdown(id,counts,order){
 }
 function addGuest(){
   const id=++guestId;
-  const num=document.getElementById('guestList').children.length+1;
+  const seq=document.getElementById('guestList').children.length+1;
   const div=document.createElement('div');
   div.className='guest-item';
   div.id='guest'+id;
   const opts=HONORIFICS.map(h=>`<option>${h}</option>`).join('');
   const relOpts=RELATIONSHIPS.map(r=>`<option>${r}</option>`).join('');
   div.innerHTML=`
-    <div class="guest-num">${String(num).padStart(2,'0')}</div>
+    <div class="guest-num">${String(seq).padStart(2,'0')}</div>
     <select class="honorific" onchange="recalc()">${opts}</select>
     <div class="guest-name-wrap"><input type="text" id="gname${id}" placeholder="Full name" oninput="recalc()"></div>
     <input class="guest-phone" type="tel" id="gphone${id}" placeholder="Phone / WhatsApp" oninput="recalc()" aria-label="Phone number">
