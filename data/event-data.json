@@ -610,7 +610,7 @@
       "honorific": "Mr.",
       "name": "Manish Dey",
       "phone": "",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": true,
       "rsvp": true,
@@ -677,5 +677,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064620989
+  "updatedAt": 1782064624752
 }
