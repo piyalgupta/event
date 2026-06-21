@@ -14,7 +14,14 @@
   "foodAdv": "",
   "syncPlates": true,
   "rsvpNotes": "",
-  "food": [],
+  "food": [
+    {
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "85",
+      "price": ""
+    }
+  ],
   "guests": [
     {
       "honorific": "Mr.",
@@ -503,5 +510,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037576277
+  "updatedAt": 1782037579614
 }
