@@ -542,12 +542,12 @@
     },
     {
       "name": "Dimpi Office",
-      "relationship": "Relatives",
+      "relationship": "Colleagues",
       "reference": "Sarmishtha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782065922531
+  "updatedAt": 1782065929381
 }
