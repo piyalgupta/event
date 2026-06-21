@@ -73,7 +73,7 @@
     {
       "honorific": "Mrs.",
       "name": "Bithi Ghosh",
-      "relationship": "Relatives",
+      "relationship": "Friends",
       "reference": "",
       "invited": false,
       "rsvp": false,
@@ -116,5 +116,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782033152110
+  "updatedAt": 1782033154301
 }
