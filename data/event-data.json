@@ -404,7 +404,7 @@
     {
       "honorific": "Mr.",
       "name": "Ruby",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038154332
+  "updatedAt": 1782038157253
 }
