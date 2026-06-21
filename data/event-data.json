@@ -11,6 +11,7 @@
   "mapUrl": "",
   "catererName": "",
   "catererPhone": "",
+  "foodAdv": "",
   "syncPlates": true,
   "rsvpNotes": "",
   "food": [
@@ -22,5 +23,5 @@
     }
   ],
   "guests": [],
-  "updatedAt": 1782031672274
+  "updatedAt": 1782031686556
 }
