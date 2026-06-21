@@ -153,8 +153,9 @@
     <div><label>Message <span style="text-transform:none;font-weight:500;color:var(--muted)">(use {name} for each guest)</span></label><textarea id="waMsg" rows="3" placeholder="Namaste {name}, you are warmly invited! Date, time & venue: …" oninput="waBuildList()"></textarea></div>
     <div class="wa-actions">
       <button class="btn btn-fill" type="button" onclick="waSendAll()"><span class="msi">send</span> Open all (<span id="waCount">0 with phone</span>)</button>
-      <span class="wa-note">Tap a name below to message that guest, or “Open all”. The image appears as a link preview — true file attachments to everyone need the WhatsApp Business API.</span>
+      <button class="btn" type="button" onclick="exportContacts()"><span class="msi">contacts</span> Save contacts (.vcf)</button>
     </div>
+    <div class="wa-note"><b>Free way to send a real image to everyone:</b> ① tap <b>Save contacts</b> and open the file on your phone to import all guests. ② In WhatsApp, create a <b>Broadcast list</b> with them. ③ Send your image + message once — it reaches all of them as private chats, free. <i>(Recipients must have your number saved.)</i> &nbsp;Or tap a name below to chat with one guest now; “Open all” pre-fills a chat per guest with the image as a link preview.</div>
     <div class="wa-list" id="waList"></div>
   </div>
   </div>
