@@ -144,6 +144,19 @@
   <div id="guestList"></div>
   <button class="add-btn" onclick="addGuest()" aria-label="Add Guest"><span class="msi">add</span></button>
   <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
+  <div class="wa-panel">
+    <div class="wa-head"><span class="msi">forum</span> Invite guests on WhatsApp</div>
+    <div class="row row-2">
+      <div><label>Image link <span style="text-transform:none;font-weight:500;color:var(--muted)">(optional · public URL)</span></label><input type="url" id="waImage" placeholder="https://…/invitation.jpg" oninput="waBuildList()"></div>
+      <div><label>Default country code</label><input type="tel" id="waCC" value="91" placeholder="91" oninput="waBuildList()"></div>
+    </div>
+    <div><label>Message <span style="text-transform:none;font-weight:500;color:var(--muted)">(use {name} for each guest)</span></label><textarea id="waMsg" rows="3" placeholder="Namaste {name}, you are warmly invited! Date, time & venue: …" oninput="waBuildList()"></textarea></div>
+    <div class="wa-actions">
+      <button class="btn btn-fill" type="button" onclick="waSendAll()"><span class="msi">send</span> Open all (<span id="waCount">0 with phone</span>)</button>
+      <span class="wa-note">Tap a name below to message that guest, or “Open all”. The image appears as a link preview — true file attachments to everyone need the WhatsApp Business API.</span>
+    </div>
+    <div class="wa-list" id="waList"></div>
+  </div>
   </div>
 </section>
 
@@ -165,6 +178,8 @@
     <button class="btn btn-fill" onclick="saveAll()" aria-label="Save"><span class="msi">save</span></button>
     <button class="btn" onclick="document.getElementById('importFile').click()" aria-label="Load JSON"><span class="msi">upload_file</span></button>
     <input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importJSON(event)">
+    <button class="btn" onclick="saveNamedList()" title="Save this whole list under a name in the repo" aria-label="Save named list to repo"><span class="msi">cloud_upload</span></button>
+    <button class="btn" onclick="loadNamedList()" title="Load a saved list from the repo by name" aria-label="Load named list from repo"><span class="msi">cloud_download</span></button>
     <button class="btn" onclick="buildPrintReport();window.print()" aria-label="Print / Save PDF"><span class="msi">print</span></button>
   </div>
   <div class="gh-connect" id="ghConnect" style="margin-top:14px;max-width:560px">

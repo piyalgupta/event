@@ -127,6 +127,7 @@ function addGuest(){
     <div class="guest-num">${String(num).padStart(2,'0')}</div>
     <select class="honorific" onchange="recalc()">${opts}</select>
     <div class="guest-name-wrap"><input type="text" id="gname${id}" placeholder="Full name" oninput="recalc()"></div>
+    <input class="guest-phone" type="tel" id="gphone${id}" placeholder="Phone / WhatsApp" oninput="recalc()" aria-label="Phone number">
     <select class="relationship" onchange="recalc()" aria-label="Relationship">${relOpts}</select>
     <input class="reference" list="referenceList" placeholder="Reference" oninput="recalc()" aria-label="Reference">
     <button type="button" class="invite-toggle" id="inv${id}" onclick="toggleInvite(${id})" aria-label="Invitation sent">
@@ -183,4 +184,39 @@ function removeItem(id){
   const el=document.getElementById(id);
   if(el){el.style.opacity='0';el.style.transform='scale(.97)';el.style.transition='all .2s';
     setTimeout(()=>{el.remove();recalc();},200);}
+}
+
+// ── WhatsApp invites ────────────────────────────────────────────────────────
+// No-backend "click to chat": one wa.me link per guest, prefilled with the
+// message (and the image URL, which WhatsApp renders as a link preview). True
+// file attachments to many numbers need the WhatsApp Business API (see README).
+function waNormalize(raw){
+  let d=String(raw||'').replace(/[^\d+]/g,'').replace(/^\+/,'').replace(/^0+/,'');
+  if(!d)return '';
+  const cc=(val('waCC')||'91').replace(/\D/g,'')||'91';
+  if(d.length<=10)d=cc+d;                 // bare local number → prefix country code
+  return d;
+}
+function waCompose(name){
+  let m=(val('waMsg')||'').replace(/\{name\}/gi,(name||'').trim());
+  const img=val('waImage').trim();
+  if(img)m=(m?m+'\n\n':'')+img;
+  return encodeURIComponent(m);
+}
+function waLink(g){return`https://wa.me/${waNormalize(g.phone)}?text=${waCompose(g.name)}`;}
+function waBuildList(){
+  const wrap=$('waList');if(!wrap)return;
+  const gs=guestEntries().filter(g=>waNormalize(g.phone));
+  setText('waCount',gs.length+' with phone');
+  wrap.innerHTML=gs.length
+    ?gs.map(g=>`<a class="wa-link" target="_blank" rel="noopener" href="${waLink(g)}"><span class="msi">chat</span>${esc((g.name||'').trim()||g.phone)}</a>`).join('')
+    :'<span class="rel-empty">Add a phone number to a guest to message them here.</span>';
+}
+function waSendAll(){
+  const gs=guestEntries().filter(g=>waNormalize(g.phone));
+  if(!gs.length){alert('No guest has a phone number yet. Add phone numbers first.');return;}
+  if(!val('waMsg').trim()&&!val('waImage').trim()){alert('Type a message (and an optional image link) first.');return;}
+  if(!confirm('Open WhatsApp for '+gs.length+' guest(s)? Your browser may ask to allow pop-ups — then send each chat. Or tap names below one by one.'))return;
+  gs.forEach((g,i)=>setTimeout(()=>window.open(waLink(g),'_blank'),i*700));
+  setText('waCount',gs.length+' opening…');
 }
