@@ -24,6 +24,7 @@ function buildPrintReport(){
   });
   const caterer=val('catererName');
   const catererPhone=val('catererPhone');
+  const fAdv=num('foodAdv'), fBal=Math.max(0,fTotal-fAdv);
 
   let guestRows='',people=0,families=0,invitedHeads=0,rsvpHeads=0;
   guestEntries().forEach(g=>{
@@ -55,6 +56,8 @@ function buildPrintReport(){
       <tbody>${foodRows||'<tr><td colspan="5">No items added</td></tr>'}</tbody></table>
       ${caterer?`<div class="pr-row" style="margin-top:8px"><span>Caterer</span><strong>${esc(caterer)}${catererPhone?' · '+esc(catererPhone):''}</strong></div>`:''}
       <div class="pr-row"><span>Food Total</span><strong>₹ ${fmt(fTotal)}</strong></div>
+      <div class="pr-row"><span>Advance Paid</span><strong>₹ ${fmt(fAdv)}</strong></div>
+      <div class="pr-row"><span>Balance Due</span><strong>₹ ${fmt(fBal)}</strong></div>
     </div>
     <div class="pr-section">
       <div class="pr-h">Guest List</div>

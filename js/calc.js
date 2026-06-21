@@ -43,6 +43,8 @@ function recalc(){
   setText('foodTotal',inr(fTotal));
   setText('foodCostBadge',inr(fTotal));
   setText('foodBreakdown',`${items} items · ${plates} plates`);
+  const fAdv=num('foodAdv');
+  setVal('foodBal', Math.max(0,fTotal-fAdv)||'');
 
   const grand=vCost+fTotal;
   setText('sumVenue',inr(vCost));

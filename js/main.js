@@ -74,3 +74,20 @@ if(savedToken){const inp=$('ghTokenInput');if(inp)inp.value=savedToken;connectGi
 const pagesEl=document.getElementById('pages');
 pagesEl.addEventListener('input',()=>saveLocal());
 pagesEl.addEventListener('change',()=>saveLocal());
+
+// ── Periodic autosave (every 3 minutes) ──
+// A timed safety net on top of the per-change autosave: every 3 minutes any
+// pending edits are flushed to localStorage (and to GitHub when connected).
+// Change-aware — the payload is compared ignoring its timestamp — so an idle
+// session never triggers a redundant save or GitHub commit.
+const AUTOSAVE_INTERVAL_MS=180000; // 3 minutes
+function autosaveSnapshot(){
+  try{const d=collectData();delete d.updatedAt;return JSON.stringify(d);}catch(e){return '';}
+}
+let lastAutosaveSnapshot=autosaveSnapshot();
+setInterval(()=>{
+  const snap=autosaveSnapshot();
+  if(snap===lastAutosaveSnapshot)return;   // nothing changed since last autosave
+  lastAutosaveSnapshot=snap;
+  saveLocal(true);
+},AUTOSAVE_INTERVAL_MS);

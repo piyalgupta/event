@@ -10,12 +10,12 @@ function collectData(){
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
-    catererName:val('catererName'),catererPhone:val('catererPhone'),syncPlates,
+    catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),syncPlates,
     rsvpNotes:val('rsvpNotes'),food,guests,updatedAt:Date.now()};
 }
 function applyData(d){
   if(!d)return;
-  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone'].forEach(k=>setVal(k,d[k]));
+  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
   if(d.eventType){
     const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
@@ -145,24 +145,38 @@ function scheduleGitHubPush(){
   if(!ghConnected||ghSuppressPush)return;
   clearTimeout(ghPushTimer);ghPushTimer=setTimeout(pushToGitHub,GH_PUSH_DEBOUNCE_MS);
 }
+// Read the file's current blob SHA, bypassing any HTTP cache. Using a cached
+// response here is what caused "does not match …" 409s: the PUT would be sent
+// against a stale SHA. Returns undefined when the file doesn't exist yet (→create).
+async function ghCurrentSha(api,token){
+  try{
+    const r=await fetch(api+'?ts='+Date.now(),{headers:ghHeaders(token),cache:'no-store'});
+    if(r.ok)return (await r.json()).sha;
+  }catch(e){}
+  return undefined;
+}
 async function pushToGitHub(){
   if(!ghConnected)return;
   const token=localStorage.getItem(TOKEN_KEY);if(!token){ghConnected=false;updateGhUI();return;}
   if(ghBusy){ghDirty=true;return;}
   ghBusy=true;ghDirty=false;
   const api=`https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
+  const content=btoa(unescape(encodeURIComponent(JSON.stringify(collectData(),null,2))));
   try{
-    let sha;
-    const getRes=await fetch(api,{headers:ghHeaders(token)});
-    if(getRes.ok)sha=(await getRes.json()).sha;
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify(collectData(),null,2))));
-    const putRes=await fetch(api,{method:'PUT',headers:{...ghHeaders(token),'Content-Type':'application/json'},
-      body:JSON.stringify({message:'Update event data',content,sha})});
-    if(putRes.ok){setStatus('Auto-saved to GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));}
-    else{
+    let sha=await ghCurrentSha(api,token);
+    // PUT, and if the SHA is rejected as out of date (409, or 422 "does not
+    // match"), re-read the latest SHA and retry once so a concurrent update
+    // self-heals instead of permanently failing the save.
+    for(let attempt=0;attempt<2;attempt++){
+      const putRes=await fetch(api,{method:'PUT',headers:{...ghHeaders(token),'Content-Type':'application/json'},
+        body:JSON.stringify({message:'Update event data',content,sha})});
+      if(putRes.ok){setStatus('Auto-saved to GitHub ✓ '+new Date().toLocaleTimeString('en-IN'));break;}
       const e=await putRes.json().catch(()=>({}));
+      const stale=putRes.status===409||(putRes.status===422&&/does not match/i.test(e.message||''));
+      if(stale&&attempt===0){sha=await ghCurrentSha(api,token);continue;}
       if(putRes.status===401){ghConnected=false;localStorage.removeItem(TOKEN_KEY);updateGhUI();}
       setStatus('GitHub save failed ('+(e.message||putRes.status)+'). Saved locally.');
+      break;
     }
   }catch(err){setStatus('GitHub unreachable. Saved locally — will retry on next change.');}
   ghBusy=false;

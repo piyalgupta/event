@@ -6,7 +6,8 @@
 <title>Life Events — Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#7c5cff">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..0" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -110,6 +111,10 @@
   <div class="food-total">
     <div><div class="ft-label">Estimated Food Cost</div><div style="font-size:.7rem;color:var(--muted);margin-top:3px" id="foodBreakdown">0 items · 0 plates</div></div>
     <div class="ft-val" id="foodTotal">₹ 0</div>
+  </div>
+  <div class="row row-2" style="margin-top:6px">
+    <div><label>Advance Paid (₹)</label><input type="number" id="foodAdv" placeholder="0" min="0" oninput="recalc()"></div>
+    <div><label>Balance Due (₹)</label><input type="number" id="foodBal" placeholder="Auto-calculated" readonly style="opacity:.55"></div>
   </div>
   <div class="row row-2" style="margin-top:6px">
     <div><label>Caterer Name</label><input type="text" id="catererName" placeholder="e.g. Sharma Caterers"></div>
