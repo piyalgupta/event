@@ -53,7 +53,7 @@
     {
       "honorific": "Mr.",
       "name": "Bapi Da",
-      "relationship": "Relatives",
+      "relationship": "Neighbours",
       "reference": "",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037745532
+  "updatedAt": 1782037752099
 }
