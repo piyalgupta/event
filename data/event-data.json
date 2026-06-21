@@ -449,7 +449,7 @@
     {
       "honorific": "Mr.",
       "name": "Barnali",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038169575
+  "updatedAt": 1782038173684
 }
