@@ -162,7 +162,7 @@
       "phone": "",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -657,5 +657,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064208824
+  "updatedAt": 1782064213124
 }
