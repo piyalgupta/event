@@ -46,7 +46,7 @@
     {
       "name": "Chairs",
       "category": "Other",
-      "qty": "92",
+      "qty": "45",
       "price": "5",
       "sync": false
     }
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782065850325
+  "updatedAt": 1782065856588
 }
