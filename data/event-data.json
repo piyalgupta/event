@@ -55,7 +55,7 @@
     {
       "honorific": "Mr.",
       "name": "শানুকাকু",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "invited": false,
       "rsvp": false,
       "party": "2"
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782028594491
+  "updatedAt": 1782028598114
 }
