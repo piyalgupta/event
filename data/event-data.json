@@ -45,10 +45,10 @@
       "price": "10"
     },
     {
-      "name": "",
+      "name": "Chairs",
       "category": "Veg Starter",
       "qty": "92",
-      "price": ""
+      "price": "3"
     }
   ],
   "guests": [
@@ -673,5 +673,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064705593
+  "updatedAt": 1782064710761
 }
