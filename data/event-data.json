@@ -17,13 +17,13 @@
     {
       "name": "কচুরি, আলুর দম, পোলাও, পনির, ২টো শুকনো মিষ্টি",
       "category": "Veg Starter",
-      "qty": "86",
+      "qty": "85",
       "price": "150"
     },
     {
       "name": "Watter Bottle",
       "category": "Drinks",
-      "qty": "86",
+      "qty": "85",
       "price": "10"
     }
   ],
@@ -50,7 +50,7 @@
       "relationship": "Friends",
       "invited": false,
       "rsvp": false,
-      "party": "3"
+      "party": "2"
     },
     {
       "honorific": "Mr.",
@@ -461,5 +461,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782027350722
+  "updatedAt": 1782027365791
 }
