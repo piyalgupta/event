@@ -186,10 +186,37 @@ select{cursor:pointer}
 .action-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px}
 
 /* ── Responsive ── */
-/* Cap content width on large desktops / landscape so lines stay readable */
-@media(min-width:1500px){
-  .page>.row,.page>.hr,.page>.page-head,.page>.food-total,.page>.guest-summary,
-  #foodList,#guestList,.page>.add-btn,.page>div:not(.hero-inner):not(.scroll-cue){max-width:1180px}
+/* Desktop (≥981px): larger, more readable type + a capped content column so
+   forms don't sprawl edge-to-edge on wide screens. Cormorant Garamond runs
+   small, so everything is nudged up a notch here. */
+@media(min-width:981px){
+  :root{--gutter-x:clamp(56px,8vw,140px);--gutter-y:clamp(44px,7vh,88px)}
+  body{font-size:1.16rem}
+  .brand,.counter{font-size:.76rem}
+  label,.for-field label{font-size:.72rem;margin-bottom:9px}
+  input,select,textarea{font-size:1.06rem;padding:11px 2px}
+  .for-field input{font-size:1.36rem}
+  .row{gap:30px}
+  .page-sub{font-size:.95rem;margin-top:6px}
+  .page-badge{font-size:.98rem}
+  .eyebrow{font-size:.78rem}
+  .hero-sub{font-size:1.18rem;line-height:1.65}
+  .tabs{gap:40px}
+  .tab{font-size:.94rem;padding-bottom:15px}
+  .event-btn{font-size:.78rem;padding:11px 21px}
+  .btn{font-size:.8rem;padding:13px 26px}
+  .gs-lab{font-size:.72rem}
+  .ft-label{font-size:.92rem}
+  .ft-val{font-size:1.6rem}
+  .tb-label{font-size:1rem}
+  .tb-val{font-size:1.08rem}
+  .spin-val{font-size:.95rem}
+  .honorific,.relationship,.guest-num{font-size:.95rem}
+  /* Cap the working column so forms stay readable, keeping the editorial
+     left alignment of the rest of the layout. */
+  .tabs,.tab-panel,
+  #p4>.page-head,#p4>.hr,#p4>.action-row,#p4>#saveStatus{max-width:1120px}
+  .guest-item{gap:20px}
 }
 /* Tablets (portrait/landscape): two-up dense fields, roomier gutters */
 @media(min-width:681px) and (max-width:980px){
