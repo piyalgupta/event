@@ -147,13 +147,15 @@
   <div class="wa-panel">
     <div class="wa-head"><span class="msi">forum</span> Invite guests on WhatsApp</div>
     <div class="row row-2">
-      <div><label>Image link <span style="text-transform:none;font-weight:500;color:var(--muted)">(optional · public URL)</span></label><input type="url" id="waImage" placeholder="https://…/invitation.jpg" oninput="waBuildList()"></div>
+      <div><label>Your WhatsApp number <span style="text-transform:none;font-weight:500;color:var(--muted)">(sender)</span></label><input type="tel" id="waSender" value="+91 9874174100" placeholder="+91 98741 74100"></div>
       <div><label>Default country code</label><input type="tel" id="waCC" value="91" placeholder="91" oninput="waBuildList()"></div>
     </div>
+    <div><label>Image link <span style="text-transform:none;font-weight:500;color:var(--muted)">(optional · public URL)</span></label><input type="url" id="waImage" placeholder="https://…/invitation.jpg" oninput="waBuildList()"></div>
     <div><label>Message <span style="text-transform:none;font-weight:500;color:var(--muted)">(use {name} for each guest)</span></label><textarea id="waMsg" rows="3" placeholder="Namaste {name}, you are warmly invited! Date, time & venue: …" oninput="waBuildList()"></textarea></div>
     <div class="wa-actions">
       <button class="btn btn-fill" type="button" onclick="waSendAll()"><span class="msi">send</span> Message whole list (<span id="waCount">0 with phone</span>)</button>
       <button class="btn" type="button" onclick="exportContacts()"><span class="msi">contacts</span> Save contacts (.vcf)</button>
+      <button class="btn" type="button" onclick="waSendTest()" title="Open a test chat to your own number"><span class="msi">wifi_tethering</span> Send test message</button>
     </div>
     <div><label>Or message a single number</label>
       <div class="map-row">
@@ -218,6 +220,7 @@
      page still runs from file://. -->
 <script src="js/core.js"></script>
 <script src="js/sections.js"></script>
+<script src="js/whatsapp.js"></script>
 <script src="js/calc.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/report.js"></script>

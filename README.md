@@ -10,6 +10,7 @@ Concerns are split across plain, framework-free files (no bundler — the browse
 - **`js/`** — the app logic, loaded in dependency order as classic scripts:
   - `core.js` — config, shared state, DOM/formatting helpers and the row readers.
   - `sections.js` — builders/handlers for the event-type chips, map, food and guest rows.
+  - `whatsapp.js` — the self-contained WhatsApp invite module (wa.me links, sender/test, .vcf export).
   - `calc.js` — `recalc()`, the single pass that refreshes every derived total.
   - `storage.js` — collect/apply, autosave, JSON import/export and GitHub sync.
   - `report.js` — the print/PDF report builder and "clear all" reset.
@@ -23,7 +24,13 @@ This is a static site with no backend, so data can't auto-write into the GitHub 
 - **Save / Load List by name** (Summary page) — with a GitHub token connected, **Save** (☁️) stores the whole event under a name you type into `data/lists/<name>.json` in the repo; a `_index.json` keeps the friendly names. **Load** is a dropdown listing those saved names — pick one to restore it. Use it to keep several named guest lists side by side.
 
 ## Guests & WhatsApp invites
-Each guest now has a **phone number** field. The Guests page has an *Invite guests on WhatsApp* panel: type a message (use `{name}` to personalise) and an optional image link, then **Message whole list** (one chat per guest), tap a single guest, or type any number into **Or message a single number** — all launch WhatsApp pre-filled via `wa.me` click-to-chat. The image shows as a link preview. To send a **real image file to everyone for free**, use **Save contacts (.vcf)**: it exports every guest-with-phone as a phone-contacts file — import it into your phone, make a WhatsApp **Broadcast list** from those contacts, and send your image + message once (it reaches all of them as private chats, free; recipients must have your number saved). Fully automated server-side sending would instead need the paid WhatsApp Business / Meta Cloud API.
+The WhatsApp feature is a standalone module (`js/whatsapp.js`), kept separate from the form builders. Each guest has a **phone number** field, and the Guests page has an *Invite guests on WhatsApp* panel:
+
+- **Your WhatsApp number (sender)** — your own number, defaulting to **+91 9874174100**. **Send test message** opens a `wa.me` chat to it so you can confirm WhatsApp works before inviting anyone.
+- Type a message (use `{name}` to personalise) and an optional image link, then **Message whole list** (one chat per guest), tap a single guest, or type any number into **Or message a single number** — all launch WhatsApp pre-filled via `wa.me` click-to-chat. The image shows as a link preview.
+- To send a **real image file to everyone for free**, use **Save contacts (.vcf)**: it exports every guest-with-phone as a phone-contacts file — import it into your phone, make a WhatsApp **Broadcast list** from those contacts, and send your image + message once (it reaches all of them as private chats, free; recipients must have your number saved).
+
+Fully automated server-side sending would instead need the paid WhatsApp Business / Meta Cloud API. The link/number builders are covered by a dependency-free test: `node test/whatsapp.test.js`.
 
 ## Responsive design
 Layout uses fluid `clamp()` sizing and breakpoints for phones (≤680px), tablets (681–980px) and short/landscape screens, plus `env(safe-area-inset-*)` so content clears notches in landscape. On desktop (≥981px) the gutters shrink and the panels span the full width edge-to-edge, with the Summary laid out as a two-column grid. Inputs use 16px font on mobile to prevent iOS auto-zoom.
