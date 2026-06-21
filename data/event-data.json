@@ -161,7 +161,7 @@
     {
       "honorific": "Mr.",
       "name": "Mrinal Kaku",
-      "relationship": "Relatives",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038054345
+  "updatedAt": 1782038056988
 }
