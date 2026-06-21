@@ -203,7 +203,7 @@
       "relationship": "Acquaintances",
       "reference": "Piyal Gupta",
       "invited": false,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -607,5 +607,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782055032833
+  "updatedAt": 1782055037170
 }
