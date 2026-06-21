@@ -18,7 +18,7 @@
     {
       "honorific": "Mr.",
       "name": "Soumyadeep Bandopadhyay",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Titas Bandopadhyay",
       "invited": false,
       "rsvp": false,
@@ -34,5 +34,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782029956073
+  "updatedAt": 1782029959067
 }
