@@ -9,7 +9,7 @@
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "Balaram and Radhara",
+  "catererName": "Balaram and Radharaman Mullick Sweets",
   "catererPhone": "",
   "foodAdv": "",
   "syncPlates": true,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037693350
+  "updatedAt": 1782037700216
 }
