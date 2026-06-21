@@ -640,7 +640,7 @@
       "honorific": "Mr.",
       "name": "Mridula",
       "phone": "",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
       "rsvp": true,
@@ -650,7 +650,7 @@
       "honorific": "Mr.",
       "name": "Bandana",
       "phone": "",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
       "rsvp": false,
@@ -677,5 +677,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064611884
+  "updatedAt": 1782064616998
 }
