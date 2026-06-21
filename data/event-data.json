@@ -1,6 +1,6 @@
 {
   "organizedFor": "Pradip Kumar Gupta",
-  "eventType": "Memorial",
+  "eventType": "Shraddha",
   "eventDate": "2026-06-28T10:00",
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
@@ -13,33 +13,33 @@
   "catererPhone": "+91 6292322041",
   "foodAdv": "",
   "rsvpNotes": "",
-  "locked": true,
+  "locked": false,
   "food": [
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
-      "qty": "96",
+      "qty": "92",
       "price": "120",
       "sync": true
     },
     {
       "name": "Radhaballavi",
       "category": "Veg Main",
-      "qty": "96",
+      "qty": "92",
       "price": "20",
       "sync": true
     },
     {
       "name": "Mishti",
       "category": "Veg Main",
-      "qty": "96",
+      "qty": "92",
       "price": "20",
       "sync": true
     },
     {
       "name": "Water Bottle",
       "category": "Drinks",
-      "qty": "96",
+      "qty": "92",
       "price": "10",
       "sync": true
     },
@@ -53,22 +53,6 @@
   ],
   "guests": [
     {
-      "name": "Soumyader Bari",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "5"
-    },
-    {
-      "name": "Dimpi Office",
-      "relationship": "Colleagues",
-      "reference": "Sarmishtha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "5"
-    },
-    {
       "name": "Abhaya Ghosh",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -77,148 +61,12 @@
       "party": "5"
     },
     {
-      "name": "Tua and Family",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "4"
-    },
-    {
-      "name": "Kushal Majumdar",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "3"
-    },
-    {
-      "name": "Tumpa and Family",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Sirsha/Sanchari Bhadra",
-      "relationship": "Friends",
-      "reference": "Rudraksha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Shanu Kaku",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Partha Sarathi Ganguly",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Partha Dasgupta",
-      "relationship": "Colleagues",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Mithu Bapi Student",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Manju",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Mandira Lahiri",
+      "name": "Amar Kaku",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Kakima Shyambazar",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Gopa Bhajua Pishi",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Dimpi and family",
-      "relationship": "Relatives",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Bulpishi",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Bithi Ghosh",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Barnali",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Bapi Da",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Avirup (Tojo)",
-      "relationship": "Friends",
-      "reference": "Rudraksha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
+      "party": "1"
     },
     {
       "name": "Anju  Banerjee",
@@ -229,31 +77,7 @@
       "party": "2"
     },
     {
-      "name": "Uttam De Roy",
-      "relationship": "Neighbours",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Tutul",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Swapan Mishra ",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Swagata",
+      "name": "Ankur Kaku",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
@@ -261,255 +85,15 @@
       "party": "1"
     },
     {
-      "name": "Seema - Biren Sen",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
+      "name": "Avirup (Tojo)",
+      "relationship": "Friends",
+      "reference": "Rudraksha Gupta",
       "invited": true,
       "rsvp": false,
-      "party": "1"
+      "party": "2"
     },
     {
-      "name": "Sanchita",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Sambhu Da Paan",
-      "relationship": "Acquaintances",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Rupankar Sarkar",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Ruby",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Romu Da",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Rina Housemaid ",
-      "relationship": "Acquaintances",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Rima",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Ratna",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Partha Tour Friend",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Mrinal Kaku",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Mridula",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Mithu Di",
-      "relationship": "Neighbours",
-      "reference": "Titas Bandopadhyay",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Minati Aunty",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Manu",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Manish Dey",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Mani",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Leena",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Krishna Sahoo LIC",
-      "relationship": "Acquaintances",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Jayanta Kaku Chanditala",
-      "relationship": "Neighbours",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Ila r Dada Boudi",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Ila Maashi",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Hashu Kaku",
-      "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Goutam Kaku",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Gora Da",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Dola",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Dipti",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Debu",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Deban Kaku",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Deb Babu",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Chhobi Student",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Bhattacharya Saheb",
+      "name": "Bablu Kaku",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
@@ -525,7 +109,23 @@
       "party": "1"
     },
     {
-      "name": "Bablu Kaku",
+      "name": "Bapi Da",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Barnali",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Bhattacharya Saheb",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
@@ -533,7 +133,23 @@
       "party": "1"
     },
     {
-      "name": "Ankur Kaku",
+      "name": "Bithi Ghosh",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Bulpishi",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Chhobi Student",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
@@ -541,13 +157,397 @@
       "party": "1"
     },
     {
-      "name": "Amar Kaku",
+      "name": "Deb Babu",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Deban Kaku",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Debu",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Dimpi and family",
+      "relationship": "Relatives",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Dimpi Office",
+      "relationship": "Colleagues",
+      "reference": "Sarmishtha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Dipti",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Dola",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Gopa Bhajua Pishi",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Gora Da",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Goutam Kaku",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Hashu Kaku",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Ila Maashi",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Ila r Dada Boudi",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
+    },
+    {
+      "name": "Jayanta Kaku Chanditala",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Kakima Shyambazar",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Krishna Sahoo LIC",
+      "relationship": "Acquaintances",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Kushal Majumdar",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "3"
+    },
+    {
+      "name": "Leena",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Mandira Lahiri",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Mani",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Manish Dey",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Manju",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Manu",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Minati Aunty",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Mithu Bapi Student",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Mithu Di",
+      "relationship": "Neighbours",
+      "reference": "Titas Bandopadhyay",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Mridula",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Mrinal Kaku",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Partha Dasgupta",
+      "relationship": "Colleagues",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Partha Sarathi Ganguly",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Partha Tour Friend",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Ratna",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Rima",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Rina Housemaid ",
+      "relationship": "Acquaintances",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Romu Da",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Ruby",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Rupankar Sarkar",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Sambhu Da Paan",
+      "relationship": "Acquaintances",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Sanchita",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Seema - Biren Sen",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Shanu Kaku",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Sirsha/Sanchari Bhadra",
+      "relationship": "Friends",
+      "reference": "Rudraksha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Soumyader Bari",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "5"
+    },
+    {
+      "name": "Swagata",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Swapan Mishra ",
+      "relationship": "Neighbours",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Tua and Family",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "4"
+    },
+    {
+      "name": "Tumpa and Family",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Tutul",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Uttam De Roy",
+      "relationship": "Neighbours",
+      "reference": "Piyal Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1782069274180
+  "updatedAt": 1782069287715
 }
