@@ -25,7 +25,7 @@
       "name": "Radhaballavi",
       "category": "Veg Main",
       "qty": "85",
-      "price": ""
+      "price": "20"
     }
   ],
   "guests": [
@@ -516,5 +516,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037631942
+  "updatedAt": 1782037635868
 }
