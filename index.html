@@ -6,7 +6,8 @@
 <title>Life Events — Planner</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..0" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -78,7 +79,7 @@
     <label>Map Link (Google Maps URL)</label>
     <div class="map-row">
       <input type="url" id="mapUrl" placeholder="Paste Google Maps link or address" oninput="previewMap()">
-      <button class="btn" onclick="openMap()">Open Map</button>
+      <button class="btn" onclick="openMap()" aria-label="Open Map"><span class="msi">open_in_new</span></button>
     </div>
     <div class="map-preview" id="mapPreview"><iframe id="mapFrame" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
   </div>
@@ -101,7 +102,7 @@
     Auto-set plates to total guest count (cost updates as guests are added)
   </label>
   <div id="foodList"></div>
-  <button class="add-btn" onclick="addFood()">＋ Add Food Item</button>
+  <button class="add-btn" onclick="addFood()" aria-label="Add Food Item"><span class="msi">add</span></button>
   <div class="food-total">
     <div><div class="ft-label">Estimated Food Cost</div><div style="font-size:.7rem;color:var(--muted);margin-top:3px" id="foodBreakdown">0 items · 0 plates</div></div>
     <div class="ft-val" id="foodTotal">₹ 0</div>
@@ -127,7 +128,7 @@
     <div class="gs-stat"><div class="gs-num" id="gTotalPlates">0</div><div class="gs-lab">Est. Plates</div></div>
   </div>
   <div id="guestList"></div>
-  <button class="add-btn" onclick="addGuest()">＋ Add Guest</button>
+  <button class="add-btn" onclick="addGuest()" aria-label="Add Guest"><span class="msi">add</span></button>
   <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
   </div>
 </section>
@@ -146,17 +147,17 @@
     <div class="tb-total-wrap"><div class="tb-total-label">Grand Total</div><div class="tb-total" id="grandTotal">₹ 0</div></div>
   </div>
   <div class="action-row">
-    <button class="btn" onclick="clearAll()">Clear All</button>
-    <button class="btn btn-fill" onclick="saveAll()">Save</button>
-    <button class="btn" onclick="document.getElementById('importFile').click()">Load JSON</button>
+    <button class="btn" onclick="clearAll()" aria-label="Clear All"><span class="msi">delete</span></button>
+    <button class="btn btn-fill" onclick="saveAll()" aria-label="Save"><span class="msi">save</span></button>
+    <button class="btn" onclick="document.getElementById('importFile').click()" aria-label="Load JSON"><span class="msi">upload_file</span></button>
     <input type="file" id="importFile" accept=".json,application/json" style="display:none" onchange="importJSON(event)">
-    <button class="btn" onclick="buildPrintReport();window.print()">Print / Save PDF</button>
+    <button class="btn" onclick="buildPrintReport();window.print()" aria-label="Print / Save PDF"><span class="msi">print</span></button>
   </div>
   <div class="gh-connect" id="ghConnect" style="margin-top:14px;max-width:560px">
     <label>GitHub Token — auto-sync to repo</label>
     <div class="map-row">
       <input type="password" id="ghTokenInput" placeholder="Paste a GitHub token (repo scope) to enable auto-save" oninput="ghConnected=false" autocomplete="off" spellcheck="false">
-      <button class="btn" id="ghConnectBtn" onclick="connectGitHub()">Connect</button>
+      <button class="btn" id="ghConnectBtn" onclick="connectGitHub()" aria-label="Connect"><span class="msi">link</span></button>
     </div>
   </div>
   <div style="font-size:.7rem;color:var(--muted);margin-top:8px" id="saveStatus">Autosaving in this browser. Add a GitHub token above to also auto-save into the repo.</div>
