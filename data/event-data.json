@@ -197,7 +197,7 @@
     {
       "honorific": "Mr.",
       "name": "Amar Kaku",
-      "relationship": "Family",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038072553
+  "updatedAt": 1782038075201
 }
