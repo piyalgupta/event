@@ -62,7 +62,7 @@
     {
       "honorific": "Mr.",
       "name": "Partha Sarathi Ganguly",
-      "relationship": "Relatives",
+      "relationship": "Friends",
       "reference": "",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037754752
+  "updatedAt": 1782037756960
 }
