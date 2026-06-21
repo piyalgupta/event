@@ -46,7 +46,7 @@
     },
     {
       "name": "Chairs",
-      "category": "Veg Starter",
+      "category": "Other",
       "qty": "92",
       "price": "5"
     }
@@ -673,5 +673,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064994863
+  "updatedAt": 1782065006034
 }
