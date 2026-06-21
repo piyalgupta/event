@@ -333,7 +333,7 @@
     },
     {
       "honorific": "Mr.",
-      "name": "Kakima Shyambaza",
+      "name": "Kakima Shyambazar",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -341,5 +341,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782034160564
+  "updatedAt": 1782034162969
 }
