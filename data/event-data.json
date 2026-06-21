@@ -116,7 +116,7 @@
     {
       "honorific": "Mrs.",
       "name": "Mithu Di",
-      "relationship": "Friends",
+      "relationship": "Neighbours",
       "reference": "Titas Bandopadhyay",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038042361
+  "updatedAt": 1782038047035
 }
