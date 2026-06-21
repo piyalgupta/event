@@ -4,14 +4,6 @@
 // on the helpers in core.js; recalc()/saveLocal() are resolved at call time.
 
 // ── Event Type ──
-function toggleSyncPlates(checked){
-  syncPlates=checked;
-  document.querySelectorAll('.food-item').forEach(fi=>{
-    const q=fi.querySelectorAll('input[type=number]')[0];
-    q.readOnly=checked;q.style.opacity=checked?'.55':'';
-  });
-  recalc();
-}
 // The event type is chosen from a dropdown; keep the select, the shared state
 // and the summary label in sync. Safe to call with just a label (e.g. when
 // restoring saved data) — it reflects the value back onto the <select>.
@@ -75,7 +67,11 @@ function addFood(){
       </div>
     </div>
     <div class="row row-3">
-      <div><label>Plates / Units</label><input type="number" placeholder="0" min="0" oninput="recalc()"></div>
+      <div>
+        <label>Plates / Units</label>
+        <input type="number" placeholder="0" min="0" oninput="recalc()">
+        <label class="food-sync-lab"><input type="checkbox" class="food-sync" onchange="toggleFoodSync(this)"> Auto-set to guest count</label>
+      </div>
       <div><label>Cost per Plate (₹)</label><input type="number" placeholder="0" min="0" oninput="recalc()"></div>
       <div><label>Item Total (₹)</label><input type="number" placeholder="0" readonly style="opacity:.55" id="ftotal${id}"></div>
     </div>
@@ -89,8 +85,14 @@ function addFood(){
     recalc();
   }
   qtyEl.oninput=calcItem;priceEl.oninput=calcItem;
-  if(syncPlates){qtyEl.readOnly=true;qtyEl.style.opacity='.55';}
   document.getElementById('foodList').appendChild(div);
+  recalc();
+}
+// Per-row "auto-set plates to guest count": lock the quantity field so recalc()
+// can drive it from the live head-count.
+function toggleFoodSync(chk){
+  const q=chk.closest('.food-item').querySelector('input[type=number]');
+  q.readOnly=chk.checked;q.style.opacity=chk.checked?'.55':'';
   recalc();
 }
 

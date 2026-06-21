@@ -5,12 +5,12 @@
 
 // ── JSON data: collect / apply / autosave / export / import ──
 function collectData(){
-  const food=foodEntries().map(f=>({name:f.name,category:f.category,qty:f.qtyRaw,price:f.priceRaw}));
+  const food=foodEntries().map(f=>({name:f.name,category:f.category,qty:f.qtyRaw,price:f.priceRaw,sync:f.sync}));
   const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,phone:g.phone,relationship:g.relationship,reference:g.reference,invited:g.invited,rsvp:g.rsvp,party:g.party}));
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
-    catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),syncPlates,
+    catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),
     rsvpNotes:val('rsvpNotes'),waSender:val('waSender'),waImage:val('waImage'),waImageData:val('waImageData'),waCC:val('waCC'),waMsg:val('waMsg'),
     food,guests,updatedAt:Date.now()};
 }
@@ -34,8 +34,6 @@ function applyDataInner(d){
   if(typeof waRenderImage==='function')waRenderImage();
   if(d.eventType)setEvent(d.eventType);
   document.getElementById('foodList').innerHTML='';foodId=0;
-  syncPlates=!!d.syncPlates;
-  const chk=document.getElementById('syncPlatesChk');if(chk)chk.checked=syncPlates;
   (d.food||[]).forEach(f=>{
     addFood();
     const fi=document.getElementById('foodList').lastElementChild;
@@ -43,6 +41,9 @@ function applyDataInner(d){
     if(fi.querySelector('select'))fi.querySelector('select').value=f.category||'';
     const nums=fi.querySelectorAll('input[type=number]');
     nums[0].value=f.qty||'';nums[1].value=f.price||'';
+    // Back-compat: old payloads carried a single global d.syncPlates flag.
+    const sync=f.sync!==undefined?f.sync:!!d.syncPlates;
+    const sc=fi.querySelector('.food-sync');if(sc&&sync){sc.checked=true;toggleFoodSync(sc);}
     nums[0].dispatchEvent(new Event('input'));
   });
   document.getElementById('guestList').innerHTML='';guestId=0;
