@@ -41,6 +41,18 @@ const s=document.createElement('style');
 s.textContent='@keyframes fadeOut{to{opacity:0;transform:translateY(-6px)}}';
 document.head.appendChild(s);
 
+// ── Theme (dark / light) : persisted, defaults to system preference ──
+(function(){
+  const stored=localStorage.getItem('theme');
+  const dark=stored?stored==='dark':window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.classList.toggle('dark',dark);
+  const btn=document.getElementById('themeToggle');
+  if(btn)btn.addEventListener('click',()=>{
+    const on=document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme',on?'dark':'light');
+  });
+})();
+
 // ── Init ──
 const saved=loadLocal();
 if(saved){applyData(saved);}
