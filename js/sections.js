@@ -199,9 +199,53 @@ function waNormalize(raw){
 }
 function waCompose(name){
   let m=(val('waMsg')||'').replace(/\{name\}/gi,(name||'').trim());
+  // Only a public URL can ride along in a wa.me link (WhatsApp renders it as a
+  // preview). A device image lives in #waImageData as a data URL, which a link
+  // can't carry, so it is intentionally left out of the message text.
   const img=val('waImage').trim();
   if(img)m=(m?m+'\n\n':'')+img;
   return encodeURIComponent(m);
+}
+// ── Invitation image: public URL or a picture attached from this device ──
+// The field accepts either a pasted public URL or a file picked from the
+// device. A device file is read into a data URL kept in the hidden #waImageData
+// input, so it persists with the rest of the event and shows as a thumbnail.
+// The two are mutually exclusive: setting one clears the other so there is a
+// single active image. Device images can't travel in a wa.me link (see
+// waCompose) — they're for the preview and the Save-contacts → Broadcast flow.
+const WA_IMG_MAX_BYTES=2*1024*1024;            // 2 MB cap keeps localStorage happy
+function waImageSrc(){return val('waImageData')||val('waImage').trim();}
+function waRenderImage(){
+  const box=$('waImgPreview');if(!box)return;
+  const src=waImageSrc();
+  if(src){$('waImgThumb').src=src;box.hidden=false;}
+  else{box.hidden=true;$('waImgThumb').removeAttribute('src');}
+}
+function waOnUrlInput(){
+  // Typing a URL takes over as the source; drop any attached device image.
+  if(val('waImageData')){setVal('waImageData','');setText('waImgMeta','');}
+  waRenderImage();waBuildList();
+}
+function waPickImage(e){
+  const file=e.target.files&&e.target.files[0];
+  e.target.value='';                           // allow re-picking the same file
+  if(!file)return;
+  if(!/^image\//.test(file.type)){alert('Please choose an image file.');return;}
+  if(file.size>WA_IMG_MAX_BYTES){alert('That image is larger than 2 MB. Please pick a smaller one.');return;}
+  const reader=new FileReader();
+  reader.onload=()=>{
+    setVal('waImageData',reader.result);        // device image → persisted data URL
+    setVal('waImage','');                        // keep a single active source
+    setText('waImgMeta',file.name);
+    waRenderImage();waBuildList();
+    saveLocal(true);                             // programmatic change → save now
+  };
+  reader.onerror=()=>alert('Could not read that image.');
+  reader.readAsDataURL(file);
+}
+function waClearImage(){
+  setVal('waImage','');setVal('waImageData','');setText('waImgMeta','');
+  waRenderImage();waBuildList();saveLocal(true);
 }
 function waLink(g){return`https://wa.me/${waNormalize(g.phone)}?text=${waCompose(g.name)}`;}
 function waBuildList(){

@@ -88,6 +88,8 @@ function clearAll(){
   $('foodList').innerHTML='';
   $('guestList').innerHTML='';
   $('mapPreview').classList.remove('show');
+  setText('waImgMeta','');                 // the span isn't an input, clear it
+  if(typeof waRenderImage==='function')waRenderImage();
   localStorage.removeItem(STORAGE_KEY);
   foodId=0;guestId=0;recalc();
 }

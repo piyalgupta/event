@@ -291,6 +291,12 @@ html.dark select option{background:#1a1630;color:#eceaff}
 .wa-link{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-brd);background:var(--glass-2);border-radius:24px;padding:7px 14px;font-size:.82rem;font-weight:600;color:var(--ink);text-decoration:none;box-shadow:var(--sh-raise);transition:transform .2s,color .2s}
 .wa-link:hover{transform:translateY(-2px);color:#1ebe57}
 .wa-link .msi{font-size:1rem;color:#25D366}
+.wa-img-input{display:flex;gap:10px;align-items:stretch}
+.wa-img-input input{flex:1;min-width:0}
+.wa-img-input .btn{flex:0 0 auto;padding:0 16px}
+.wa-img-preview{display:flex;align-items:center;gap:10px;margin-top:10px}
+.wa-img-preview img{width:46px;height:46px;object-fit:cover;border-radius:10px;border:1px solid var(--glass-brd);box-shadow:var(--sh-raise)}
+.wa-img-meta{flex:1;min-width:0;font-size:.74rem;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ── Summary side column + load-list dropdown ── */
 .summary-side{display:flex;flex-direction:column;gap:14px}

@@ -147,7 +147,19 @@
   <div class="wa-panel">
     <div class="wa-head"><span class="msi">forum</span> Invite guests on WhatsApp</div>
     <div class="row row-2">
-      <div><label>Image link <span style="text-transform:none;font-weight:500;color:var(--muted)">(optional · public URL)</span></label><input type="url" id="waImage" placeholder="https://…/invitation.jpg" oninput="waBuildList()"></div>
+      <div><label>Image <span style="text-transform:none;font-weight:500;color:var(--muted)">(optional · public URL or attach from device)</span></label>
+        <div class="wa-img-input">
+          <input type="url" id="waImage" placeholder="https://…/invitation.jpg" oninput="waOnUrlInput()">
+          <button class="btn" type="button" onclick="$('waImageFile').click()" title="Attach an image from this device"><span class="msi">attach_file</span></button>
+        </div>
+        <input type="file" id="waImageFile" accept="image/*" style="display:none" onchange="waPickImage(event)">
+        <input type="hidden" id="waImageData">
+        <div class="wa-img-preview" id="waImgPreview" hidden>
+          <img id="waImgThumb" alt="Selected invitation image">
+          <span class="wa-img-meta" id="waImgMeta"></span>
+          <button class="remove-btn" type="button" onclick="waClearImage()"><span class="msi">close</span> Remove</button>
+        </div>
+      </div>
       <div><label>Default country code</label><input type="tel" id="waCC" value="91" placeholder="91" oninput="waBuildList()"></div>
     </div>
     <div><label>Message <span style="text-transform:none;font-weight:500;color:var(--muted)">(use {name} for each guest)</span></label><textarea id="waMsg" rows="3" placeholder="Namaste {name}, you are warmly invited! Date, time & venue: …" oninput="waBuildList()"></textarea></div>
