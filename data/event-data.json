@@ -359,7 +359,7 @@
     {
       "honorific": "Mr.",
       "name": "Kakima Shyambazar",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038136366
+  "updatedAt": 1782038138587
 }
