@@ -19,7 +19,7 @@
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
       "qty": "85",
-      "price": "1"
+      "price": "120"
     }
   ],
   "guests": [
@@ -510,5 +510,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037609706
+  "updatedAt": 1782037612768
 }
