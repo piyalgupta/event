@@ -220,3 +220,21 @@ function waSendAll(){
   gs.forEach((g,i)=>setTimeout(()=>window.open(waLink(g),'_blank'),i*700));
   setText('waCount',gs.length+' opening…');
 }
+// Export every guest-with-phone as a phone-contacts file (.vcf). Import it into
+// your phone, then a WhatsApp Broadcast List sends a real image to all — free.
+function exportContacts(){
+  const gs=guestEntries().filter(g=>waNormalize(g.phone));
+  if(!gs.length){alert('No guest has a phone number yet. Add phone numbers first.');return;}
+  const org=(val('organizedFor')||'Event').trim();
+  const v=s=>String(s).replace(/[\\,;]/g,m=>'\\'+m);
+  const vcf=gs.map(g=>{
+    const name=((g.honorific?g.honorific+' ':'')+(g.name||'').trim()).trim()||('+'+waNormalize(g.phone));
+    return ['BEGIN:VCARD','VERSION:3.0','N:'+v(name)+';;;;','FN:'+v(name),'ORG:'+v(org),
+      'TEL;TYPE=CELL:+'+waNormalize(g.phone),'END:VCARD'].join('\r\n');
+  }).join('\r\n')+'\r\n';
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([vcf],{type:'text/vcard'}));
+  a.download=(org.replace(/[^a-z0-9]+/gi,'-').toLowerCase()||'event')+'-contacts.vcf';
+  a.click();URL.revokeObjectURL(a.href);
+  setText('waCount',gs.length+' contacts saved');
+}
