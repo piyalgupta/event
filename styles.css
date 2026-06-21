@@ -191,6 +191,10 @@ input,select,textarea{
   transition:box-shadow .25s,border-color .25s}
 input:focus,select:focus,textarea:focus{border-color:var(--accent);box-shadow:var(--sh-inset),0 0 0 3px var(--accent-soft)}
 input[type=checkbox]{width:auto;border:none;padding:0;box-shadow:none;accent-color:var(--accent);cursor:pointer}
+/* iOS/WebKit renders datetime-local with its own appearance, leaving the value
+   vertically off-centre and the field taller than siblings — normalise it. */
+input[type=datetime-local]{-webkit-appearance:none;appearance:none;text-align:left;min-height:46px;line-height:1.2}
+input[type=datetime-local]::-webkit-date-and-time-value{text-align:left;margin:0}
 input::placeholder,textarea::placeholder{color:#a59fb8}
 textarea{resize:vertical;min-height:60px;line-height:1.55}
 select{cursor:pointer}

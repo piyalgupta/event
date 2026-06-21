@@ -11,11 +11,12 @@ function recalc(){
 
   // Guests — families, total heads and invited heads in a single pass, plus
   // live head-count breakdowns by relationship and by reference.
-  let families=0,people=0,invited=0;
+  let families=0,people=0,invited=0,rsvp=0;
   const relCount={},refCount={};
   guestEntries().forEach(g=>{
     if(g.hasSpin){people+=g.heads;families++;}
     if(g.invited)invited+=g.heads;
+    if(g.rsvp)rsvp+=g.heads;
     const rel=g.relationship||'Other';
     relCount[rel]=(relCount[rel]||0)+g.heads;
     const ref=(g.reference||'').trim()||'Unassigned';
@@ -24,7 +25,7 @@ function recalc(){
   setText('gTotalFamilies',families);
   setText('gTotalPeople',people);
   setText('gInvited',invited);
-  setText('gTotalPlates',people);
+  setText('gTotalPlates',Math.max(0,people-rsvp));
   setText('guestBadge',people+' people');
   renderBreakdown('relBreakdown',relCount,RELATIONSHIPS);
   renderBreakdown('refBreakdown',refCount);
