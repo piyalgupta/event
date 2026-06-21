@@ -74,6 +74,7 @@ function buildPrintReport(){
       <div class="pr-row"><span>Est. Plates</span><strong>${people}</strong></div>
       <div class="pr-row"><span>Venue Cost</span><strong>₹ ${fmt(vCost)}</strong></div>
       <div class="pr-row"><span>Food Cost</span><strong>₹ ${fmt(fTotal)}</strong></div>
+      <div class="pr-row"><span>Cost per Head</span><strong>₹ ${fmt(people?Math.round(grand/people):0)}</strong></div>
       <div class="pr-total">Grand Total — ₹ ${fmt(grand)}</div>
     </div>`;
 }
@@ -88,6 +89,8 @@ function clearAll(){
   $('foodList').innerHTML='';
   $('guestList').innerHTML='';
   $('mapPreview').classList.remove('show');
+  setText('waImgMeta','');                 // the span isn't an input, clear it
+  if(typeof waRenderImage==='function')waRenderImage();
   localStorage.removeItem(STORAGE_KEY);
   foodId=0;guestId=0;recalc();
 }
