@@ -432,7 +432,7 @@
       "name": "Partha Tour Friend",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": true,
       "party": "1"
     },
@@ -549,5 +549,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782065966436
+  "updatedAt": 1782065973047
 }
