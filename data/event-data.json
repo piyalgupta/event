@@ -224,7 +224,7 @@
     {
       "honorific": "Mr.",
       "name": "Tutul",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038082485
+  "updatedAt": 1782038084669
 }
