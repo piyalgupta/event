@@ -238,3 +238,10 @@ function exportContacts(){
   a.click();URL.revokeObjectURL(a.href);
   setText('waCount',gs.length+' contacts saved');
 }
+// Message a single, manually-typed number (not necessarily a saved guest).
+function waSendOne(){
+  const n=waNormalize(val('waOne'));
+  if(!n){alert('Enter a valid phone number first.');return;}
+  if(!val('waMsg').trim()&&!val('waImage').trim()){alert('Type a message (and an optional image link) first.');return;}
+  window.open(`https://wa.me/${n}?text=${waCompose('')}`,'_blank');
+}
