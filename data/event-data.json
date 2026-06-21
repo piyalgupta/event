@@ -16,7 +16,7 @@
   "rsvpNotes": "",
   "waImage": "",
   "waCC": "91",
-  "waMsg": "",
+  "waMsg": "hello",
   "food": [
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
@@ -605,5 +605,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782045580130
+  "updatedAt": 1782045586816
 }
