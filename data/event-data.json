@@ -3,7 +3,7 @@
   "eventType": "Shraddha",
   "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
-  "venueAddr": "70B Rashbehari Avenue Kolkata ",
+  "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
   "venuePhone": "",
   "venueCost": "11000",
@@ -14,14 +14,17 @@
   "foodAdv": "",
   "syncPlates": true,
   "rsvpNotes": "",
-  "food": [
+  "food": [],
+  "guests": [
     {
-      "name": "Radhaballavi 2, Chhanar Dalna, Aloor Dum, Mishti  ",
-      "category": "Veg Main",
-      "qty": "",
-      "price": "160"
+      "honorific": "Mr.",
+      "name": "",
+      "relationship": "Family",
+      "reference": "",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
     }
   ],
-  "guests": [],
-  "updatedAt": 1782031940935
+  "updatedAt": 1782031986810
 }
