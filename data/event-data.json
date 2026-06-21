@@ -17,13 +17,13 @@
     {
       "name": "কচুরি, আলুর দম, পোলাও, পনির, ২টো শুকনো মিষ্টি",
       "category": "Veg Starter",
-      "qty": "85",
+      "qty": "86",
       "price": "150"
     },
     {
       "name": "Watter Bottle",
       "category": "Drinks",
-      "qty": "85",
+      "qty": "86",
       "price": "10"
     }
   ],
@@ -47,10 +47,10 @@
     {
       "honorific": "Mr.",
       "name": "Partha Sarathi Ganguly",
-      "relationship": "Family",
+      "relationship": "Friends",
       "invited": false,
       "rsvp": false,
-      "party": "2"
+      "party": "3"
     },
     {
       "honorific": "Mr.",
@@ -461,5 +461,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782027312195
+  "updatedAt": 1782027350722
 }
