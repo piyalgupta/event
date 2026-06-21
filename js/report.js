@@ -31,7 +31,7 @@ function buildPrintReport(){
     people+=g.heads;families++;
     if(g.invited)invitedHeads+=g.heads;
     if(g.rsvp)rsvpHeads+=g.heads;
-    guestRows+=`<tr><td>${esc(g.honorific?g.honorific+' ':'')}${esc(g.name||'—')}</td><td>${esc(g.phone||'—')}</td><td>${esc(g.relationship||'—')}</td><td>${esc(g.reference||'—')}</td><td>${g.heads}</td><td>${g.invited?'Yes':'No'}</td><td>${g.rsvp?'Yes':'No'}</td></tr>`;
+    guestRows+=`<tr><td>${esc(g.name||'—')}</td><td>${esc(g.relationship||'—')}</td><td>${esc(g.reference||'—')}</td><td>${g.heads}</td><td>${g.invited?'Yes':'No'}</td><td>${g.rsvp?'Yes':'No'}</td></tr>`;
   });
   const rsvp=val('rsvpNotes');
   const grand=vCost+fTotal;
@@ -61,8 +61,8 @@ function buildPrintReport(){
     </div>
     <div class="pr-section">
       <div class="pr-h">Guest List</div>
-      <table class="pr-table"><thead><tr><th>Name</th><th>Phone</th><th>Relationship</th><th>Reference</th><th>Party Size</th><th>Invited</th><th>RSVP</th></tr></thead>
-      <tbody>${guestRows||'<tr><td colspan="7">No guests added</td></tr>'}</tbody></table>
+      <table class="pr-table"><thead><tr><th>Name</th><th>Relationship</th><th>Reference</th><th>Party Size</th><th>Invited</th><th>RSVP</th></tr></thead>
+      <tbody>${guestRows||'<tr><td colspan="6">No guests added</td></tr>'}</tbody></table>
       ${rsvp?`<div class="pr-row" style="margin-top:8px"><span>RSVP Notes</span><strong>${esc(rsvp)}</strong></div>`:''}
     </div>
     <div class="pr-section">
@@ -71,7 +71,7 @@ function buildPrintReport(){
       <div class="pr-row"><span>Total People</span><strong>${people}</strong></div>
       <div class="pr-row"><span>Invitation Sent For</span><strong>${invitedHeads} heads</strong></div>
       <div class="pr-row"><span>RSVP Confirmed</span><strong>${rsvpHeads} heads</strong></div>
-      <div class="pr-row"><span>Est. Plates</span><strong>${people}</strong></div>
+      <div class="pr-row"><span>Est. Plates</span><strong>${Math.max(0,people-rsvpHeads)}</strong></div>
       <div class="pr-row"><span>Venue Cost</span><strong>₹ ${fmt(vCost)}</strong></div>
       <div class="pr-row"><span>Food Cost</span><strong>₹ ${fmt(fTotal)}</strong></div>
       <div class="pr-row"><span>Cost per Head</span><strong>₹ ${fmt(people?Math.round(grand/people):0)}</strong></div>
@@ -89,8 +89,6 @@ function clearAll(){
   $('foodList').innerHTML='';
   $('guestList').innerHTML='';
   $('mapPreview').classList.remove('show');
-  setText('waImgMeta','');                 // the span isn't an input, clear it
-  if(typeof waRenderImage==='function')waRenderImage();
   localStorage.removeItem(STORAGE_KEY);
   foodId=0;guestId=0;recalc();
 }

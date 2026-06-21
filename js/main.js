@@ -2,50 +2,39 @@
 // Runs last, after every other module has defined its functions. Wires up page
 // navigation, restores saved data/token, and installs the autosave safety net.
 
-// ── Page navigation : nav dots + counter + reveal-on-view ──
-const pages=[...document.querySelectorAll('.page')];
-const dots=[...document.querySelectorAll('.page-nav button')];
-const counter=document.getElementById('pageCounter');
-const pageCountLabel=String(pages.length).padStart(2,'0');
-dots.forEach(d=>d.addEventListener('click',()=>{
-  pages[+d.dataset.i].scrollIntoView({behavior:'smooth'});
-}));
-// Reveal-on-view: the moment any sliver of a page is visible, reveal its
-// content. A tiny threshold (not .5) means pages taller than the viewport — a
-// long guest list, say — still reveal instead of staying stuck at opacity:0.
-const revealIo=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{
-    if(en.isIntersecting)en.target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+// ── Section navigation : the header menu switches single-page views ──
+// Every view shares one data model (IDs + recalc), so switching never loses
+// state; recalc() runs on each switch to keep badges/totals/dashboard live.
+const VIEWS=['venue','food','guests','dashboard','summary'];
+function showView(name){
+  VIEWS.forEach(v=>{
+    const sec=document.getElementById('view-'+v);
+    if(sec)sec.classList.toggle('active',v===name);
   });
-},{threshold:.01});
-pages.forEach(p=>revealIo.observe(p));
-
-// Active page (nav dot + counter): highlight whichever page crosses the
-// viewport's middle. A centred root margin guarantees exactly one active page
-// at any height, where a fixed ratio could never trigger on a very tall page.
-const activeIo=new IntersectionObserver((entries)=>{
-  entries.forEach(en=>{
-    if(!en.isIntersecting)return;
-    const i=pages.indexOf(en.target);
-    dots.forEach(d=>d.classList.toggle('active',+d.dataset.i===i));
-    counter.textContent=String(i+1).padStart(2,'0')+' — '+pageCountLabel;
-  });
-},{rootMargin:'-50% 0px -50% 0px',threshold:0});
-pages.forEach(p=>activeIo.observe(p));
-
-// ── Planner tabs : Venue / Food / Guests as three interconnected views ──
-// The views share one data model (IDs + recalc), so switching tabs never loses
-// state; recalc() runs on every switch to keep each view's badges/totals live.
-const TAB_NAMES=['venue','food','guests'];
-function showTab(name){
-  TAB_NAMES.forEach(t=>{
-    const btn=document.getElementById('tab-'+t+'-btn'), panel=document.getElementById('tab-'+t);
-    const on=(t===name);
-    if(btn){btn.classList.toggle('active',on);btn.setAttribute('aria-selected',on?'true':'false');}
-    if(panel){panel.classList.toggle('active',on);panel.hidden=!on;}
-  });
+  document.querySelectorAll('.ah-link').forEach(b=>b.classList.toggle('active',b.dataset.view===name));
+  const sc=document.getElementById('pages');if(sc)sc.scrollTo({top:0});
   if(typeof recalc==='function')recalc();
 }
+
+// ── Lock : freeze the Venue & Food sections (a single header toggle) ──
+let appLocked=false;
+function setLock(on){
+  appLocked=on;
+  ['view-venue','view-food'].forEach(id=>{
+    const v=document.getElementById(id);if(!v)return;
+    v.classList.toggle('locked',on);
+    v.querySelectorAll('.lock-fields input,.lock-fields select,.lock-fields textarea,.lock-fields button')
+      .forEach(el=>{el.disabled=on;});
+  });
+  const btn=document.getElementById('lockToggle');
+  if(btn){
+    btn.classList.toggle('on',on);
+    btn.querySelector('.msi').textContent=on?'lock':'lock_open';
+    btn.title=on?'Unlock Venue & Food sections':'Lock Venue & Food sections';
+  }
+  if(typeof saveLocal==='function')saveLocal();
+}
+function toggleLock(){setLock(!appLocked);}
 
 // fadeOut keyframe (guest removal)
 const s=document.createElement('style');
@@ -69,7 +58,6 @@ if(typeof buildGuestFilterBar==='function')buildGuestFilterBar();
 const saved=loadLocal();
 if(saved){applyData(saved);}
 else{addFood();addFood();addGuest();addGuest();addGuest();recalc();}
-document.querySelectorAll('#p0 .reveal').forEach(el=>el.classList.add('in'));
 
 // Restore a previously saved token, reconnect, and pull the latest data from
 // the repo so this device (e.g. mobile) shows what was saved elsewhere.

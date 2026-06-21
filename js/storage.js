@@ -6,12 +6,12 @@
 // ── JSON data: collect / apply / autosave / export / import ──
 function collectData(){
   const food=foodEntries().map(f=>({name:f.name,category:f.category,qty:f.qtyRaw,price:f.priceRaw,sync:f.sync}));
-  const guests=guestEntries().map(g=>({honorific:g.honorific,name:g.name,phone:g.phone,relationship:g.relationship,reference:g.reference,invited:g.invited,rsvp:g.rsvp,party:g.party}));
+  const guests=guestEntries().map(g=>({name:g.name,relationship:g.relationship,reference:g.reference,invited:g.invited,rsvp:g.rsvp,party:g.party}));
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
     catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),
-    rsvpNotes:val('rsvpNotes'),waSender:val('waSender'),waImage:val('waImage'),waImageData:val('waImageData'),waCC:val('waCC'),waMsg:val('waMsg'),
+    rsvpNotes:val('rsvpNotes'),locked:appLocked,
     food,guests,updatedAt:Date.now()};
 }
 // True while applyData is rebuilding the form from a payload. saveLocal honours
@@ -25,13 +25,8 @@ function applyData(d){
   try{applyDataInner(d);}finally{applyingData=false;}
 }
 function applyDataInner(d){
-  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv','waSender','waImage','waCC','waMsg'].forEach(k=>setVal(k,d[k]));
+  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
-  // Restore the device image (a data URL) explicitly so loading a payload that
-  // omits it clears any image left over from a previous load, then repaint.
-  setVal('waImageData',d.waImageData||'');
-  setText('waImgMeta',d.waImageData?'Attached image':'');
-  if(typeof waRenderImage==='function')waRenderImage();
   if(d.eventType)setEvent(d.eventType);
   document.getElementById('foodList').innerHTML='';foodId=0;
   (d.food||[]).forEach(f=>{
@@ -50,9 +45,7 @@ function applyDataInner(d){
   (d.guests||[]).forEach(g=>{
     addGuest();
     const gi=document.getElementById('guestList').lastElementChild;
-    if(gi.querySelector('.honorific'))gi.querySelector('.honorific').value=g.honorific||'Mr.';
     gi.querySelector('.guest-name-wrap input').value=g.name||'';
-    if(gi.querySelector('.guest-phone'))gi.querySelector('.guest-phone').value=g.phone||'';
     if(gi.querySelector('.relationship')&&g.relationship)gi.querySelector('.relationship').value=g.relationship;
     if(gi.querySelector('.reference'))gi.querySelector('.reference').value=g.reference||'';
     if(g.invited)toggleInvite(gi.id.replace('guest',''));
@@ -62,6 +55,7 @@ function applyDataInner(d){
   });
   if(d.mapUrl)previewMap();
   recalc();
+  if(typeof setLock==='function')setLock(!!d.locked);
 }
 let saveTimer;
 function saveLocal(immediate){

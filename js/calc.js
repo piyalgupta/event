@@ -30,7 +30,6 @@ function recalc(){
   renderBreakdown('relBreakdown',relCount,RELATIONSHIPS);
   renderBreakdown('refBreakdown',refCount);
   rebuildReferenceList();
-  if(typeof waBuildList==='function')waBuildList();
 
   // Food — rows with their own "auto-set plates" toggle track the guest
   // head-count; the per-row line total is written back so cost stays live.

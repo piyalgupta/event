@@ -97,7 +97,6 @@ function toggleFoodSync(chk){
 }
 
 // ── Guests ──
-const HONORIFICS=['Mr.','Mrs.','Ms.','Dr.','Prof.','Shri','Smt.','Master','Miss','Rev.'];
 const RELATIONSHIPS=['Family','Relatives','Friends','Colleagues','Neighbours','Acquaintances','Other'];
 // References start prefilled and grow as new names are typed into any guest's
 // Reference field (see rebuildReferenceList, called from recalc()).
@@ -126,13 +125,10 @@ function addGuest(){
   const div=document.createElement('div');
   div.className='guest-item';
   div.id='guest'+id;
-  const opts=HONORIFICS.map(h=>`<option>${h}</option>`).join('');
   const relOpts=RELATIONSHIPS.map(r=>`<option>${r}</option>`).join('');
   div.innerHTML=`
     <div class="guest-num">${String(seq).padStart(2,'0')}</div>
-    <select class="honorific" onchange="recalc()">${opts}</select>
     <div class="guest-name-wrap"><input type="text" id="gname${id}" placeholder="Full name" oninput="recalc()"></div>
-    <input class="guest-phone" type="tel" id="gphone${id}" placeholder="Phone / WhatsApp" oninput="recalc()" aria-label="Phone number">
     <select class="relationship" onchange="recalc()" aria-label="Relationship">${relOpts}</select>
     <input class="reference" list="referenceList" placeholder="Reference" oninput="recalc()" aria-label="Reference">
     <button type="button" class="invite-toggle" id="inv${id}" onclick="toggleInvite(${id})" aria-label="Invitation sent">
@@ -161,8 +157,19 @@ function toggleInvite(id){
   recalc();
 }
 function toggleRsvp(id){
-  document.getElementById('rsvp'+id).classList.toggle('on');
+  const on=document.getElementById('rsvp'+id).classList.toggle('on');
+  lockGuestRow(id,on);
   recalc();
+}
+// Once a guest has RSVP'd their details are settled — lock the whole row
+// (except the RSVP toggle itself, so it can be switched back off).
+function lockGuestRow(id,locked){
+  const gi=document.getElementById('guest'+id);if(!gi)return;
+  gi.classList.toggle('rsvp-locked',locked);
+  gi.querySelectorAll('input,select,button').forEach(el=>{
+    if(el.id==='rsvp'+id||el.closest('#rsvp'+id))return;   // keep the RSVP toggle live
+    el.disabled=locked;
+  });
 }
 function spin(id,d){
   const el=$(id);
