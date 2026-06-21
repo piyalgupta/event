@@ -377,7 +377,7 @@
     {
       "honorific": "Mr.",
       "name": "Mithu Bapi",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038143951
+  "updatedAt": 1782038146751
 }
