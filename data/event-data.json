@@ -18,13 +18,13 @@
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "",
-      "relationship": "Family",
+      "name": "Soumyader Bari",
+      "relationship": "Relatives",
       "reference": "",
       "invited": false,
       "rsvp": false,
-      "party": "1"
+      "party": "5"
     }
   ],
-  "updatedAt": 1782032062379
+  "updatedAt": 1782032076774
 }
