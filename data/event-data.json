@@ -153,7 +153,7 @@
       "honorific": "Mrs.",
       "name": "Mandira Lahiri",
       "relationship": "Relatives",
-      "reference": "",
+      "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
@@ -162,7 +162,7 @@
       "honorific": "Mr.",
       "name": "Mrinal Kaku",
       "relationship": "Relatives",
-      "reference": "",
+      "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037808899
+  "updatedAt": 1782037816119
 }
