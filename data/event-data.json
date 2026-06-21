@@ -125,7 +125,7 @@
     {
       "honorific": "Mr.",
       "name": "Ila r Dada Boudi",
-      "relationship": "Friends",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038037702
+  "updatedAt": 1782038042361
 }
