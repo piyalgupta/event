@@ -17,7 +17,7 @@
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "Soumya",
+      "name": "Soumyadeep bandopadhya",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -25,5 +25,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782029869086
+  "updatedAt": 1782029872792
 }
