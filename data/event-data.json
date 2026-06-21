@@ -332,7 +332,7 @@
     {
       "honorific": "Mr.",
       "name": "Tumpa and Family",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038124791
+  "updatedAt": 1782038127124
 }
