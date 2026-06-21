@@ -9,7 +9,7 @@
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "",
+  "catererName": "Balaram and Radhara",
   "catererPhone": "",
   "foodAdv": "",
   "syncPlates": true,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037679583
+  "updatedAt": 1782037693350
 }
