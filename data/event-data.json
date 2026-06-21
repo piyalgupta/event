@@ -35,7 +35,7 @@
     },
     {
       "name": "Water Bottle",
-      "category": "Veg Starter",
+      "category": "Drinks",
       "qty": "85",
       "price": ""
     }
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037663699
+  "updatedAt": 1782037667432
 }
