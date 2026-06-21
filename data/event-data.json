@@ -17,56 +17,10 @@
     {
       "name": "Radhaballavi 2, Chhanar Dalna, Aloor Dum, Mishti  ",
       "category": "Veg Main",
-      "qty": "5",
+      "qty": "",
       "price": "160"
     }
   ],
-  "guests": [
-    {
-      "honorific": "Mr.",
-      "name": "Soumyadeep Bandopadhyay",
-      "relationship": "Relatives",
-      "reference": "Titas Bandopadhyay",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Partha Sarathi Ganguly",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bul Pishi",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "Bapi Da",
-      "relationship": "Acquaintances",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "honorific": "Mr.",
-      "name": "",
-      "relationship": "Family",
-      "reference": "",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    }
-  ],
-  "updatedAt": 1782030689582
+  "guests": [],
+  "updatedAt": 1782030750747
 }
