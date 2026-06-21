@@ -352,7 +352,7 @@
       "phone": "",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -372,7 +372,7 @@
       "phone": "",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -657,5 +657,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064282006
+  "updatedAt": 1782064292437
 }
