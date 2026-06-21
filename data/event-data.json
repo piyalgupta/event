@@ -206,7 +206,7 @@
     {
       "honorific": "Mr.",
       "name": "Romu Da",
-      "relationship": "Family",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038075201
+  "updatedAt": 1782038077387
 }
