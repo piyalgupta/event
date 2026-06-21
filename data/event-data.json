@@ -41,7 +41,7 @@
       "reference": "",
       "invited": false,
       "rsvp": false,
-      "party": "1"
+      "party": "2"
     },
     {
       "honorific": "Mr.",
@@ -53,5 +53,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782032587022
+  "updatedAt": 1782032596719
 }
