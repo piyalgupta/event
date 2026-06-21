@@ -246,6 +246,8 @@ html.dark select option{background:#1a1630;color:#eceaff}
 .rc-lab{color:var(--ink);font-weight:600}
 .rc-num{font-family:var(--mono);font-size:.74rem;font-weight:700;color:#fff;background:var(--accent-grad);padding:2px 8px;border-radius:12px}
 .rel-empty{font-size:.82rem;color:var(--muted)}
+.food-sync-lab{display:flex;align-items:center;gap:6px;margin:8px 0 0;text-transform:none;font-size:.72rem;font-weight:500;color:var(--muted);cursor:pointer}
+.food-sync-lab input{width:auto;margin:0}
 .guest-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px}
 .guest-toolbar .gf-search{flex:1 1 220px;min-width:160px}
 .guest-toolbar select{flex:0 1 auto;width:auto;cursor:pointer}

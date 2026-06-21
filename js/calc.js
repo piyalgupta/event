@@ -32,11 +32,11 @@ function recalc(){
   rebuildReferenceList();
   if(typeof waBuildList==='function')waBuildList();
 
-  // Food — when "sync plates" is on each row tracks the guest head-count;
-  // the per-row line total is written back so the live cost stays in sync.
+  // Food — rows with their own "auto-set plates" toggle track the guest
+  // head-count; the per-row line total is written back so cost stays live.
   let fTotal=0,plates=0,items=0;
   foodEntries().forEach(f=>{
-    if(syncPlates)f.qtyEl.value=people||'';
+    if(f.sync){f.qtyEl.value=people||'';f.qtyEl.readOnly=true;f.qtyEl.style.opacity='.55';}
     const qty=parseFloat(f.qtyEl.value)||0, total=qty*f.price;
     if(f.totalEl)f.totalEl.value=total||'';
     fTotal+=total;plates+=qty;

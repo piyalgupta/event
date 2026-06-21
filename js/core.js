@@ -14,7 +14,7 @@ const GH_PUSH_DEBOUNCE_MS=1500;       // debounce before pushing to GitHub
 const GH_SUPPRESS_MS=2500;            // ignore pushes briefly after a remote pull
 
 // ── State ──
-let foodId=0,guestId=0,currentEvent='Birthday',syncPlates=false;
+let foodId=0,guestId=0,currentEvent='Birthday';
 
 // ── DOM / formatting helpers (defined once, reused everywhere) ─────────────
 const $=id=>document.getElementById(id);
@@ -41,6 +41,7 @@ function readFoodItem(fi){
     category:fi.querySelector('select')?.value||'',
     qtyEl:nums[0], priceEl:nums[1],
     qtyRaw:nums[0].value, priceRaw:nums[1].value,
+    sync:!!fi.querySelector('.food-sync')?.checked,
     qty, price, total:qty*price,
     totalEl:$('ftotal'+fi.id.replace(FOOD_ID_PREFIX,''))
   };
