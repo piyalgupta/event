@@ -305,7 +305,7 @@
     {
       "honorific": "Mr.",
       "name": "Ankur Kaku",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038111003
+  "updatedAt": 1782038113763
 }
