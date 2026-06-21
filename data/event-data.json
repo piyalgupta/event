@@ -63,7 +63,7 @@
     {
       "honorific": "Mr.",
       "name": "গৌতম কাকু",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "invited": false,
       "rsvp": false,
       "party": "1"
@@ -71,7 +71,7 @@
     {
       "honorific": "Mr.",
       "name": "বুলপিসি",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "invited": false,
       "rsvp": false,
       "party": "2"
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782028598114
+  "updatedAt": 1782028602211
 }
