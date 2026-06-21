@@ -314,7 +314,7 @@
     {
       "honorific": "Mr.",
       "name": "Deban Kaku",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038113763
+  "updatedAt": 1782038116334
 }
