@@ -12,11 +12,14 @@ function toggleSyncPlates(checked){
   });
   recalc();
 }
-function setEvent(btn,label){
-  document.querySelectorAll('.event-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
+// The event type is chosen from a dropdown; keep the select, the shared state
+// and the summary label in sync. Safe to call with just a label (e.g. when
+// restoring saved data) — it reflects the value back onto the <select>.
+function setEvent(label){
   currentEvent=label;
-  document.getElementById('eventLabel').textContent=label;
+  const sel=$('eventSelect');
+  if(sel&&sel.value!==label)sel.value=label;
+  setText('eventLabel',label);
   saveLocal();
 }
 

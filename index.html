@@ -25,6 +25,7 @@
   <button data-i="0" class="active" aria-label="Cover"></button>
   <button data-i="1" aria-label="Planner"></button>
   <button data-i="2" aria-label="Summary"></button>
+  <button data-i="3" aria-label="Dashboard"></button>
 </nav>
 
 <div id="pages">
@@ -39,16 +40,19 @@
       <label>This event is being organised for</label>
       <input type="text" id="organizedFor" placeholder="e.g. Aarav's First Birthday, or Riya &amp; Karan's Wedding" oninput="recalc()">
     </div>
-    <div class="event-strip reveal" id="eventStrip">
-      <button class="event-btn active" onclick="setEvent(this,'Birthday')">Birthday</button>
-      <button class="event-btn" onclick="setEvent(this,'Marriage')">Marriage</button>
-      <button class="event-btn" onclick="setEvent(this,'Anniversary')">Anniversary</button>
-      <button class="event-btn" onclick="setEvent(this,'Shraddha')">Shraddha</button>
-      <button class="event-btn" onclick="setEvent(this,'Naming Ceremony')">Naming</button>
-      <button class="event-btn" onclick="setEvent(this,'Graduation')">Graduation</button>
-      <button class="event-btn" onclick="setEvent(this,'Puja / Ritual')">Puja</button>
-      <button class="event-btn" onclick="setEvent(this,'Memorial')">Memorial</button>
-      <button class="event-btn" onclick="setEvent(this,'Custom Event')">Custom</button>
+    <div class="event-select-wrap reveal">
+      <label for="eventSelect">Type of event</label>
+      <select id="eventSelect" onchange="setEvent(this.value)" aria-label="Type of event">
+        <option value="Birthday">Birthday</option>
+        <option value="Marriage">Marriage</option>
+        <option value="Anniversary">Anniversary</option>
+        <option value="Shraddha">Shraddha</option>
+        <option value="Naming Ceremony">Naming Ceremony</option>
+        <option value="Graduation">Graduation</option>
+        <option value="Puja / Ritual">Puja / Ritual</option>
+        <option value="Memorial">Memorial</option>
+        <option value="Custom Event">Custom Event</option>
+      </select>
     </div>
   </div>
   <div class="scroll-cue"><span></span>Scroll</div>
@@ -213,6 +217,16 @@
   </div>
 </section>
 
+<!-- ── PAGE 5 : DASHBOARD ── -->
+<section class="page dashboard" id="dashboard">
+  <div class="page-head reveal">
+    <div class="page-num">05</div>
+    <div><div class="page-title">Analytics Dashboard</div><div class="page-sub">Cost &amp; guest insights, sliced from every angle</div></div>
+  </div>
+  <div class="hr"></div>
+  <div id="dashGrid"></div>
+</section>
+
 </div>
 
 <!-- App logic, split by concern and loaded in dependency order.
@@ -224,6 +238,7 @@
 <script src="js/calc.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/report.js"></script>
+<script src="js/dashboard.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -27,10 +27,7 @@ function applyData(d){
 function applyDataInner(d){
   ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv','waSender','waImage','waCC','waMsg'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
-  if(d.eventType){
-    const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
-    if(btn)setEvent(btn,d.eventType);
-  }
+  if(d.eventType)setEvent(d.eventType);
   document.getElementById('foodList').innerHTML='';foodId=0;
   syncPlates=!!d.syncPlates;
   const chk=document.getElementById('syncPlatesChk');if(chk)chk.checked=syncPlates;

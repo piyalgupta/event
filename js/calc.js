@@ -52,5 +52,6 @@ function recalc(){
   setText('sumFood',inr(fTotal));
   setText('sumGuests',people+' people ('+families+' families)');
   setText('grandTotal',inr(grand));
+  if(typeof renderDashboard==='function')renderDashboard();
   saveLocal();
 }
