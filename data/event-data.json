@@ -5,12 +5,12 @@
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
-  "venuePhone": "",
+  "venuePhone": "+91898",
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "",
-  "catererName": "Balaram Mallick & Radharman Mullick",
-  "catererPhone": "",
+  "catererName": "Balaram Mallick & Radharaman Mullick",
+  "catererPhone": "+916292322041",
   "syncPlates": true,
   "rsvpNotes": "",
   "food": [
@@ -469,5 +469,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782028066135
+  "updatedAt": 1782028133163
 }
