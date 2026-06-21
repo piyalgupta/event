@@ -16,7 +16,7 @@
   "rsvpNotes": "",
   "food": [
     {
-      "name": "",
+      "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
       "qty": "85",
       "price": ""
@@ -510,5 +510,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782037585498
+  "updatedAt": 1782037602268
 }
