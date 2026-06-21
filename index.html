@@ -148,23 +148,30 @@
   </div>
   <datalist id="referenceList"></datalist>
   <div class="guest-toolbar">
-    <input type="search" id="gfSearch" class="gf-search" placeholder="Search name or reference" oninput="applyGuestFilters()" aria-label="Search guests">
-    <select id="gfRel" onchange="applyGuestFilters()" aria-label="Filter by relationship"><option value="all">All relationships</option></select>
-    <select id="gfStatus" onchange="applyGuestFilters()" aria-label="Filter by status">
-      <option value="all">All statuses</option>
-      <option value="invited">Invited</option><option value="notinvited">Not invited</option>
-      <option value="rsvp">RSVP'd</option><option value="notrsvp">Not RSVP'd</option>
-    </select>
-    <select id="gfSort" onchange="applyGuestFilters()" aria-label="Sort by">
-      <option value="none">Sort: default</option>
-      <option value="name">Name</option><option value="relationship">Relationship</option>
-      <option value="reference">Reference</option><option value="party">Party size</option>
-      <option value="invited">Invited</option><option value="rsvp">RSVP</option>
-    </select>
-    <select id="gfDir" onchange="applyGuestFilters()" aria-label="Sort direction">
-      <option value="asc">Asc</option><option value="desc">Desc</option>
-    </select>
+    <input type="search" id="gfSearch" class="gf-search" placeholder="Search anything…" oninput="applyGuestFilters()" aria-label="Search guests">
     <span class="gf-count" id="gfCount"></span>
+  </div>
+  <div class="guest-header" id="guestHeader">
+    <span class="gh-col gh-num"></span>
+    <span class="gh-col gh-name"><span class="gh-lab" data-sort="name" onclick="sortGuests('name')">Name</span></span>
+    <span class="gh-col gh-rel">
+      <select id="gfRel" onchange="applyGuestFilters()" aria-label="Filter by relationship"><option value="all">Relationship</option></select>
+    </span>
+    <span class="gh-col gh-ref">
+      <input type="search" id="gfRef" placeholder="Reference" oninput="applyGuestFilters()" aria-label="Filter by reference">
+    </span>
+    <span class="gh-col gh-inv">
+      <select id="gfInvite" onchange="applyGuestFilters()" aria-label="Filter by invite">
+        <option value="all">Invite</option><option value="invited">Sent</option><option value="notinvited">Not sent</option>
+      </select>
+    </span>
+    <span class="gh-col gh-rsvp">
+      <select id="gfRsvp" onchange="applyGuestFilters()" aria-label="Filter by RSVP">
+        <option value="all">RSVP</option><option value="rsvp">Yes</option><option value="notrsvp">No</option>
+      </select>
+    </span>
+    <span class="gh-col gh-party"><span class="gh-lab" data-sort="party" onclick="sortGuests('party')">Party</span></span>
+    <span class="gh-col gh-end"></span>
   </div>
   <div id="guestList"></div>
   <button class="add-btn" onclick="addGuest()" aria-label="Add Guest"><span class="msi">add</span></button>
