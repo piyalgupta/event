@@ -10,12 +10,12 @@ function collectData(){
   return{organizedFor:val('organizedFor'),eventType:currentEvent,eventDate:val('eventDate'),
     venueName:val('venueName'),venueAddr:val('venueAddr'),venueContact:val('venueContact'),
     venuePhone:val('venuePhone'),venueCost:val('venueCost'),venueAdv:val('venueAdv'),mapUrl:val('mapUrl'),
-    catererName:val('catererName'),catererPhone:val('catererPhone'),syncPlates,
+    catererName:val('catererName'),catererPhone:val('catererPhone'),foodAdv:val('foodAdv'),syncPlates,
     rsvpNotes:val('rsvpNotes'),food,guests,updatedAt:Date.now()};
 }
 function applyData(d){
   if(!d)return;
-  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone'].forEach(k=>setVal(k,d[k]));
+  ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
   if(d.eventType){
     const btn=[...document.querySelectorAll('.event-btn')].find(b=>b.textContent.trim()===d.eventType);
