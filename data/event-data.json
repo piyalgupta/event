@@ -52,7 +52,7 @@
       "phone": "",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "5"
     },
@@ -657,5 +657,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782063789146
+  "updatedAt": 1782063885060
 }
