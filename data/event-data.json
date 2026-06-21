@@ -296,7 +296,7 @@
     {
       "honorific": "Mr.",
       "name": "Bablu Kaku",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038106353
+  "updatedAt": 1782038111003
 }
