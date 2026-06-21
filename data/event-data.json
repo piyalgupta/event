@@ -17,13 +17,13 @@
   "guests": [
     {
       "honorific": "Mr.",
-      "name": "Soumyadeep bandopadhya",
+      "name": "Soumyadeep Bandopadhyay",
       "relationship": "Family",
-      "reference": "",
+      "reference": "Titas Bandopadhyay",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782029872792
+  "updatedAt": 1782029938526
 }
