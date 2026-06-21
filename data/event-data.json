@@ -287,7 +287,7 @@
     {
       "honorific": "Mr.",
       "name": "Swapan Mishra ",
-      "relationship": "Family",
+      "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038102227
+  "updatedAt": 1782038106353
 }
