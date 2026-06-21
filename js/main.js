@@ -10,17 +10,28 @@ const pageCountLabel=String(pages.length).padStart(2,'0');
 dots.forEach(d=>d.addEventListener('click',()=>{
   pages[+d.dataset.i].scrollIntoView({behavior:'smooth'});
 }));
-const io=new IntersectionObserver((entries)=>{
+// Reveal-on-view: the moment any sliver of a page is visible, reveal its
+// content. A tiny threshold (not .5) means pages taller than the viewport — a
+// long guest list, say — still reveal instead of staying stuck at opacity:0.
+const revealIo=new IntersectionObserver((entries)=>{
   entries.forEach(en=>{
-    if(en.isIntersecting){
-      const i=pages.indexOf(en.target);
-      dots.forEach(d=>d.classList.toggle('active',+d.dataset.i===i));
-      counter.textContent=String(i+1).padStart(2,'0')+' — '+pageCountLabel;
-      en.target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-    }
+    if(en.isIntersecting)en.target.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
   });
-},{threshold:.5});
-pages.forEach(p=>io.observe(p));
+},{threshold:.01});
+pages.forEach(p=>revealIo.observe(p));
+
+// Active page (nav dot + counter): highlight whichever page crosses the
+// viewport's middle. A centred root margin guarantees exactly one active page
+// at any height, where a fixed ratio could never trigger on a very tall page.
+const activeIo=new IntersectionObserver((entries)=>{
+  entries.forEach(en=>{
+    if(!en.isIntersecting)return;
+    const i=pages.indexOf(en.target);
+    dots.forEach(d=>d.classList.toggle('active',+d.dataset.i===i));
+    counter.textContent=String(i+1).padStart(2,'0')+' — '+pageCountLabel;
+  });
+},{rootMargin:'-50% 0px -50% 0px',threshold:0});
+pages.forEach(p=>activeIo.observe(p));
 
 // ── Planner tabs : Venue / Food / Guests as three interconnected views ──
 // The views share one data model (IDs + recalc), so switching tabs never loses

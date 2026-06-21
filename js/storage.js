@@ -14,8 +14,17 @@ function collectData(){
     rsvpNotes:val('rsvpNotes'),waImage:val('waImage'),waCC:val('waCC'),waMsg:val('waMsg'),
     food,guests,updatedAt:Date.now()};
 }
+// True while applyData is rebuilding the form from a payload. saveLocal honours
+// it and skips persisting, so loading data never writes it straight back — which
+// stops a two-tab autosave ping-pong and avoids redundant writes on every load.
+// Callers that must persist after applying (import / load list) save explicitly.
+let applyingData=false;
 function applyData(d){
   if(!d)return;
+  applyingData=true;
+  try{applyDataInner(d);}finally{applyingData=false;}
+}
+function applyDataInner(d){
   ['organizedFor','eventDate','venueName','venueAddr','venueContact','venuePhone','venueCost','venueAdv','mapUrl','catererName','catererPhone','foodAdv','waImage','waCC','waMsg'].forEach(k=>setVal(k,d[k]));
   setVal('rsvpNotes',d.rsvpNotes||'');
   if(d.eventType){
@@ -53,6 +62,7 @@ function applyData(d){
 }
 let saveTimer;
 function saveLocal(immediate){
+  if(applyingData)return;
   clearTimeout(saveTimer);
   const run=()=>{try{localStorage.setItem(STORAGE_KEY,JSON.stringify(collectData()));}catch(e){}scheduleGitHubPush();};
   if(immediate)run();else saveTimer=setTimeout(run,SAVE_DEBOUNCE_MS);
@@ -75,7 +85,7 @@ function importJSON(e){
   if(!file)return;
   const reader=new FileReader();
   reader.onload=()=>{
-    try{applyData(JSON.parse(reader.result));}
+    try{applyData(JSON.parse(reader.result));saveLocal(true);}
     catch(err){alert('Could not read that JSON file.');}
   };
   reader.readAsText(file);
