@@ -82,7 +82,7 @@
     {
       "honorific": "Mr.",
       "name": "Kushal Majumdar",
-      "relationship": "Relatives",
+      "relationship": "Friends",
       "reference": "",
       "invited": false,
       "rsvp": false,
@@ -116,5 +116,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782033149689
+  "updatedAt": 1782033152110
 }
