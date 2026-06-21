@@ -14,7 +14,6 @@
   "foodAdv": "",
   "syncPlates": true,
   "rsvpNotes": "",
-  "waSender": "+91 9874174100",
   "waImage": "",
   "waCC": "91",
   "waMsg": "hello",
@@ -606,5 +605,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782047119760
+  "updatedAt": 1782047362854
 }
