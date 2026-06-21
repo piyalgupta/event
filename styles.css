@@ -292,6 +292,12 @@ html.dark select option{background:#1a1630;color:#eceaff}
 .wa-link{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--glass-brd);background:var(--glass-2);border-radius:24px;padding:7px 14px;font-size:.82rem;font-weight:600;color:var(--ink);text-decoration:none;box-shadow:var(--sh-raise);transition:transform .2s,color .2s}
 .wa-link:hover{transform:translateY(-2px);color:#1ebe57}
 .wa-link .msi{font-size:1rem;color:#25D366}
+.wa-img-input{display:flex;gap:10px;align-items:stretch}
+.wa-img-input input{flex:1;min-width:0}
+.wa-img-input .btn{flex:0 0 auto;padding:0 16px}
+.wa-img-preview{display:flex;align-items:center;gap:10px;margin-top:10px}
+.wa-img-preview img{width:46px;height:46px;object-fit:cover;border-radius:10px;border:1px solid var(--glass-brd);box-shadow:var(--sh-raise)}
+.wa-img-meta{flex:1;min-width:0;font-size:.74rem;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
 /* ── Summary side column + load-list dropdown ── */
 .summary-side{display:flex;flex-direction:column;gap:14px}
@@ -303,12 +309,12 @@ html.dark select option{background:#1a1630;color:#eceaff}
 
 /* ── Dashboard ── */
 .dashboard{justify-content:flex-start}
-.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px}
+.dash-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:14px}
 .dash-kpi{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius-sm);box-shadow:var(--sh-card);padding:16px 18px}
 .dk-val{font-family:var(--serif);font-size:1.65rem;font-weight:700;line-height:1.1;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .dk-lab{font-size:.64rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;margin-top:6px}
 .dk-sub{font-size:.7rem;color:var(--muted);margin-top:3px}
-.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px;margin-top:18px}
+.dash-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:18px;margin-top:18px}
 .dash-card{background:var(--glass);border:1px solid var(--glass-brd);border-radius:var(--radius);box-shadow:var(--sh-card);padding:20px}
 .dash-card-h{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin-bottom:14px}
 .dash-empty{font-size:.8rem;color:var(--muted);padding:8px 0}
@@ -356,6 +362,9 @@ html.dark select option{background:#1a1630;color:#eceaff}
 }
 @media(min-width:681px) and (max-width:980px){
   .row-3{grid-template-columns:1fr 1fr}
+  /* Guest row: name on its own line, the rest share an even, aligned row */
+  .guest-name-wrap{flex:1 1 100%}
+  .honorific,.guest-phone,.relationship,.reference{width:auto;flex:1 1 0;min-width:120px}
 }
 @media(min-width:681px) and (max-width:980px) and (orientation:portrait){
   :root{--gutter-x:clamp(34px,7vw,64px);--gutter-y:clamp(40px,6vh,72px)}
@@ -371,8 +380,7 @@ html.dark select option{background:#1a1630;color:#eceaff}
   .brand{font-size:.62rem}
   .counter{font-size:.62rem}
   input,select,textarea,.honorific{font-size:16px}
-  .event-strip{gap:8px;margin-top:22px}
-  .event-btn{padding:10px 15px;font-size:.7rem}
+  .event-select-wrap{margin-top:22px;max-width:none}
   .hero-title{line-height:1.12}
   .hero-sub{max-width:100%}
   .page-head{gap:14px}
@@ -380,7 +388,10 @@ html.dark select option{background:#1a1630;color:#eceaff}
   .action-row{gap:10px}
   .action-row .btn{flex:1 1 calc(50% - 5px);padding:14px}
   .guest-name-wrap,.guest-phone{flex-basis:100%}
+  /* Honorific · relationship · reference sit three-up and stay aligned */
+  .honorific,.relationship,.reference{width:auto;flex:1 1 30%;min-width:96px}
   .guest-item{gap:12px}
+  .wa-actions .btn{flex:1 1 100%}
 }
 @media(max-width:400px){
   :root{--gutter-x:16px}
@@ -401,17 +412,22 @@ html.dark select option{background:#1a1630;color:#eceaff}
   html{scroll-behavior:auto}
 }
 @media print{
+  @page{margin:14mm}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   body::before,.page-nav,.brand,.counter,.scroll-cue,.add-btn,#pages,.theme-toggle{display:none!important}
-  #printReport{display:block!important;color:#161613;background:#fff;max-width:760px;margin:0 auto;font-family:var(--serif)}
-  .pr-section{margin-bottom:24px;page-break-inside:avoid}
-  .pr-title{font-family:var(--serif);font-size:1.9rem;font-weight:600}
-  .pr-sub{font-size:.82rem;color:#666;margin-top:5px;letter-spacing:.02em}
-  .pr-h{font-family:var(--serif);font-size:1.05rem;font-weight:600;border-bottom:1px solid #ccc;padding-bottom:7px;margin-bottom:10px}
-  .pr-row{display:flex;justify-content:space-between;gap:16px;font-size:.84rem;padding:5px 0;border-bottom:1px dotted #ddd}
+  #printReport{display:block!important;color:#161613;background:#fff;margin:0 auto;font-family:var(--serif)}
+  .pr-section{margin-bottom:22px}
+  .pr-title{font-family:var(--serif);font-size:1.9rem;font-weight:700;color:#5b3df5;break-after:avoid}
+  .pr-sub{font-size:.82rem;color:#666;margin-top:5px;letter-spacing:.02em;break-after:avoid}
+  .pr-h{font-family:var(--serif);font-size:1.1rem;font-weight:700;color:#332f57;border-bottom:2px solid #5b3df5;padding-bottom:7px;margin-bottom:10px;break-after:avoid}
+  .pr-row{display:flex;justify-content:space-between;gap:16px;font-size:.84rem;padding:5px 0;border-bottom:1px dotted #ddd;break-inside:avoid}
   .pr-row span{color:#777}
   table.pr-table{width:100%;border-collapse:collapse;font-size:.8rem}
+  table.pr-table thead{display:table-header-group}            /* repeat headers on every page */
+  table.pr-table tr{break-inside:avoid}                       /* never split a row */
   table.pr-table th,table.pr-table td{text-align:left;padding:6px 8px;border-bottom:1px solid #e6e6e6}
-  table.pr-table th{font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;color:#888;font-weight:600}
-  .pr-total{font-family:var(--serif);font-size:1.7rem;font-weight:600;text-align:right;margin-top:12px}
+  table.pr-table th{font-size:.65rem;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#5b3df5;font-weight:700}
+  table.pr-table tbody tr:nth-child(even) td{background:#f4f3fb}
+  .pr-total{font-family:var(--serif);font-size:1.7rem;font-weight:700;color:#5b3df5;text-align:right;margin-top:12px;border-top:2px solid #5b3df5;padding-top:10px;break-inside:avoid}
   body{background:#fff}
 }

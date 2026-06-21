@@ -17,11 +17,50 @@ function waDigits(raw){
   return d.length<=10?cc+d:d;
 }
 // The shared message, personalised per guest, with the image link appended.
+// Only a public URL can ride along in a wa.me link (WhatsApp renders it as a
+// preview); a device image lives in #waImageData as a data URL that a link
+// can't carry, so it is intentionally left out of the message text.
 function waText(name){
   let m=(val('waMsg')||'').replace(/\{name\}/gi,(name||'').trim());
   const img=(val('waImage')||'').trim();
   if(img)m=(m?m+'\n\n':'')+img;
   return encodeURIComponent(m);
+}
+
+// ── Invitation image: a pasted public URL or a picture attached from device ──
+// The two are mutually exclusive (one active image); a device file is read into
+// a persisted data URL and shown as a thumbnail. Device images are for the
+// preview and the Save-contacts → Broadcast flow, never the wa.me text above.
+const WA_IMG_MAX_BYTES=2*1024*1024;            // 2 MB cap keeps localStorage happy
+const waImageSrc=()=>val('waImageData')||val('waImage').trim();
+function waRenderImage(){
+  const box=$('waImgPreview');if(!box)return;
+  const src=waImageSrc();
+  if(src){$('waImgThumb').src=src;box.hidden=false;}
+  else{box.hidden=true;$('waImgThumb').removeAttribute('src');}
+}
+function waOnUrlInput(){                        // typing a URL drops any device image
+  if(val('waImageData')){setVal('waImageData','');setText('waImgMeta','');}
+  waRenderImage();waBuildList();
+}
+function waPickImage(e){
+  const file=e.target.files&&e.target.files[0];
+  e.target.value='';                           // allow re-picking the same file
+  if(!file)return;
+  if(!/^image\//.test(file.type))return alert('Please choose an image file.');
+  if(file.size>WA_IMG_MAX_BYTES)return alert('That image is larger than 2 MB. Please pick a smaller one.');
+  const reader=new FileReader();
+  reader.onload=()=>{
+    setVal('waImageData',reader.result);setVal('waImage','');   // single active source
+    setText('waImgMeta',file.name);
+    waRenderImage();waBuildList();saveLocal(true);
+  };
+  reader.onerror=()=>alert('Could not read that image.');
+  reader.readAsDataURL(file);
+}
+function waClearImage(){
+  setVal('waImage','');setVal('waImageData','');setText('waImgMeta','');
+  waRenderImage();waBuildList();saveLocal(true);
 }
 // One click-to-chat URL for a number (+ optional guest name for {name}).
 const waUrl=(phone,name)=>`https://wa.me/${waDigits(phone)}?text=${waText(name)}`;

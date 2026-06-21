@@ -28,7 +28,8 @@ This is a static site with no backend, so data can't auto-write into the GitHub 
 The WhatsApp feature is a standalone module (`js/whatsapp.js`), kept separate from the form builders. Each guest has a **phone number** field, and the Guests page has an *Invite guests on WhatsApp* panel:
 
 - **Your WhatsApp number (sender)** — your own number, defaulting to **+91 9874174100**. **Send test message** opens a `wa.me` chat to it so you can confirm WhatsApp works before inviting anyone.
-- Type a message (use `{name}` to personalise) and an optional image link, then **Message whole list** (one chat per guest), tap a single guest, or type any number into **Or message a single number** — all launch WhatsApp pre-filled via `wa.me` click-to-chat. The image shows as a link preview.
+- Add an optional image — **paste a public URL** or **attach a picture from your device** (read in the browser, kept with the saved event, shown as a thumbnail; max 2 MB). A public URL rides along as a `wa.me` link preview; a device image can't, so it's used for the preview and the broadcast flow below.
+- Type a message (use `{name}` to personalise), then **Message whole list** (one chat per guest), tap a single guest, or type any number into **Or message a single number** — all launch WhatsApp pre-filled via `wa.me` click-to-chat. The image shows as a link preview.
 - To send a **real image file to everyone for free**, use **Save contacts (.vcf)**: it exports every guest-with-phone as a phone-contacts file — import it into your phone, make a WhatsApp **Broadcast list** from those contacts, and send your image + message once (it reaches all of them as private chats, free; recipients must have your number saved).
 
 Fully automated server-side sending would instead need the paid WhatsApp Business / Meta Cloud API. The link/number builders are covered by a dependency-free test: `node test/whatsapp.test.js`.
