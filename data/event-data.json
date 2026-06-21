@@ -643,9 +643,9 @@
       "relationship": "Family",
       "reference": "",
       "invited": false,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     }
   ],
-  "updatedAt": 1782056507688
+  "updatedAt": 1782056517219
 }
