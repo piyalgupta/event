@@ -9,7 +9,7 @@
   "venueCost": "11000",
   "venueAdv": "3000",
   "mapUrl": "G88V+MW Kolkata, West Bengal",
-  "catererName": "Balaram and Radharaman Mullick Sweets",
+  "catererName": "Balaram Mullick & Radharaman Mullick Tollygunge",
   "catererPhone": "",
   "foodAdv": "",
   "syncPlates": true,
@@ -546,5 +546,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782044176954
+  "updatedAt": 1782044203917
 }
