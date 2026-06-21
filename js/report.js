@@ -8,7 +8,9 @@ function buildPrintReport(){
   const eventType=$('eventLabel').textContent;
   const dtRaw=val('eventDate');
   const dtStr=dtRaw?new Date(dtRaw).toLocaleString('en-IN',{dateStyle:'full',timeStyle:'short'}):'Date not set';
+  const prepared=new Date().toLocaleDateString('en-IN',{dateStyle:'long'});
 
+  // Venue
   const vName=val('venueName')||'—';
   const vAddr=val('venueAddr')||'—';
   const vContact=val('venueContact');
@@ -16,67 +18,106 @@ function buildPrintReport(){
   const vCost=num('venueCost'), vAdv=num('venueAdv');
   const vBal=Math.max(0,vCost-vAdv);
 
-  let foodRows='',fTotal=0;
+  // Food
+  let foodRows='',fTotal=0,fItems=0,fPlates=0;
   foodEntries().forEach(f=>{
     fTotal+=f.total;
-    if(f.name||f.qty||f.price)
-      foodRows+=`<tr><td>${esc(f.name||'—')}</td><td>${esc(f.category||'—')}</td><td>${f.qty}</td><td>₹ ${fmt(f.price)}</td><td>₹ ${fmt(f.total)}</td></tr>`;
+    if(f.name||f.qty||f.price){
+      fItems++;fPlates+=f.qty;
+      foodRows+=`<tr><td>${esc(f.name||'—')}</td><td>${esc(f.category||'—')}</td><td class="num">${f.qty}</td><td class="num">₹ ${fmt(f.price)}</td><td class="num">₹ ${fmt(f.total)}</td></tr>`;
+    }
   });
   const caterer=val('catererName');
   const catererPhone=val('catererPhone');
   const fAdv=num('foodAdv'), fBal=Math.max(0,fTotal-fAdv);
 
-  let guestRows='',people=0,families=0,invitedHeads=0,rsvpHeads=0;
-  guestEntries().forEach(g=>{
+  // Guests — tally, then sort alphabetically for the dedicated guest page.
+  let people=0,families=0,invitedHeads=0,rsvpHeads=0,invitedFam=0,rsvpFam=0;
+  const guests=guestEntries();
+  guests.forEach(g=>{
     people+=g.heads;families++;
-    if(g.invited)invitedHeads+=g.heads;
-    if(g.rsvp)rsvpHeads+=g.heads;
-    guestRows+=`<tr><td>${esc(g.name||'—')}</td><td>${esc(g.relationship||'—')}</td><td>${esc(g.reference||'—')}</td><td>${g.heads}</td><td>${g.invited?'Yes':'No'}</td><td>${g.rsvp?'Yes':'No'}</td></tr>`;
+    if(g.invited){invitedHeads+=g.heads;invitedFam++;}
+    if(g.rsvp){rsvpHeads+=g.heads;rsvpFam++;}
   });
-  const rsvp=val('rsvpNotes');
+  const sorted=guests.slice().sort((a,b)=>
+    (a.name||'￿').toLowerCase().localeCompare((b.name||'￿').toLowerCase()));
+  const guestCards=sorted.map((g,i)=>`
+    <div class="pr-guest${g.rsvp?' is-rsvp':''}">
+      <div class="pg-line"><span class="pg-idx">${String(i+1).padStart(2,'0')}</span><span class="pg-name">${esc(g.name||'—')}</span><span class="pg-party">${g.heads}</span></div>
+      <div class="pg-meta">${esc(g.relationship||'—')}${g.reference?' · '+esc(g.reference):''}</div>
+      <div class="pg-tags">${g.invited?'<span class="pg-tag inv">Invited</span>':''}${g.rsvp?'<span class="pg-tag rsvp">RSVP ✓</span>':''}</div>
+    </div>`).join('');
+
+  const rsvpNotes=val('rsvpNotes');
   const grand=vCost+fTotal;
+  const paid=vAdv+fAdv, due=Math.max(0,grand-paid);
+  const perHead=people?Math.round(grand/people):0;
+  const fin=(label,value,cls='')=>`<div class="pr-row ${cls}"><span>${label}</span><strong>${value}</strong></div>`;
+  const stat=(num,lab)=>`<div class="pr-stat"><div class="ps-num">${num}</div><div class="ps-lab">${lab}</div></div>`;
 
   document.getElementById('printReport').innerHTML=`
-    <div class="pr-section">
-      <div class="pr-title">${esc(forVal)}</div>
-      <div class="pr-sub">${esc(eventType)} · ${dtStr} · Prepared ${new Date().toLocaleDateString('en-IN',{dateStyle:'medium'})}</div>
+    <header class="pr-cover">
+      <div class="pr-kicker">Life Events Planner — Event Report</div>
+      <h1 class="pr-name">${esc(forVal)}</h1>
+      <div class="pr-meta">${esc(eventType)}</div>
+      <div class="pr-meta2">${dtStr}</div>
+      <div class="pr-prepared">Prepared ${prepared}</div>
+    </header>
+
+    <div class="pr-grand">
+      <div><div class="pg-label">Grand Total</div><div class="pg-amt">₹ ${fmt(grand)}</div></div>
+      <div class="pr-grand-side">
+        <div><span>Paid</span><b>₹ ${fmt(paid)}</b></div>
+        <div><span>Balance Due</span><b>₹ ${fmt(due)}</b></div>
+        <div><span>Cost / Head</span><b>₹ ${fmt(perHead)}</b></div>
+      </div>
     </div>
-    <div class="pr-section">
-      <div class="pr-h">Venue &amp; Booking</div>
-      <div class="pr-row"><span>Venue</span><strong>${esc(vName)}</strong></div>
-      <div class="pr-row"><span>Address</span><strong>${esc(vAddr)}</strong></div>
-      <div class="pr-row"><span>Contact</span><strong>${esc(vContact||'—')}${vPhone?' · '+esc(vPhone):''}</strong></div>
-      <div class="pr-row"><span>Booking Cost</span><strong>₹ ${fmt(vCost)}</strong></div>
-      <div class="pr-row"><span>Advance Paid</span><strong>₹ ${fmt(vAdv)}</strong></div>
-      <div class="pr-row"><span>Balance Due</span><strong>₹ ${fmt(vBal)}</strong></div>
+
+    <div class="pr-cols">
+      <section class="pr-card">
+        <div class="pr-h">Venue &amp; Booking</div>
+        ${fin('Venue',esc(vName))}
+        ${fin('Address',esc(vAddr))}
+        ${fin('Contact',(esc(vContact||'—'))+(vPhone?' · '+esc(vPhone):''))}
+        ${fin('Booking Cost','₹ '+fmt(vCost))}
+        ${fin('Advance Paid','₹ '+fmt(vAdv))}
+        ${fin('Balance Due','₹ '+fmt(vBal),'strong')}
+      </section>
+      <section class="pr-card">
+        <div class="pr-h">Financial Summary</div>
+        ${fin('Venue Cost','₹ '+fmt(vCost))}
+        ${fin('Food Cost','₹ '+fmt(fTotal))}
+        ${fin('Total Advance Paid','₹ '+fmt(paid))}
+        ${fin('Total Balance Due','₹ '+fmt(due))}
+        ${fin('Cost per Head','₹ '+fmt(perHead))}
+        ${fin('Grand Total','₹ '+fmt(grand),'strong')}
+      </section>
     </div>
-    <div class="pr-section">
+
+    <section class="pr-section">
       <div class="pr-h">Food &amp; Catering</div>
-      <table class="pr-table"><thead><tr><th>Item</th><th>Category</th><th>Plates</th><th>Per Plate</th><th>Total</th></tr></thead>
-      <tbody>${foodRows||'<tr><td colspan="5">No items added</td></tr>'}</tbody></table>
+      <table class="pr-table"><thead><tr><th>Item</th><th>Category</th><th class="num">Plates</th><th class="num">Per Plate</th><th class="num">Total</th></tr></thead>
+      <tbody>${foodRows||'<tr><td colspan="5">No items added</td></tr>'}</tbody>
+      <tfoot><tr><td colspan="2">${fItems} item${fItems===1?'':'s'}</td><td class="num">${fPlates}</td><td class="num">Food Total</td><td class="num">₹ ${fmt(fTotal)}</td></tr></tfoot></table>
       ${caterer?`<div class="pr-row" style="margin-top:8px"><span>Caterer</span><strong>${esc(caterer)}${catererPhone?' · '+esc(catererPhone):''}</strong></div>`:''}
-      <div class="pr-row"><span>Food Total</span><strong>₹ ${fmt(fTotal)}</strong></div>
-      <div class="pr-row"><span>Advance Paid</span><strong>₹ ${fmt(fAdv)}</strong></div>
-      <div class="pr-row"><span>Balance Due</span><strong>₹ ${fmt(fBal)}</strong></div>
-    </div>
-    <div class="pr-section">
-      <div class="pr-h">Guest List</div>
-      <table class="pr-table"><thead><tr><th>Name</th><th>Relationship</th><th>Reference</th><th>Party Size</th><th>Invited</th><th>RSVP</th></tr></thead>
-      <tbody>${guestRows||'<tr><td colspan="6">No guests added</td></tr>'}</tbody></table>
-      ${rsvp?`<div class="pr-row" style="margin-top:8px"><span>RSVP Notes</span><strong>${esc(rsvp)}</strong></div>`:''}
-    </div>
-    <div class="pr-section">
-      <div class="pr-h">Summary</div>
-      <div class="pr-row"><span>Families</span><strong>${families}</strong></div>
-      <div class="pr-row"><span>Total People</span><strong>${people}</strong></div>
-      <div class="pr-row"><span>Invitation Sent For</span><strong>${invitedHeads} heads</strong></div>
-      <div class="pr-row"><span>RSVP Confirmed</span><strong>${rsvpHeads} heads</strong></div>
-      <div class="pr-row"><span>Est. Plates</span><strong>${Math.max(0,people-rsvpHeads)}</strong></div>
-      <div class="pr-row"><span>Venue Cost</span><strong>₹ ${fmt(vCost)}</strong></div>
-      <div class="pr-row"><span>Food Cost</span><strong>₹ ${fmt(fTotal)}</strong></div>
-      <div class="pr-row"><span>Cost per Head</span><strong>₹ ${fmt(people?Math.round(grand/people):0)}</strong></div>
-      <div class="pr-total">Grand Total — ₹ ${fmt(grand)}</div>
-    </div>`;
+    </section>
+
+    <section class="pr-section">
+      <div class="pr-h">Guest Overview</div>
+      <div class="pr-stats">
+        ${stat(families,'Families')}
+        ${stat(people,'Total People')}
+        ${stat(invitedHeads,'Invited (heads)')}
+        ${stat(rsvpHeads,'RSVP Confirmed')}
+        ${stat(Math.max(0,people-rsvpHeads),'Est. Plates')}
+      </div>
+      ${rsvpNotes?`<div class="pr-note"><span>RSVP Notes</span> ${esc(rsvpNotes)}</div>`:''}
+    </section>
+
+    <section class="pr-section pr-guestpage">
+      <div class="pr-h">Guest List <span class="pr-h-sub">${guests.length} guest${guests.length===1?'':'s'} · ${people} people · alphabetical</span></div>
+      ${guestCards?`<div class="pr-guests">${guestCards}</div>`:'<div class="pr-row">No guests added</div>'}
+    </section>`;
 }
 window.addEventListener('beforeprint',buildPrintReport);
 
