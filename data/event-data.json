@@ -550,12 +550,12 @@
     },
     {
       "name": "Tuta",
-      "relationship": "Family",
+      "relationship": "Friends",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782072382017
+  "updatedAt": 1782072393274
 }
