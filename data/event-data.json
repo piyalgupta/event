@@ -91,7 +91,7 @@
     {
       "honorific": "Mrs.",
       "name": "Mithu Di",
-      "relationship": "Relatives",
+      "relationship": "Friends",
       "reference": "",
       "invited": false,
       "rsvp": false,
@@ -116,5 +116,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782033147182
+  "updatedAt": 1782033149689
 }
