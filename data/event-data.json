@@ -503,7 +503,7 @@
     {
       "honorific": "Mr.",
       "name": "Krishna Sahoo LIC",
-      "relationship": "Family",
+      "relationship": "Acquaintances",
       "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
@@ -528,5 +528,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782038195769
+  "updatedAt": 1782038198153
 }
