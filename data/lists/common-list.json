@@ -1,7 +1,7 @@
 {
   "organizedFor": "Pradip Kumar Gupta",
   "eventType": "Shraddha",
-  "eventDate": "2026-06-28T10:30",
+  "eventDate": "2026-06-28T22:39",
   "venueName": "Sri Chaitanya Research Centre",
   "venueAddr": "70B Rashbehari Avenue Kolkata",
   "venueContact": "Reception",
@@ -14,7 +14,6 @@
   "foodAdv": "",
   "syncPlates": true,
   "rsvpNotes": "",
-  "waSender": "+91 9874174100",
   "waImage": "",
   "waCC": "91",
   "waMsg": "hello",
@@ -606,5 +605,6 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782047846814
+  "updatedAt": 1782047347101,
+  "listName": "Common List"
 }
