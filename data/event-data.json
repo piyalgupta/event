@@ -482,7 +482,7 @@
       "phone": "",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -492,7 +492,7 @@
       "phone": "",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -657,5 +657,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782064328453
+  "updatedAt": 1782064334036
 }
