@@ -495,7 +495,7 @@
     {
       "name": "Rupankar Sarkar",
       "relationship": "Friends",
-      "reference": "Anulekha Gupta",
+      "reference": "Anulekha Gupt",
       "invited": false,
       "rsvp": false,
       "party": "1"
@@ -621,5 +621,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782137548762
+  "updatedAt": 1782137561754
 }
