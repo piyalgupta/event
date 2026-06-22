@@ -3,28 +3,28 @@
 *,*::before,*::after{animation:none!important}
 :root{
   color-scheme:light;
-  /* ── Glass palette — light · indigo → violet → rose, teal spot ── */
-  --ink:#15142b;
-  --muted:#56527a;
-  --line:rgba(90,82,150,.22);
-  --accent:#5751e8;          /* indigo */
-  --accent2:#d83f9c;         /* rose   */
-  --accent3:#0a9aa8;         /* teal   */
-  --accent-grad:linear-gradient(120deg,#5b54f0 0%,#9b4dde 40%,#e0498f 72%,#f6913d 100%);
-  --accent-soft:rgba(87,81,232,.13);
-  --glow:rgba(87,81,232,.5);
-  --danger:#dc3b40;
-  --ok:#15924a;
-  /* glass surfaces */
-  --glass:rgba(255,255,255,.58);
-  --glass-2:rgba(255,255,255,.74);
-  --glass-brd:rgba(255,255,255,.82);
-  --field:rgba(255,255,255,.78);
-  /* neomorphic depth */
-  --sh:34px 34px 68px rgba(66,62,156,.15),-22px -22px 56px rgba(255,255,255,.64);
-  --sh-card:0 22px 50px -22px rgba(54,52,148,.40),inset 0 1px 0 rgba(255,255,255,.66);
-  --sh-raise:6px 6px 14px rgba(66,62,156,.16),-6px -6px 14px rgba(255,255,255,.86),inset 0 1px 0 rgba(255,255,255,.6);
-  --sh-inset:inset 3px 3px 7px rgba(66,62,156,.12),inset -3px -3px 7px rgba(255,255,255,.86);
+  /* ── Scandinavian palette — light · warm paper, muted clay & ochre ── */
+  --ink:#2f2b25;             /* warm near-black */
+  --muted:#8a8073;           /* warm taupe */
+  --line:rgba(120,100,72,.20);
+  --accent:#a9794d;          /* clay / terracotta */
+  --accent2:#9c8a5a;         /* muted bronze-olive */
+  --accent3:#6f8f86;         /* muted teal-sage spot */
+  --accent-grad:linear-gradient(120deg,#9a6a45 0%,#b08a3f 60%,#8a7d4e 100%);
+  --accent-soft:rgba(169,121,77,.14);
+  --glow:rgba(150,110,64,.4);
+  --danger:#c0533e;          /* muted brick */
+  --ok:#5f7d52;              /* muted moss */
+  /* glass surfaces — warm white */
+  --glass:rgba(252,249,243,.58);
+  --glass-2:rgba(252,249,243,.74);
+  --glass-brd:rgba(255,255,255,.78);
+  --field:rgba(255,253,248,.78);
+  /* neomorphic depth — warm shadows */
+  --sh:34px 34px 68px rgba(120,95,60,.13),-22px -22px 56px rgba(255,255,255,.62);
+  --sh-card:0 22px 50px -22px rgba(92,72,46,.34),inset 0 1px 0 rgba(255,255,255,.66);
+  --sh-raise:6px 6px 14px rgba(120,95,60,.14),-6px -6px 14px rgba(255,255,255,.84),inset 0 1px 0 rgba(255,255,255,.6);
+  --sh-inset:inset 3px 3px 7px rgba(120,95,60,.12),inset -3px -3px 7px rgba(255,255,255,.84);
   --radius:24px;
   --radius-sm:14px;
   --gutter-x:clamp(20px,6vw,80px);
@@ -44,21 +44,21 @@
 html,body{height:100%}
 html{scroll-behavior:smooth}
 body{
-  background:#f1f2ff;color:var(--ink);
+  background:#efe9df;color:var(--ink);
   font-family:var(--sans);font-size:1.02rem;font-weight:500;line-height:1.5;
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
 .serif{font-family:var(--serif)}
 
-/* ── Animated colourful background ── */
+/* ── Calm earth-toned background — soft, muted blooms on warm paper ── */
 body::before{
   content:'';position:fixed;inset:0;z-index:-2;
   background:
-    radial-gradient(42% 48% at 14% 18%,rgba(124,108,255,.52),transparent 70%),
-    radial-gradient(44% 46% at 86% 12%,rgba(255,126,182,.50),transparent 70%),
-    radial-gradient(46% 48% at 88% 86%,rgba(255,196,92,.48),transparent 70%),
-    radial-gradient(48% 50% at 12% 88%,rgba(86,214,226,.46),transparent 70%),
-    linear-gradient(135deg,#fef3ff 0%,#f3f1ff 40%,#fff6ec 74%,#ecfdff 100%);
+    radial-gradient(46% 50% at 16% 16%,rgba(184,138,90,.18),transparent 70%),
+    radial-gradient(44% 46% at 84% 12%,rgba(150,160,128,.16),transparent 70%),
+    radial-gradient(48% 50% at 86% 88%,rgba(200,168,116,.16),transparent 70%),
+    radial-gradient(50% 52% at 12% 90%,rgba(160,150,168,.12),transparent 70%),
+    linear-gradient(150deg,#f4efe6 0%,#efe9df 45%,#f1ece2 75%,#eef0ec 100%);
   animation:bgshift 26s ease-in-out infinite alternate;
 }
 @keyframes bgshift{from{transform:scale(1) translate(0,0)}to{transform:scale(1.12) translate(-2%,-1%)}}
@@ -66,36 +66,36 @@ body::before{
 /* ── Dark theme ── */
 html.dark{
   color-scheme:dark;
-  --ink:#f0eeff;
-  --muted:#aaa5d2;
-  --line:rgba(152,142,238,.20);
-  --accent:#9d90ff;          /* indigo */
-  --accent2:#ff8ac9;         /* rose   */
-  --accent3:#46dbe4;         /* teal   */
-  --accent-grad:linear-gradient(120deg,#9d90ff 0%,#cf86f2 40%,#ff8ab8 72%,#ffbf74 100%);
-  --accent-soft:rgba(157,144,255,.20);
-  --glow:rgba(157,144,255,.55);
-  --danger:#ff858a;
-  --ok:#5fe093;
-  --glass:rgba(30,27,52,.58);
-  --glass-2:rgba(44,39,72,.74);
-  --glass-brd:rgba(157,144,255,.26);
-  --field:rgba(34,29,58,.72);
-  --sh:30px 30px 66px rgba(0,0,0,.46),-20px -20px 52px rgba(118,104,220,.08);
-  --sh-card:0 26px 56px -22px rgba(0,0,0,.66),inset 0 1px 0 rgba(176,162,255,.16);
-  --sh-raise:6px 6px 14px rgba(0,0,0,.42),-6px -6px 14px rgba(122,108,218,.10),inset 0 1px 0 rgba(176,162,255,.14);
-  --sh-inset:inset 3px 3px 8px rgba(0,0,0,.42),inset -2px -2px 7px rgba(146,132,238,.07);
+  --ink:#efe7d8;
+  --muted:#b3a892;
+  --line:rgba(200,180,140,.18);
+  --accent:#ce9b6a;          /* warm clay */
+  --accent2:#c7b07a;         /* soft bronze */
+  --accent3:#8fb0a6;         /* muted teal-sage */
+  --accent-grad:linear-gradient(120deg,#d2a06a 0%,#cbb072 60%,#a9b08e 100%);
+  --accent-soft:rgba(206,155,106,.20);
+  --glow:rgba(206,155,106,.45);
+  --danger:#e08b76;
+  --ok:#9fc08a;
+  --glass:rgba(36,31,24,.58);
+  --glass-2:rgba(48,41,31,.74);
+  --glass-brd:rgba(206,180,140,.22);
+  --field:rgba(40,34,26,.72);
+  --sh:30px 30px 66px rgba(0,0,0,.46),-20px -20px 52px rgba(150,120,80,.08);
+  --sh-card:0 26px 56px -22px rgba(0,0,0,.66),inset 0 1px 0 rgba(220,196,150,.14);
+  --sh-raise:6px 6px 14px rgba(0,0,0,.42),-6px -6px 14px rgba(140,114,72,.10),inset 0 1px 0 rgba(220,196,150,.12);
+  --sh-inset:inset 3px 3px 8px rgba(0,0,0,.42),inset -2px -2px 7px rgba(176,150,104,.07);
 }
-html.dark{background:#100e1c}
+html.dark{background:#171410}
 html.dark body::before{
   background:
-    radial-gradient(42% 48% at 14% 18%,rgba(120,100,255,.42),transparent 70%),
-    radial-gradient(44% 46% at 86% 12%,rgba(255,96,170,.34),transparent 70%),
-    radial-gradient(46% 48% at 88% 86%,rgba(255,176,80,.30),transparent 70%),
-    radial-gradient(48% 50% at 12% 88%,rgba(120,210,230,.30),transparent 70%),
-    linear-gradient(135deg,#15101f 0%,#1a1426 48%,#100f1e 100%);
+    radial-gradient(46% 50% at 16% 16%,rgba(190,140,84,.30),transparent 70%),
+    radial-gradient(44% 46% at 84% 12%,rgba(150,162,124,.22),transparent 70%),
+    radial-gradient(48% 50% at 86% 88%,rgba(200,166,108,.20),transparent 70%),
+    radial-gradient(50% 52% at 12% 90%,rgba(150,142,160,.16),transparent 70%),
+    linear-gradient(150deg,#1b1713 0%,#201a14 50%,#16130f 100%);
 }
-html.dark input::placeholder,html.dark textarea::placeholder{color:#8c86a6}
+html.dark input::placeholder,html.dark textarea::placeholder{color:#9a907e}
 body,input,select,textarea,.btn,.theme-toggle,.tab-panel,.glass-card{transition:background-color .4s ease,color .4s ease,border-color .4s ease,box-shadow .4s ease}
 
 /* ── Floating theme toggle ── */
@@ -231,13 +231,13 @@ input[type=checkbox]{width:auto;border:none;padding:0;box-shadow:none;accent-col
    vertically off-centre and the field taller than siblings — normalise it. */
 input[type=datetime-local]{-webkit-appearance:none;appearance:none;text-align:left;min-height:46px;line-height:1.2}
 input[type=datetime-local]::-webkit-date-and-time-value{text-align:left;margin:0}
-input::placeholder,textarea::placeholder{color:#8d87a6}
+input::placeholder,textarea::placeholder{color:#a89c88}
 textarea{resize:vertical;min-height:60px;line-height:1.55}
 select{cursor:pointer}
 /* Native dropdown popups can't be translucent — give options a solid,
    theme-matched backing so they stay legible (esp. in dark mode). */
-select option{background:#fff;color:#15142b}
-html.dark select option{background:#1c1834;color:#f0eeff}
+select option{background:#fbf8f2;color:#2f2b25}
+html.dark select option{background:#241f18;color:#efe7d8}
 
 /* ── Buttons ── */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--glass-brd);background:var(--glass-2);color:var(--ink);padding:12px 22px;font-size:.74rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;border-radius:var(--radius-sm);font-family:var(--sans);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--sh-raise);transition:transform .2s,box-shadow .2s,color .2s}
@@ -505,7 +505,7 @@ html.dark select option{background:#1c1834;color:#f0eeff}
   #printReport{display:block!important;color:#23222e;background:#fff;margin:0 auto;font-family:var(--sans);font-size:11px;line-height:1.5}
 
   /* Accent tokens for the report */
-  #printReport{--pa:#5b3df5;--pa2:#c850e8;--pink:#e0498f}
+  #printReport{--pa:#9a6a45;--pa2:#b08a3f;--pink:#b07a56}
 
   /* Cover */
   .pr-cover{padding:0 0 14px;border-bottom:3px solid var(--pa);margin-bottom:18px}

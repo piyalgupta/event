@@ -5,7 +5,9 @@
 // and guest classifications. Re-rendered from recalc(); never writes back.
 // Borrows the helpers ($, num, esc, inr, foodEntries, guestEntries) from core.js.
 
-const DASH_COLORS=['#6a5cff','#e8519b','#0fb5c4','#ff9d3d','#16a34a','#c850e8','#ff5d8f','#5b63f5','#34d6df','#f5a623'];
+// Muted, harmonised earth-tone categorical palette (Scandinavian) — clay,
+// sage, teal, ochre, moss, dusty rose, terracotta, dove-violet, blue-grey, sand.
+const DASH_COLORS=['#a9794d','#7f9478','#5f9088','#caa15a','#6f8f52','#bd8a8a','#c98f72','#7a76a0','#88a3ad','#d2b079'];
 
 // One pass over the form state, returning every figure the charts need.
 function dashData(){
