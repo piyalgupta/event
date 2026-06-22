@@ -630,12 +630,12 @@
     },
     {
       "name": "Majumdar",
-      "relationship": "Family",
-      "reference": "",
+      "relationship": "Neighbours",
+      "reference": "P",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782148464057
+  "updatedAt": 1782148467277
 }
