@@ -400,7 +400,7 @@
       "name": "Mithu Bapi Student",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -629,5 +629,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782148222211
+  "updatedAt": 1782148233306
 }
