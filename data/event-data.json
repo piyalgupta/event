@@ -85,6 +85,14 @@
       "party": "1"
     },
     {
+      "name": "Ashutosh Pal",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
       "name": "Avirup (Tojo)",
       "relationship": "Friends",
       "reference": "Rudraksha Gupta",
@@ -98,6 +106,14 @@
       "reference": "Pradip Kumar Gupta",
       "invited": true,
       "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Babui Kaku",
+      "relationship": "Relatives",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -133,6 +149,14 @@
       "party": "1"
     },
     {
+      "name": "Bhawanipur Rupchand Mukherjee Club",
+      "relationship": "Friends",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "5"
+    },
+    {
       "name": "Bithi Ghosh",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -147,6 +171,14 @@
       "invited": true,
       "rsvp": false,
       "party": "2"
+    },
+    {
+      "name": "Chandi",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
     },
     {
       "name": "Chhobi Student",
@@ -176,6 +208,14 @@
       "name": "Debu",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Dilu Kaku Germany",
+      "relationship": "Friends",
+      "reference": "Pradip Kumar Gupta",
       "invited": true,
       "rsvp": false,
       "party": "1"
@@ -275,6 +315,14 @@
       "invited": false,
       "rsvp": false,
       "party": "2"
+    },
+    {
+      "name": "Komolendu",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
     },
     {
       "name": "Krishna Sahoo LIC",
@@ -469,6 +517,14 @@
       "party": "1"
     },
     {
+      "name": "Sanjay Joardar",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
       "name": "Seema - Biren Sen",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
@@ -533,6 +589,14 @@
       "party": "2"
     },
     {
+      "name": "Tuta",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
       "name": "Tutul",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -547,71 +611,7 @@
       "invited": false,
       "rsvp": false,
       "party": "1"
-    },
-    {
-      "name": "Tuta",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Chandi",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Komolendu",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Ashutosh Pal",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Sanjay Joardar",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Bhawanipur Rupchand Mukherjee Club",
-      "relationship": "Friends",
-      "reference": "Pradip Kumar Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "5"
-    },
-    {
-      "name": "Dilu Kaku Germany",
-      "relationship": "Friends",
-      "reference": "Pradip Kumar Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Babui Kaku",
-      "relationship": "Relatives",
-      "reference": "Pradip Kumar Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
     }
   ],
-  "updatedAt": 1782121715972
+  "updatedAt": 1782121727026
 }
