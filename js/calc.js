@@ -25,7 +25,8 @@ function recalc(){
   setText('gTotalFamilies',families);
   setText('gTotalPeople',people);
   setText('gInvited',invited);
-  setText('gTotalPlates',Math.max(0,people-rsvp));
+  const estPlates=Math.max(0,people-rsvp);
+  setText('gTotalPlates',estPlates);
   setText('guestBadge',people+' people');
   renderBreakdown('relBreakdown',relCount,RELATIONSHIPS);
   renderBreakdown('refBreakdown',refCount);
@@ -35,7 +36,7 @@ function recalc(){
   // head-count; the per-row line total is written back so cost stays live.
   let fTotal=0,plates=0,items=0;
   foodEntries().forEach(f=>{
-    if(f.sync){f.qtyEl.value=people||'';f.qtyEl.readOnly=true;f.qtyEl.style.opacity='.55';}
+    if(f.sync){f.qtyEl.value=estPlates||'';f.qtyEl.readOnly=true;f.qtyEl.style.opacity='.55';}
     const qty=parseFloat(f.qtyEl.value)||0, total=qty*f.price;
     if(f.totalEl)f.totalEl.value=total||'';
     fTotal+=total;plates+=qty;
