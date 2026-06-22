@@ -37,6 +37,7 @@
     <button class="ah-link active" data-view="venue" onclick="showView('venue')">Venue</button>
     <button class="ah-link" data-view="food" onclick="showView('food')">Food &amp; Arrangement</button>
     <button class="ah-link" data-view="guests" onclick="showView('guests')">Guests</button>
+    <button class="ah-link" data-view="invite" onclick="showView('invite')">Invitation Card</button>
     <button class="ah-link" data-view="dashboard" onclick="showView('dashboard')">Dashboard</button>
     <button class="ah-link" data-view="summary" onclick="showView('summary')">Summary</button>
   </nav>
@@ -57,7 +58,7 @@
   <div class="event-meta">
     <div class="em-for"><label>This event is being organised for</label><input type="text" id="organizedFor" placeholder="e.g. Aarav's First Birthday, or Riya &amp; Karan's Wedding" oninput="recalc()"></div>
     <div><label for="eventSelect">Type of event</label>
-      <select id="eventSelect" onchange="setEvent(this.value)" aria-label="Type of event">
+      <select id="eventSelect" class="event-select" onchange="setEvent(this.value)" aria-label="Type of event">
         <option value="Birthday">Birthday</option>
         <option value="Marriage">Marriage</option>
         <option value="Anniversary">Anniversary</option>
@@ -177,10 +178,50 @@
   <div><label>RSVP Notes</label><textarea id="rsvpNotes" placeholder="Special dietary requirements, VIPs, notes…" rows="2"></textarea></div>
 </section>
 
+<!-- ── VIEW : INVITATION CARD ── -->
+<section class="view" id="view-invite">
+  <div class="page-head">
+    <div class="page-num">04</div>
+    <div><div class="page-title">Invitation Card</div><div class="page-sub">A ready-to-share card, themed to your event — download &amp; send on WhatsApp</div></div>
+    <div class="page-badge">1:1 · JPG / PNG</div>
+  </div>
+  <div class="hr"></div>
+  <div class="invite-wrap">
+    <div class="invite-stage">
+      <canvas id="inviteCanvas" width="1080" height="1080" role="img" aria-label="Invitation card preview"></canvas>
+    </div>
+    <div class="invite-side">
+      <div>
+        <label for="inviteName">Name on the card</label>
+        <input type="text" id="inviteName" placeholder="e.g. Aarav's First Birthday" oninput="syncInviteName(this.value)" aria-label="Name on the invitation card">
+        <div class="invite-hint">Pulled from <em>“This event is being organised for”</em> on the Venue page — edit here or there.</div>
+      </div>
+      <div>
+        <label for="inviteEvent">Card theme — by event type</label>
+        <select id="inviteEvent" class="event-select" onchange="setEvent(this.value)" aria-label="Card theme by event type">
+          <option value="Birthday">Birthday</option>
+          <option value="Marriage">Marriage</option>
+          <option value="Anniversary">Anniversary</option>
+          <option value="Post-Funeral Rituals / Memorial">Post-Funeral Rituals / Memorial</option>
+          <option value="Naming Ceremony">Naming Ceremony</option>
+          <option value="Graduation">Graduation</option>
+          <option value="Puja / Ritual">Puja / Ritual</option>
+          <option value="Custom Event">Custom Event</option>
+        </select>
+      </div>
+      <div class="invite-actions">
+        <button class="btn btn-fill" type="button" onclick="downloadInvite('png')" aria-label="Download as PNG"><span class="msi">download</span> PNG</button>
+        <button class="btn" type="button" onclick="downloadInvite('jpg')" aria-label="Download as JPG"><span class="msi">download</span> JPG</button>
+      </div>
+      <div class="invite-tip">The card shows the name, event type, date &amp; venue you’ve entered. It downloads as a crisp 1080×1080 square — perfect for a WhatsApp status or chat.</div>
+    </div>
+  </div>
+</section>
+
 <!-- ── VIEW : DASHBOARD ── -->
 <section class="view dashboard" id="view-dashboard">
   <div class="page-head">
-    <div class="page-num">04</div>
+    <div class="page-num">05</div>
     <div><div class="page-title">Analytics Dashboard</div><div class="page-sub">Cost &amp; guest insights, sliced from every angle</div></div>
   </div>
   <div class="hr"></div>
@@ -190,7 +231,7 @@
 <!-- ── VIEW : SUMMARY ── -->
 <section class="view" id="view-summary">
   <div class="page-head">
-    <div class="page-num">05</div>
+    <div class="page-num">06</div>
     <div><div class="page-title">Event Summary</div><div class="page-sub"><span id="forLabel">—</span> <span style="opacity:.45">·</span> <span id="eventLabel">Birthday</span></div></div>
   </div>
   <div class="hr"></div>
@@ -245,6 +286,7 @@
 <script src="js/storage.js"></script>
 <script src="js/report.js"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/invite.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
