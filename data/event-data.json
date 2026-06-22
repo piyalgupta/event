@@ -309,7 +309,7 @@
       "party": "1"
     },
     {
-      "name": "Kakima Shyambazar",
+      "name": "Kakima ",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": true,
@@ -613,5 +613,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782130945312
+  "updatedAt": 1782130949692
 }
