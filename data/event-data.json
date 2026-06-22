@@ -624,10 +624,10 @@
       "name": "Tia",
       "relationship": "Friends",
       "reference": "Titas Bandopadhyay",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782138141444
+  "updatedAt": 1782138145529
 }
