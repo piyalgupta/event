@@ -288,7 +288,7 @@
       "name": "Kushal Majumdar",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "3"
     },
@@ -605,5 +605,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782112591187
+  "updatedAt": 1782112648871
 }
