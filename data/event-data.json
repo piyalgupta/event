@@ -432,8 +432,8 @@
       "name": "Romu Da",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
+      "invited": false,
+      "rsvp": false,
       "party": "1"
     },
     {
@@ -557,5 +557,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782104550974
+  "updatedAt": 1782104557696
 }
