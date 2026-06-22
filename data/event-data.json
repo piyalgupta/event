@@ -565,7 +565,7 @@
       "party": "1"
     },
     {
-      "name": "",
+      "name": "Komolendu",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -573,5 +573,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782104990064
+  "updatedAt": 1782105009957
 }
