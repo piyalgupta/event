@@ -18,28 +18,28 @@
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
-      "qty": "86",
+      "qty": "91",
       "price": "120",
       "sync": true
     },
     {
       "name": "Radhaballavi",
       "category": "Veg Main",
-      "qty": "86",
+      "qty": "91",
       "price": "20",
       "sync": true
     },
     {
       "name": "Mishti",
       "category": "Veg Main",
-      "qty": "86",
+      "qty": "91",
       "price": "20",
       "sync": true
     },
     {
       "name": "Water Bottle",
       "category": "Drinks",
-      "qty": "86",
+      "qty": "91",
       "price": "10",
       "sync": true
     },
@@ -57,7 +57,7 @@
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": true,
+      "rsvp": false,
       "party": "5"
     },
     {
@@ -629,5 +629,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782143105738
+  "updatedAt": 1782143109273
 }
