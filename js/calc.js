@@ -53,7 +53,7 @@ function recalc(){
   const balance=Math.max(0,grand-advance);
   setText('sumVenue',inr(vCost));
   setText('sumFood',inr(fTotal));
-  setText('sumGuests',people+' people ('+families+' families)');
+  setText('sumGuests',estPlates+' plates ('+families+' families)');
   setText('grandTotal',inr(grand));
   setText('sumAdvance',inr(advance));
   const balEl=document.getElementById('sumBalance');
