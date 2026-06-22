@@ -520,7 +520,7 @@
       "name": "Sanjay Joardar",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -629,5 +629,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782148309133
+  "updatedAt": 1782148313303
 }
