@@ -445,13 +445,13 @@ const INVITE_THEMES = {
     }
   },
   'Custom Event': {
-    pal: { panel: '#ffffff', ink: '#2a2550', sub: '#5b567e', accent: '#7c5cff', accent2: '#e0498f', line: 'rgba(124,92,255,.28)', frameInk: '#ffffff', mot: ['#7c5cff', '#e0498f', '#0fb5c4'] },
+    pal: { panel: '#ffffff', ink: '#363537', sub: '#5b6660', accent: '#0cce6b', accent2: '#ef2d56', line: 'rgba(12,206,107,.28)', frameInk: '#ffffff', mot: ['#0cce6b', '#ed7d3a', '#ef2d56'] },
     titleFamily: '"Cormorant Garamond", serif', titleWeight: 600, eventStyle: 'serif',
     kicker: 'You Are Cordially Invited to', closing: "We'd love to have you with us",
     motif: ivSparkle,
     bg(ctx, W, p) {
       const g = ctx.createLinearGradient(0, 0, W, W);
-      g.addColorStop(0, '#7b54f0'); g.addColorStop(.4, '#9b4dde'); g.addColorStop(.72, '#e0498f'); g.addColorStop(1, '#f6913d');
+      g.addColorStop(0, '#0cce6b'); g.addColorStop(.4, '#dced31'); g.addColorStop(.72, '#ed7d3a'); g.addColorStop(1, '#ef2d56');
       ctx.fillStyle = g; ctx.fillRect(0, 0, W, W);
       const r = ctx.createRadialGradient(W * .5, W * .22, 0, W * .5, W * .22, W * .7);
       r.addColorStop(0, 'rgba(255,255,255,.32)'); r.addColorStop(1, 'rgba(255,255,255,0)');
