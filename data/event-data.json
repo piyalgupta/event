@@ -558,12 +558,12 @@
     },
     {
       "name": "Chandi",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782104907473
+  "updatedAt": 1782104910999
 }
