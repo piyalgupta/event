@@ -576,7 +576,7 @@
       "name": "Tua and Family",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "4"
     },
@@ -629,5 +629,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782148313303
+  "updatedAt": 1782148348632
 }
