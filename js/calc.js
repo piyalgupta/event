@@ -49,10 +49,18 @@ function recalc(){
   setVal('foodBal', Math.max(0,fTotal-fAdv)||'');
 
   const grand=vCost+fTotal;
+  const advance=vAdv+fAdv;
+  const balance=Math.max(0,grand-advance);
   setText('sumVenue',inr(vCost));
   setText('sumFood',inr(fTotal));
   setText('sumGuests',people+' people ('+families+' families)');
   setText('grandTotal',inr(grand));
+  setText('sumAdvance',inr(advance));
+  const balEl=document.getElementById('sumBalance');
+  if(balEl){
+    if(balance<=0){balEl.textContent='Full Payment Cleared';balEl.classList.add('cleared');}
+    else{balEl.textContent=inr(balance);balEl.classList.remove('cleared');}
+  }
   if(typeof renderDashboard==='function')renderDashboard();
   saveLocal();
 }
