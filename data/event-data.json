@@ -629,7 +629,7 @@
       "party": "2"
     },
     {
-      "name": "",
+      "name": "Majumdar",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -637,5 +637,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782148458775
+  "updatedAt": 1782148464057
 }
