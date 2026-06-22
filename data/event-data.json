@@ -328,7 +328,7 @@
       "name": "Krishna Sahoo LIC",
       "relationship": "Acquaintances",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -629,5 +629,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782148167735
+  "updatedAt": 1782148170058
 }
