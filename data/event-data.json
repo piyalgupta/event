@@ -81,7 +81,7 @@
       "relationship": "Friends",
       "reference": "Pradip Kumar Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -597,5 +597,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782110773313
+  "updatedAt": 1782110777015
 }
