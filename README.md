@@ -38,18 +38,18 @@ Fully automated server-side sending would instead need the paid WhatsApp Busines
 ## Invitation card
 The **Invitation Card** page turns your event into a ready-to-share image. It takes its headline from *“This event is being organised for”* (editable on the page itself or on the Venue page) and renders a **square 1:1 card** on a `<canvas>`, so it downloads as a clean **PNG or JPG** — sized 1080×1080, ideal for a WhatsApp status or chat.
 
-Every event type gets its **own world-class theme** — distinct palette, decorative motif, border and wording — drawn entirely with the Canvas 2D API (no libraries, no tainting, still runs from `file://`):
+The design language is **ultra-minimal Scandinavian**: calm earth-toned paper, a fine print grain, one art-directed procedural scene and a single muted accent per event — finished with a hint of **glass-neumorphism**, a softly-raised frosted panel that holds every word, all of it set **flush-left** in an editorial rhythm. It's drawn entirely with the Canvas 2D API (no libraries, no tainting, still runs from `file://`):
 
-- **Birthday** — festive coral-to-gold gradient with confetti and a balloon cluster.
-- **Marriage** — deep maroon with gold dust, an ivory double-bordered panel, interlocking rings.
-- **Anniversary** — rose-gold blush with intertwined hearts.
-- **Post-Funeral Rituals / Memorial** — a calm slate-lavender card with a soft lotus, worded with care.
-- **Naming Ceremony** — a pastel sky with clouds, a crescent moon and stars.
-- **Graduation** — a navy-on-gold academic card with a mortarboard cap.
-- **Puja / Ritual** — a saffron radial with a lit diya and a marigold border.
-- **Custom Event** — the app’s signature indigo→violet→rose gradient with a sparkle.
+- **Birthday** — a soft sun setting into warm rolling hills, with a few confetti specks.
+- **Marriage** — two interlocking stone arches in muted bronze and sand.
+- **Anniversary** — two overlapping rings, a quiet dusty-rose union.
+- **Post-Funeral Rituals / Memorial** — a single still lotus drawn in fine dove-grey line.
+- **Naming Ceremony** — a soft crescent moon, a little cloud and a scatter of stars.
+- **Graduation** — a calm forest-green summit beneath a single warm point of light.
+- **Puja / Ritual** — a sun rising from the panel's edge with radiating ochre arcs.
+- **Custom Event** — two soft organic cut-outs, a quietly modern composition.
 
-All text sits on a high-contrast inner panel so the card stays readable when shared. The card re-renders live from the same venue/food/guest model (via `recalc()`) and re-themes instantly when the event type changes.
+Every scene tucks its lower band beneath the glass so it's gently frosted, and the whole stack auto-fits — vertically centred when there's room, gaps compressing when there isn't — so the card stays composed and readable whether the name is short or long. It re-renders live from the same venue/food/guest model (via `recalc()`) and re-themes instantly when the event type changes. Real frosted-glass blur is used where the browser's canvas filter supports it, with a clean translucent-veil fallback everywhere else.
 
 ## Analytics dashboard
 The final page is a read-only **Analytics Dashboard** that re-derives everything from the same venue/food/guest model on each change (via `recalc()`), so it is always live. It shows KPI tiles (grand total, cost per head, cost per family, invited/RSVP heads, plates) plus charts that slice the data from several angles: a **cost split** donut (venue vs food), **food cost by category**, **payment progress** (paid vs due, broken down by venue/food), and guest classifications **by relationship**, **by reference**, **invitation & RSVP**, and **families by party size**. The charts are hand-built SVG/CSS with no libraries, so the page still runs straight from `file://`.
