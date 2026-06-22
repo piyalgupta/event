@@ -338,6 +338,7 @@ html.dark select option{background:#1c1834;color:#f0eeff}
 .tb-row{display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid var(--line)}
 .tb-label{font-size:.86rem;color:var(--muted);font-weight:600}
 .tb-val{font-size:.96rem;color:var(--ink);font-weight:600}
+.tb-val.cleared{color:var(--ok);font-weight:700}
 .tb-total-wrap{display:flex;justify-content:space-between;align-items:baseline;padding-top:22px}
 .tb-total-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:700}
 .tb-total{font-family:var(--serif);font-size:clamp(2.2rem,5.5vw,3.4rem);font-weight:700;background:var(--accent-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
