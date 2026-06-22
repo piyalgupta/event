@@ -558,12 +558,12 @@
     },
     {
       "name": "Chandi",
-      "relationship": "Relatives",
-      "reference": "",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782104910999
+  "updatedAt": 1782104920750
 }
