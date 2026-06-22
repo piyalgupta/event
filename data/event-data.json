@@ -392,7 +392,7 @@
       "name": "Partha Sarathi Ganguly",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -557,5 +557,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782104081954
+  "updatedAt": 1782104390439
 }
