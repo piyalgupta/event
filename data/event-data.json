@@ -96,7 +96,7 @@
       "name": "Bablu Kaku",
       "relationship": "Friends",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -605,5 +605,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782111933606
+  "updatedAt": 1782111943169
 }
