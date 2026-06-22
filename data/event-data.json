@@ -592,7 +592,7 @@
       "name": "Bhawanipur Rupchand Mukherjee Club",
       "relationship": "Friends",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "5"
     },
@@ -605,5 +605,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782119877553
+  "updatedAt": 1782119913115
 }
