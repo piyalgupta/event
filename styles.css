@@ -402,6 +402,22 @@ html.dark select option{background:#1c1834;color:#f0eeff}
 .dp-fill{height:100%;background:var(--accent-grad);border-radius:10px;min-width:3px}
 .dp-meta{display:flex;justify-content:space-between;gap:8px;font-size:.72rem;color:var(--muted);margin-top:8px;font-weight:600}
 
+/* ── Invitation card ── */
+.invite-wrap{display:grid;grid-template-columns:minmax(0,1fr) clamp(280px,30%,340px);gap:clamp(20px,3vw,40px);align-items:start}
+.invite-stage{display:flex;justify-content:center;padding:clamp(10px,2vw,22px);border-radius:var(--radius);background:var(--glass-2);border:1px solid var(--glass-brd);box-shadow:var(--sh-inset)}
+#inviteCanvas{width:100%;max-width:560px;height:auto;aspect-ratio:1/1;display:block;border-radius:18px;box-shadow:0 22px 50px -22px rgba(54,52,148,.5);background:#fff}
+.invite-side{display:flex;flex-direction:column;gap:16px}
+.invite-hint{font-size:.7rem;color:var(--muted);margin-top:8px;line-height:1.5}
+.invite-hint em{font-style:italic;color:var(--ink)}
+.invite-actions{display:flex;gap:12px;flex-wrap:wrap}
+.invite-actions .btn{flex:1 1 calc(50% - 6px);min-width:120px}
+.invite-tip{font-size:.74rem;color:var(--muted);line-height:1.6;padding:14px 16px;border:1px solid var(--glass-brd);border-radius:var(--radius-sm);background:var(--glass)}
+@media(max-width:760px){
+  .invite-wrap{grid-template-columns:1fr}
+  #inviteCanvas{max-width:440px;margin:0 auto}
+  .invite-actions .btn{flex:1 1 100%}
+}
+
 /* ── Responsive ── */
 @media(min-width:981px){
   :root{--gutter-x:clamp(40px,4vw,80px);--gutter-y:clamp(44px,7vh,88px)}

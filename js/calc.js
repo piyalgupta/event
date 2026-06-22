@@ -62,5 +62,6 @@ function recalc(){
     else{balEl.textContent=inr(balance);balEl.classList.remove('cleared');}
   }
   if(typeof renderDashboard==='function')renderDashboard();
+  if(typeof renderInvite==='function')renderInvite();
   saveLocal();
 }

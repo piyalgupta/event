@@ -9,9 +9,11 @@
 // restoring saved data) — it reflects the value back onto the <select>.
 function setEvent(label){
   currentEvent=label;
-  const sel=$('eventSelect');
-  if(sel&&sel.value!==label)sel.value=label;
+  // Keep every event-type picker in sync (the Venue page select and the
+  // Invitation Card theme select both carry class "event-select").
+  document.querySelectorAll('.event-select').forEach(sel=>{if(sel.value!==label)sel.value=label;});
   setText('eventLabel',label);
+  if(typeof renderInvite==='function')renderInvite();   // re-theme the card
   saveLocal();
 }
 

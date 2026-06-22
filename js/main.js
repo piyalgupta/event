@@ -5,7 +5,7 @@
 // ── Section navigation : the header menu switches single-page views ──
 // Every view shares one data model (IDs + recalc), so switching never loses
 // state; recalc() runs on each switch to keep badges/totals/dashboard live.
-const VIEWS=['venue','food','guests','dashboard','summary'];
+const VIEWS=['venue','food','guests','invite','dashboard','summary'];
 function showView(name){
   VIEWS.forEach(v=>{
     const sec=document.getElementById('view-'+v);
