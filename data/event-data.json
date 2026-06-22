@@ -61,7 +61,7 @@
       "party": "5"
     },
     {
-      "name": "Amar Kaku/Niha",
+      "name": "Amar Kaku/Nihar Kaku",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": false,
@@ -621,5 +621,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782137394989
+  "updatedAt": 1782137400062
 }
