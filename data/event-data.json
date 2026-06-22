@@ -79,7 +79,7 @@
     {
       "name": "Ankur Kaku",
       "relationship": "Friends",
-      "reference": "p",
+      "reference": "Pradip Kumar Gupta",
       "invited": true,
       "rsvp": false,
       "party": "1"
@@ -597,5 +597,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782110766389
+  "updatedAt": 1782110769844
 }
