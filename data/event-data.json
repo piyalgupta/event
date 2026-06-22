@@ -18,28 +18,28 @@
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
-      "qty": "88",
+      "qty": "89",
       "price": "120",
       "sync": true
     },
     {
       "name": "Radhaballavi",
       "category": "Veg Main",
-      "qty": "88",
+      "qty": "89",
       "price": "20",
       "sync": true
     },
     {
       "name": "Mishti",
       "category": "Veg Main",
-      "qty": "88",
+      "qty": "89",
       "price": "20",
       "sync": true
     },
     {
       "name": "Water Bottle",
       "category": "Drinks",
-      "qty": "88",
+      "qty": "89",
       "price": "10",
       "sync": true
     },
@@ -61,12 +61,12 @@
       "party": "5"
     },
     {
-      "name": "Amar Kaku/Nihar Kaku/Rahul",
+      "name": "Amar Kaku/Nihar Kaku/Rahul Kaku",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
       "invited": false,
       "rsvp": false,
-      "party": "2"
+      "party": "3"
     },
     {
       "name": "Anju  Banerjee",
@@ -637,5 +637,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782148523124
+  "updatedAt": 1782148531007
 }
