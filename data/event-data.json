@@ -352,7 +352,7 @@
       "name": "Mandira Lahiri",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -613,5 +613,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782127466772
+  "updatedAt": 1782127501447
 }
