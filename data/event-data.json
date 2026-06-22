@@ -309,7 +309,7 @@
       "party": "1"
     },
     {
-      "name": "Kakima - Bubu",
+      "name": "Kakima - Bubu Shyambazar",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": true,
@@ -613,5 +613,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782130955970
+  "updatedAt": 1782130961665
 }
