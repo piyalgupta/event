@@ -433,7 +433,7 @@
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -557,5 +557,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782104547446
+  "updatedAt": 1782104550974
 }
