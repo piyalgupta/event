@@ -600,10 +600,10 @@
       "name": "Dilu Kaku Germany",
       "relationship": "Friends",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782111027025
+  "updatedAt": 1782111031082
 }
