@@ -144,7 +144,7 @@
       "name": "Bulpishi",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -605,5 +605,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782119753940
+  "updatedAt": 1782119761894
 }
