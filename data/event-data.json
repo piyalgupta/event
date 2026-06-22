@@ -566,12 +566,12 @@
     },
     {
       "name": "Komolendu",
-      "relationship": "Family",
-      "reference": "",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782105014258
+  "updatedAt": 1782105017680
 }
