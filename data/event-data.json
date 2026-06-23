@@ -45,7 +45,7 @@
     },
     {
       "name": "Kesar Patti",
-      "category": "Veg Starter",
+      "category": "Dessert",
       "qty": "",
       "price": "",
       "sync": false
@@ -653,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215912039
+  "updatedAt": 1782215932751
 }
