@@ -42,6 +42,13 @@
       "qty": "45",
       "price": "5",
       "sync": false
+    },
+    {
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "",
+      "price": "",
+      "sync": false
     }
   ],
   "guests": [
@@ -646,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215894317
+  "updatedAt": 1782215899509
 }
