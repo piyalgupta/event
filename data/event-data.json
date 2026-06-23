@@ -18,7 +18,7 @@
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
-      "qty": "70",
+      "qty": "90",
       "price": "120",
       "sync": false
     },
@@ -646,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215637366
+  "updatedAt": 1782215648316
 }
