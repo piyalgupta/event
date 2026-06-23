@@ -34,7 +34,7 @@
       "category": "Drinks",
       "qty": "92",
       "price": "10",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Chairs",
@@ -661,5 +661,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782218634628
+  "updatedAt": 1782218638320
 }
