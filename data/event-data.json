@@ -32,7 +32,7 @@
     {
       "name": "Water Bottle",
       "category": "Drinks",
-      "qty": "90",
+      "qty": "91",
       "price": "10",
       "sync": true
     },
@@ -651,7 +651,15 @@
       "invited": true,
       "rsvp": true,
       "party": "1"
+    },
+    {
+      "name": "",
+      "relationship": "Family",
+      "reference": "",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1782218028005
+  "updatedAt": 1782218035555
 }
