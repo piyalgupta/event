@@ -61,7 +61,7 @@
       "party": "5"
     },
     {
-      "name": "Baba's Friend Ch",
+      "name": "Baba's Friend Chandital",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
       "invited": false,
@@ -661,5 +661,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782209706358
+  "updatedAt": 1782209709105
 }
