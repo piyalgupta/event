@@ -11,43 +11,43 @@
   "mapUrl": "G88V+MW Kolkata, West Bengal",
   "catererName": "Balaram Mullick & Radharaman Mullick Tollygunge",
   "catererPhone": "+91 6292322041",
-  "foodAdv": "",
+  "foodAdv": "5000",
   "rsvpNotes": "",
-  "locked": true,
+  "locked": false,
   "food": [
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
       "category": "Veg Main",
-      "qty": "89",
+      "qty": "70",
       "price": "120",
-      "sync": true
+      "sync": false
     },
     {
-      "name": "Radhaballavi",
-      "category": "Veg Main",
-      "qty": "89",
+      "name": "Eli Green",
+      "category": "Dessert",
+      "qty": "70",
       "price": "20",
-      "sync": true
-    },
-    {
-      "name": "Mishti",
-      "category": "Veg Main",
-      "qty": "89",
-      "price": "20",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Water Bottle",
       "category": "Drinks",
-      "qty": "89",
+      "qty": "90",
       "price": "10",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Chairs",
       "category": "Other",
       "qty": "45",
       "price": "5",
+      "sync": false
+    },
+    {
+      "name": "Kesar Patti",
+      "category": "Dessert",
+      "qty": "70",
+      "price": "20",
       "sync": false
     }
   ],
@@ -61,12 +61,12 @@
       "party": "5"
     },
     {
-      "name": "Amar Kaku",
+      "name": "Amar Kaku/Nihar Kaku/Rahul Kaku",
       "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
+      "reference": "Pradip Kumar Gupta",
       "invited": false,
       "rsvp": false,
-      "party": "1"
+      "party": "3"
     },
     {
       "name": "Anju  Banerjee",
@@ -80,6 +80,14 @@
       "name": "Ankur Kaku",
       "relationship": "Friends",
       "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Ashutosh Pal",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
       "invited": true,
       "rsvp": true,
       "party": "1"
@@ -101,11 +109,19 @@
       "party": "1"
     },
     {
+      "name": "Babui Kaku",
+      "relationship": "Relatives",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
       "name": "Bandana",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -133,6 +149,14 @@
       "party": "1"
     },
     {
+      "name": "Bhawanipur Rupchand Mukherjee Club",
+      "relationship": "Friends",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "5"
+    },
+    {
       "name": "Bithi Ghosh",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -147,6 +171,14 @@
       "invited": true,
       "rsvp": false,
       "party": "2"
+    },
+    {
+      "name": "Chandi",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
     },
     {
       "name": "Chhobi Student",
@@ -181,6 +213,14 @@
       "party": "1"
     },
     {
+      "name": "Dilu Kaku Germany",
+      "relationship": "Friends",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
       "name": "Dimpi and family",
       "relationship": "Relatives",
       "reference": "Sarmishtha Gupta",
@@ -209,7 +249,7 @@
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -249,7 +289,7 @@
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -264,23 +304,31 @@
       "name": "Jayanta Kaku Chanditala",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
     {
-      "name": "Kakima Shyambazar",
+      "name": "Kakima - Bubu Shyambazar",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
+    },
+    {
+      "name": "Komolendu",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
     },
     {
       "name": "Krishna Sahoo LIC",
       "relationship": "Acquaintances",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -290,7 +338,7 @@
       "reference": "Piyal Gupta",
       "invited": true,
       "rsvp": false,
-      "party": "3"
+      "party": "2"
     },
     {
       "name": "Leena",
@@ -304,7 +352,7 @@
       "name": "Mandira Lahiri",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -352,7 +400,7 @@
       "name": "Mithu Bapi Student",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -426,12 +474,12 @@
       "reference": "Anulekha Gupta",
       "invited": true,
       "rsvp": false,
-      "party": "1"
+      "party": "3"
     },
     {
       "name": "Romu Da",
       "relationship": "Neighbours",
-      "reference": "Anulekha Gupta",
+      "reference": "Pradip Kumar Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
@@ -441,22 +489,22 @@
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
       "invited": true,
-      "rsvp": true,
+      "rsvp": false,
       "party": "1"
     },
     {
       "name": "Rupankar Sarkar",
       "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
       "party": "1"
     },
     {
       "name": "Sambhu Da Paan",
       "relationship": "Acquaintances",
-      "reference": "Piyal Gupta",
-      "invited": false,
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
       "rsvp": true,
       "party": "1"
     },
@@ -464,7 +512,15 @@
       "name": "Sanchita",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Sanjay Joardar",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -488,9 +544,9 @@
       "name": "Sirsha/Sanchari Bhadra",
       "relationship": "Friends",
       "reference": "Rudraksha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
-      "party": "2"
+      "party": "1"
     },
     {
       "name": "Soumyader Bari",
@@ -520,7 +576,7 @@
       "name": "Tua and Family",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "4"
     },
@@ -533,10 +589,18 @@
       "party": "2"
     },
     {
+      "name": "Tuta",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
       "name": "Tutul",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -544,67 +608,59 @@
       "name": "Uttam De Roy",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Pishimoni Rakhi kar Gupta",
+      "relationship": "Relatives",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Chum Pishi",
+      "relationship": "Relatives",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "2"
+    },
+    {
+      "name": "Majumdar",
+      "relationship": "Neighbours",
+      "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     },
     {
-      "name": "Tuta",
+      "name": "Sekhar Da",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
       "invited": true,
       "rsvp": false,
-      "party": "1"
+      "party": "2"
     },
     {
-      "name": "Chandi",
+      "name": "Naeda Bapi",
       "relationship": "Friends",
-      "reference": "Anulekha Gupta",
+      "reference": "Piyal Gupta",
       "invited": true,
       "rsvp": true,
       "party": "1"
     },
     {
-      "name": "Komolendu",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Ashutosh Pal",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Sanjay Joardar",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Bhawanipur Rupchand Mukherjee Club",
-      "relationship": "Friends",
-      "reference": "Pradip Kumar Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "5"
-    },
-    {
-      "name": "Dilu Kaku Germany",
-      "relationship": "Friends",
-      "reference": "Pradip Kumar Gupta",
+      "name": "Commerce Sir",
+      "relationship": "Acquaintances",
+      "reference": "Rudraksha Gupta",
       "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782120292967,
+  "updatedAt": 1782219155696,
   "listName": "Common List"
 }
