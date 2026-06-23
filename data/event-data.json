@@ -23,7 +23,7 @@
       "sync": false
     },
     {
-      "name": "Mishti",
+      "name": "",
       "category": "Veg Main",
       "qty": "70",
       "price": "20",
@@ -646,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215877330
+  "updatedAt": 1782215882032
 }
