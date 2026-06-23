@@ -662,12 +662,12 @@
     },
     {
       "name": "Dipu Pishi",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782224942228
+  "updatedAt": 1782224947489
 }
