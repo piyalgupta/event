@@ -64,7 +64,7 @@
       "name": "Baba's Friend Chanditala",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "4"
     },
@@ -653,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782209725144
+  "updatedAt": 1782209733854
 }
