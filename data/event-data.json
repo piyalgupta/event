@@ -224,7 +224,7 @@
       "name": "Dimpi and family",
       "relationship": "Relatives",
       "reference": "Sarmishtha Gupta",
-      "invited": true,
+      "invited": false,
       "rsvp": false,
       "party": "2"
     },
@@ -653,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782209803343
+  "updatedAt": 1782209818178
 }
