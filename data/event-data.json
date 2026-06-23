@@ -13,7 +13,7 @@
   "catererPhone": "+91 6292322041",
   "foodAdv": "5000",
   "rsvpNotes": "",
-  "locked": false,
+  "locked": true,
   "food": [
     {
       "name": "Polao, Chhanar Dalna, Aloor Dum",
@@ -661,5 +661,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782220905925
+  "updatedAt": 1782220909570
 }
