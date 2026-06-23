@@ -61,14 +61,6 @@
       "party": "5"
     },
     {
-      "name": "Baba's Friend Chanditala",
-      "relationship": "Neighbours",
-      "reference": "Pradip Kumar Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "4"
-    },
-    {
       "name": "Anju  Banerjee",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -99,6 +91,14 @@
       "invited": true,
       "rsvp": true,
       "party": "2"
+    },
+    {
+      "name": "Baba's Friend Chanditala",
+      "relationship": "Neighbours",
+      "reference": "Pradip Kumar Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "4"
     },
     {
       "name": "Bablu Kaku",
@@ -173,6 +173,14 @@
       "party": "2"
     },
     {
+      "name": "Chakraborty Bari",
+      "relationship": "Neighbours",
+      "reference": "Pradip Kumar Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
       "name": "Chandi",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -187,6 +195,14 @@
       "invited": true,
       "rsvp": false,
       "party": "1"
+    },
+    {
+      "name": "Chum Pishi",
+      "relationship": "Relatives",
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "2"
     },
     {
       "name": "Deb Babu",
@@ -341,6 +357,14 @@
       "party": "1"
     },
     {
+      "name": "Majumdar",
+      "relationship": "Neighbours",
+      "reference": "Pradip Kumar Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
       "name": "Mandira Lahiri",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
@@ -421,6 +445,14 @@
       "party": "1"
     },
     {
+      "name": "Naeda Bapi",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
       "name": "Partha Dasgupta",
       "relationship": "Colleagues",
       "reference": "Piyal Gupta",
@@ -440,6 +472,14 @@
       "name": "Partha Tour Friend",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": true,
+      "party": "1"
+    },
+    {
+      "name": "Pishimoni Rakhi kar Gupta",
+      "relationship": "Relatives",
+      "reference": "Pradip Kumar Gupta",
       "invited": true,
       "rsvp": true,
       "party": "1"
@@ -525,6 +565,14 @@
       "party": "1"
     },
     {
+      "name": "Sekhar Da",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
       "name": "Shanu Kaku",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
@@ -603,55 +651,7 @@
       "invited": true,
       "rsvp": false,
       "party": "1"
-    },
-    {
-      "name": "Pishimoni Rakhi kar Gupta",
-      "relationship": "Relatives",
-      "reference": "Pradip Kumar Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Chum Pishi",
-      "relationship": "Relatives",
-      "reference": "Pradip Kumar Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "2"
-    },
-    {
-      "name": "Majumdar",
-      "relationship": "Neighbours",
-      "reference": "Pradip Kumar Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Sekhar Da",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Naeda Bapi",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": true,
-      "party": "1"
-    },
-    {
-      "name": "Chakraborty Bari",
-      "relationship": "Neighbours",
-      "reference": "Pradip Kumar Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
     }
   ],
-  "updatedAt": 1782209939442
+  "updatedAt": 1782209994010
 }
