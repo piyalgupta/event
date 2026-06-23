@@ -27,7 +27,7 @@
       "category": "Veg Main",
       "qty": "90",
       "price": "20",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Water Bottle",
@@ -646,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215407208
+  "updatedAt": 1782215413387
 }
