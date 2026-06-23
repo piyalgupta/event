@@ -23,7 +23,7 @@
       "sync": false
     },
     {
-      "name": "Eli Gree",
+      "name": "Eli Green",
       "category": "Veg Main",
       "qty": "70",
       "price": "20",
@@ -646,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215885240
+  "updatedAt": 1782215887116
 }
