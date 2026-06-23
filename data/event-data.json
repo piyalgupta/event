@@ -653,7 +653,7 @@
       "party": "1"
     },
     {
-      "name": "Commerce Sir/English Sir",
+      "name": "Commerce Sir",
       "relationship": "Acquaintances",
       "reference": "Rudraksha Gupta",
       "invited": false,
@@ -661,5 +661,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782218656743
+  "updatedAt": 1782218731107
 }
