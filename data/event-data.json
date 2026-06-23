@@ -638,12 +638,12 @@
     },
     {
       "name": "Sekhar Da",
-      "relationship": "Family",
-      "reference": "",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782192315108
+  "updatedAt": 1782192321015
 }
