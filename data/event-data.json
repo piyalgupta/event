@@ -24,7 +24,7 @@
     },
     {
       "name": "Eli Green",
-      "category": "Veg Main",
+      "category": "Dessert",
       "qty": "70",
       "price": "20",
       "sync": false
@@ -646,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215890140
+  "updatedAt": 1782215894317
 }
