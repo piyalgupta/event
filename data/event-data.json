@@ -654,12 +654,12 @@
     },
     {
       "name": "Commerce Sir/English Sir",
-      "relationship": "Family",
+      "relationship": "Acquaintances",
       "reference": "Rudraksha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "2"
     }
   ],
-  "updatedAt": 1782218057043
+  "updatedAt": 1782218060690
 }
