@@ -23,13 +23,6 @@
       "sync": false
     },
     {
-      "name": "Radhaballavi",
-      "category": "Veg Main",
-      "qty": "90",
-      "price": "20",
-      "sync": true
-    },
-    {
       "name": "Mishti",
       "category": "Veg Main",
       "qty": "90",
@@ -653,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215386044
+  "updatedAt": 1782215407208
 }
