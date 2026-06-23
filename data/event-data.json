@@ -11,7 +11,7 @@
   "mapUrl": "G88V+MW Kolkata, West Bengal",
   "catererName": "Balaram Mullick & Radharaman Mullick Tollygunge",
   "catererPhone": "+91 6292322041",
-  "foodAdv": "",
+  "foodAdv": "5000",
   "rsvpNotes": "",
   "locked": false,
   "food": [
@@ -646,5 +646,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782215618401
+  "updatedAt": 1782215637366
 }
