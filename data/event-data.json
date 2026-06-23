@@ -304,7 +304,7 @@
       "name": "Jayanta Kaku Chanditala",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -645,5 +645,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782196481837
+  "updatedAt": 1782196502585
 }
