@@ -47,7 +47,7 @@
       "name": "Kesar Patti",
       "category": "Dessert",
       "qty": "70",
-      "price": "",
+      "price": "20",
       "sync": false
     }
   ],
@@ -661,5 +661,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782219010015
+  "updatedAt": 1782219022681
 }
