@@ -646,12 +646,12 @@
     },
     {
       "name": "Naeda Bapi",
-      "relationship": "Family",
-      "reference": "",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782197484877
+  "updatedAt": 1782197489387
 }
