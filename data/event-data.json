@@ -656,10 +656,10 @@
       "name": "Commerce Sir",
       "relationship": "Acquaintances",
       "reference": "Rudraksha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     }
   ],
-  "updatedAt": 1782218739183
+  "updatedAt": 1782218741659
 }
