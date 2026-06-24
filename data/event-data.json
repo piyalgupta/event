@@ -383,7 +383,7 @@
       "name": "Majumdar",
       "relationship": "Neighbours",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -676,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782284701549
+  "updatedAt": 1782284708269
 }
