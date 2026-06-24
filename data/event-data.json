@@ -623,7 +623,7 @@
       "name": "Swapan Mishra ",
       "relationship": "Friends",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -676,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782284712079
+  "updatedAt": 1782284715394
 }
