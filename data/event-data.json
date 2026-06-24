@@ -673,9 +673,9 @@
       "relationship": "Relatives",
       "reference": "Pradip Kumar Gupta",
       "invited": true,
-      "rsvp": false,
+      "rsvp": true,
       "party": "1"
     }
   ],
-  "updatedAt": 1782274094981
+  "updatedAt": 1782274098795
 }
