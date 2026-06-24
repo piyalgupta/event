@@ -463,7 +463,7 @@
       "name": "Mrinal Kaku",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -676,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782284708269
+  "updatedAt": 1782284712079
 }
