@@ -671,11 +671,11 @@
     {
       "name": "Tultul Pishi - Shanu Kaku",
       "relationship": "Relatives",
-      "reference": "",
-      "invited": false,
+      "reference": "Pradip Kumar Gupta",
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782274087475
+  "updatedAt": 1782274091471
 }
