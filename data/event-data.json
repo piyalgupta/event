@@ -532,14 +532,6 @@
       "party": "3"
     },
     {
-      "name": "Romu Da",
-      "relationship": "Neighbours",
-      "reference": "Pradip Kumar Gupta",
-      "invited": false,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
       "name": "Ruby",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
@@ -684,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782277635924
+  "updatedAt": 1782277643413
 }
