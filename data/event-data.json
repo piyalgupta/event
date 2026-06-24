@@ -311,8 +311,8 @@
       "name": "Hashu Kaku",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
-      "rsvp": false,
+      "invited": true,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -676,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782319135951
+  "updatedAt": 1782319140672
 }
