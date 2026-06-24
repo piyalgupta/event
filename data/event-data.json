@@ -255,9 +255,9 @@
       "name": "Dimpi Office",
       "relationship": "Colleagues",
       "reference": "Sarmishtha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
-      "party": "3"
+      "party": "5"
     },
     {
       "name": "Dipti",
@@ -684,5 +684,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782277623620
+  "updatedAt": 1782277632485
 }
