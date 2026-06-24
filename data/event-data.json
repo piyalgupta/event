@@ -53,7 +53,7 @@
     {
       "name": "Radhaballavi",
       "category": "Veg Starter",
-      "qty": "",
+      "qty": "70",
       "price": "",
       "sync": false
     }
@@ -684,5 +684,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782274172378
+  "updatedAt": 1782274174796
 }
