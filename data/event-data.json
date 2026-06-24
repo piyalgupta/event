@@ -71,7 +71,7 @@
       "name": "Amar Kaku/Nihar Kaku/Rahul Kaku",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "3"
     },
@@ -151,8 +151,8 @@
       "name": "Bhattacharya Saheb",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
+      "invited": true,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -676,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782284693027
+  "updatedAt": 1782284698096
 }
