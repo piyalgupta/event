@@ -447,8 +447,8 @@
       "name": "Mithu Di",
       "relationship": "Neighbours",
       "reference": "Titas Bandopadhyay",
-      "invited": false,
-      "rsvp": false,
+      "invited": true,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -676,5 +676,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782359206783
+  "updatedAt": 1782359220107
 }
