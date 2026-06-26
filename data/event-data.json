@@ -18,21 +18,21 @@
     {
       "name": "Non Veg Thali",
       "category": "Non-Veg Main",
-      "qty": "32",
+      "qty": "30",
       "price": "380",
       "sync": true
     },
     {
       "name": "Mishti Doi",
       "category": "Dessert",
-      "qty": "32",
+      "qty": "30",
       "price": "15",
       "sync": true
     },
     {
       "name": "Mishti",
       "category": "Dessert",
-      "qty": "32",
+      "qty": "30",
       "price": "40",
       "sync": true
     }
@@ -116,7 +116,7 @@
       "reference": "Piyal Gupta",
       "invited": true,
       "rsvp": false,
-      "party": "9"
+      "party": "7"
     },
     {
       "name": "Soumyader Bari",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490090220
+  "updatedAt": 1782490093730
 }
