@@ -16,7 +16,7 @@
   "locked": false,
   "food": [
     {
-      "name": "Non Veg Thalr- Rice Veg Moong dal Jhiri aloobhaja Sukto Paneer butter Malsa 10 , Doi Katla, Sorshe Padba",
+      "name": "Non Veg Thalr- Rice Veg Moong dal Jhiri aloobhaja Sukto Paneer butter Malsa 10 , Doi Katla, Sorshe Padba, ",
       "category": "Non-Veg Main",
       "qty": "30",
       "price": "380",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490467368
+  "updatedAt": 1782490469023
 }
