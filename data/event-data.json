@@ -17,12 +17,12 @@
   "food": [
     {
       "name": "Non Veg Thali",
-      "category": "Veg Starter",
+      "category": "Non-Veg Main",
       "qty": "",
       "price": "",
       "sync": false
     }
   ],
   "guests": [],
-  "updatedAt": 1782488891317
+  "updatedAt": 1782488893297
 }
