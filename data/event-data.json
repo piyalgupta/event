@@ -14,7 +14,15 @@
   "foodAdv": "",
   "rsvpNotes": "",
   "locked": false,
-  "food": [],
+  "food": [
+    {
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "",
+      "price": "",
+      "sync": false
+    }
+  ],
   "guests": [],
-  "updatedAt": 1782488878116
+  "updatedAt": 1782488880392
 }
