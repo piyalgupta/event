@@ -9,7 +9,7 @@
   "venueCost": "",
   "venueAdv": "",
   "mapUrl": "",
-  "catererName": "Tublu Catrers",
+  "catererName": "Tublu Caterers",
   "catererPhone": "",
   "foodAdv": "",
   "rsvpNotes": "",
@@ -38,5 +38,5 @@
     }
   ],
   "guests": [],
-  "updatedAt": 1782488942383
+  "updatedAt": 1782488945400
 }
