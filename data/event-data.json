@@ -27,9 +27,9 @@
       "category": "Dessert",
       "qty": "",
       "price": "",
-      "sync": false
+      "sync": true
     }
   ],
   "guests": [],
-  "updatedAt": 1782488907961
+  "updatedAt": 1782488911166
 }
