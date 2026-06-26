@@ -55,7 +55,7 @@
       "party": "1"
     },
     {
-      "name": "",
+      "name": "Bul Pishi",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -63,5 +63,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782489047581
+  "updatedAt": 1782489051399
 }
