@@ -11,7 +11,7 @@
   "mapUrl": "12/1J Chanditala Lane Tollygunge Kolkata 700040",
   "catererName": "Tublu Caterers",
   "catererPhone": "+91 9674609912",
-  "foodAdv": "",
+  "foodAdv": "5000",
   "rsvpNotes": "",
   "locked": false,
   "food": [
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490762211
+  "updatedAt": 1782490765565
 }
