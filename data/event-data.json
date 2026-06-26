@@ -18,21 +18,21 @@
     {
       "name": "Non Veg Thali",
       "category": "Non-Veg Main",
-      "qty": "2",
+      "qty": "3",
       "price": "380",
       "sync": true
     },
     {
       "name": "Mishti Doi",
       "category": "Dessert",
-      "qty": "2",
+      "qty": "3",
       "price": "",
       "sync": true
     },
     {
       "name": "Mishti",
       "category": "Dessert",
-      "qty": "2",
+      "qty": "3",
       "price": "",
       "sync": true
     }
@@ -53,7 +53,15 @@
       "invited": true,
       "rsvp": false,
       "party": "1"
+    },
+    {
+      "name": "",
+      "relationship": "Family",
+      "reference": "",
+      "invited": false,
+      "rsvp": false,
+      "party": "1"
     }
   ],
-  "updatedAt": 1782489045584
+  "updatedAt": 1782489047581
 }
