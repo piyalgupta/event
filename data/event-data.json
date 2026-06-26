@@ -26,14 +26,14 @@
       "name": "Mishti Doi",
       "category": "Dessert",
       "qty": "10",
-      "price": "",
+      "price": "15",
       "sync": true
     },
     {
       "name": "Mishti",
       "category": "Dessert",
       "qty": "10",
-      "price": "",
+      "price": "40",
       "sync": true
     }
   ],
@@ -95,5 +95,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782489165485
+  "updatedAt": 1782489184497
 }
