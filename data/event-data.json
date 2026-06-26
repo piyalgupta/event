@@ -20,9 +20,16 @@
       "category": "Non-Veg Main",
       "qty": "",
       "price": "380",
+      "sync": true
+    },
+    {
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "",
+      "price": "",
       "sync": false
     }
   ],
   "guests": [],
-  "updatedAt": 1782488896693
+  "updatedAt": 1782488899265
 }
