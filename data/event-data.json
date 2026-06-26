@@ -72,8 +72,8 @@
     },
     {
       "name": "Shanu Kaku",
-      "relationship": "Family",
-      "reference": "",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
       "invited": false,
       "rsvp": false,
       "party": "2"
@@ -87,5 +87,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782489124552
+  "updatedAt": 1782489128418
 }
