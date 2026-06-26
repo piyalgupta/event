@@ -8,7 +8,7 @@
   "venuePhone": "",
   "venueCost": "",
   "venueAdv": "",
-  "mapUrl": "https://www.google.co.in/maps/place/12%2F1J,+Chanditala+Ln,+Ashok+Nagar,+Tollygunge,+Kolkata,+West+Bengal+700040/@22.4878188,88.3453065,17z/data=!3m1!4b1!4m6!3m5!1s0x3a0270ebddfb5b95:0x722753f2e0e0eeec!8m2!3d22.4878139!4d88.3478868!16s%2Fg%2F11tjzb9w2k?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D",
+  "mapUrl": "",
   "catererName": "Tublu Caterers",
   "catererPhone": "+91 9674609912",
   "foodAdv": "",
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490723674
+  "updatedAt": 1782490730827
 }
