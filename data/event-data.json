@@ -38,7 +38,7 @@
     },
     {
       "name": "Paan",
-      "category": "Veg Starter",
+      "category": "Other",
       "qty": "",
       "price": "",
       "sync": false
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490596330
+  "updatedAt": 1782490599653
 }
