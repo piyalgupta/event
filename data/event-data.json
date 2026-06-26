@@ -58,7 +58,7 @@
       "name": "Bul Pishi",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -66,7 +66,7 @@
       "name": "Gautam Kaku",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -74,7 +74,7 @@
       "name": "Shanu Kaku",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -82,7 +82,7 @@
       "name": "Dipu Pishi",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     },
@@ -90,10 +90,10 @@
       "name": "Abhaya Mashi ",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782489206785
+  "updatedAt": 1782489213937
 }
