@@ -112,12 +112,12 @@
     },
     {
       "name": "Others",
-      "relationship": "Family",
+      "relationship": "Other",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782489292501
+  "updatedAt": 1782489295601
 }
