@@ -113,7 +113,7 @@
       "name": "Others",
       "relationship": "Other",
       "reference": "Anulekha Gupta",
-      "invited": true,
+      "invited": false,
       "rsvp": false,
       "party": "10"
     },
@@ -121,7 +121,7 @@
       "name": "Others",
       "relationship": "Other",
       "reference": "Piyal Gupta",
-      "invited": true,
+      "invited": false,
       "rsvp": false,
       "party": "7"
     },
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490636681
+  "updatedAt": 1782490640559
 }
