@@ -19,10 +19,10 @@
       "name": "Non Veg Thali",
       "category": "Non-Veg Main",
       "qty": "",
-      "price": "",
+      "price": "380",
       "sync": false
     }
   ],
   "guests": [],
-  "updatedAt": 1782488893297
+  "updatedAt": 1782488896693
 }
