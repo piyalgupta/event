@@ -3,7 +3,7 @@
   "eventType": "Post-Funeral Rituals / Memorial",
   "eventDate": "2026-07-01T11:30",
   "venueName": "Home",
-  "venueAddr": "",
+  "venueAddr": "12/1J Chandit",
   "venueContact": "",
   "venuePhone": "",
   "venueCost": "",
@@ -16,5 +16,5 @@
   "locked": false,
   "food": [],
   "guests": [],
-  "updatedAt": 1782488750512
+  "updatedAt": 1782488753738
 }
