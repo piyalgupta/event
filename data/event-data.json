@@ -129,10 +129,10 @@
       "name": "Soumyader Bari",
       "relationship": "Family",
       "reference": "",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "2"
     }
   ],
-  "updatedAt": 1782490629574
+  "updatedAt": 1782490636681
 }
