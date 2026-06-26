@@ -42,7 +42,7 @@
       "name": "Partha Sarathi Ganguly ",
       "relationship": "Friends",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -50,10 +50,10 @@
       "name": "Bapi Maity",
       "relationship": "Neighbours",
       "reference": "Piyal Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782489040675
+  "updatedAt": 1782489045584
 }
