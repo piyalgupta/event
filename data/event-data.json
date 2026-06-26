@@ -20,7 +20,7 @@
       "category": "Non-Veg Main",
       "qty": "30",
       "price": "380",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Mishti Doi",
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490658244
+  "updatedAt": 1782490661120
 }
