@@ -4,7 +4,7 @@
   "eventDate": "2026-07-01T11:30",
   "venueName": "Home",
   "venueAddr": "12/1J Chanditala Lane ollygunge Kolkata 700040",
-  "venueContact": "",
+  "venueContact": "Tublu",
   "venuePhone": "",
   "venueCost": "",
   "venueAdv": "",
@@ -16,5 +16,5 @@
   "locked": false,
   "food": [],
   "guests": [],
-  "updatedAt": 1782488824360
+  "updatedAt": 1782488847411
 }
