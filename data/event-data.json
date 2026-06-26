@@ -16,7 +16,7 @@
   "locked": false,
   "food": [
     {
-      "name": "Non Veg Thali- Dehradun Rice, Veg Moong Dal, Jhiri Aloobhaja, Sukto, Paneer Butter Masala (10 people),  Doi Katla, Sorshe Padba, Chutney Papad",
+      "name": "Non Veg Thali- Dehradun Rice, Veg Moong Dal, Jhiri Aloobhaja, Sukto, Paneer Butter Masala (10 people),  Doi Katla, Sorshe Pabda, Chutney Papad",
       "category": "Non-Veg Main",
       "qty": "30",
       "price": "380",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490563105
+  "updatedAt": 1782490571754
 }
