@@ -39,9 +39,9 @@
     {
       "name": "Paan",
       "category": "Other",
-      "qty": "",
+      "qty": "30",
       "price": "",
-      "sync": false
+      "sync": true
     }
   ],
   "guests": [
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490599653
+  "updatedAt": 1782490601810
 }
