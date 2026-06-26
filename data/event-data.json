@@ -16,7 +16,7 @@
   "locked": false,
   "food": [
     {
-      "name": "Non Veg Thalr- Rice Veg Moong dal Jhiri aloobhaja Sukto Paneer butter Malsa ",
+      "name": "Non Veg Thalr- Rice Veg Moong dal Jhiri aloobhaja Sukto Paneer butter Malsa 10 ",
       "category": "Non-Veg Main",
       "qty": "30",
       "price": "380",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490453170
+  "updatedAt": 1782490455254
 }
