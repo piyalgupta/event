@@ -56,12 +56,12 @@
     },
     {
       "name": "Bul Pishi",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782489053802
+  "updatedAt": 1782489055855
 }
