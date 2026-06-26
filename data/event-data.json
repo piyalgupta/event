@@ -5,7 +5,7 @@
   "venueName": "Home",
   "venueAddr": "12/1J Chanditala Lane ollygunge Kolkata 700040",
   "venueContact": "Tublu",
-  "venuePhone": "+91",
+  "venuePhone": "+91967",
   "venueCost": "",
   "venueAdv": "",
   "mapUrl": "",
@@ -16,5 +16,5 @@
   "locked": false,
   "food": [],
   "guests": [],
-  "updatedAt": 1782488852762
+  "updatedAt": 1782488855344
 }
