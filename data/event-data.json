@@ -10,7 +10,7 @@
   "venueAdv": "",
   "mapUrl": "",
   "catererName": "Tublu Caterers",
-  "catererPhone": "",
+  "catererPhone": "+919674609912",
   "foodAdv": "",
   "rsvpNotes": "",
   "locked": false,
@@ -38,5 +38,5 @@
     }
   ],
   "guests": [],
-  "updatedAt": 1782488971303
+  "updatedAt": 1782488976331
 }
