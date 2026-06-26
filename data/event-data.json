@@ -105,11 +105,11 @@
     {
       "name": "Others",
       "relationship": "Other",
-      "reference": "",
-      "invited": false,
+      "reference": "Anulekha Gupta",
+      "invited": true,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782489272416
+  "updatedAt": 1782489275651
 }
