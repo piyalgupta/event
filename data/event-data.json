@@ -80,12 +80,12 @@
     },
     {
       "name": "Dipu Pishi",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "2"
     }
   ],
-  "updatedAt": 1782489128418
+  "updatedAt": 1782489130056
 }
