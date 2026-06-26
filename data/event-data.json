@@ -30,7 +30,7 @@
       "sync": true
     },
     {
-      "name": "",
+      "name": "Mishti",
       "category": "Dessert",
       "qty": "",
       "price": "",
@@ -38,5 +38,5 @@
     }
   ],
   "guests": [],
-  "updatedAt": 1782488917831
+  "updatedAt": 1782488926267
 }
