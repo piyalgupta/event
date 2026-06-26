@@ -40,12 +40,12 @@
   "guests": [
     {
       "name": "Partha Sarathi Ganguly ",
-      "relationship": "Family",
-      "reference": "",
+      "relationship": "Friends",
+      "reference": "Piyal Gupta",
       "invited": false,
       "rsvp": false,
       "party": "1"
     }
   ],
-  "updatedAt": 1782489004511
+  "updatedAt": 1782489010650
 }
