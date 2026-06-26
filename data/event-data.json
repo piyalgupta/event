@@ -63,7 +63,7 @@
       "party": "2"
     },
     {
-      "name": "Gautam kaku",
+      "name": "Gautam Kaku",
       "relationship": "Relatives",
       "reference": "Anulekha Gupta",
       "invited": false,
@@ -79,5 +79,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782489100396
+  "updatedAt": 1782489103450
 }
