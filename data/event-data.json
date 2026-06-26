@@ -27,14 +27,14 @@
       "category": "Dessert",
       "qty": "30",
       "price": "15",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Mishti",
       "category": "Dessert",
       "qty": "30",
       "price": "40",
-      "sync": true
+      "sync": false
     },
     {
       "name": "Paan",
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490661120
+  "updatedAt": 1782490664974
 }
