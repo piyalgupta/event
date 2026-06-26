@@ -13,7 +13,7 @@
   "catererPhone": "+91 9674609912",
   "foodAdv": "",
   "rsvpNotes": "",
-  "locked": false,
+  "locked": true,
   "food": [
     {
       "name": "Non Veg Thali- Dehradun Rice, Veg Moong Dal, Jhiri Aloobhaja, Sukto, Paneer Butter Masala (10 people),  Doi Katla, Sorshe Pabda, Chutney, Papad",
@@ -134,5 +134,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782490605709
+  "updatedAt": 1782490616424
 }
