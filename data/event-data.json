@@ -39,7 +39,7 @@
   ],
   "guests": [
     {
-      "name": "Partha Sarathi ganguly ",
+      "name": "Partha Sarathi Ganguly ",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -47,5 +47,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782489000584
+  "updatedAt": 1782489004511
 }
