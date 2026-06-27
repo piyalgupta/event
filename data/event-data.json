@@ -120,12 +120,12 @@
     },
     {
       "name": "Dimpi Family",
-      "relationship": "Family",
+      "relationship": "Relatives",
       "reference": "",
       "invited": false,
       "rsvp": false,
       "party": "2"
     }
   ],
-  "updatedAt": 1782545314234
+  "updatedAt": 1782545316947
 }
