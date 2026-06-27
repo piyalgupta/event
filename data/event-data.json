@@ -64,7 +64,7 @@
       "name": "Amar Kaku/Nihar Kaku/Rahul Kaku",
       "relationship": "Neighbours",
       "reference": "Pradip Kumar Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "3"
     },
@@ -653,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782545193165
+  "updatedAt": 1782545196598
 }
