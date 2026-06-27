@@ -296,8 +296,8 @@
       "name": "Ila r Dada Boudi",
       "relationship": "Neighbours",
       "reference": "Anulekha Gupta",
-      "invited": false,
-      "rsvp": false,
+      "invited": true,
+      "rsvp": true,
       "party": "1"
     },
     {
@@ -653,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782545220740
+  "updatedAt": 1782545225548
 }
