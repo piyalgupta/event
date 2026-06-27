@@ -144,7 +144,7 @@
       "name": "Bhattacharya Saheb",
       "relationship": "Friends",
       "reference": "Anulekha Gupta",
-      "invited": false,
+      "invited": true,
       "rsvp": false,
       "party": "1"
     },
@@ -653,5 +653,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782545196598
+  "updatedAt": 1782545207798
 }
