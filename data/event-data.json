@@ -19,7 +19,7 @@
       "name": "Pizza",
       "category": "Non-Veg Main",
       "qty": "10",
-      "price": "",
+      "price": "350",
       "sync": false
     }
   ],
@@ -113,5 +113,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789929765
+  "updatedAt": 1782789933321
 }
