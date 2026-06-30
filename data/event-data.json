@@ -13,7 +13,7 @@
   "catererPhone": "+91 9674609912",
   "foodAdv": "",
   "rsvpNotes": "",
-  "locked": false,
+  "locked": true,
   "food": [
     {
       "name": "Pizza",
@@ -33,5 +33,5 @@
       "party": "5"
     }
   ],
-  "updatedAt": 1782789984234
+  "updatedAt": 1782789989240
 }
