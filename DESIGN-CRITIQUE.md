@@ -1,5 +1,30 @@
 # Life Events Planner — An Apple-Grade Design Critique
 
+> **Update — the improvements below have now been implemented.** This document was
+> the diagnostic that motivated the redesign, so the critique that follows
+> describes the **pre-redesign** state. What changed, in this same branch:
+> 1. **One accent, not a rainbow** — the green→orange→pink gradient was removed from
+>    the brand, page numbers, badges, nav, KPIs, toggles and scrollbar; it now
+>    survives on a single hero moment (the Grand Total). A single green accent
+>    carries everything else.
+> 2. **Dark mode fixed + crisp fields** — added the missing `html.dark body`
+>    background (dark mode is now a true Apple near-black, not dark cards on mint);
+>    inputs got hairline borders, a clear focus ring and readable placeholders.
+> 3. **Calm surfaces & background** — the four-corner radial wash became a flat
+>    near-white with one faint accent breath; neomorphic glass gave way to flat,
+>    hairline-bordered cards with a grouped light-grey panel style.
+> 4. **Chrome & dead code** — the theme toggle now docks in the header (no more
+>    floating over inputs), the mobile nav gets a fade mask, the over-aggressive
+>    `animation:none` kill-switch and dead keyframes were removed, and the
+>    JetBrains webfont was dropped.
+> 5. **One coherent brand** — `og-image.png` was redrawn in the product's actual
+>    near-white/serif/green voice (rendered in real Cormorant Garamond), and the
+>    dashboard charts moved to a calm, green-forward palette.
+>
+> The original critique is preserved below for the record.
+
+---
+
 *A world-class design-director review of the product's visual identity, UI, and
 emotional design — judged against Apple's standards of taste, restraint, clarity
 and premium feel. Brutally honest by request.*

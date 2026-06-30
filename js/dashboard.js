@@ -5,7 +5,9 @@
 // and guest classifications. Re-rendered from recalc(); never writes back.
 // Borrows the helpers ($, num, esc, inr, foodEntries, guestEntries) from core.js.
 
-const DASH_COLORS=['#0cce6b','#ef2d56','#ed7d3a','#dced31','#15b8a6','#363537','#0a9d52','#f5a623','#d6246e','#8aab2f'];
+// A calm, green-forward categorical palette — emerald/teal/cool tones lead,
+// warm hues used sparingly; no loud chartreuse. Reads cohesive in both themes.
+const DASH_COLORS=['#0a9d52','#15b8a6','#3b82f6','#6366f1','#0e7a6b','#ed7d3a','#ef2d56','#8e8e93','#a78bfa','#f5a623'];
 
 // One pass over the form state, returning every figure the charts need.
 function dashData(){
