@@ -1,11 +1,11 @@
 {
-  "organizedFor": "Rudraksha (Tojo)",
-  "eventType": "Birthday",
-  "eventDate": "2027-05-06T18:30",
+  "organizedFor": "",
+  "eventType": "Post-Funeral Rituals / Memorial",
+  "eventDate": "2026-07-01T11:30",
   "venueName": "Home",
   "venueAddr": "12/1J Chanditala Lane Tollygunge Kolkata 700040",
-  "venueContact": "Piyal Gupta",
-  "venuePhone": "+9109874174100",
+  "venueContact": "Bapi Maity",
+  "venuePhone": "",
   "venueCost": "",
   "venueAdv": "",
   "mapUrl": "",
@@ -16,22 +16,108 @@
   "locked": true,
   "food": [
     {
-      "name": "Pizza",
+      "name": "Non Veg Thali",
       "category": "Non-Veg Main",
-      "qty": "5",
-      "price": "350",
+      "qty": "30",
+      "price": "380",
+      "sync": true
+    },
+    {
+      "name": "Mishti Doi",
+      "category": "Dessert",
+      "qty": "30",
+      "price": "15",
+      "sync": true
+    },
+    {
+      "name": "Mishti",
+      "category": "Dessert",
+      "qty": "30",
+      "price": "40",
       "sync": true
     }
   ],
   "guests": [
     {
-      "name": "School Friends",
+      "name": "Partha Sarathi Ganguly ",
       "relationship": "Friends",
-      "reference": "Rudraksha Gupta",
-      "invited": false,
+      "reference": "Piyal Gupta",
+      "invited": true,
       "rsvp": false,
-      "party": "5"
+      "party": "1"
+    },
+    {
+      "name": "Bapi Maity",
+      "relationship": "Neighbours",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Bul Pishi",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Gautam Kaku",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Shanu Kaku",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Dipu Pishi",
+      "relationship": "Relatives",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "2"
+    },
+    {
+      "name": "Abhaya Mashi ",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Bithi Ghosh ",
+      "relationship": "Friends",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "1"
+    },
+    {
+      "name": "Others",
+      "relationship": "Other",
+      "reference": "Anulekha Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "10"
+    },
+    {
+      "name": "Others",
+      "relationship": "Other",
+      "reference": "Piyal Gupta",
+      "invited": true,
+      "rsvp": false,
+      "party": "9"
     }
   ],
-  "updatedAt": 1782809244568
+  "updatedAt": 1782809247764
 }
