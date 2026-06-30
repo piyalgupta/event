@@ -18,28 +18,20 @@
     {
       "name": "Pizza",
       "category": "Non-Veg Main",
-      "qty": "9",
+      "qty": "1",
       "price": "350",
       "sync": true
     }
   ],
   "guests": [
     {
-      "name": "Others",
-      "relationship": "Other",
-      "reference": "Piyal Gupta",
-      "invited": true,
+      "name": "",
+      "relationship": "Family",
+      "reference": "",
+      "invited": false,
       "rsvp": false,
-      "party": "7"
-    },
-    {
-      "name": "Dimpi Family",
-      "relationship": "Relatives",
-      "reference": "Sarmishtha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
+      "party": "1"
     }
   ],
-  "updatedAt": 1782789946753
+  "updatedAt": 1782789950011
 }
