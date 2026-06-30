@@ -11,9 +11,9 @@
   "mapUrl": "",
   "catererName": "Tublu Caterers",
   "catererPhone": "+91 9674609912",
-  "foodAdv": "",
+  "foodAdv": "5000",
   "rsvpNotes": "",
-  "locked": false,
+  "locked": true,
   "food": [
     {
       "name": "Non Veg Thali",
@@ -119,5 +119,5 @@
       "party": "9"
     }
   ],
-  "updatedAt": 1782809260969
+  "updatedAt": 1782809266838
 }
