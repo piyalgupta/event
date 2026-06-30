@@ -18,7 +18,7 @@
     {
       "name": "Pizza",
       "category": "Non-Veg Main",
-      "qty": "",
+      "qty": "10",
       "price": "",
       "sync": false
     }
@@ -113,5 +113,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789925930
+  "updatedAt": 1782789929765
 }
