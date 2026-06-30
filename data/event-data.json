@@ -16,11 +16,11 @@
   "locked": false,
   "food": [
     {
-      "name": "Mishti",
-      "category": "Dessert",
-      "qty": "30",
-      "price": "40",
-      "sync": true
+      "name": "",
+      "category": "Veg Starter",
+      "qty": "",
+      "price": "",
+      "sync": false
     }
   ],
   "guests": [
@@ -113,5 +113,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789909853
+  "updatedAt": 1782789911946
 }
