@@ -25,7 +25,7 @@
   ],
   "guests": [
     {
-      "name": "School fgriends",
+      "name": "School Friends",
       "relationship": "Family",
       "reference": "",
       "invited": false,
@@ -33,5 +33,5 @@
       "party": "1"
     }
   ],
-  "updatedAt": 1782789955782
+  "updatedAt": 1782789957965
 }
