@@ -13,7 +13,7 @@
   "catererPhone": "+91 9674609912",
   "foodAdv": "",
   "rsvpNotes": "",
-  "locked": false,
+  "locked": true,
   "food": [
     {
       "name": "Non Veg Thali",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789897116
+  "updatedAt": 1782789900263
 }
