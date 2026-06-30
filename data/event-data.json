@@ -1,7 +1,7 @@
 {
   "organizedFor": "Rudraksha(Tojo)'s Birthday",
   "eventType": "Birthday",
-  "eventDate": "2027-08-01T11:30",
+  "eventDate": "2027-06-01T11:30",
   "venueName": "Home",
   "venueAddr": "12/1J Chanditala Lane Tollygunge Kolkata 700040",
   "venueContact": "Bapi Maity",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789851760
+  "updatedAt": 1782789857231
 }
