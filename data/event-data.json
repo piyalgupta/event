@@ -18,84 +18,12 @@
     {
       "name": "Pizza",
       "category": "Non-Veg Main",
-      "qty": "30",
+      "qty": "9",
       "price": "350",
       "sync": true
     }
   ],
   "guests": [
-    {
-      "name": "Partha Sarathi Ganguly ",
-      "relationship": "Friends",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Bapi Maity",
-      "relationship": "Neighbours",
-      "reference": "Piyal Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Bul Pishi",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Gautam Kaku",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Shanu Kaku",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Dipu Pishi",
-      "relationship": "Relatives",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "2"
-    },
-    {
-      "name": "Abhaya Mashi ",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Bithi Ghosh ",
-      "relationship": "Friends",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "1"
-    },
-    {
-      "name": "Others",
-      "relationship": "Other",
-      "reference": "Anulekha Gupta",
-      "invited": true,
-      "rsvp": false,
-      "party": "10"
-    },
     {
       "name": "Others",
       "relationship": "Other",
@@ -113,5 +41,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789939363
+  "updatedAt": 1782789946753
 }
