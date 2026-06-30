@@ -18,7 +18,7 @@
     {
       "name": "Pizza",
       "category": "Non-Veg Main",
-      "qty": "1",
+      "qty": "5",
       "price": "350",
       "sync": true
     }
@@ -30,8 +30,8 @@
       "reference": "Rudraksha Gupta",
       "invited": false,
       "rsvp": false,
-      "party": "1"
+      "party": "5"
     }
   ],
-  "updatedAt": 1782789965814
+  "updatedAt": 1782789968982
 }
