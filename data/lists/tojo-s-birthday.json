@@ -1,0 +1,38 @@
+{
+  "organizedFor": "Rudraksha(Tojo)'s Birthday",
+  "eventType": "Birthday",
+  "eventDate": "2027-05-06T18:30",
+  "venueName": "Home",
+  "venueAddr": "12/1J Chanditala Lane Tollygunge Kolkata 700040",
+  "venueContact": "Piyal Gupta",
+  "venuePhone": "+9109874174100",
+  "venueCost": "",
+  "venueAdv": "",
+  "mapUrl": "",
+  "catererName": "Tublu Caterers",
+  "catererPhone": "+91 9674609912",
+  "foodAdv": "",
+  "rsvpNotes": "",
+  "locked": true,
+  "food": [
+    {
+      "name": "Pizza",
+      "category": "Non-Veg Main",
+      "qty": "5",
+      "price": "350",
+      "sync": true
+    }
+  ],
+  "guests": [
+    {
+      "name": "School Friends",
+      "relationship": "Friends",
+      "reference": "Rudraksha Gupta",
+      "invited": false,
+      "rsvp": false,
+      "party": "5"
+    }
+  ],
+  "updatedAt": 1782790022393,
+  "listName": "Tojo's Birthday"
+}
