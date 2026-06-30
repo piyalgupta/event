@@ -17,7 +17,7 @@
   "food": [
     {
       "name": "Pizza",
-      "category": "Veg Starter",
+      "category": "Non-Veg Main",
       "qty": "",
       "price": "",
       "sync": false
@@ -113,5 +113,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789923361
+  "updatedAt": 1782789925930
 }
