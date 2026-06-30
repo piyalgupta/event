@@ -5,7 +5,7 @@
   "venueName": "Home",
   "venueAddr": "12/1J Chanditala Lane Tollygunge Kolkata 700040",
   "venueContact": "Piyal Gupta",
-  "venuePhone": "",
+  "venuePhone": "+9109874107410",
   "venueCost": "",
   "venueAdv": "",
   "mapUrl": "",
@@ -127,5 +127,5 @@
       "party": "2"
     }
   ],
-  "updatedAt": 1782789882015
+  "updatedAt": 1782789890110
 }
